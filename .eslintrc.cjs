@@ -42,6 +42,7 @@ module.exports = {
         ignoreRefs: true
       }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   }
 };

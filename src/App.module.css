@@ -5,5 +5,4 @@
     grid-template-areas:
     "header header"
     "navigation content";
-    gap: 1rem;
 }
