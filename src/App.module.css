@@ -1,0 +1,9 @@
+.app_Wrapper {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-template-areas:
+    "header header"
+    "navigation content";
+    gap: 16px;
+}
