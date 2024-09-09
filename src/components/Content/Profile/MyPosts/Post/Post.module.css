@@ -1,0 +1,31 @@
+.post_wrapper {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+    .post {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: #fdc8d8;
+        border-radius: 5px;
+
+        img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+    }
+
+    button {
+        align-self: end;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 50%;
+        background: none;
+        cursor: pointer;
+    }
+}
+
