@@ -1,8 +1,8 @@
-import styles from './Content.module.css';
+import styles from '../Content.module.css';
 
-const Content = () => {
+const Profile = () => {
   return (
-    <main className={styles.content}>
+    <>
       <img
         className={styles.profile_background_image}
         src="https://marketplace.canva.com/EAENvp21inc/1/0/1600w/canva-simple-work-linkedin-banner-qt_TMRJF4m0.jpg"
@@ -28,8 +28,8 @@ const Content = () => {
           </ul>
         </div>
       </section>
-    </main>
+    </>
   );
 };
 
-export default Content;
+export default Profile;
