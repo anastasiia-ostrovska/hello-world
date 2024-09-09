@@ -1,0 +1,12 @@
+.myPosts_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    ul {
+        display: grid;
+        gap: 2rem;
+    }
+
+
+}
