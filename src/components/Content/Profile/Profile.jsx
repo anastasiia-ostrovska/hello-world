@@ -1,8 +1,10 @@
-import styles from '../Content.module.css';
+import MyPosts from './MyPosts/MyPosts';
+
+import styles from './Profile.module.css';
 
 const Profile = () => {
   return (
-    <>
+    <div className={styles.profile_wrapper}>
       <img
         className={styles.profile_background_image}
         src="https://marketplace.canva.com/EAENvp21inc/1/0/1600w/canva-simple-work-linkedin-banner-qt_TMRJF4m0.jpg"
@@ -16,19 +18,8 @@ const Profile = () => {
         />
         <div>Info about John</div>
       </section>
-      <section>
-        My posts
-        <div>New post</div>
-        <div>
-          Prev posts
-          <ul>
-            <li>Post1</li>
-            <li>Post2</li>
-            <li>Post3</li>
-          </ul>
-        </div>
-      </section>
-    </>
+      <MyPosts />
+    </div>
   );
 };
 
