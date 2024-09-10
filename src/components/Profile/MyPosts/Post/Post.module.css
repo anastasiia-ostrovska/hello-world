@@ -1,7 +1,6 @@
 .post_wrapper {
     display: flex;
     flex-direction: column;
-    list-style: none;
 
     .post {
         display: flex;
