@@ -1,8 +1,10 @@
 .dialog {
-    padding: 1rem;
     cursor: pointer;
+    padding: 1rem;
 
     a {
+        display: block;
+        height: 100%;
         text-decoration: none;
         color: black;
     }

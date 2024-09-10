@@ -3,6 +3,12 @@ import MyPosts from './MyPosts/MyPosts';
 
 import styles from './Profile.module.css';
 
+const posts = [
+  { id: 1, text: 'Here my first post', likes: 5 },
+  { id: 2, text: 'Glad to see you here!', likes: 3 },
+  { id: 3, text: 'Whasup guys and gals', likes: 8 },
+];
+
 const Profile = () => {
   return (
     <div className={styles.profile_wrapper}>
@@ -12,7 +18,7 @@ const Profile = () => {
         alt="profile background"
       />
       <ProfileInfoCard />
-      <MyPosts />
+      <MyPosts posts={posts} />
     </div>
   );
 };
