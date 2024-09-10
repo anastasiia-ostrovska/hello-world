@@ -1,0 +1,9 @@
+.messages_wrapper {
+    background-color: #c34f74;
+
+    p {
+        padding: 1rem;
+        background-color: #f693b2;
+        border-left: 1px solid #c34f74;
+    }
+}
