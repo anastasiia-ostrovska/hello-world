@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+
 import styles from './Navigation.module.css';
 
 const Navigation = () => {
@@ -17,7 +18,7 @@ const Navigation = () => {
         <li>
           <NavLink to="/music">Music</NavLink>;
         </li>
-        <li c>
+        <li>
           <NavLink to="/settings">Settings</NavLink>;
         </li>
       </ul>
