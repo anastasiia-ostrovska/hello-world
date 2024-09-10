@@ -3,11 +3,11 @@ import MessagesSection from './MessagesSection/MessagesSection';
 
 import styles from './Dialogs.module.css';
 
-const Dialogs = () => {
+const Dialogs = ({ dialogs, messages }) => {
   return (
     <div className={styles.dialogs_wrapper}>
-      <DialogsSection />
-      <MessagesSection />
+      <DialogsSection dialogs={dialogs} />
+      <MessagesSection messages={messages} />
     </div>
   );
 };
