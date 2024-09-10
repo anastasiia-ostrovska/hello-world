@@ -1,0 +1,10 @@
+.card_wrapper {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+
+    .image {
+        width: 200px;
+        border-radius: 50%;
+    }
+}
