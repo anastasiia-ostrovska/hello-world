@@ -3,16 +3,16 @@ import Post from './Post/Post';
 
 import styles from './MyPosts.module.css';
 
-const MyPosts = () => {
+const MyPosts = ({ posts }) => {
   return (
     <section className={styles.myPosts_wrapper}>
       <h2> My posts</h2>
       <NewPost />
       <div>
         <ul>
-          <Post text="Here my first post" />
-          <Post text="Glad to see you here!" />
-          <Post text="Whasup guys and gals" />
+          {posts.map(({ id, text, likes }) => (
+            <Post key={id} text={text} likes={likes} />
+          ))}
         </ul>
       </div>
     </section>
