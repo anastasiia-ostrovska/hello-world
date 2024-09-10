@@ -1,6 +1,6 @@
 import styles from './Post.module.css';
 
-const Post = ({ text }) => {
+const Post = ({ text, likes }) => {
   return (
     <li className={styles.post_wrapper}>
       <div className={styles.post}>
@@ -10,7 +10,7 @@ const Post = ({ text }) => {
         />
         <p>{text}</p>
       </div>
-      <button type="button">🤍</button>
+      <button type="button">🤍 {likes}</button>
     </li>
   );
 };
