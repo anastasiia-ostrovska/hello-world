@@ -17,19 +17,11 @@ const dialogs = [
   { id: 7, name: 'Denys' },
 ];
 
-const messages = [
-  { id: 1, message: 'Hi!' },
-  { id: 2, message: 'How ere you?' },
-  { id: 3, message: 'Hi! I`m fine!' },
-  { id: 4, message: 'What an interesting dialog!' },
-  { id: 5, message: 'That`s what she said)' },
-];
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App dialogs={dialogs} messages={messages} />
+        <App dialogs={dialogs} />
       </Provider>
     </BrowserRouter>
   </StrictMode>
