@@ -1,15 +1,19 @@
 import styles from './NewPost.module.css';
 
-const NewPost = () => {
+const NewPost = ({ value, onChange, placeholder = '', onCLick }) => {
   return (
     <div className={styles.post_wrapper}>
       <textarea
         name="newPost"
         id="newPost"
-        rows="10"
-        placeholder="Your news..."
+        rows="5"
+        placeholder={placeholder}
+        value={value}
+        onChange={(event) => onChange(event)}
       />
-      <button type="submit">Post</button>
+      <button type="submit" onClick={() => onCLick()}>
+        Post
+      </button>
     </div>
   );
 };

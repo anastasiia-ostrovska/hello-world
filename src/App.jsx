@@ -7,12 +7,12 @@ import Music from './components/Music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 
-const App = ({ posts, dialogs, messages }) => {
+const App = ({ dialogs, messages }) => {
   return (
     <Routes>
       <Route path="/" element={<Home />}>
-        <Route index element={<Profile posts={posts} />} />
-        <Route path="profile" element={<Profile posts={posts} />} />
+        <Route index element={<Profile />} />
+        <Route path="profile" element={<Profile />} />
         <Route
           path="dialogs/*"
           element={<Dialogs dialogs={dialogs} messages={messages} />}
