@@ -3,7 +3,7 @@ import MyPosts from './MyPosts/MyPosts';
 
 import styles from './Profile.module.css';
 
-const Profile = ({ posts }) => {
+const Profile = () => {
   return (
     <div className={styles.profile_wrapper}>
       <img
@@ -12,7 +12,7 @@ const Profile = ({ posts }) => {
         alt="profile background"
       />
       <ProfileInfoCard />
-      <MyPosts posts={posts} />
+      <MyPosts />
     </div>
   );
 };
