@@ -8,11 +8,6 @@ const MessagesList = ({ messages }) => {
       {messages.map(({ id, message }) => (
         <Message key={id} message={message} />
       ))}
-      {/* <Message message="Hi!" /> */}
-      {/* <Message message="How ere you?" /> */}
-      {/* <Message message="Hi! I`m fine!" /> */}
-      {/* <Message message="What an interesting dialog!" /> */}
-      {/* <Message message="That`s what she said)" /> */}
     </ul>
   );
 };
