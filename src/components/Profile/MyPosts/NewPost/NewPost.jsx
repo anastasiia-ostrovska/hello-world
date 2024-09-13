@@ -1,6 +1,6 @@
 import styles from './NewPost.module.css';
 
-const NewPost = ({ value, onChange, placeholder = '', onCLick }) => {
+const NewPost = ({ value, onChange, onCLick, placeholder = '' }) => {
   return (
     <div className={styles.post_wrapper}>
       <textarea

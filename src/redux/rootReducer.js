@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import profileReducer from './reducers/profileReducer';
+import postsReducer from './reducers/postsReducer';
+import messagesReducer from './reducers/messagesReducer';
 
-const rootReducer = combineReducers({ profile: profileReducer });
+const rootReducer = combineReducers({
+  posts: postsReducer,
+  messages: messagesReducer,
+});
 
 export default rootReducer;
