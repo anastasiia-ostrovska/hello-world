@@ -2,44 +2,44 @@ import { connect } from 'react-redux';
 import {
   updateNewMessageText,
   sendMessage,
-} from '../../../redux/reducers/messagesReducer';
+} from '../../../redux/reducers/dialogsReducer';
 import MessagesList from './MessagesList/MessagesList';
 import NewMessage from './NewMessage/NewMessage';
 
 import styles from './MessagesSection.module.css';
 
 const MessagesSection = ({
-  messagesList,
+  messages,
   newMessageText,
-  updateNewMessageText,
-  sendMessage,
+  handleUpdateNewMessageText,
+  handleSendMessage,
 }) => {
   return (
     <div className={styles.messages_wrapper}>
       <p>Mb info about user</p>
-      <MessagesList messages={messagesList} />
+      <MessagesList messages={messages} />
       <NewMessage
         value={newMessageText}
-        onChange={updateNewMessageText}
-        onCLick={sendMessage}
+        onChange={handleUpdateNewMessageText}
+        onCLick={handleSendMessage}
         placeholder="Message ..."
       />
     </div>
   );
 };
 
-const mapState = ({ messages }) => ({
-  messagesList: messages.messagesList,
-  newMessageText: messages.newMessageText,
+const mapState = ({ dialogsPage }) => ({
+  messages: dialogsPage.messages,
+  newMessageText: dialogsPage.newMessageText,
 });
 
 const mapDispatch = (dispatch) => {
   return {
-    updateNewMessageText: (event) => {
+    handleUpdateNewMessageText: (event) => {
       const newMessageText = event.target.value;
       dispatch(updateNewMessageText(newMessageText));
     },
-    sendMessage: () => {
+    handleSendMessage: () => {
       dispatch(sendMessage());
     },
   };

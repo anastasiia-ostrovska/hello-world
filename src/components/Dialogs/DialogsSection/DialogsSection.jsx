@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import DialogsList from './DialogsList/DialogsList';
 
 const DialogsSection = ({ dialogs }) => {
@@ -9,4 +10,6 @@ const DialogsSection = ({ dialogs }) => {
   );
 };
 
-export default DialogsSection;
+const mapState = ({ dialogsPage }) => ({ dialogs: dialogsPage.dialogs });
+
+export default connect(mapState)(DialogsSection);
