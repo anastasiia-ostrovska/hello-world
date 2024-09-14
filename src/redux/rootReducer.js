@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import postsReducer from './reducers/postsReducer';
-import messagesReducer from './reducers/messagesReducer';
+import profileReducer from './reducers/profileReducer';
+import dialogsReducer from './reducers/dialogsReducer';
 
 const rootReducer = combineReducers({
-  posts: postsReducer,
-  messages: messagesReducer,
+  profile: profileReducer,
+  dialogsPage: dialogsReducer,
 });
 
 export default rootReducer;
