@@ -5,13 +5,15 @@
     grid-template-areas:
     "header header"
     "navigation content";
-    font-size: 1.5rem;
+    gap: var(--page-gap);
+    height: 100%;
+    font-size: var(--font-size-general);
 
     .content_wrapper {
         display: flex;
         flex-direction: column;
         grid-area: content;
-        background-color: #f693b2;
-        gap: 16px;
+        background-color: var(--section-background);
+        gap: var(--page-section-gap);
     }
 }

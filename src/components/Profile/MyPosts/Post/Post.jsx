@@ -10,7 +10,9 @@ const Post = ({ text, likes }) => {
         />
         <p>{text}</p>
       </div>
-      <button type="button">🤍 {likes}</button>
+      <button type="button">
+        🤍 <span>{likes}</span>
+      </button>
     </li>
   );
 };
