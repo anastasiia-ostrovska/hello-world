@@ -2,25 +2,30 @@ import { connect } from 'react-redux';
 import {
   addPost,
   updateNewPostText,
-} from '../../../redux/reducers/postsReducer';
+} from '../../../redux/reducers/profileReducer';
 import NewPost from './NewPost/NewPost';
 import Post from './Post/Post';
 
 import styles from './MyPosts.module.css';
 
-const MyPosts = ({ postsList, newPostText, handleTextChange, addNewPost }) => {
+const MyPosts = ({
+  posts,
+  newPostText,
+  handleTextChange,
+  handleAddNewPost,
+}) => {
   return (
     <section className={styles.myPosts_wrapper}>
       <h2> My posts</h2>
       <NewPost
         value={newPostText}
         onChange={handleTextChange}
-        onCLick={addNewPost}
+        onCLick={handleAddNewPost}
         placeholder="Your news..."
       />
       <div>
         <ul>
-          {postsList.map(({ id, text, likes }) => (
+          {posts.map(({ id, text, likes }) => (
             <Post key={id} text={text} likes={likes} />
           ))}
         </ul>
@@ -29,10 +34,10 @@ const MyPosts = ({ postsList, newPostText, handleTextChange, addNewPost }) => {
   );
 };
 
-const mapState = ({ posts }) => {
+const mapState = ({ profile }) => {
   return {
-    postsList: posts.postsList,
-    newPostText: posts.newPostText,
+    posts: profile.posts,
+    newPostText: profile.newPostText,
   };
 };
 
@@ -42,7 +47,7 @@ const mapDispatch = (dispatch) => {
       const newPostText = event.target.value;
       dispatch(updateNewPostText(newPostText));
     },
-    addNewPost: () => {
+    handleAddNewPost: () => {
       dispatch(addPost());
     },
   };
