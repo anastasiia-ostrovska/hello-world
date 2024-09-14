@@ -18,7 +18,7 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST:
       return {
         ...state,
-        posts: [...state.posts, { id: 4, text: state.newPostText, likes: 0 }],
+        posts: [{ id: 4, text: state.newPostText, likes: 0 }, ...state.posts],
         newPostText: '',
       };
     default:

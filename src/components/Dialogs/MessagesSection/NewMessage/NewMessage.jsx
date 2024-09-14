@@ -1,6 +1,8 @@
+import styles from './NewMessage.module.css';
+
 const NewMessage = ({ value, onChange, onCLick, placeholder = '' }) => {
   return (
-    <div>
+    <div className={styles.message_wrapper}>
       <textarea
         name="newMessage"
         id="newMessage"

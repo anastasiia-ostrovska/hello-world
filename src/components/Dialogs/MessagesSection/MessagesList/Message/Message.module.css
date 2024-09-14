@@ -2,5 +2,5 @@
     padding: 0.5rem;
     width: fit-content;
     border-radius: 0.5rem;
-    background-color: #f693b2;
+    background-color: var(--post-background);
 }

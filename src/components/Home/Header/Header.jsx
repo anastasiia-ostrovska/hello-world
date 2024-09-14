@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <img
-        src="https://img.freepik.com/free-vector/colorful-letter-gradient-logo-design_474888-2309.jpg"
+        src="https://logodix.com/logo/489190.png"
         alt="social network logo"
       />
     </header>

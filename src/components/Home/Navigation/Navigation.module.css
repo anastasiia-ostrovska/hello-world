@@ -1,4 +1,24 @@
 .navigation {
     grid-area: navigation;
-    background-color: #efd66e
+    background-color: var(--section-background);
+
+    .item {
+        cursor: pointer;
+        padding: 1rem;
+
+        a {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+            color: black;
+
+            &:focus {
+                color: var(--accent-color);
+            }
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+    }
 }

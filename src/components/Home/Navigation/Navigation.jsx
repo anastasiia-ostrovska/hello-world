@@ -6,20 +6,20 @@ const Navigation = () => {
   return (
     <nav className={styles.navigation}>
       <ul>
-        <li>
-          <NavLink to="/profile">Profile</NavLink>;
+        <li className={styles.item}>
+          <NavLink to="/profile">Profile</NavLink>
         </li>
-        <li>
-          <NavLink to="/dialogs">Dialogs</NavLink>;
+        <li className={styles.item}>
+          <NavLink to="/dialogs">Dialogs</NavLink>
         </li>
-        <li>
-          <NavLink to="/news">News</NavLink>;
+        <li className={styles.item}>
+          <NavLink to="/news">News</NavLink>
         </li>
-        <li>
-          <NavLink to="/music">Music</NavLink>;
+        <li className={styles.item}>
+          <NavLink to="/music">Music</NavLink>
         </li>
-        <li>
-          <NavLink to="/settings">Settings</NavLink>;
+        <li className={styles.item}>
+          <NavLink to="/settings">Settings</NavLink>
         </li>
       </ul>
     </nav>
