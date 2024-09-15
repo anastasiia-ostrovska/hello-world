@@ -15,8 +15,8 @@ const initialState = {
     { id: 1, message: 'Hi!' },
     { id: 2, message: 'How ere you?' },
     { id: 3, message: 'Hi! I`m fine!' },
-    { id: 4, message: 'What an interesting dialog!' },
-    { id: 5, message: 'That`s what she said)' },
+    { id: 4, message: 'Working om my proj' },
+    { id: 5, message: 'Good luck with it!' },
   ],
   newMessageText: '',
 };
