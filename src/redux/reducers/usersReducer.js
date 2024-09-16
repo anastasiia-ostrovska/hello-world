@@ -1,46 +1,21 @@
+const SET_USERS = 'SET_USERS';
 const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 
 const initialState = {
-  users: [
-    {
-      userId: 1,
-      name: 'Jane Doe',
-      city: 'Landudno',
-      position: 'Designer',
-      imageSrc:
-        'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg',
-      isFollowed: true,
-    },
-    {
-      userId: 2,
-      name: 'Lui Kells',
-      city: 'Nevada',
-      position: 'Teacher',
-      imageSrc:
-        'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg',
-      isFollowed: false,
-    },
-    {
-      userId: 3,
-      name: 'Robert Zano',
-      city: 'Weles',
-      position: 'Musician',
-      imageSrc:
-        'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg',
-      isFollowed: true,
-    },
-  ],
+  users: [],
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_USERS:
+      return { ...state, users: action.users };
     case TOGGLE_FOLLOW:
       return {
         ...state,
         users: state.users.map((user) => {
-          return user.userId === action.userId
-            ? { ...user, isFollowed: !user.isFollowed }
+          return user.id === action.id
+            ? { ...user, followed: !user.followed }
             : user;
         }),
       };
@@ -50,6 +25,8 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const toggleFollow = (userId) => ({ type: TOGGLE_FOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+
+export const toggleFollow = (id) => ({ type: TOGGLE_FOLLOW, id });
 
 export default usersReducer;

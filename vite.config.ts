@@ -12,4 +12,14 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/setupTests.ts'],
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://social-network.samuraijs.com',
+        // secure: false,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api/1.0'),
+      },
+    },
+  },
 });
