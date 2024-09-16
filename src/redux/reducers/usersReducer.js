@@ -1,5 +1,4 @@
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
+const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 
 const initialState = {
   users: [
@@ -36,19 +35,12 @@ const initialState = {
 // eslint-disable-next-line @typescript-eslint/default-param-last
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FOLLOW:
+    case TOGGLE_FOLLOW:
       return {
+        ...state,
         users: state.users.map((user) => {
           return user.userId === action.userId
-            ? { ...user, isFollowed: true }
-            : user;
-        }),
-      };
-    case UNFOLLOW:
-      return {
-        users: state.users.map((user) => {
-          return user.userId === action.userId
-            ? { ...user, isFollowed: false }
+            ? { ...user, isFollowed: !user.isFollowed }
             : user;
         }),
       };
@@ -58,8 +50,6 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const toggleFollow = (userId) => ({ type: TOGGLE_FOLLOW, userId });
 
 export default usersReducer;

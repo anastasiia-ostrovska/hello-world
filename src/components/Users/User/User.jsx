@@ -1,4 +1,4 @@
-const User = ({ user, handleFollow, handleUnfollow }) => {
+const User = ({ user, handleToggleFollow }) => {
   const { userId, name, position, city, isFollowed, imageSrc } = user;
   return (
     <li>
@@ -8,15 +8,9 @@ const User = ({ user, handleFollow, handleUnfollow }) => {
         <li>{position}</li>
         <li>{city}</li>
       </ul>
-      {isFollowed ? (
-        <button type="button" onClick={() => handleUnfollow(userId)}>
-          Unfollow
-        </button>
-      ) : (
-        <button type="button" onClick={() => handleFollow(userId)}>
-          Follow
-        </button>
-      )}
+      <button type="button" onClick={() => handleToggleFollow(userId)}>
+        {isFollowed ? 'Follow' : 'Unfollow'}
+      </button>
     </li>
   );
 };

@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
 import User from './User/User';
-import { follow, unfollow } from '../../redux/reducers/usersReducer';
+import { toggleFollow } from '../../redux/reducers/usersReducer';
 
-const Users = ({ users, handleFollow, handleUnfollow }) => {
+const Users = ({ users, handleToggleFollow }) => {
   return (
     <ul>
       {users.map((user) => (
         <User
           key={user.userId}
           user={user}
-          handleFollow={handleFollow}
-          handleUnfollow={handleUnfollow}
+          handleToggleFollow={handleToggleFollow}
         />
       ))}
     </ul>
@@ -20,8 +19,7 @@ const Users = ({ users, handleFollow, handleUnfollow }) => {
 const mapState = ({ users }) => ({ users: users.users });
 
 const mapDispatch = (dispatch) => ({
-  handleFollow: (userId) => dispatch(follow(userId)),
-  handleUnfollow: (userId) => dispatch(unfollow(userId)),
+  handleToggleFollow: (userId) => dispatch(toggleFollow(userId)),
 });
 
 export default connect(mapState, mapDispatch)(Users);
