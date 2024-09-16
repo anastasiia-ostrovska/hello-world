@@ -1,19 +1,17 @@
-import { connect } from 'react-redux';
 import { Component } from 'react';
-import axios from 'axios';
-import User from './User/User';
-import { setUsers, toggleFollow } from '../../redux/reducers/usersReducer';
+import { connect } from 'react-redux';
 
-const axiosInstance = axios.create({
-  headers: {
-    'API-KEY': '41a53ef2-5be7-469a-90cd-a4a1a000adf7',
-  },
-});
+import { users } from '../../services/endpoints';
+import { setUsers, toggleFollow } from '../../redux/reducers/usersReducer';
+import axiosInstance from '../../services/axiosInstance';
+
+import User from './User/User';
 
 class Users extends Component {
   componentDidMount() {
-    axiosInstance.get('/api/users').then((response) => {
-      this.props.setUsers(response.data.items);
+    axiosInstance.get(users).then((response) => {
+      const { handleSetUsers } = this.props;
+      handleSetUsers(response.data.items);
     });
   }
 
@@ -37,7 +35,7 @@ const mapState = ({ users }) => ({ users: users.users });
 
 const mapDispatch = (dispatch) => ({
   handleToggleFollow: (userId) => dispatch(toggleFollow(userId)),
-  setUsers: (users) => dispatch(setUsers(users)),
+  handleSetUsers: (users) => dispatch(setUsers(users)),
 });
 
 export default connect(mapState, mapDispatch)(Users);
