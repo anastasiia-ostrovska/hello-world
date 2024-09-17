@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { users } from '../../services/endpoints';
 import { setUsers, toggleFollow } from '../../redux/reducers/usersReducer';
+import users from '../../services/endpoints';
 import axiosInstance from '../../services/axiosInstance';
 
 import User from './User/User';

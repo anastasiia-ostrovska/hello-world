@@ -1,1 +1,3 @@
-export const users = '/api/users';
+const users = '/api/users';
+
+export default users;
