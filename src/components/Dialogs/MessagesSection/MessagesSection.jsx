@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   updateNewMessageText,
-  sendMessage,
+  sendNewMessage,
 } from '../../../redux/reducers/dialogsReducer';
 import MessagesList from './MessagesList/MessagesList';
 import NewMessage from './NewMessage/NewMessage';
@@ -11,9 +11,14 @@ import styles from './MessagesSection.module.css';
 const MessagesSection = ({
   messages,
   newMessageText,
-  handleUpdateNewMessageText,
-  handleSendMessage,
+  updateNewMessageText: updateMessageText,
+  sendNewMessage: sendMessage,
 }) => {
+  const handleUpdateNewMessageText = (event) => {
+    const messageText = event.target.value;
+    updateMessageText(messageText);
+  };
+
   return (
     <div className={styles.messages_wrapper}>
       <p>Mb info about user</p>
@@ -21,7 +26,7 @@ const MessagesSection = ({
       <NewMessage
         value={newMessageText}
         onChange={handleUpdateNewMessageText}
-        onCLick={handleSendMessage}
+        onCLick={sendMessage}
         placeholder="Message ..."
       />
     </div>
@@ -33,16 +38,6 @@ const mapState = ({ dialogsPage }) => ({
   newMessageText: dialogsPage.newMessageText,
 });
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleUpdateNewMessageText: (event) => {
-      const newMessageText = event.target.value;
-      dispatch(updateNewMessageText(newMessageText));
-    },
-    handleSendMessage: () => {
-      dispatch(sendMessage());
-    },
-  };
-};
-
-export default connect(mapState, mapDispatch)(MessagesSection);
+export default connect(mapState, { updateNewMessageText, sendNewMessage })(
+  MessagesSection
+);

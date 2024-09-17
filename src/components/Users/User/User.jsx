@@ -1,7 +1,6 @@
 import userPhoto from '../../../assets/user.svg';
 
-const User = ({ user, handleToggleFollow }) => {
-  const { id, name, followed, photos } = user;
+const User = ({ id, name, followed, photos, toggleFollow }) => {
   return (
     <li>
       <img src={photos.small ? photos.small : userPhoto} alt={name} />
@@ -10,7 +9,7 @@ const User = ({ user, handleToggleFollow }) => {
         <li>position</li>
         <li>city</li>
       </ul>
-      <button type="button" onClick={() => handleToggleFollow(id)}>
+      <button type="button" onClick={() => toggleFollow(id)}>
         {followed ? 'Follow' : 'Unfollow'}
       </button>
     </li>

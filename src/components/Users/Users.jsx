@@ -10,22 +10,29 @@ import User from './User/User';
 class Users extends Component {
   componentDidMount() {
     axiosInstance.get(users).then((response) => {
-      const { handleSetUsers } = this.props;
-      handleSetUsers(response.data.items);
+      const { setUsers } = this.props;
+      setUsers(response.data.items);
     });
   }
 
   render() {
-    const { users, handleToggleFollow } = this.props;
+    const { users, toggleFollow } = this.props;
+
     return (
       <ul>
-        {users.map((user) => (
-          <User
-            key={user.id}
-            user={user}
-            handleToggleFollow={handleToggleFollow}
-          />
-        ))}
+        {users.map((user) => {
+          const { id, name, followed, photos } = user;
+          return (
+            <User
+              key={id}
+              id={id}
+              name={name}
+              followed={followed}
+              photos={photos}
+              toggleFollow={toggleFollow}
+            />
+          );
+        })}
       </ul>
     );
   }
@@ -33,9 +40,4 @@ class Users extends Component {
 
 const mapState = ({ users }) => ({ users: users.users });
 
-const mapDispatch = (dispatch) => ({
-  handleToggleFollow: (userId) => dispatch(toggleFollow(userId)),
-  handleSetUsers: (users) => dispatch(setUsers(users)),
-});
-
-export default connect(mapState, mapDispatch)(Users);
+export default connect(mapState, { setUsers, toggleFollow })(Users);
