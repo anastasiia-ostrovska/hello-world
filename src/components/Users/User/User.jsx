@@ -1,4 +1,4 @@
-import userPhoto from '../../../assets/user.svg';
+import userPhoto from '@assets/user.svg';
 
 const User = ({ id, name, followed, photos, toggleFollow }) => {
   return (
