@@ -1,5 +1,4 @@
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-import UserPhoto from '@components/common/images/userPhoto';
+import UserPhoto from '@components/common/images/UserPhoto';
 
 import { NavLink } from 'react-router-dom';
 import styles from './User.module.css';

@@ -3,19 +3,38 @@ import { connect } from 'react-redux';
 import { setUserProfile } from '@/redux/reducers/profileReducer';
 import { getUserProfile } from '@/services/api/getQueries';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
+import { useParams } from 'react-router-dom';
 import Profile from './Profile';
+
+const withRouter = (WrappedComponent) => {
+  const ComponentWithRouter = (props) => {
+    const params = useParams();
+
+    return <WrappedComponent {...props} params={params} />;
+  };
+
+  return ComponentWithRouter;
+};
 
 class ProfileContainer extends Component {
   componentDidMount() {
-    const { setUserProfile } = this.props;
-    const params = `/2`;
-    getUserProfile(params).then((response) => {
+    const { setUserProfile, params } = this.props;
+    let { userId } = params;
+
+    if (!userId) {
+      userId = '2';
+    }
+
+    const urlParams = `/${userId}`;
+
+    getUserProfile(urlParams).then((response) => {
       setUserProfile(response.data);
     });
   }
 
   render() {
-    if (!this.props.profile) {
+    const { profile } = this.props;
+    if (!profile) {
       return <LinearPreloader />;
     }
     return <Profile {...this.props} />;
@@ -24,4 +43,6 @@ class ProfileContainer extends Component {
 
 const mapState = ({ profile: { profile } }) => ({ profile });
 
-export default connect(mapState, { setUserProfile })(ProfileContainer);
+export default connect(mapState, { setUserProfile })(
+  withRouter(ProfileContainer)
+);
