@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import getUsers from '@/api/queries/get/getUsers';
+import getUsers from '@/services/api/getUsers';
 import {
   setUsers,
   toggleFollow,
@@ -20,7 +20,8 @@ class Users extends Component {
     getUsers(params).then((response) => {
       const { setUsers, setTotalUsersCount } = this.props;
       setUsers(response.data.items);
-      setTotalUsersCount(response.data.totalCount);
+      // temporarily decreased amount:
+      setTotalUsersCount(response.data.totalCount - 26600);
     });
   }
 
@@ -39,12 +40,7 @@ class Users extends Component {
       this.props;
 
     const pagesCount = Math.ceil(totalCount / usersCount);
-
-    const pages = [];
-
-    for (let i = 1; i <= pagesCount; i++) {
-      pages.push(i);
-    }
+    const pages = Array.from({ length: pagesCount }, (_, index) => index + 1);
 
     return (
       <div>
