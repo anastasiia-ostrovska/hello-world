@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { LinearProgress } from '@mui/material';
 
 import getUsers from '@/services/api/getUsers';
 import {
@@ -7,6 +8,7 @@ import {
   toggleFollow,
   setCurrentPage,
   setTotalUsersCount,
+  setIsLoading,
 } from '../../redux/reducers/usersReducer';
 
 import User from './User/User';
@@ -15,10 +17,17 @@ import styles from './Users.module.css';
 
 class Users extends Component {
   componentDidMount() {
-    const { usersCount, currentPage } = this.props;
+    const {
+      usersCount,
+      currentPage,
+      setUsers,
+      setTotalUsersCount,
+      setIsLoading,
+    } = this.props;
+    setIsLoading(true);
     const params = `?count=${usersCount}&page=${currentPage}`;
     getUsers(params).then((response) => {
-      const { setUsers, setTotalUsersCount } = this.props;
+      setIsLoading(false);
       setUsers(response.data.items);
       // temporarily decreased amount:
       setTotalUsersCount(response.data.totalCount - 26600);
@@ -26,24 +35,32 @@ class Users extends Component {
   }
 
   handlePageChange = (currentPage) => {
-    const { usersCount, setCurrentPage } = this.props;
+    const { usersCount, setCurrentPage, setUsers, setIsLoading } = this.props;
+    setIsLoading(true);
     const params = `?count=${usersCount}&page=${currentPage}`;
     setCurrentPage(currentPage);
     getUsers(params).then((response) => {
-      const { setUsers } = this.props;
+      setIsLoading(false);
       setUsers(response.data.items);
     });
   };
 
   render() {
-    const { users, usersCount, currentPage, totalCount, toggleFollow } =
-      this.props;
+    const {
+      users,
+      usersCount,
+      currentPage,
+      totalCount,
+      isLoading,
+      toggleFollow,
+    } = this.props;
 
     const pagesCount = Math.ceil(totalCount / usersCount);
     const pages = Array.from({ length: pagesCount }, (_, index) => index + 1);
 
     return (
       <div>
+        {isLoading && <LinearProgress />}
         <div>
           {pages.map((page) => (
             <button
@@ -78,12 +95,13 @@ class Users extends Component {
 }
 
 const mapState = ({
-  users: { users, usersCount, currentPage, totalCount },
+  users: { users, usersCount, currentPage, totalCount, isLoading },
 }) => ({
   users,
   usersCount,
   currentPage,
   totalCount,
+  isLoading,
 });
 
 export default connect(mapState, {
@@ -91,4 +109,5 @@ export default connect(mapState, {
   toggleFollow,
   setCurrentPage,
   setTotalUsersCount,
+  setIsLoading,
 })(Users);

@@ -2,12 +2,14 @@ const SET_USERS = 'SET_USERS';
 const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
+const SET_IS_LOADING = 'SET_IS_LOADING';
 
 const initialState = {
   users: [],
   usersCount: 8,
   currentPage: 1,
   totalCount: 50,
+  isLoading: false,
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
@@ -34,6 +36,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         totalCount: action.totalCount,
       };
+    case SET_IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      };
 
     default:
       return state;
@@ -52,6 +59,11 @@ export const setCurrentPage = (currentPage) => ({
 export const setTotalUsersCount = (totalCount) => ({
   type: SET_TOTAL_COUNT,
   totalCount,
+});
+
+export const setIsLoading = (isLoading) => ({
+  type: SET_IS_LOADING,
+  isLoading,
 });
 
 export default usersReducer;
