@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { LinearProgress } from '@mui/material';
+import { getUsers } from '@/services/api/getQueries';
+import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
-import getUsers from '@/services/api/getUsers';
 import {
   setUsers,
   toggleFollow,
@@ -60,7 +60,7 @@ class Users extends Component {
 
     return (
       <div>
-        {isLoading && <LinearProgress />}
+        {isLoading && <LinearPreloader />}
         <div>
           {pages.map((page) => (
             <button

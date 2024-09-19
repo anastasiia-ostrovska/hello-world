@@ -7,13 +7,14 @@ import Saved from './components/Saved/Saved';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import Users from './components/Users/Users';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />}>
         <Route index element={<Profile />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile/:userId?" element={<ProfileContainer />} />
         <Route path="dialogs/*" element={<Dialogs />} />
         <Route path="users" element={<Users />} />
         <Route path="saved" element={<Saved />} />

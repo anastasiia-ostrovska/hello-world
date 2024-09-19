@@ -1,3 +1,2 @@
-const USERS = '/api/users';
-
-export default USERS;
+export const USERS = '/api/users';
+export const PROFILE = '/api/profile';
