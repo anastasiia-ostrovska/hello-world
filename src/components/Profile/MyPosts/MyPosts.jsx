@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  addPost,
+  addNewPost,
   updateNewPostText,
 } from '../../../redux/reducers/profileReducer';
 import NewPost from './NewPost/NewPost';
@@ -11,16 +11,20 @@ import styles from './MyPosts.module.css';
 const MyPosts = ({
   posts,
   newPostText,
-  handleTextChange,
-  handleAddNewPost,
+  updateNewPostText: updateText,
+  addNewPost: addPost,
 }) => {
+  const handleTextChange = (event) => {
+    const newText = event.target.value;
+    updateText(newText);
+  };
   return (
     <section className={styles.myPosts_wrapper}>
       <h2> My posts</h2>
       <NewPost
         value={newPostText}
         onChange={handleTextChange}
-        onCLick={handleAddNewPost}
+        onCLick={addPost}
         placeholder="Your news..."
       />
       <div>
@@ -41,16 +45,4 @@ const mapState = ({ profile }) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleTextChange: (event) => {
-      const newPostText = event.target.value;
-      dispatch(updateNewPostText(newPostText));
-    },
-    handleAddNewPost: () => {
-      dispatch(addPost());
-    },
-  };
-};
-
-export default connect(mapState, mapDispatch)(MyPosts);
+export default connect(mapState, { updateNewPostText, addNewPost })(MyPosts);

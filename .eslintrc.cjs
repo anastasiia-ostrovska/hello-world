@@ -20,6 +20,17 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.app.json', './tsconfig.node.json'],
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'jsx-a11y'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: [
+          './tsconfig.json',
+          './tsconfig.app.json',
+          './tsconfig.node.json',
+        ],
+      },
+    },
+  },
   rules: {
     'react/function-component-definition': [
       'error',
@@ -38,7 +49,9 @@ module.exports = {
         ignoreRefs: true,
       },
     ],
+    '@typescript-eslint/no-shadow': 'warn',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };
