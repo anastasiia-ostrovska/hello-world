@@ -9,11 +9,34 @@ const axiosInstance = axios.create({
   },
 });
 
-const get = (url) => {
-  return (params = '') => {
-    const fullUrl = `${url}${params}`;
-    return axiosInstance.get(fullUrl).then((response) => response.data);
-  };
-};
+const request =
+  (requestMethod) =>
+  (endpoint) =>
+  async (params = '') => {
+    const fullUrl = `${endpoint}${params}`;
+    let response;
 
-export default get;
+    switch (requestMethod) {
+      case 'GET':
+        response = await axiosInstance.get(fullUrl);
+        break;
+      case 'POST':
+        response = await axiosInstance.post(fullUrl);
+        break;
+      case 'DELETE':
+        response = await axiosInstance.delete(fullUrl);
+        break;
+
+      default:
+    }
+
+    return response.data;
+  };
+
+const GET = 'GET';
+const POST = 'POST';
+const DELETE = 'DELETE';
+
+export const get = request(GET);
+export const post = request(POST);
+export const deleteRequest = request(DELETE);

@@ -1,20 +1,23 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getAuthData } from '@/services/api/getQueries';
+import { getAuthData } from '@/services/api/api-requests';
 import { setAuthUserData } from '@/redux/reducers/authReducer';
 
 import styles from './Header.module.css';
 
 class Header extends Component {
   componentDidMount() {
-    getAuthData().then((data) => {
-      if (data.resultCode === 0) {
-        const { setAuthUserData } = this.props;
-        setAuthUserData(data.data);
-      }
-    });
+    this.fetchAuthData();
   }
+
+  fetchAuthData = async () => {
+    const data = await getAuthData();
+    if (data.resultCode === 0) {
+      const { setAuthUserData } = this.props;
+      setAuthUserData(data.data);
+    }
+  };
 
   render() {
     const { name, isAuthorized } = this.props;

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUserProfile } from '@/redux/reducers/profileReducer';
-import { getUserProfile } from '@/services/api/getQueries';
+import { getUserProfile } from '@/services/api/api-requests';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import { useParams } from 'react-router-dom';
 import Profile from './Profile';
@@ -18,6 +18,10 @@ const withRouter = (WrappedComponent) => {
 
 class ProfileContainer extends Component {
   componentDidMount() {
+    this.fetchUserProfileData();
+  }
+
+  fetchUserProfileData = async () => {
     const { setUserProfile, params } = this.props;
     let { userId } = params;
 
@@ -25,12 +29,9 @@ class ProfileContainer extends Component {
       userId = '2';
     }
 
-    const urlParams = `/${userId}`;
-
-    getUserProfile(urlParams).then((data) => {
-      setUserProfile(data);
-    });
-  }
+    const data = await getUserProfile(userId);
+    setUserProfile(data);
+  };
 
   render() {
     const { profile } = this.props;
