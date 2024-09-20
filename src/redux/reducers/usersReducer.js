@@ -1,3 +1,5 @@
+import * as api from '@/services/api/api-requests';
+
 const SET_USERS = 'SET_USERS';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -10,7 +12,7 @@ const initialState = {
   users: [],
   usersCount: 8,
   currentPage: 1,
-  totalCount: 0,
+  totalCount: null,
   isLoading: false,
   followingInProgressUsers: [],
 };
@@ -66,9 +68,9 @@ const usersReducer = (state = initialState, action) => {
 
 export const setUsers = (users) => ({ type: SET_USERS, users });
 
-export const follow = (id) => ({ type: FOLLOW, id });
+export const followSuccess = (id) => ({ type: FOLLOW, id });
 
-export const unfollow = (id) => ({ type: UNFOLLOW, id });
+export const unfollowSuccess = (id) => ({ type: UNFOLLOW, id });
 
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
@@ -90,5 +92,40 @@ export const toggleFollowingInProgressUsers = (isFetching, userId) => ({
   isFetching,
   userId,
 });
+
+export const setUsersData = (usersCount, currentPage) => async (dispatch) => {
+  const params = `?count=${usersCount}&page=${currentPage}`;
+
+  dispatch(setIsLoading(true));
+  dispatch(setCurrentPage(currentPage)); // ?
+
+  const data = await api.getUsers(params);
+
+  dispatch(setIsLoading(false));
+  dispatch(setUsers(data.items));
+
+  // temporarily decreased amount:
+  dispatch(setTotalUsersCount(data.totalCount - 26600));
+};
+
+export const follow = (userId) => async (dispatch) => {
+  dispatch(toggleFollowingInProgressUsers(true, userId));
+  const data = await api.postFollowState(userId);
+
+  if (data.resultCode === 0) {
+    dispatch(followSuccess(userId));
+  }
+  dispatch(toggleFollowingInProgressUsers(false, userId));
+};
+
+export const unfollow = (userId) => async (dispatch) => {
+  dispatch(toggleFollowingInProgressUsers(true, userId));
+  const data = await api.deleteFollowState(userId);
+
+  if (data.resultCode === 0) {
+    dispatch(unfollowSuccess(userId));
+  }
+  dispatch(toggleFollowingInProgressUsers(false, userId));
+};
 
 export default usersReducer;

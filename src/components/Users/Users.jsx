@@ -1,54 +1,22 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUsers } from '@/services/api/api-requests';
+import { setUsersData, follow, unfollow } from '@/redux/reducers/usersReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
-
-import {
-  setUsers,
-  follow,
-  unfollow,
-  setCurrentPage,
-  setTotalUsersCount,
-  setIsLoading,
-  toggleFollowingInProgressUsers,
-} from '../../redux/reducers/usersReducer';
-
 import User from './User/User';
 
 import styles from './Users.module.css';
 
 class Users extends Component {
   componentDidMount() {
-    const {
-      usersCount,
-      currentPage,
-      setUsers,
-      setTotalUsersCount,
-      setIsLoading,
-    } = this.props;
-    const params = `?count=${usersCount}&page=${currentPage}`;
+    const { usersCount, currentPage, setUsersData } = this.props;
 
-    setIsLoading(true);
-
-    getUsers(params).then((data) => {
-      setIsLoading(false);
-      setUsers(data.items);
-      // temporarily decreased amount:
-      setTotalUsersCount(data.totalCount - 26600);
-    });
+    setUsersData(usersCount, currentPage);
   }
 
   handlePageChange = async (currentPage) => {
-    const { usersCount, setCurrentPage, setUsers, setIsLoading } = this.props;
-    const params = `?count=${usersCount}&page=${currentPage}`;
+    const { usersCount, setUsersData } = this.props;
 
-    setIsLoading(true);
-    setCurrentPage(currentPage);
-
-    const data = await getUsers(params);
-
-    setIsLoading(false);
-    setUsers(data.items);
+    setUsersData(usersCount, currentPage);
   };
 
   render() {
@@ -61,7 +29,6 @@ class Users extends Component {
       follow,
       unfollow,
       followingInProgressUsers,
-      toggleFollowingInProgressUsers,
     } = this.props;
 
     const pagesCount = Math.ceil(totalCount / usersCount);
@@ -98,7 +65,6 @@ class Users extends Component {
                 disabled={followingInProgressUsers.some(
                   (userId) => userId === id
                 )}
-                toggleFollowingInProgressUsers={toggleFollowingInProgressUsers}
               />
             );
           })}
@@ -126,12 +92,4 @@ const mapState = ({
   followingInProgressUsers,
 });
 
-export default connect(mapState, {
-  setUsers,
-  follow,
-  unfollow,
-  setCurrentPage,
-  setTotalUsersCount,
-  setIsLoading,
-  toggleFollowingInProgressUsers,
-})(Users);
+export default connect(mapState, { setUsersData, follow, unfollow })(Users);

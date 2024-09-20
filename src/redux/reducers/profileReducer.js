@@ -1,3 +1,5 @@
+import { getUserProfile } from '@/services/api/api-requests';
+
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_POST_TEXT';
 const ADD_NEW_POST = 'ADD_NEW_POST';
@@ -40,5 +42,11 @@ export const updateNewPostText = (newPostText) => ({
   newPostText,
 });
 export const addNewPost = () => ({ type: ADD_NEW_POST });
+
+export const setUserProfileData = (userId) => async (dispatch) => {
+  const data = await getUserProfile(userId);
+
+  dispatch(setUserProfile(data));
+};
 
 export default profileReducer;
