@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUsers } from '@/services/api/getQueries';
+import { getUsers } from '@/services/api/api-requests';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
 import {
   setUsers,
-  toggleFollow,
+  follow,
+  unfollow,
   setCurrentPage,
   setTotalUsersCount,
   setIsLoading,
@@ -52,7 +53,8 @@ class Users extends Component {
       currentPage,
       totalCount,
       isLoading,
-      toggleFollow,
+      follow,
+      unfollow,
     } = this.props;
 
     const pagesCount = Math.ceil(totalCount / usersCount);
@@ -84,7 +86,8 @@ class Users extends Component {
                 name={name}
                 followed={followed}
                 photos={photos}
-                toggleFollow={toggleFollow}
+                follow={follow}
+                unfollow={unfollow}
               />
             );
           })}
@@ -106,7 +109,8 @@ const mapState = ({
 
 export default connect(mapState, {
   setUsers,
-  toggleFollow,
+  follow,
+  unfollow,
   setCurrentPage,
   setTotalUsersCount,
   setIsLoading,

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getAuthData } from '@/services/api/getQueries';
+import { getAuthData } from '@/services/api/api-requests';
 import { setAuthUserData } from '@/redux/reducers/authReducer';
 
 import styles from './Header.module.css';

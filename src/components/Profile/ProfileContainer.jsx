@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUserProfile } from '@/redux/reducers/profileReducer';
-import { getUserProfile } from '@/services/api/getQueries';
+import { getUserProfile } from '@/services/api/api-requests';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import { useParams } from 'react-router-dom';
 import Profile from './Profile';
@@ -25,9 +25,7 @@ class ProfileContainer extends Component {
       userId = '2';
     }
 
-    const urlParams = `/${userId}`;
-
-    getUserProfile(urlParams).then((data) => {
+    getUserProfile(userId).then((data) => {
       setUserProfile(data);
     });
   }
