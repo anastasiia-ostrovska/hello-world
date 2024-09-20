@@ -43,14 +43,10 @@ export const updateNewPostText = (newPostText) => ({
 });
 export const addNewPost = () => ({ type: ADD_NEW_POST });
 
-export const setUserProfileData =
-  ({ userId }) =>
-  async (dispatch) => {
-    const id = userId || '2';
+export const setUserProfileData = (userId) => async (dispatch) => {
+  const data = await getUserProfile(userId);
 
-    const data = await getUserProfile(id);
-
-    dispatch(setUserProfile(data));
-  };
+  dispatch(setUserProfile(data));
+};
 
 export default profileReducer;
