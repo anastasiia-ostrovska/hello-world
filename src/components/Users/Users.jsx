@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUsers, follow, unfollow } from '@/redux/reducers/usersReducer';
+import { setUsersData, follow, unfollow } from '@/redux/reducers/usersReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import User from './User/User';
 
@@ -8,15 +8,15 @@ import styles from './Users.module.css';
 
 class Users extends Component {
   componentDidMount() {
-    const { usersCount, currentPage, getUsers } = this.props;
+    const { usersCount, currentPage, setUsersData } = this.props;
 
-    getUsers(usersCount, currentPage);
+    setUsersData(usersCount, currentPage);
   }
 
   handlePageChange = async (currentPage) => {
-    const { usersCount, getUsers } = this.props;
+    const { usersCount, setUsersData } = this.props;
 
-    getUsers(usersCount, currentPage);
+    setUsersData(usersCount, currentPage);
   };
 
   render() {
@@ -92,4 +92,4 @@ const mapState = ({
   followingInProgressUsers,
 });
 
-export default connect(mapState, { getUsers, follow, unfollow })(Users);
+export default connect(mapState, { setUsersData, follow, unfollow })(Users);

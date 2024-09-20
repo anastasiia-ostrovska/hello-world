@@ -93,7 +93,7 @@ export const toggleFollowingInProgressUsers = (isFetching, userId) => ({
   userId,
 });
 
-export const getUsers = (usersCount, currentPage) => async (dispatch) => {
+export const setUsersData = (usersCount, currentPage) => async (dispatch) => {
   const params = `?count=${usersCount}&page=${currentPage}`;
 
   dispatch(setIsLoading(true));
