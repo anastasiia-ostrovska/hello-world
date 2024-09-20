@@ -27,8 +27,8 @@ class ProfileContainer extends Component {
 
     const urlParams = `/${userId}`;
 
-    getUserProfile(urlParams).then((response) => {
-      setUserProfile(response.data);
+    getUserProfile(urlParams).then((data) => {
+      setUserProfile(data);
     });
   }
 

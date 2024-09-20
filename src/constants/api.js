@@ -1,2 +1,3 @@
-export const USERS = '/api/users';
-export const PROFILE = '/api/profile';
+export const USERS = 'users';
+export const PROFILE = 'profile';
+export const AUTH_ME = 'auth/me';

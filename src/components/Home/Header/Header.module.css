@@ -1,8 +1,13 @@
 .header {
     grid-area: header;
+    display: flex;
+    justify-content: space-between;
     background-color: var(--section-background);
 
-    img {
-        height: 60px;
+    * {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0.5rem 1rem;
     }
 }
