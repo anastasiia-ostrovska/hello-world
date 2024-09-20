@@ -4,13 +4,15 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_IS_LOADING = 'SET_IS_LOADING';
+const TOGGLE_FOLLOWING_IN_PROGRESS = 'TOGGLE_FOLLOWING_IN_PROGRESS';
 
 const initialState = {
   users: [],
   usersCount: 8,
   currentPage: 1,
-  totalCount: 50,
+  totalCount: 0,
   isLoading: false,
+  followingInProgressUsers: [],
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
@@ -47,6 +49,15 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isLoading: action.isLoading,
       };
+    case TOGGLE_FOLLOWING_IN_PROGRESS:
+      return {
+        ...state,
+        followingInProgressUsers: action.isFetching
+          ? [...state.followingInProgressUsers, action.userId]
+          : state.followingInProgressUsers.filter(
+              (userId) => userId !== action.userId
+            ),
+      };
 
     default:
       return state;
@@ -72,6 +83,12 @@ export const setTotalUsersCount = (totalCount) => ({
 export const setIsLoading = (isLoading) => ({
   type: SET_IS_LOADING,
   isLoading,
+});
+
+export const toggleFollowingInProgressUsers = (isFetching, userId) => ({
+  type: TOGGLE_FOLLOWING_IN_PROGRESS,
+  isFetching,
+  userId,
 });
 
 export default usersReducer;

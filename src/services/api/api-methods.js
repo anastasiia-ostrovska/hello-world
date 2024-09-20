@@ -9,37 +9,29 @@ const axiosInstance = axios.create({
   },
 });
 
-const request = (requestType) => {
-  return (url) => {
-    return async (params = '') => {
-      const fullUrl = `${url}${params}`;
-      let response;
+const request =
+  (requestMethod) =>
+  (endpoint) =>
+  async (params = '') => {
+    const fullUrl = `${endpoint}${params}`;
+    let response;
 
-      switch (requestType) {
-        case 'GET':
-          response = await axiosInstance.get(fullUrl);
-          break;
-        // return axiosInstance.get(fullUrl).then((response) => response.data);
-        case 'POST':
-          response = await axiosInstance.post(fullUrl);
-          break;
+    switch (requestMethod) {
+      case 'GET':
+        response = await axiosInstance.get(fullUrl);
+        break;
+      case 'POST':
+        response = await axiosInstance.post(fullUrl);
+        break;
+      case 'DELETE':
+        response = await axiosInstance.delete(fullUrl);
+        break;
 
-        // return axiosInstance.post(fullUrl).then((response) => response.data);
-        case 'DELETE':
-          response = await axiosInstance.delete(fullUrl);
-          break;
+      default:
+    }
 
-        // return axiosInstance
-        //   .delete(fullUrl)
-        //   .then((response) => response.data);
-
-        default:
-      }
-
-      return response.data;
-    };
+    return response.data;
   };
-};
 
 const GET = 'GET';
 const POST = 'POST';

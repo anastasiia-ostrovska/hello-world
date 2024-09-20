@@ -7,21 +7,34 @@ import {
 } from '@/services/api/api-requests';
 import styles from './User.module.css';
 
-const User = ({ id, name, followed, photos, follow, unfollow }) => {
+const User = ({
+  id,
+  name,
+  followed,
+  photos,
+  follow,
+  unfollow,
+  disabled,
+  toggleFollowingInProgressUsers,
+}) => {
   const onFollowClick = async (id) => {
+    toggleFollowingInProgressUsers(true, id);
     const data = await postFollowState(id);
 
     if (data.resultCode === 0) {
       follow(id);
     }
+    toggleFollowingInProgressUsers(false, id);
   };
 
   const onUnfollowClick = async (id) => {
+    toggleFollowingInProgressUsers(true, id);
     const data = await deleteFollowState(id);
 
     if (data.resultCode === 0) {
       unfollow(id);
     }
+    toggleFollowingInProgressUsers(false, id);
   };
 
   return (
@@ -37,11 +50,19 @@ const User = ({ id, name, followed, photos, follow, unfollow }) => {
       </ul>
 
       {followed ? (
-        <button type="button" onClick={() => onUnfollowClick(id)}>
+        <button
+          type="button"
+          disabled={disabled}
+          onClick={() => onUnfollowClick(id)}
+        >
           Unfollow
         </button>
       ) : (
-        <button type="button" onClick={() => onFollowClick(id)}>
+        <button
+          type="button"
+          disabled={disabled}
+          onClick={() => onFollowClick(id)}
+        >
           Follow
         </button>
       )}

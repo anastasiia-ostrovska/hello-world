@@ -10,6 +10,7 @@ import {
   setCurrentPage,
   setTotalUsersCount,
   setIsLoading,
+  toggleFollowingInProgressUsers,
 } from '../../redux/reducers/usersReducer';
 
 import User from './User/User';
@@ -25,8 +26,10 @@ class Users extends Component {
       setTotalUsersCount,
       setIsLoading,
     } = this.props;
-    setIsLoading(true);
     const params = `?count=${usersCount}&page=${currentPage}`;
+
+    setIsLoading(true);
+
     getUsers(params).then((data) => {
       setIsLoading(false);
       setUsers(data.items);
@@ -57,6 +60,8 @@ class Users extends Component {
       isLoading,
       follow,
       unfollow,
+      followingInProgressUsers,
+      toggleFollowingInProgressUsers,
     } = this.props;
 
     const pagesCount = Math.ceil(totalCount / usersCount);
@@ -90,6 +95,10 @@ class Users extends Component {
                 photos={photos}
                 follow={follow}
                 unfollow={unfollow}
+                disabled={followingInProgressUsers.some(
+                  (userId) => userId === id
+                )}
+                toggleFollowingInProgressUsers={toggleFollowingInProgressUsers}
               />
             );
           })}
@@ -100,13 +109,21 @@ class Users extends Component {
 }
 
 const mapState = ({
-  users: { users, usersCount, currentPage, totalCount, isLoading },
+  users: {
+    users,
+    usersCount,
+    currentPage,
+    totalCount,
+    isLoading,
+    followingInProgressUsers,
+  },
 }) => ({
   users,
   usersCount,
   currentPage,
   totalCount,
   isLoading,
+  followingInProgressUsers,
 });
 
 export default connect(mapState, {
@@ -116,4 +133,5 @@ export default connect(mapState, {
   setCurrentPage,
   setTotalUsersCount,
   setIsLoading,
+  toggleFollowingInProgressUsers,
 })(Users);
