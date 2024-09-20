@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { LinearProgress } from '@mui/material';
+import { getUsers } from '@/services/api/getQueries';
+import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
-import getUsers from '@/services/api/getUsers';
 import {
   setUsers,
   toggleFollow,
@@ -26,11 +26,11 @@ class Users extends Component {
     } = this.props;
     setIsLoading(true);
     const params = `?count=${usersCount}&page=${currentPage}`;
-    getUsers(params).then((response) => {
+    getUsers(params).then((data) => {
       setIsLoading(false);
-      setUsers(response.data.items);
+      setUsers(data.items);
       // temporarily decreased amount:
-      setTotalUsersCount(response.data.totalCount - 26600);
+      setTotalUsersCount(data.totalCount - 26600);
     });
   }
 
@@ -39,9 +39,9 @@ class Users extends Component {
     setIsLoading(true);
     const params = `?count=${usersCount}&page=${currentPage}`;
     setCurrentPage(currentPage);
-    getUsers(params).then((response) => {
+    getUsers(params).then((data) => {
       setIsLoading(false);
-      setUsers(response.data.items);
+      setUsers(data.items);
     });
   };
 
@@ -60,7 +60,7 @@ class Users extends Component {
 
     return (
       <div>
-        {isLoading && <LinearProgress />}
+        {isLoading && <LinearPreloader />}
         <div>
           {pages.map((page) => (
             <button

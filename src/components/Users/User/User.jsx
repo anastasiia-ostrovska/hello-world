@@ -1,19 +1,14 @@
-// import userPhoto from '@assets/user.svg';
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import UserPhoto from '@components/common/images/UserPhoto';
 
+import { NavLink } from 'react-router-dom';
 import styles from './User.module.css';
 
 const User = ({ id, name, followed, photos, toggleFollow }) => {
   return (
     <li className={styles.item}>
-      {photos.small ? (
-        <img src={photos.small} alt={name} />
-      ) : (
-        <PersonRoundedIcon
-          color="success"
-          sx={{ height: '100%', width: '100%' }}
-        />
-      )}
+      <NavLink to={`/profile/${id}`}>
+        <UserPhoto url={photos.small} name={name} />
+      </NavLink>
 
       <h3>{name}</h3>
       <ul>
