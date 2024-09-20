@@ -35,15 +35,17 @@ class Users extends Component {
     });
   }
 
-  handlePageChange = (currentPage) => {
+  handlePageChange = async (currentPage) => {
     const { usersCount, setCurrentPage, setUsers, setIsLoading } = this.props;
-    setIsLoading(true);
     const params = `?count=${usersCount}&page=${currentPage}`;
+
+    setIsLoading(true);
     setCurrentPage(currentPage);
-    getUsers(params).then((data) => {
-      setIsLoading(false);
-      setUsers(data.items);
-    });
+
+    const data = await getUsers(params);
+
+    setIsLoading(false);
+    setUsers(data.items);
   };
 
   render() {

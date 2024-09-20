@@ -8,20 +8,20 @@ import {
 import styles from './User.module.css';
 
 const User = ({ id, name, followed, photos, follow, unfollow }) => {
-  const onFollowClick = (id) => {
-    postFollowState(id).then((data) => {
-      if (data.resultCode === 0) {
-        follow(id);
-      }
-    });
+  const onFollowClick = async (id) => {
+    const data = await postFollowState(id);
+
+    if (data.resultCode === 0) {
+      follow(id);
+    }
   };
 
-  const onUnfollowClick = (id) => {
-    deleteFollowState(id).then((data) => {
-      if (data.resultCode === 0) {
-        unfollow(id);
-      }
-    });
+  const onUnfollowClick = async (id) => {
+    const data = await deleteFollowState(id);
+
+    if (data.resultCode === 0) {
+      unfollow(id);
+    }
   };
 
   return (

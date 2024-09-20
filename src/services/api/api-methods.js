@@ -11,21 +11,32 @@ const axiosInstance = axios.create({
 
 const request = (requestType) => {
   return (url) => {
-    return (params = '') => {
+    return async (params = '') => {
       const fullUrl = `${url}${params}`;
+      let response;
+
       switch (requestType) {
         case 'GET':
-          return axiosInstance.get(fullUrl).then((response) => response.data);
+          response = await axiosInstance.get(fullUrl);
+          break;
+        // return axiosInstance.get(fullUrl).then((response) => response.data);
         case 'POST':
-          return axiosInstance.post(fullUrl).then((response) => response.data);
+          response = await axiosInstance.post(fullUrl);
+          break;
+
+        // return axiosInstance.post(fullUrl).then((response) => response.data);
         case 'DELETE':
-          return axiosInstance
-            .delete(fullUrl)
-            .then((response) => response.data);
+          response = await axiosInstance.delete(fullUrl);
+          break;
+
+        // return axiosInstance
+        //   .delete(fullUrl)
+        //   .then((response) => response.data);
 
         default:
-          axiosInstance.get(fullUrl).then((response) => response.data);
       }
+
+      return response.data;
     };
   };
 };

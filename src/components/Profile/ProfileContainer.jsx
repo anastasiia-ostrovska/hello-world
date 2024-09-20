@@ -18,6 +18,10 @@ const withRouter = (WrappedComponent) => {
 
 class ProfileContainer extends Component {
   componentDidMount() {
+    this.fetchUserProfileData();
+  }
+
+  fetchUserProfileData = async () => {
     const { setUserProfile, params } = this.props;
     let { userId } = params;
 
@@ -25,10 +29,9 @@ class ProfileContainer extends Component {
       userId = '2';
     }
 
-    getUserProfile(userId).then((data) => {
-      setUserProfile(data);
-    });
-  }
+    const data = await getUserProfile(userId);
+    setUserProfile(data);
+  };
 
   render() {
     const { profile } = this.props;

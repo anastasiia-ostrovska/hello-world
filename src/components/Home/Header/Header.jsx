@@ -8,13 +8,16 @@ import styles from './Header.module.css';
 
 class Header extends Component {
   componentDidMount() {
-    getAuthData().then((data) => {
-      if (data.resultCode === 0) {
-        const { setAuthUserData } = this.props;
-        setAuthUserData(data.data);
-      }
-    });
+    this.fetchAuthData();
   }
+
+  fetchAuthData = async () => {
+    const data = await getAuthData();
+    if (data.resultCode === 0) {
+      const { setAuthUserData } = this.props;
+      setAuthUserData(data.data);
+    }
+  };
 
   render() {
     const { name, isAuthorized } = this.props;
