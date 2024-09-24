@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewPost } from '@/store/reducers/profileReducer';
+import { addNewPost } from '@reducers/profileReducer';
 import useInputValue from '@/hooks/useInputValue';
 
 import NewPost from './NewPost/NewPost';
@@ -10,7 +10,6 @@ import styles from './MyPosts.module.css';
 const MyPosts = () => {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.profile);
-
   const [postText, handleTextChange, resetText] = useInputValue('');
 
   const handleAddNewPost = () => {

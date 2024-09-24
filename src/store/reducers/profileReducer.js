@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserProfile } from '@/services/api/api-requests';
+import { getUserProfile } from '@api/api-requests';
 
 const initialState = {
   profile: null,

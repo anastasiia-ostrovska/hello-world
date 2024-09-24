@@ -21,9 +21,21 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
+      "@/*": [
+        "src/*"
+      ],
+      "@api/*": [
+        "src/services/api/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@reducers/*": [
+        "src/store/reducers/*"
+      ]
     }
   },
   "include": [
