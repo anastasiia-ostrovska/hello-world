@@ -1,22 +1,19 @@
-import { connect } from 'react-redux';
-import {
-  updateNewMessageText,
-  sendNewMessage,
-} from '../../../redux/reducers/dialogsReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendNewMessage } from '@reducers/dialogsReducer';
+import useInputValue from '@/hooks/useInputValue';
 import MessagesList from './MessagesList/MessagesList';
 import NewMessage from './NewMessage/NewMessage';
 
 import styles from './MessagesSection.module.css';
 
-const MessagesSection = ({
-  messages,
-  newMessageText,
-  updateNewMessageText: updateMessageText,
-  sendNewMessage: sendMessage,
-}) => {
-  const handleUpdateNewMessageText = (event) => {
-    const messageText = event.target.value;
-    updateMessageText(messageText);
+const MessagesSection = () => {
+  const dispatch = useDispatch();
+  const { messages } = useSelector((state) => state.dialogs);
+  const [messageText, handleChangeText, resetText] = useInputValue('');
+
+  const handleSendMessage = () => {
+    dispatch(sendNewMessage(messageText));
+    resetText();
   };
 
   return (
@@ -24,20 +21,13 @@ const MessagesSection = ({
       <p>Mb info about user</p>
       <MessagesList messages={messages} />
       <NewMessage
-        value={newMessageText}
-        onChange={handleUpdateNewMessageText}
-        onCLick={sendMessage}
+        value={messageText}
+        onChange={handleChangeText}
+        onCLick={handleSendMessage}
         placeholder="Message ..."
       />
     </div>
   );
 };
 
-const mapState = ({ dialogsPage }) => ({
-  messages: dialogsPage.messages,
-  newMessageText: dialogsPage.newMessageText,
-});
-
-export default connect(mapState, { updateNewMessageText, sendNewMessage })(
-  MessagesSection
-);
+export default MessagesSection;
