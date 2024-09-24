@@ -1,38 +1,25 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { setUserProfileData } from '@/redux/reducers/profileReducer';
-import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { setUserProfileData } from '@/store/reducers/profileReducer';
+
+import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import Profile from './Profile';
 
-const withRouter = (WrappedComponent) => {
-  const ComponentWithRouter = (props) => {
-    const params = useParams();
+const ProfileContainer = () => {
+  const dispatch = useDispatch();
+  const { profile, status } = useSelector((state) => state.profile);
+  const params = useParams();
 
-    return <WrappedComponent {...props} params={params} />;
-  };
+  useEffect(() => {
+    const userId = params.userId || '2';
+    dispatch(setUserProfileData(userId));
+  }, [dispatch, params.userId]);
 
-  return ComponentWithRouter;
+  if (!profile || status === 'loading') {
+    return <LinearPreloader />;
+  }
+  return <Profile profile={profile} />;
 };
 
-class ProfileContainer extends Component {
-  componentDidMount() {
-    const { params, setUserProfileData } = this.props;
-    const userId = params.userId || '2';
-    setUserProfileData(userId);
-  }
-
-  render() {
-    const { profile } = this.props;
-    if (!profile) {
-      return <LinearPreloader />;
-    }
-    return <Profile {...this.props} />;
-  }
-}
-
-const mapState = ({ profile: { profile } }) => ({ profile });
-
-export default connect(mapState, { setUserProfileData })(
-  withRouter(ProfileContainer)
-);
+export default ProfileContainer;
