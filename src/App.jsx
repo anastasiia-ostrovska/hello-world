@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />}>
-        <Route index element={<Profile />} />
+        <Route index element={<ProfileContainer />} />
         <Route path="profile/:userId?" element={<ProfileContainer />} />
         <Route path="dialogs/*" element={<Dialogs />} />
         <Route path="users" element={<Users />} />

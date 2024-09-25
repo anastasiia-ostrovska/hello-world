@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './User.module.css';
 
 const User = ({ id, name, followed, photos, follow, unfollow, disabled }) => {
+  console.log('rerendered: ', id);
   return (
     <li className={styles.item}>
       <NavLink to={`/profile/${id}`}>
