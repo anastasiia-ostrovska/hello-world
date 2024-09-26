@@ -5,6 +5,11 @@ import {
   setUsersData,
   follow,
   unfollow,
+  selectUsers,
+  selectUsersCountOnPage,
+  selectCurrentPage,
+  selectTotalUsersCount,
+  selectStatus,
 } from '@reducers/usersReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import User from './User/User';
@@ -13,9 +18,11 @@ import styles from './Users.module.css';
 
 const Users = () => {
   const dispatch = useDispatch();
-  const { users, usersCount, currentPage, totalCount, status } = useSelector(
-    (state) => state.users
-  );
+  const users = useSelector(selectUsers);
+  const usersCount = useSelector(selectUsersCountOnPage);
+  const currentPage = useSelector(selectCurrentPage);
+  const totalCount = useSelector(selectTotalUsersCount);
+  const status = useSelector(selectStatus);
 
   useEffect(() => {
     dispatch(setUsersData(usersCount, currentPage));

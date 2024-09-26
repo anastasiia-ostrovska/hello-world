@@ -38,7 +38,11 @@ const usersReducer = createSlice({
   },
 });
 
-const { actions, reducer } = usersReducer;
+export const selectUsers = (state) => state.users.users;
+export const selectCurrentPage = (state) => state.users.currentPage;
+export const selectUsersCountOnPage = (state) => state.users.usersCount;
+export const selectTotalUsersCount = (state) => state.users.totalCount;
+export const selectStatus = (state) => state.users.status;
 
 export const {
   setUsers,
@@ -47,7 +51,7 @@ export const {
   setTotalUsersCount,
   setUsersStatus,
   setFollowStatus,
-} = actions;
+} = usersReducer.actions;
 
 export const setUsersData = (usersCount, currentPage) => async (dispatch) => {
   const queryParams = `?count=${usersCount}&page=${currentPage}`;
@@ -100,4 +104,4 @@ export const unfollow = (userId) => async (dispatch) => {
   }
 };
 
-export default reducer;
+export default usersReducer.reducer;
