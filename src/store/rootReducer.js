@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 import profileReducer from './reducers/profileReducer';
 import usersReducer from './reducers/usersReducer';
 import dialogsReducer from './reducers/dialogsReducer';

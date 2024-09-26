@@ -1,17 +1,22 @@
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { setAuthUserData } from '@reducers/authReducer';
+import {
+  selectAuthData,
+  selectIsAuthorized,
+  setAuthUserData,
+} from '@reducers/authReducer';
 
 import styles from './Header.module.css';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { isAuthorized, data } = useSelector((state) => state.auth);
+  const data = useSelector(selectAuthData);
+  const isAuthorized = useSelector(selectIsAuthorized);
 
   useEffect(() => {
     dispatch(setAuthUserData());
-  }, []);
+  }, [dispatch]);
 
   return (
     <header className={styles.header}>

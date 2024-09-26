@@ -15,7 +15,7 @@ const authReducer = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthData: (state, action) => {
+    setData: (state, action) => {
       state.data = action.payload;
       state.isAuthorized = true;
     },
@@ -25,9 +25,7 @@ const authReducer = createSlice({
   },
 });
 
-const { actions, reducer } = authReducer;
-
-export const { setAuthData, setStatus } = actions;
+export const { setData, setStatus } = authReducer.actions;
 
 export const setAuthUserData = () => async (dispatch) => {
   dispatch(setStatus('loading'));
@@ -37,11 +35,14 @@ export const setAuthUserData = () => async (dispatch) => {
 
     if (data.resultCode === 0) {
       dispatch(setStatus('idle'));
-      dispatch(setAuthData(data.data));
+      dispatch(setData(data.data));
     }
   } catch (error) {
     dispatch(setStatus('error'));
   }
 };
 
-export default reducer;
+export const selectAuthData = (state) => state.auth.data;
+export const selectIsAuthorized = (state) => state.auth.isAuthorized;
+
+export default authReducer.reducer;
