@@ -17,7 +17,7 @@ const ProfileContainer = () => {
 
   useEffect(() => {
     const userId = params.userId || '2';
-    dispatch(setUserProfileData(userId));
+    dispatch(setUserProfileData(`/${userId}`));
   }, [dispatch, params.userId]);
 
   if (!profile || status === 'loading') {

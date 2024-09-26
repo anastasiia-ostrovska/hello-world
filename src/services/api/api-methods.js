@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const axiosInstance = axios.create({
   withCredentials: true,
-  baseURL: '/api/',
+  baseURL: import.meta.env.VITE_PROXY_BASE_URL,
   headers: {
     Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
     'API-KEY': import.meta.env.VITE_API_KEY,
