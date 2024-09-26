@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { sendNewMessage } from '@reducers/dialogsReducer';
+import { selectMessages, sendNewMessage } from '@reducers/dialogsReducer';
 import useInputValue from '@/hooks/useInputValue';
 import MessagesList from './MessagesList/MessagesList';
 import NewMessage from './NewMessage/NewMessage';
@@ -8,7 +8,7 @@ import styles from './MessagesSection.module.css';
 
 const MessagesSection = () => {
   const dispatch = useDispatch();
-  const { messages } = useSelector((state) => state.dialogs);
+  const messages = useSelector(selectMessages);
   const [messageText, handleChangeText, resetText] = useInputValue('');
 
   const handleSendMessage = () => {

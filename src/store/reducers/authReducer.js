@@ -25,6 +25,9 @@ const authReducer = createSlice({
   },
 });
 
+export const selectAuthData = (state) => state.auth.data;
+export const selectIsAuthorized = (state) => state.auth.isAuthorized;
+
 export const { setData, setStatus } = authReducer.actions;
 
 export const setAuthUserData = () => async (dispatch) => {
@@ -41,8 +44,5 @@ export const setAuthUserData = () => async (dispatch) => {
     dispatch(setStatus('error'));
   }
 };
-
-export const selectAuthData = (state) => state.auth.data;
-export const selectIsAuthorized = (state) => state.auth.isAuthorized;
 
 export default authReducer.reducer;
