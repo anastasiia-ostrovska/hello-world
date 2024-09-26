@@ -1,14 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { setUserProfileData } from '@reducers/profileReducer';
-
+import {
+  selectProfile,
+  selectStatus,
+  setUserProfileData,
+} from '@reducers/profileReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import Profile from './Profile';
 
 const ProfileContainer = () => {
   const dispatch = useDispatch();
-  const { profile, status } = useSelector((state) => state.profile);
+  const profile = useSelector(selectProfile);
+  const status = useSelector(selectStatus);
   const params = useParams();
 
   useEffect(() => {

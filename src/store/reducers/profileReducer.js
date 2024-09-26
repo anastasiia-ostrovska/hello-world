@@ -28,9 +28,12 @@ const profileReducer = createSlice({
     },
   },
 });
-const { actions, reducer } = profileReducer;
 
-export const { addNewPost, setStatus, setUserProfile } = actions;
+export const selectProfile = (state) => state.profile.profile;
+export const selectStatus = (state) => state.profile.status;
+export const selectPosts = (state) => state.profile.posts;
+
+export const { addNewPost, setStatus, setUserProfile } = profileReducer.actions;
 
 export const setUserProfileData = (userId) => async (dispatch) => {
   dispatch(setStatus('loading'));
@@ -45,4 +48,4 @@ export const setUserProfileData = (userId) => async (dispatch) => {
   }
 };
 
-export default reducer;
+export default profileReducer.reducer;
