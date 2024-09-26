@@ -1,95 +1,79 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { setUsersData, follow, unfollow } from '@/redux/reducers/usersReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  setCurrentPage,
+  setUsersData,
+  follow,
+  unfollow,
+  selectUsers,
+  selectUsersCountOnPage,
+  selectCurrentPage,
+  selectTotalUsersCount,
+  selectStatus,
+} from '@reducers/usersReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import User from './User/User';
 
 import styles from './Users.module.css';
 
-class Users extends Component {
-  componentDidMount() {
-    const { usersCount, currentPage, setUsersData } = this.props;
+const Users = () => {
+  const dispatch = useDispatch();
+  const users = useSelector(selectUsers);
+  const usersCount = useSelector(selectUsersCountOnPage);
+  const currentPage = useSelector(selectCurrentPage);
+  const totalCount = useSelector(selectTotalUsersCount);
+  const status = useSelector(selectStatus);
 
-    setUsersData(usersCount, currentPage);
-  }
+  useEffect(() => {
+    dispatch(setUsersData(usersCount, currentPage));
+  }, [currentPage, dispatch, usersCount]);
 
-  handlePageChange = async (currentPage) => {
-    const { usersCount, setUsersData } = this.props;
+  const pagesCount = Math.ceil(totalCount / usersCount);
+  const pages = Array.from({ length: pagesCount }, (_, index) => index + 1);
 
-    setUsersData(usersCount, currentPage);
+  const handleFollowClick = (userId) => {
+    dispatch(follow(userId));
   };
 
-  render() {
-    const {
-      users,
-      usersCount,
-      currentPage,
-      totalCount,
-      isLoading,
-      follow,
-      unfollow,
-      followingInProgressUsers,
-    } = this.props;
+  const handleUnfollowClick = (userId) => {
+    dispatch(unfollow(userId));
+  };
 
-    const pagesCount = Math.ceil(totalCount / usersCount);
-    const pages = Array.from({ length: pagesCount }, (_, index) => index + 1);
-
-    return (
+  return (
+    <div>
+      {status === 'loading' && <LinearPreloader />}
       <div>
-        {isLoading && <LinearPreloader />}
-        <div>
-          {pages.map((page) => (
-            <button
-              key={page}
-              type="button"
-              className={page === currentPage ? styles.active : ''}
-              onClick={() => this.handlePageChange(page)}
-              style={{ fontSize: '2rem' }}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
-        <ul>
-          {users.map((user) => {
-            const { id, name, followed, photos } = user;
-            return (
-              <User
-                key={id}
-                id={id}
-                name={name}
-                followed={followed}
-                photos={photos}
-                follow={follow}
-                unfollow={unfollow}
-                disabled={followingInProgressUsers.some(
-                  (userId) => userId === id
-                )}
-              />
-            );
-          })}
-        </ul>
+        {pages.map((page) => (
+          <button
+            key={page}
+            type="button"
+            className={page === currentPage ? styles.active : ''}
+            onClick={() => dispatch(setCurrentPage(page))}
+            style={{ fontSize: '2rem' }}
+          >
+            {page}
+          </button>
+        ))}
       </div>
-    );
-  }
-}
+      <ul>
+        {users.map((user) => {
+          const { id, name, followed, photos } = user;
+          return (
+            <User
+              key={id}
+              id={id}
+              name={name}
+              followed={followed}
+              photos={photos}
+              follow={handleFollowClick}
+              unfollow={handleUnfollowClick}
+              disabled={user.status === 'loading'}
+            />
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 
-const mapState = ({
-  users: {
-    users,
-    usersCount,
-    currentPage,
-    totalCount,
-    isLoading,
-    followingInProgressUsers,
-  },
-}) => ({
-  users,
-  usersCount,
-  currentPage,
-  totalCount,
-  isLoading,
-  followingInProgressUsers,
-});
-
-export default connect(mapState, { setUsersData, follow, unfollow })(Users);
+export default Users;

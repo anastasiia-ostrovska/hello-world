@@ -1,14 +1,14 @@
-import { combineReducers } from 'redux';
-import authReducer from '@/redux/reducers/authReducer';
+import { combineReducers } from '@reduxjs/toolkit';
 import profileReducer from './reducers/profileReducer';
-import dialogsReducer from './reducers/dialogsReducer';
 import usersReducer from './reducers/usersReducer';
+import dialogsReducer from './reducers/dialogsReducer';
+import authReducer from './reducers/authReducer';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
   profile: profileReducer,
-  dialogsPage: dialogsReducer,
   users: usersReducer,
+  dialogs: dialogsReducer,
+  auth: authReducer,
 });
 
 export default rootReducer;

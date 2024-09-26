@@ -1,30 +1,29 @@
-import { connect } from 'react-redux';
-import {
-  addNewPost,
-  updateNewPostText,
-} from '../../../redux/reducers/profileReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewPost, selectPosts } from '@reducers/profileReducer';
+import useInputValue from '@/hooks/useInputValue';
+
 import NewPost from './NewPost/NewPost';
 import Post from './Post/Post';
 
 import styles from './MyPosts.module.css';
 
-const MyPosts = ({
-  posts,
-  newPostText,
-  updateNewPostText: updateText,
-  addNewPost: addPost,
-}) => {
-  const handleTextChange = (event) => {
-    const newText = event.target.value;
-    updateText(newText);
+const MyPosts = () => {
+  const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
+  const [postText, handleTextChange, resetText] = useInputValue('');
+
+  const handleAddNewPost = () => {
+    dispatch(addNewPost(postText));
+    resetText();
   };
+
   return (
     <section className={styles.myPosts_wrapper}>
       <h2> My posts</h2>
       <NewPost
-        value={newPostText}
+        value={postText}
         onChange={handleTextChange}
-        onCLick={addPost}
+        onCLick={handleAddNewPost}
         placeholder="Your news..."
       />
       <div>
@@ -38,11 +37,4 @@ const MyPosts = ({
   );
 };
 
-const mapState = ({ profile }) => {
-  return {
-    posts: profile.posts,
-    newPostText: profile.newPostText,
-  };
-};
-
-export default connect(mapState, { updateNewPostText, addNewPost })(MyPosts);
+export default MyPosts;

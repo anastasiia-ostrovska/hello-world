@@ -49,9 +49,16 @@ module.exports = {
         ignoreRefs: true,
       },
     ],
-    '@typescript-eslint/no-shadow': 'warn',
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'], // allows state mutations in reducers
+      },
+    ],
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/jsx-props-no-spreading': 'off',
+    '@typescript-eslint/no-shadow': 'off',
   },
 };

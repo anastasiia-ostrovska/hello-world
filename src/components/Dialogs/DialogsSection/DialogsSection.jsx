@@ -1,7 +1,10 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectDialogs } from '@reducers/dialogsReducer';
 import DialogsList from './DialogsList/DialogsList';
 
-const DialogsSection = ({ dialogs }) => {
+const DialogsSection = () => {
+  const dialogs = useSelector(selectDialogs);
+
   return (
     <div>
       <DialogsList dialogs={dialogs} />
@@ -9,6 +12,4 @@ const DialogsSection = ({ dialogs }) => {
   );
 };
 
-const mapState = ({ dialogsPage }) => ({ dialogs: dialogsPage.dialogs });
-
-export default connect(mapState)(DialogsSection);
+export default DialogsSection;
