@@ -30,6 +30,7 @@ const dialogsReducer = createSlice({
   },
 });
 
+export const selectDialogs = (state) => state.dialogs.dialogs;
 export const selectMessages = (state) => state.dialogs.messages;
 
 export const { sendNewMessage } = dialogsReducer.actions;

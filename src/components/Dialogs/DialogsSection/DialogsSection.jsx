@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
+import { selectDialogs } from '@reducers/dialogsReducer';
 import DialogsList from './DialogsList/DialogsList';
 
 const DialogsSection = () => {
-  const { dialogs } = useSelector((state) => state.dialogs);
+  const dialogs = useSelector(selectDialogs);
 
   return (
     <div>
