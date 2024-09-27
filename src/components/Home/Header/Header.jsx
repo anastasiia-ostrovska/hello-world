@@ -1,22 +1,26 @@
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import {
-  selectAuthData,
-  selectIsAuthorized,
-  setAuthUserData,
-} from '@reducers/authReducer';
+import { useGetAuthDataQuery } from '@reducers/authApi';
 
 import styles from './Header.module.css';
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const data = useSelector(selectAuthData);
-  const isAuthorized = useSelector(selectIsAuthorized);
+  const { data: authData } = useGetAuthDataQuery();
 
-  useEffect(() => {
-    dispatch(setAuthUserData());
-  }, [dispatch]);
+  if (authData) {
+    return (
+      <header className={styles.header}>
+        <img
+          src="https://logodix.com/logo/489190.png"
+          alt="social network logo"
+        />
+        {authData.resultCode === 0 ? (
+          <div>{authData.data.login}</div>
+        ) : (
+          <NavLink to="/login">Login</NavLink>
+        )}
+      </header>
+    );
+  }
 
   return (
     <header className={styles.header}>
@@ -24,11 +28,7 @@ const Header = () => {
         src="https://logodix.com/logo/489190.png"
         alt="social network logo"
       />
-      {isAuthorized ? (
-        <div>{data.login}</div>
-      ) : (
-        <NavLink to="/login">Login</NavLink>
-      )}
+      <NavLink to="/login">Login</NavLink>
     </header>
   );
 };

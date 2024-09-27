@@ -1,26 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import {
-  selectProfile,
-  selectStatus,
-  setUserProfileData,
-} from '@reducers/profileReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
+import { useGetUserProfileQuery } from '@reducers/profileApi';
 import Profile from './Profile';
 
 const ProfileContainer = () => {
-  const dispatch = useDispatch();
-  const profile = useSelector(selectProfile);
-  const status = useSelector(selectStatus);
   const params = useParams();
+  const userId = params.userId || '2';
 
-  useEffect(() => {
-    const userId = params.userId || '2';
-    dispatch(setUserProfileData(userId));
-  }, [dispatch, params.userId]);
+  const { data: profile, isLoading } = useGetUserProfileQuery(userId);
 
-  if (!profile || status === 'loading') {
+  if (isLoading) {
     return <LinearPreloader />;
   }
   return <Profile profile={profile} />;

@@ -1,14 +1,14 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import profileReducer from './reducers/profileReducer';
+import baseApi from '@/services/baseApi';
+import postsReducer from './reducers/postsReducer';
 import usersReducer from './reducers/usersReducer';
 import dialogsReducer from './reducers/dialogsReducer';
-import authReducer from './reducers/authReducer';
 
 const rootReducer = combineReducers({
-  profile: profileReducer,
   users: usersReducer,
-  dialogs: dialogsReducer,
-  auth: authReducer,
+  [postsReducer.name]: postsReducer.reducer,
+  [dialogsReducer.name]: dialogsReducer.reducer,
+  [baseApi.reducerPath]: baseApi.reducer,
 });
 
 export default rootReducer;

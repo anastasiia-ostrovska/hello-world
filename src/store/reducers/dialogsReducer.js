@@ -35,4 +35,4 @@ export const selectMessages = (state) => state.dialogs.messages;
 
 export const { sendNewMessage } = dialogsReducer.actions;
 
-export default dialogsReducer.reducer;
+export default dialogsReducer;
