@@ -9,5 +9,4 @@ const profileApi = baseApi.injectEndpoints({
   }),
 });
 
-const { useGetUserProfileQuery } = profileApi;
-export default useGetUserProfileQuery;
+export const { useGetUserProfileQuery } = profileApi;

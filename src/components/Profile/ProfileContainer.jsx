@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
-import useGetUserProfileQuery from '@reducers/profileApi';
+import { useGetUserProfileQuery } from '@reducers/profileApi';
 import Profile from './Profile';
 
 const ProfileContainer = () => {

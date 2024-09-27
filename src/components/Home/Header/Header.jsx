@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import useGetAuthDataQuery from '@reducers/authApi';
+import { useGetAuthDataQuery } from '@reducers/authApi';
 
 import styles from './Header.module.css';
 

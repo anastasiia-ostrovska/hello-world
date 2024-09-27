@@ -10,5 +10,4 @@ const authApi = baseApi.injectEndpoints({
   overrideExisting: true,
 });
 
-const { useGetAuthDataQuery } = authApi;
-export default useGetAuthDataQuery;
+export const { useGetAuthDataQuery } = authApi;
