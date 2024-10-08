@@ -22,4 +22,6 @@ export const themeSlice = createSlice({
   },
 });
 
+export const { selectMode } = themeSlice.selectors;
+
 export default themeSlice.reducer;
