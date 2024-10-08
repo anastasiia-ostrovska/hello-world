@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './components/Home/Home';
-import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import Saved from './components/Saved/Saved';
 import News from './components/News/News';
