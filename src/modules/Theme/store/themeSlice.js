@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const mode = {
+export const modeType = {
   dark: 'dark',
   light: 'light',
 };
 
 const initialState = {
-  mode: mode.dark,
+  mode: modeType.dark,
 };
 
 export const themeSlice = createSlice({
@@ -14,10 +14,14 @@ export const themeSlice = createSlice({
   initialState,
   selectors: {
     selectMode: (state) => state.mode,
+    selectModeToSwitch: (state) => {
+      return state.mode === modeType.dark ? modeType.light : modeType.dark;
+    },
   },
   reducers: {
-    toggleMode: (state) => {
-      state.mode = state.mode === mode.dark ? mode.light : mode.dark;
+    switchMode: (state) => {
+      state.mode =
+        state.mode === modeType.dark ? modeType.light : modeType.dark;
     },
   },
 });

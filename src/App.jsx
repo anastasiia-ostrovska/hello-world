@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
+import Components from '@/components-presentation/Components';
 import Home from './components/Home/Home';
 import Dialogs from './components/Dialogs/Dialogs';
 import Saved from './components/Saved/Saved';
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="news" element={<News />} />
         <Route path="settings" element={<Settings />} />
       </Route>
+      <Route path="/components" element={<Components />} />
     </Routes>
   );
 };
