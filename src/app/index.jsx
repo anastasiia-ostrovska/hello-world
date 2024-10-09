@@ -6,7 +6,7 @@ import { ThemeWrapper } from '@/modules/Theme';
 import App from './App';
 import './index.css';
 
-import store from './store/index';
+import store from './store';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

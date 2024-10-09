@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import rootReducer from '@/shared/store/rootReducer';
 
 const initialState = {
   usersCount: 8,
@@ -8,6 +9,10 @@ const initialState = {
 const usersReducer = createSlice({
   name: 'users',
   initialState,
+  selectors: {
+    selectCurrentPage: (state) => state.currentPage,
+    selectUsersCountOnPage: (state) => state.usersCount,
+  },
   reducers: {
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
@@ -18,11 +23,8 @@ const usersReducer = createSlice({
       user.status = status;
     },
   },
-});
+}).injectInto(rootReducer);
 
-export const selectCurrentPage = (state) => state.users.currentPage;
-export const selectUsersCountOnPage = (state) => state.users.usersCount;
-
+export const { selectCurrentPage, selectUsersCountOnPage } =
+  usersReducer.selectors;
 export const { setCurrentPage, setFollowStatus } = usersReducer.actions;
-
-export default usersReducer.reducer;

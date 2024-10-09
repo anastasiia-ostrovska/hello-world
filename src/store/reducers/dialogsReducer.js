@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import rootReducer from '@/shared/store/rootReducer';
 
 const initialState = {
   dialogs: [
@@ -22,17 +23,17 @@ const initialState = {
 const dialogsReducer = createSlice({
   name: 'dialogs',
   initialState,
+  selectors: {
+    selectDialogs: (state) => state.dialogs,
+    selectMessages: (state) => state.messages,
+  },
   reducers: {
     sendNewMessage(state, action) {
       const message = { id: 6, message: action.payload };
       state.messages.push(message);
     },
   },
-});
+}).injectInto(rootReducer);
 
-export const selectDialogs = (state) => state.dialogs.dialogs;
-export const selectMessages = (state) => state.dialogs.messages;
-
+export const { selectDialogs, selectMessages } = dialogsReducer.selectors;
 export const { sendNewMessage } = dialogsReducer.actions;
-
-export default dialogsReducer;

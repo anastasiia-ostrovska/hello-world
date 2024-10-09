@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import rootReducer from '@/shared/store/rootReducer';
 
 const initialState = {
   posts: [
@@ -12,16 +13,16 @@ const initialState = {
 const postsReducer = createSlice({
   name: 'posts',
   initialState,
+  selectors: {
+    selectPosts: (state) => state.posts,
+  },
   reducers: {
     addNewPost(state, action) {
       const post = { id: 4, text: action.payload, likes: 0 };
       state.posts.push(post);
     },
   },
-});
+}).injectInto(rootReducer);
 
-export const selectPosts = (state) => state.posts.posts;
-
+export const { selectPosts } = postsReducer.selectors;
 export const { addNewPost } = postsReducer.actions;
-
-export default postsReducer;
