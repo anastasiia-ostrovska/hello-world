@@ -3,12 +3,12 @@ import {
   useGetUsersQuery,
   useUnfollowUserMutation,
   useFollowUserMutation,
-} from '@reducers/usersApi';
+} from '@/modules/users/store/usersApi';
 import {
   setCurrentPage,
   selectUsersCountOnPage,
   selectCurrentPage,
-} from '@reducers/usersReducer';
+} from '@/modules/users/store/usersReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import User from './User/User';
 

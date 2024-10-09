@@ -1,5 +1,10 @@
-import { ModeSwitcher } from '@/modules/ModeSwitcher';
+import { ModeSwitcher } from '@/modules/mode-switcher';
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import UserCard from '@/modules/users/ui/containers/UserCard';
+import UserAvatar from '@/modules/users/ui/components/UserAvatar';
+
+import UserPhoto from '@assets/user.svg';
 
 const Components = () => {
   return (
@@ -9,7 +14,21 @@ const Components = () => {
       useFlexGap
       sx={{ flexWrap: 'wrap', p: 2 }}
     >
-      <ModeSwitcher />
+      <Box sx={{ width: 50, height: 50 }}>
+        <ModeSwitcher />
+      </Box>
+      <Stack spacing={1} direction="row" useFlexGap>
+        <Box sx={{ width: 100, height: 100 }}>
+          <UserAvatar src={UserPhoto} name="Some Name" />
+        </Box>
+        <Box sx={{ width: 100, height: 100 }}>
+          <UserAvatar name="fam" />
+        </Box>
+        <Box sx={{ width: 100, height: 100 }}>
+          <UserAvatar name="" />
+        </Box>
+      </Stack>
+      <UserCard />
     </Stack>
   );
 };
