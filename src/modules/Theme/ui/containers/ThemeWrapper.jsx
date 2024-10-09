@@ -1,8 +1,8 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { getTheme } from '../../utils';
 import { selectMode } from '../../store/themeSlice';
+import getTheme from '../../utils/getTheme';
 
 const ThemeWrapper = ({ children }) => {
   const mode = useSelector(selectMode);

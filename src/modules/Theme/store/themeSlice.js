@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const modeKey = 'lightMode';
-
 export const modeType = {
   dark: 'dark',
   light: 'light',
 };
+
+const modeKey = 'lightMode';
 
 const initialState = {
   isLightMode: !!JSON.parse(localStorage.getItem(modeKey)),
