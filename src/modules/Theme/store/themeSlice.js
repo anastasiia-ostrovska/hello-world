@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import rootReducer from '@/app/rootReducer';
 
 export const modeType = {
   dark: 'dark',
@@ -26,15 +27,14 @@ export const themeSlice = createSlice({
       state.isLightMode = !state.isLightMode;
     },
   },
-});
+}).injectInto(rootReducer);
 
 const { toggleIsLightMode } = themeSlice.actions;
+
+export const { selectMode } = themeSlice.selectors;
 
 export const toggleMode = () => (dispatch) => {
   const isLightMode = !!JSON.parse(localStorage.getItem(modeKey));
   localStorage.setItem(modeKey, JSON.stringify(!isLightMode));
   dispatch(toggleIsLightMode());
 };
-
-export const { selectMode } = themeSlice.selectors;
-export default themeSlice.reducer;
