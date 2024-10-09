@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewPost, selectPosts } from '@reducers/postsReducer';
-import useInputValue from '@/hooks/useInputValue';
+import { useInputValue } from '@/shared/hooks';
 
 import NewPost from './NewPost/NewPost';
 import Post from './Post/Post';
