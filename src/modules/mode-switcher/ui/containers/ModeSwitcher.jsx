@@ -1,6 +1,6 @@
-import { selectIsLightMode, toggleMode } from '@/modules/Theme';
+import { selectIsLightMode, toggleMode } from '@/modules/theme';
 import { useDispatch, useSelector } from 'react-redux';
-import SwitchButton from '@/modules/ModeSwitcher/ui/components/SwitchButton';
+import SwitchButton from '../components/SwitchButton';
 
 const ModeSwitcher = () => {
   const dispatch = useDispatch();

@@ -61,5 +61,6 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'import/prefer-default-export': 'off',
     '@typescript-eslint/no-shadow': 'off',
+    'no-plusplus': 'off',
   },
 };

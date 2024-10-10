@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { selectModeToSwitch } from '@/modules/Theme';
+import { selectModeToSwitch } from '@/modules/theme';
 import IconButton from '@mui/material/IconButton';
-import ModeIcon from '@/modules/ModeSwitcher/ui/components/ModeIcon';
+import ModeIcon from '@/modules/mode-switcher/ui/components/ModeIcon';
 
 const SwitchButton = ({ isLightMode, onClick }) => {
   const modeToSwitch = useSelector(selectModeToSwitch);

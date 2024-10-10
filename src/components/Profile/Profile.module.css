@@ -2,7 +2,15 @@
     display: grid;
     gap: 3rem;
 
-    .profile_background_image {
-        width: 100%;
+    .image_container {
+        height: 200px;
+
+        .profile_background_image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
     }
+
 }
