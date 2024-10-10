@@ -22,7 +22,13 @@ const Components = () => {
           <UserAvatar src={UserPhoto} name="Some Name" />
         </Box>
         <Box sx={{ width: 100, height: 100 }}>
-          <UserAvatar name="fam" />
+          <UserAvatar name="Some Name" />
+        </Box>
+        <Box sx={{ width: 100, height: 100 }}>
+          <UserAvatar name="john doe" />
+        </Box>
+        <Box sx={{ width: 100, height: 100 }}>
+          <UserAvatar name="Nana" />
         </Box>
         <Box sx={{ width: 100, height: 100 }}>
           <UserAvatar name="" />
