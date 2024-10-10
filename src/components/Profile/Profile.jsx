@@ -7,11 +7,13 @@ import styles from './Profile.module.css';
 const Profile = ({ profile }) => {
   return (
     <div className={styles.profile_wrapper}>
-      <img
-        className={styles.profile_background_image}
-        src={profileBackgroundSrc}
-        alt="profile background"
-      />
+      <div className={styles.image_container}>
+        <img
+          className={styles.profile_background_image}
+          src={profileBackgroundSrc}
+          alt="profile background"
+        />
+      </div>
       <ProfileInfoCard profile={profile} />
       <MyPosts />
     </div>
