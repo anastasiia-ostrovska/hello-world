@@ -7,7 +7,7 @@ import {
   green,
 } from '@mui/material/colors';
 
-const avatarBackgroundColors = [
+const AVATAR_BG_COLORS = [
   purple[400],
   teal[400],
   orange[800],
@@ -16,4 +16,4 @@ const avatarBackgroundColors = [
   green[600],
 ];
 
-export default avatarBackgroundColors;
+export default AVATAR_BG_COLORS;

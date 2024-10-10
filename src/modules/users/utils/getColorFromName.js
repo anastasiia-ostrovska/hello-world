@@ -1,4 +1,4 @@
-import colors from './avatarBackgroundColors';
+import colors from '../constants/avatarBackgroundColors';
 import getNameHash from './getNameHash';
 
 /**

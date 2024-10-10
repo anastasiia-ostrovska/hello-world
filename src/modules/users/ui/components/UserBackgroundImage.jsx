@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box';
 
-const UserBackgroundImage = ({ height, src = '' }) => {
+const UserBackgroundImage = ({ size, src = '' }) => {
   return (
     <Box
-      bgcolor="grey.500"
+      bgcolor="grey.300"
       sx={{
-        height,
+        height: size,
         width: '100%',
         backgroundImage: `url(${src})`,
         backgroundSize: 'cover',
