@@ -1,7 +1,8 @@
 import { ModeSwitcher } from '@/modules/mode-switcher';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-// import UserCard from '@/modules/users/ui/containers/UserCard';
+import Grid2 from '@mui/material/Grid2';
+import UserCard from '@/modules/users/ui/containers/UserCard';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
 import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
 
@@ -77,7 +78,20 @@ const Components = () => {
       >
         <UserAvatarWithBackground name="Valery T" size="small" />
       </Box>
-      {/* <UserCard /> */}
+      <Grid2 container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid2 size={3}>
+          <UserCard followed={false} />
+        </Grid2>
+        <Grid2 size={3}>
+          <UserCard followed />
+        </Grid2>
+        <Grid2 size={3}>
+          <UserCard followed={false} />
+        </Grid2>
+        <Grid2 size={3}>
+          <UserCard followed />
+        </Grid2>
+      </Grid2>
     </Stack>
   );
 };
