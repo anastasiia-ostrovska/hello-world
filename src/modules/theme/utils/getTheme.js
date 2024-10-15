@@ -1,4 +1,12 @@
 import { createTheme } from '@mui/material';
+import {
+  green,
+  orange,
+  pink,
+  purple,
+  teal,
+  yellow,
+} from '@mui/material/colors';
 
 const getTheme = (mode) => {
   return createTheme({
@@ -13,6 +21,16 @@ const getTheme = (mode) => {
     },
     palette: {
       mode,
+      background: {
+        avatar: {
+          purple: purple[400],
+          teal: teal[400],
+          orange: orange[800],
+          yellow: yellow[800],
+          pink: pink[400],
+          green: green[600],
+        },
+      },
     },
   });
 };

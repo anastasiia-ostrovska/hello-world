@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { Avatar } from '@mui/material';
 import getInitials from '@/modules/users/utils/getInitials';
-import getColorFromName from '@/modules/users/utils/getColorFromName';
+import useAvatarColor from '@/modules/users/hooks/useAvatarColor';
 
 const UserAvatar = ({ name, src, size, sx = {} }) => {
+  const color = useAvatarColor(name);
   const initials = useMemo(() => getInitials(name), [name]);
-  const color = useMemo(() => getColorFromName(name), [name]);
 
   return (
     <Avatar
