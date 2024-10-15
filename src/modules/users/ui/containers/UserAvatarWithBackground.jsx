@@ -17,6 +17,7 @@ const UserAvatarWithBackground = ({
     <Box
       sx={{
         position: 'relative',
+        width: 'inherit',
         borderRadius: 'inherit',
         ...sx,
       }}
