@@ -48,8 +48,9 @@ const Components = () => {
       >
         <UserAvatarWithBackground
           name="Anna"
-          size="large"
-          position="left"
+          avatarSize={150}
+          backgroundImageSize={200}
+          avatarPosition="left"
           avatarBorderColor="white"
           backgroundSrc="https://images.squarespace-cdn.com/content/v1/5d777de8109c315fd22faf3a/1652899582924-FPWXES6GG7EGOQSRDE16/unsplash-image-pQMM63GE7fo.jpg?format=2500w"
         />
@@ -64,7 +65,9 @@ const Components = () => {
       >
         <UserAvatarWithBackground
           name="Janine Goo"
-          userSrc="https://everyone.plos.org/wp-content/uploads/sites/5/2021/02/kirsten-scaled-e1613041313402-982x1024.jpg"
+          avatarSize={120}
+          backgroundImageSize={100}
+          avatarSrc="https://everyone.plos.org/wp-content/uploads/sites/5/2021/02/kirsten-scaled-e1613041313402-982x1024.jpg"
           avatarBorderColor="white"
         />
       </Box>
@@ -76,7 +79,11 @@ const Components = () => {
           backgroundColor: 'white',
         }}
       >
-        <UserAvatarWithBackground name="Valery T" size="small" />
+        <UserAvatarWithBackground
+          name="Valery T"
+          avatarSize={60}
+          backgroundImageSize={60}
+        />
       </Box>
       <Grid2 container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid2 size={3}>

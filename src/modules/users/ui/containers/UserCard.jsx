@@ -7,7 +7,11 @@ const UserCard = ({ followed }) => {
   return (
     <Card>
       <CardActionArea>
-        <UserAvatarWithBackground name="Valery T" size="small" />
+        <UserAvatarWithBackground
+          name="Valery T"
+          avatarSize={60}
+          backgroundImageSize={60}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Lizard
