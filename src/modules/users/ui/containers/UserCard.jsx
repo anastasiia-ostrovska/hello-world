@@ -1,19 +1,42 @@
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
-import { Button, CardActions, CardContent, Typography } from '@mui/material';
+import { CardActions, CardContent, Typography } from '@mui/material';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
+import FollowButton from '@/modules/users/ui/components/FollowButton';
+import { useTheme } from '@mui/material/styles';
 
-const UserCard = ({ followed }) => {
+const UserCard = ({
+  name,
+  avatarSrc,
+  backgroundSrc,
+  avatarSize,
+  backgroundImageSize,
+  isFollowed,
+}) => {
+  const theme = useTheme();
+  const onFollowClick = () => alert('Follow clicked!');
+  const onUnfollowClick = () => alert('Unfollow clicked!');
+
   return (
-    <Card>
+    <Card
+      sx={{
+        backgroundColor: theme.palette.background.userCard,
+        backgroundImage: 'none',
+      }}
+    >
       <CardActionArea>
         <UserAvatarWithBackground
-          name="Valery T"
-          avatarSize={60}
-          backgroundImageSize={60}
+          name={name}
+          avatarSrc={avatarSrc}
+          backgroundSrc={backgroundSrc}
+          avatarSize={avatarSize}
+          backgroundImageSize={backgroundImageSize}
+          avatarBorderColor={theme.palette.background.userCard}
+          avatarBorderWidth="3px"
+          sx={{ mb: avatarSize / 16 }}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="h3">
             Lizard
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -23,15 +46,12 @@ const UserCard = ({ followed }) => {
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ p: 4 }}>
-        {followed ? (
-          <Button variant="outlined" sx={{ width: '100%' }}>
-            Unfollow
-          </Button>
-        ) : (
-          <Button variant="contained" sx={{ width: '100%' }}>
-            Follow
-          </Button>
-        )}
+        <FollowButton
+          isFollowed={isFollowed}
+          disabled={false}
+          onFollowClick={onFollowClick}
+          onUnfollowClick={onUnfollowClick}
+        />
       </CardActions>
     </Card>
   );

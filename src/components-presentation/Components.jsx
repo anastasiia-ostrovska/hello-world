@@ -87,16 +87,36 @@ const Components = () => {
       </Box>
       <Grid2 container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid2 size={3}>
-          <UserCard followed={false} />
+          <UserCard
+            name="Valery J"
+            avatarSize={60}
+            backgroundImageSize={60}
+            isFollowed={false}
+          />
         </Grid2>
         <Grid2 size={3}>
-          <UserCard followed />
+          <UserCard
+            name="Valery J"
+            avatarSize={60}
+            backgroundImageSize={60}
+            isFollowed
+          />
         </Grid2>
         <Grid2 size={3}>
-          <UserCard followed={false} />
+          <UserCard
+            name="Valery J"
+            avatarSize={60}
+            backgroundImageSize={60}
+            isFollowed={false}
+          />
         </Grid2>
         <Grid2 size={3}>
-          <UserCard followed />
+          <UserCard
+            name="Valery J"
+            avatarSize={60}
+            backgroundImageSize={60}
+            isFollowed
+          />
         </Grid2>
       </Grid2>
     </Stack>

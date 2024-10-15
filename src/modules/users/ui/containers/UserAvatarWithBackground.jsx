@@ -8,14 +8,17 @@ const UserAvatarWithBackground = ({
   backgroundSrc,
   avatarSize,
   backgroundImageSize,
-  avatarPosition = 'center',
   avatarBorderColor = '',
+  avatarBorderWidth = '5px',
+  avatarPosition = 'center',
+  sx = {},
 }) => {
   return (
     <Box
       sx={{
         position: 'relative',
         borderRadius: 'inherit',
+        ...sx,
       }}
     >
       <UserBackgroundImage size={backgroundImageSize} src={backgroundSrc} />
@@ -30,7 +33,9 @@ const UserAvatarWithBackground = ({
             avatarPosition === 'center'
               ? `calc(50% - ${avatarSize / 2}px)`
               : '2rem',
-          border: avatarBorderColor ? `5px solid ${avatarBorderColor}` : 'none',
+          border: avatarBorderColor
+            ? `${avatarBorderWidth} solid ${avatarBorderColor}`
+            : 'none',
         }}
       />
     </Box>

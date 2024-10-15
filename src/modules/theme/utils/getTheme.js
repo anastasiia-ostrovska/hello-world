@@ -26,10 +26,11 @@ const getTheme = (mode) => {
           purple: purple[400],
           teal: teal[400],
           orange: orange[800],
-          yellow: yellow[800],
+          yellow: yellow[900],
           pink: pink[400],
           green: green[600],
         },
+        userCard: mode === 'dark' ? '#1e1e1e' : '#fff',
       },
     },
   });
