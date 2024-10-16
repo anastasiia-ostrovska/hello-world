@@ -21,6 +21,8 @@ const UserCard = ({
 
   const { id, name, followed, photos } = data;
   const { small: avatarSrc, large: backgroundSrc } = photos;
+
+  // temporarily mocked
   const jobTitle = 'Mocked job title';
   const country = 'Mocked country';
 

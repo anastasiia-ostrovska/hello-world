@@ -1,10 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import {
-  useGetUsersQuery,
-  useUnfollowUserMutation,
-  useFollowUserMutation,
-} from '@/modules/users/store/usersApi';
+import { useGetUsersQuery } from '@/modules/users/store/usersApi';
 import {
   setCurrentPage,
   selectUsersCountOnPage,
@@ -13,12 +8,10 @@ import {
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import UserCardsList from '@/modules/users/ui/containers/UserCardsList';
 
-import { useCallback } from 'react';
 import styles from './Users.module.css';
 
 const Users = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const usersCount = useSelector(selectUsersCountOnPage);
   const currentPage = useSelector(selectCurrentPage);
 
@@ -27,36 +20,7 @@ const Users = () => {
     currentPage,
   });
 
-  const [
-    unfollowUser,
-    // { isLoading: isLoadingUnfollow, originalArgs: unfollowUserId },
-  ] = useUnfollowUserMutation();
-
-  const [
-    followUser,
-    // { isLoading: isLoadingFollow, originalArgs: followUserId },
-  ] = useFollowUserMutation();
-
-  const handleUserCardClick = useCallback(
-    (userId) => {
-      navigate(`/profile/${userId}`);
-    },
-    [navigate]
-  );
-
-  const handleFollowClick = useCallback(
-    (userId) => {
-      followUser(userId);
-    },
-    [followUser]
-  );
-
-  const handleUnfollowClick = useCallback(
-    (userId) => {
-      unfollowUser(userId);
-    },
-    [unfollowUser]
-  );
+  console.log(users);
 
   const handlePageChange = (page) => {
     dispatch(setCurrentPage(page));
@@ -83,12 +47,7 @@ const Users = () => {
             </button>
           ))}
         </div>
-        <UserCardsList
-          users={users.items}
-          onUserCardClick={handleUserCardClick}
-          onFollowClick={handleFollowClick}
-          onUnfollowClick={handleUnfollowClick}
-        />
+        <UserCardsList users={users.items} isLoading={isLoading} />
       </div>
     );
   }

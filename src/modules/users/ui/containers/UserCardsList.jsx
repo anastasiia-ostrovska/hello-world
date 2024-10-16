@@ -1,12 +1,46 @@
+import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 import Grid2 from '@mui/material/Grid2';
 import UserCard from '@/modules/users/ui/containers/UserCard';
+import {
+  useFollowUserMutation,
+  useUnfollowUserMutation,
+} from '@/modules/users/store/usersApi';
 
-const UserCardsList = ({
-  users,
-  onUserCardClick,
-  onFollowClick,
-  onUnfollowClick,
-}) => {
+const UserCardsList = ({ users }) => {
+  const navigate = useNavigate();
+
+  const [
+    unfollowUser,
+    // { isLoading: isLoadingUnfollow, originalArgs: unfollowUserId },
+  ] = useUnfollowUserMutation();
+
+  const [
+    followUser,
+    // { isLoading: isLoadingFollow, originalArgs: followUserId },
+  ] = useFollowUserMutation();
+
+  const handleUserCardClick = useCallback(
+    (userId) => {
+      navigate(`/profile/${userId}`);
+    },
+    [navigate]
+  );
+
+  const handleFollowClick = useCallback(
+    (userId) => {
+      followUser(userId);
+    },
+    [followUser]
+  );
+
+  const handleUnfollowClick = useCallback(
+    (userId) => {
+      unfollowUser(userId);
+    },
+    [unfollowUser]
+  );
+
   return (
     <Grid2
       container
@@ -26,9 +60,9 @@ const UserCardsList = ({
             avatarSize={60}
             backgroundImageSize={60}
             isButtonDisabled={false}
-            onUserCardClick={onUserCardClick}
-            onFollowClick={onFollowClick}
-            onUnfollowClick={onUnfollowClick}
+            onUserCardClick={handleUserCardClick}
+            onFollowClick={handleFollowClick}
+            onUnfollowClick={handleUnfollowClick}
           />
         </Grid2>
       ))}
