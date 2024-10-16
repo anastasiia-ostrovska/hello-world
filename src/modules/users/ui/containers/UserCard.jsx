@@ -9,21 +9,21 @@ import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWi
 import FollowButton from '@/modules/users/ui/components/FollowButton';
 
 const UserCard = ({
-  id,
-  name,
-  avatarSrc,
-  backgroundSrc,
+  data,
   avatarSize,
   backgroundImageSize,
-  jobTitle,
-  country,
-  isFollowed,
   isButtonDisabled,
   onUserCardClick,
   onFollowClick,
   onUnfollowClick,
 }) => {
   const theme = useTheme();
+
+  const { id, name, followed, photos } = data;
+  const { small: avatarSrc, large: backgroundSrc } = photos;
+  const jobTitle = 'Mocked job title';
+  const country = 'Mocked country';
+
   console.log(`user ${id} rerendered`);
 
   return (
@@ -67,7 +67,7 @@ const UserCard = ({
       </CardActionArea>
       <CardActions sx={{ px: 4, py: 2 }}>
         <FollowButton
-          isFollowed={isFollowed}
+          isFollowed={followed}
           disabled={isButtonDisabled}
           onFollowClick={() => onFollowClick(id)}
           onUnfollowClick={() => onUnfollowClick(id)}

@@ -58,10 +58,6 @@ const Users = () => {
     [unfollowUser]
   );
 
-  // const handleUnfollowClick = (userId) => {
-  //   unfollowUser(userId);
-  // };
-
   const handlePageChange = (page) => {
     dispatch(setCurrentPage(page));
   };
