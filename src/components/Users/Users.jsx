@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   useGetUsersQuery,
   useUnfollowUserMutation,
@@ -10,12 +11,14 @@ import {
   selectCurrentPage,
 } from '@/modules/users/store/usersReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
-import User from './User/User';
+import UserCardsList from '@/modules/users/ui/containers/UserCardsList';
 
+import { useCallback } from 'react';
 import styles from './Users.module.css';
 
 const Users = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const usersCount = useSelector(selectUsersCountOnPage);
   const currentPage = useSelector(selectCurrentPage);
 
@@ -24,18 +27,40 @@ const Users = () => {
     currentPage,
   });
 
-  const [unfollowUser, { isLoading: isLoadingUnfollow }] =
-    useUnfollowUserMutation();
+  const [
+    unfollowUser,
+    // { isLoading: isLoadingUnfollow, originalArgs: unfollowUserId },
+  ] = useUnfollowUserMutation();
 
-  const [followUser, { isLoading: isLoadingFollow }] = useFollowUserMutation();
+  const [
+    followUser,
+    // { isLoading: isLoadingFollow, originalArgs: followUserId },
+  ] = useFollowUserMutation();
 
-  const handleFollowClick = (userId) => {
-    followUser(userId);
-  };
+  const handleUserCardClick = useCallback(
+    (userId) => {
+      navigate(`/profile/${userId}`);
+    },
+    [navigate]
+  );
 
-  const handleUnfollowClick = (userId) => {
-    unfollowUser(userId);
-  };
+  const handleFollowClick = useCallback(
+    (userId) => {
+      followUser(userId);
+    },
+    [followUser]
+  );
+
+  const handleUnfollowClick = useCallback(
+    (userId) => {
+      unfollowUser(userId);
+    },
+    [unfollowUser]
+  );
+
+  // const handleUnfollowClick = (userId) => {
+  //   unfollowUser(userId);
+  // };
 
   const handlePageChange = (page) => {
     dispatch(setCurrentPage(page));
@@ -62,23 +87,12 @@ const Users = () => {
             </button>
           ))}
         </div>
-        <ul>
-          {users.items.map((user) => {
-            const { id, name, followed, photos } = user;
-            return (
-              <User
-                key={id}
-                id={id}
-                name={name}
-                followed={followed}
-                photos={photos}
-                follow={handleFollowClick}
-                unfollow={handleUnfollowClick}
-                disabled={isLoadingUnfollow || isLoadingFollow}
-              />
-            );
-          })}
-        </ul>
+        <UserCardsList
+          users={users.items}
+          onUserCardClick={handleUserCardClick}
+          onFollowClick={handleFollowClick}
+          onUnfollowClick={handleUnfollowClick}
+        />
       </div>
     );
   }

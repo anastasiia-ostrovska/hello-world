@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -8,6 +9,7 @@ import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWi
 import FollowButton from '@/modules/users/ui/components/FollowButton';
 
 const UserCard = ({
+  id,
   name,
   avatarSrc,
   backgroundSrc,
@@ -22,6 +24,7 @@ const UserCard = ({
   onUnfollowClick,
 }) => {
   const theme = useTheme();
+  console.log(`user ${id} rerendered`);
 
   return (
     <Card
@@ -31,7 +34,7 @@ const UserCard = ({
         backgroundImage: 'none',
       }}
     >
-      <CardActionArea onClick={onUserCardClick}>
+      <CardActionArea onClick={() => onUserCardClick(id)}>
         <UserAvatarWithBackground
           name={name}
           avatarSrc={avatarSrc}
@@ -66,12 +69,12 @@ const UserCard = ({
         <FollowButton
           isFollowed={isFollowed}
           disabled={isButtonDisabled}
-          onFollowClick={onFollowClick}
-          onUnfollowClick={onUnfollowClick}
+          onFollowClick={() => onFollowClick(id)}
+          onUnfollowClick={() => onUnfollowClick(id)}
         />
       </CardActions>
     </Card>
   );
 };
 
-export default UserCard;
+export default memo(UserCard);
