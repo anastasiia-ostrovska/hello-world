@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetUsersQuery } from '@/modules/users/store/usersApi';
 import {
@@ -20,11 +21,12 @@ const Users = () => {
     currentPage,
   });
 
-  console.log(users);
-
-  const handlePageChange = (page) => {
-    dispatch(setCurrentPage(page));
-  };
+  const handlePageChange = useCallback(
+    (page) => {
+      dispatch(setCurrentPage(page));
+    },
+    [dispatch]
+  );
 
   if (!isLoading) {
     const { totalCount } = users;
@@ -47,7 +49,7 @@ const Users = () => {
             </button>
           ))}
         </div>
-        <UserCardsList users={users.items} isLoading={isLoading} />
+        <UserCardsList users={users.items} />
       </div>
     );
   }
