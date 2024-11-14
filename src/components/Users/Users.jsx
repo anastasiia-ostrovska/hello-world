@@ -5,6 +5,7 @@ import getPagesCount from '@/modules/users/utils/getPagesCount';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import UserCardsList from '@/modules/users/ui/containers/UserCardsList';
 import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const Users = () => {
   const [usersPerPageCount] = useState(8);
@@ -17,14 +18,15 @@ const Users = () => {
 
   if (!isLoading) {
     return (
-      <div>
+      <Stack spacing={2} sx={{ alignItems: 'center' }}>
         <Pagination
           count={getPagesCount(users.totalCount, usersPerPageCount)}
           page={currentPage}
           onChange={handlePageChange}
+          sx={{ p: 2 }}
         />
         <UserCardsList users={users.items} />
-      </div>
+      </Stack>
     );
   }
 
