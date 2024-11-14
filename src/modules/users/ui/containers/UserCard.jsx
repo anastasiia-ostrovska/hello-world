@@ -1,9 +1,6 @@
 import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
-import {
-  useFollowUserMutation,
-  useUnfollowUserMutation,
-} from '@/modules/users/store/usersApi';
+import useFollowButtonClick from '@/modules/users/hooks/useFollowButtonClick';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
@@ -27,22 +24,12 @@ const UserCard = ({
     photos: { small: avatarSrc, large: backgroundSrc },
   } = data;
 
-  const [unfollowUser, { isLoading: isLoadingUnfollow }] =
-    useUnfollowUserMutation();
-
-  const [followUser, { isLoading: isLoadingFollow }] = useFollowUserMutation();
-
-  const handleFollowClick = (userId) => {
-    followUser(userId);
-  };
-
-  const handleUnfollowClick = (userId) => {
-    unfollowUser(userId);
-  };
-
   // temporarily mocked
   const jobTitle = 'Mocked job title';
   const country = 'Mocked country';
+
+  const { handleFollowClick, handleUnfollowClick, isDisabled } =
+    useFollowButtonClick();
 
   return (
     <Card
@@ -86,7 +73,7 @@ const UserCard = ({
       <CardActions sx={{ px: 4, py: 2 }}>
         <FollowButton
           isFollowed={followed}
-          disabled={isLoadingUnfollow || isLoadingFollow}
+          disabled={isDisabled}
           onFollowClick={() => handleFollowClick(id)}
           onUnfollowClick={() => handleUnfollowClick(id)}
         />

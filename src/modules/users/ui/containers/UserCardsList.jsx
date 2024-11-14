@@ -1,17 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import { useCallback } from 'react';
+import useUserCardClick from '@/modules/users/hooks/useUserCardClick';
 import Grid2 from '@mui/material/Grid2';
 import UserCard from '@/modules/users/ui/containers/UserCard';
 
 const UserCardsList = ({ users }) => {
-  const navigate = useNavigate();
-
-  const handleUserCardClick = useCallback(
-    (userId) => {
-      navigate(`/profile/${userId}`);
-    },
-    [navigate]
-  );
+  const handleUserCardClick = useUserCardClick();
 
   return (
     <Grid2
