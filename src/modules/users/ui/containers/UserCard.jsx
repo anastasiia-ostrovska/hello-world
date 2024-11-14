@@ -1,4 +1,6 @@
+import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
+import useFollowButtonClick from '@/modules/users/hooks/useFollowButtonClick';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
@@ -8,20 +10,26 @@ import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWi
 import FollowButton from '@/modules/users/ui/components/FollowButton';
 
 const UserCard = ({
-  name,
-  avatarSrc,
-  backgroundSrc,
+  data,
   avatarSize,
   backgroundImageSize,
-  jobTitle,
-  country,
-  isFollowed,
-  isButtonDisabled,
   onUserCardClick,
-  onFollowClick,
-  onUnfollowClick,
 }) => {
   const theme = useTheme();
+
+  const {
+    id,
+    name,
+    followed,
+    photos: { small: avatarSrc, large: backgroundSrc },
+  } = data;
+
+  // temporarily mocked
+  const jobTitle = 'Mocked job title';
+  const country = 'Mocked country';
+
+  const { handleFollowClick, handleUnfollowClick, isDisabled } =
+    useFollowButtonClick();
 
   return (
     <Card
@@ -31,7 +39,7 @@ const UserCard = ({
         backgroundImage: 'none',
       }}
     >
-      <CardActionArea onClick={onUserCardClick}>
+      <CardActionArea onClick={() => onUserCardClick(id)}>
         <UserAvatarWithBackground
           name={name}
           avatarSrc={avatarSrc}
@@ -64,14 +72,14 @@ const UserCard = ({
       </CardActionArea>
       <CardActions sx={{ px: 4, py: 2 }}>
         <FollowButton
-          isFollowed={isFollowed}
-          disabled={isButtonDisabled}
-          onFollowClick={onFollowClick}
-          onUnfollowClick={onUnfollowClick}
+          isFollowed={followed}
+          disabled={isDisabled}
+          onFollowClick={() => handleFollowClick(id)}
+          onUnfollowClick={() => handleUnfollowClick(id)}
         />
       </CardActions>
     </Card>
   );
 };
 
-export default UserCard;
+export default memo(UserCard);

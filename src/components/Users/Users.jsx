@@ -1,16 +1,13 @@
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  useGetUsersQuery,
-  useUnfollowUserMutation,
-  useFollowUserMutation,
-} from '@/modules/users/store/usersApi';
+import { useGetUsersQuery } from '@/modules/users/store/usersApi';
 import {
   setCurrentPage,
   selectUsersCountOnPage,
   selectCurrentPage,
 } from '@/modules/users/store/usersReducer';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
-import User from './User/User';
+import UserCardsList from '@/modules/users/ui/containers/UserCardsList';
 
 import styles from './Users.module.css';
 
@@ -24,22 +21,12 @@ const Users = () => {
     currentPage,
   });
 
-  const [unfollowUser, { isLoading: isLoadingUnfollow }] =
-    useUnfollowUserMutation();
-
-  const [followUser, { isLoading: isLoadingFollow }] = useFollowUserMutation();
-
-  const handleFollowClick = (userId) => {
-    followUser(userId);
-  };
-
-  const handleUnfollowClick = (userId) => {
-    unfollowUser(userId);
-  };
-
-  const handlePageChange = (page) => {
-    dispatch(setCurrentPage(page));
-  };
+  const handlePageChange = useCallback(
+    (page) => {
+      dispatch(setCurrentPage(page));
+    },
+    [dispatch]
+  );
 
   if (!isLoading) {
     const { totalCount } = users;
@@ -62,23 +49,7 @@ const Users = () => {
             </button>
           ))}
         </div>
-        <ul>
-          {users.items.map((user) => {
-            const { id, name, followed, photos } = user;
-            return (
-              <User
-                key={id}
-                id={id}
-                name={name}
-                followed={followed}
-                photos={photos}
-                follow={handleFollowClick}
-                unfollow={handleUnfollowClick}
-                disabled={isLoadingUnfollow || isLoadingFollow}
-              />
-            );
-          })}
-        </ul>
+        <UserCardsList users={users.items} />
       </div>
     );
   }
