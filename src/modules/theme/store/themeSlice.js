@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import rootReducer from '@/app/rootReducer';
+import rootReducer from '@/app/store/rootReducer';
 
 export const modeType = {
   dark: 'dark',

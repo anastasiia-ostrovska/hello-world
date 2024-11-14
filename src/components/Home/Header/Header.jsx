@@ -9,10 +9,6 @@ const Header = () => {
   if (authData) {
     return (
       <header className={styles.header}>
-        <img
-          src="https://logodix.com/logo/489190.png"
-          alt="social network logo"
-        />
         {authData.resultCode === 0 ? (
           <div>{authData.data.login}</div>
         ) : (
@@ -24,10 +20,6 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <img
-        src="https://logodix.com/logo/489190.png"
-        alt="social network logo"
-      />
       <NavLink to="/login">Login</NavLink>
     </header>
   );

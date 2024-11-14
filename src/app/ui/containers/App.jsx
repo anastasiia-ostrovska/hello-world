@@ -4,7 +4,9 @@ import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
 const Components = lazy(() => import('@/components-presentation/Components'));
 
-const Home = lazy(() => import('@components/Home/Home'));
+const Layout = lazy(() =>
+  import('@/layout').then((module) => ({ default: module.Layout }))
+);
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
 const Saved = lazy(() => import('@components/Saved/Saved'));
 const News = lazy(() => import('@components/News/News'));
@@ -18,7 +20,7 @@ const App = () => {
   return (
     <Suspense fallback={<LinearPreloader />}>
       <Routes>
-        <Route path="/" element={<Home />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<ProfileContainer />} />
           <Route path="profile/:userId?" element={<ProfileContainer />} />
           <Route path="dialogs/*" element={<Dialogs />} />
