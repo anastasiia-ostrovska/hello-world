@@ -4,8 +4,8 @@ import * as endpoints from '@/shared/constants/api';
 const usersApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: ({ usersCount, currentPage }) =>
-        `${endpoints.USERS}?count=${usersCount}&page=${currentPage}`,
+      query: ({ usersPerPageCount, currentPage }) =>
+        `${endpoints.USERS}?count=${usersPerPageCount}&page=${currentPage}`,
       providesTags: ['Users'],
     }),
 
@@ -16,13 +16,13 @@ const usersApi = baseApi.injectEndpoints({
       }),
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
         const {
-          users: { usersCount, currentPage },
+          users: { usersPerPageCount, currentPage },
         } = getState();
 
         const patchResult = dispatch(
           usersApi.util.updateQueryData(
             'getUsers',
-            { usersCount, currentPage },
+            { usersPerPageCount, currentPage },
             (draft) => {
               const user = draft.items.find((user) => user.id === userId);
               if (user) {
@@ -48,13 +48,13 @@ const usersApi = baseApi.injectEndpoints({
 
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
         const {
-          users: { usersCount, currentPage },
+          users: { usersPerPageCount, currentPage },
         } = getState();
 
         const patchResult = dispatch(
           usersApi.util.updateQueryData(
             'getUsers',
-            { usersCount, currentPage },
+            { usersPerPageCount, currentPage },
             (draft) => {
               const user = draft.items.find((user) => user.id === userId);
               if (user) {

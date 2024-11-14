@@ -6,23 +6,8 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import { useGetUsersQuery } from '@/modules/users/store/usersApi';
-import UserCardsList from '@/modules/users/ui/containers/UserCardsList';
-import { useSelector } from 'react-redux';
-import {
-  selectCurrentPage,
-  selectUsersCountOnPage,
-} from '@/modules/users/store/usersReducer';
 
 const Components = () => {
-  const usersCount = useSelector(selectUsersCountOnPage);
-  const currentPage = useSelector(selectCurrentPage);
-
-  const { data: users, isLoading } = useGetUsersQuery({
-    usersCount,
-    currentPage,
-  });
-
   return (
     <Stack
       spacing={2}
@@ -98,7 +83,6 @@ const Components = () => {
           backgroundImageSize={60}
         />
       </Box>
-      {!isLoading && <UserCardsList users={users.items} />}
     </Stack>
   );
 };
