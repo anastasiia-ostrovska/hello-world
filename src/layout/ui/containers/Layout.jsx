@@ -15,7 +15,14 @@ const Layout = () => {
     <Stack spacing={9}>
       <Header />
       {isUpSM ? (
-        <Grid2 container spacing={3} sx={{ position: 'relative', px: '15%' }}>
+        <Grid2
+          container
+          spacing={3}
+          sx={{
+            position: 'relative',
+            px: { sm: 3, md: '10%', lg: '15%' },
+          }}
+        >
           <Grid2 size={3}>
             <Navigation />
           </Grid2>
@@ -27,7 +34,7 @@ const Layout = () => {
         </Grid2>
       ) : (
         <Stack>
-          <Box component="main" sx={{ mb: 9 }}>
+          <Box component="main" sx={{ mb: 9, px: 2 }}>
             <Outlet />
           </Box>
           <Navigation />
