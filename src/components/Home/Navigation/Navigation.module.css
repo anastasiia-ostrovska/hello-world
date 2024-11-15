@@ -1,5 +1,5 @@
 .navigation {
-    grid-area: navigation;
+    position: fixed;
     background-color: var(--section-background);
 
     .item {
