@@ -6,6 +6,7 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
+import BottomNavbar from '@/modules/navigation/ui/containers/BottomNavbar';
 
 const Components = () => {
   return (
@@ -83,6 +84,7 @@ const Components = () => {
           backgroundImageSize={60}
         />
       </Box>
+      <BottomNavbar />
     </Stack>
   );
 };
