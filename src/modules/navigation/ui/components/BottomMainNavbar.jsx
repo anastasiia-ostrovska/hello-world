@@ -1,12 +1,12 @@
-import { SIDE_NAVIGATION } from '@/modules/navigation/constants/navigation';
-import useNavbarClick from '@/modules/navigation/hooks/useNavbarClick';
+import { MAIN_NAVIGATION } from '@/modules/navigation/constants/navigation';
+import useNavbar from '@/modules/navigation/hooks/useNavbar';
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
-const BottomNavbar = () => {
-  const [activeIndex, handleNavigationChange, handleNavigation] =
-    useNavbarClick(0);
+const BottomMainNavbar = () => {
+  const [activeIndex, handleNavigationChange, navigateTo] =
+    useNavbar(MAIN_NAVIGATION);
 
   return (
     <Paper
@@ -19,14 +19,14 @@ const BottomNavbar = () => {
         onChange={handleNavigationChange}
         sx={{ backgroundColor: 'transparent' }}
       >
-        {SIDE_NAVIGATION.map((item) => {
+        {MAIN_NAVIGATION.map((item) => {
           const { label, icon, path } = item;
           return (
             <BottomNavigationAction
               key={label}
               label={label}
               icon={icon}
-              onClick={() => handleNavigation(path)}
+              onClick={() => navigateTo(path)}
             />
           );
         })}
@@ -35,4 +35,4 @@ const BottomNavbar = () => {
   );
 };
 
-export default BottomNavbar;
+export default BottomMainNavbar;

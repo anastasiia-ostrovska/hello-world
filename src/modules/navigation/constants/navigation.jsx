@@ -3,7 +3,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export const SIDE_NAVIGATION = [
+export const MAIN_NAVIGATION = [
   { label: 'Home', icon: <HomeIcon />, path: '/news' },
   {
     label: 'My Network',

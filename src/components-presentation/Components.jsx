@@ -6,8 +6,8 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import BottomNavbar from '@/modules/navigation/ui/components/BottomNavbar';
-import SideNavbar from '@/modules/navigation/ui/containers/SideNavigation';
+import BottomMainNavbar from '@/modules/navigation/ui/components/BottomMainNavbar.jsx';
+import SideMainNavbar from '@/modules/navigation/ui/components/SideMainNavbar.jsx';
 
 const Components = () => {
   return (
@@ -85,8 +85,8 @@ const Components = () => {
           backgroundImageSize={60}
         />
       </Box>
-      <BottomNavbar />
-      <SideNavbar />
+      <BottomMainNavbar />
+      <SideMainNavbar />
     </Stack>
   );
 };
