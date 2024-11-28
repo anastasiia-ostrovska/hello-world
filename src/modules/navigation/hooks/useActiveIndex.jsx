@@ -1,14 +1,12 @@
 import { useLocation } from 'react-router-dom';
 
-const useActiveIndex = (navigationItems) => {
+const useActiveIndex = (navItems) => {
   const { pathname } = useLocation();
   const rootPath = `/${pathname.split('/').pop()}`;
 
-  const activeIndex = navigationItems.findIndex(
-    (item) => item.path === rootPath
-  );
+  const activeIndex = navItems.findIndex((item) => item.path === rootPath);
 
-  return activeIndex === -1 ? 0 : activeIndex;
+  return activeIndex;
 };
 
 export default useActiveIndex;

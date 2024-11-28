@@ -1,4 +1,5 @@
 import { ModeSwitcher } from '@/modules/mode-switcher';
+import { MAIN_NAVIGATION } from '@/modules/navigation/constants/navigation';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
@@ -6,10 +7,16 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import BottomMainNavbar from '@/modules/navigation/ui/components/BottomMainNavbar.jsx';
-import SideMainNavbar from '@/modules/navigation/ui/components/SideMainNavbar.jsx';
+import BottomMainNavbar from '@/modules/navigation/ui/components/BottomMainNavbar';
+import SideMainNavbar from '@/modules/navigation/ui/components/SideMainNavbar';
+import useNavbar from '@/modules/navigation/hooks/useNavbar';
+import useNavItemColor from '@/modules/navigation/hooks/useNavItemColor';
 
 const Components = () => {
+  const [activeIndex, handleNavigationChange, navigateTo] =
+    useNavbar(MAIN_NAVIGATION);
+  const getNavItemColor = useNavItemColor();
+
   return (
     <Stack
       spacing={2}
@@ -37,7 +44,6 @@ const Components = () => {
       <Box sx={{ width: 150, borderRadius: 5 }}>
         <UserBackgroundImage height="200px" />
       </Box>
-
       <Box
         sx={{
           width: '100%',
@@ -85,8 +91,20 @@ const Components = () => {
           backgroundImageSize={60}
         />
       </Box>
-      <BottomMainNavbar />
-      <SideMainNavbar />
+      <BottomMainNavbar
+        navItems={MAIN_NAVIGATION}
+        activeIndex={activeIndex}
+        handleNavigationChange={handleNavigationChange}
+        navigateTo={navigateTo}
+        getNavItemColor={getNavItemColor}
+      />
+      <SideMainNavbar
+        navItems={MAIN_NAVIGATION}
+        activeIndex={activeIndex}
+        handleNavigationChange={handleNavigationChange}
+        navigateTo={navigateTo}
+        getNavItemColor={getNavItemColor}
+      />{' '}
     </Stack>
   );
 };

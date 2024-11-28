@@ -1,13 +1,13 @@
-import { MAIN_NAVIGATION } from '@/modules/navigation/constants/navigation';
-import useNavbar from '@/modules/navigation/hooks/useNavbar';
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
-const BottomMainNavbar = () => {
-  const [activeIndex, handleNavigationChange, navigateTo] =
-    useNavbar(MAIN_NAVIGATION);
-
+const BottomMainNavbar = ({
+  navItems,
+  activeIndex,
+  handleNavItemClick,
+  getNavItemColor,
+}) => {
   return (
     <Paper
       elevation={3}
@@ -16,17 +16,19 @@ const BottomMainNavbar = () => {
     >
       <BottomNavigation
         value={activeIndex}
-        onChange={handleNavigationChange}
         sx={{ backgroundColor: 'transparent' }}
       >
-        {MAIN_NAVIGATION.map((item) => {
+        {navItems.map((item, index) => {
           const { label, icon, path } = item;
+          const isActive = activeIndex === index;
+
           return (
             <BottomNavigationAction
               key={label}
               label={label}
               icon={icon}
-              onClick={() => navigateTo(path)}
+              onClick={() => handleNavItemClick(index, path)}
+              sx={{ color: getNavItemColor(isActive) }}
             />
           );
         })}
