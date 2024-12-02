@@ -1,18 +1,35 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import useActiveIndex from '@/modules/navigation/hooks/useActiveIndex';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectActiveItem,
+  setActiveItem,
+} from '@/modules/navigation/store/navigationSlice';
+import { useCallback } from 'react';
 
 const useNavbar = (navItems) => {
-  const index = useActiveIndex(navItems);
-  const [activeIndex, setActiveIndex] = useState(index);
+  const { pathname } = useLocation();
+  const activeItem = useSelector(selectActiveItem);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleNavItemClick = (newIndex, path) => {
-    setActiveIndex(newIndex);
-    navigate(path);
+  const currentItem = navItems.find((item) => pathname.includes(item.path)) || {
+    id: '',
+    path: '',
   };
 
-  return [activeIndex, handleNavItemClick];
+  if (currentItem.id !== activeItem.id) {
+    const { id, path } = currentItem;
+    dispatch(setActiveItem({ id, path }));
+  }
+
+  const handleNavItemClick = useCallback(
+    (newItem) => {
+      navigate(newItem.path);
+    },
+    [navigate]
+  );
+
+  return [activeItem, handleNavItemClick];
 };
 
 export default useNavbar;
