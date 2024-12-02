@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import rootReducer from '@/app/store/rootReducer';
+import { createSelector } from 'reselect';
 
 const initialState = {
   activeItem: { id: '', path: '' },
@@ -18,5 +19,12 @@ export const navigationSlice = createSlice({
   },
 }).injectInto(rootReducer);
 
+const selectNavigationState = (state) => state.navigation;
+
+export const selectActiveItem = createSelector(
+  [selectNavigationState],
+  (navigation) => navigation.activeItem
+);
+
 export const { setActiveItem } = navigationSlice.actions;
-export const { selectActiveItem } = navigationSlice.selectors;
+// export const { selectActiveItem } = navigationSlice.selectors;

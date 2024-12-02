@@ -1,1 +1,1 @@
-export { default as MainNavbar } from './ui/containers/MainNavbar';
+export { default as MainNavbar } from './ui/containers/MainNavbarContainer';

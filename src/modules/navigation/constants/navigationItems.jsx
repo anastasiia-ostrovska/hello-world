@@ -4,20 +4,23 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export const MAIN_NAVIGATION = [
-  { label: 'Home', icon: <HomeIcon />, path: '/news' },
+  { id: 'news', path: '/news', label: 'Home', icon: <HomeIcon /> },
   {
+    id: 'users',
+    path: '/users',
     label: 'My Network',
     icon: <GroupIcon />,
-    path: '/users',
   },
   {
+    id: 'create-post',
+    path: '/create-post',
     label: 'New Post',
     icon: <AddBoxIcon />,
-    path: 'create-post',
   },
   {
+    id: 'favourites',
+    path: '/favourites',
     label: 'Favourites',
     icon: <FavoriteIcon />,
-    path: 'favourites',
   },
 ];
