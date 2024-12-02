@@ -1,15 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { useTheme } from '@mui/material/styles';
-import { useMediaQuery } from '@mui/material';
+import { useMediaQueryType } from '@/shared/hooks';
+import { MainNavbar } from '@/modules/navigation';
 import Header from '@components/Home/Header/Header';
-import Navigation from '@components/Home/Navigation/Navigation';
 import Stack from '@mui/material/Stack';
 import Grid2 from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 
 const Layout = () => {
-  const theme = useTheme();
-  const isUpSM = useMediaQuery(theme.breakpoints.up('sm'));
+  const { isUpSM } = useMediaQueryType();
 
   return (
     <Stack spacing={9}>
@@ -24,7 +22,7 @@ const Layout = () => {
           }}
         >
           <Grid2 size={3}>
-            <Navigation />
+            <MainNavbar />
           </Grid2>
           <Grid2 size={9}>
             <Box component="main">
@@ -37,7 +35,7 @@ const Layout = () => {
           <Box component="main" sx={{ mb: 9, px: 2 }}>
             <Outlet />
           </Box>
-          <Navigation />
+          <MainNavbar />
         </Stack>
       )}
     </Stack>
