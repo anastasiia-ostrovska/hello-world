@@ -10,7 +10,10 @@ export const navigationSlice = createSlice({
   name: 'navigation',
   initialState,
   selectors: {
-    selectActiveItem: (state) => state.activeItem,
+    selectActiveItem: createSelector(
+      (state) => state.activeItem,
+      (activeItem) => activeItem
+    ),
   },
   reducers: {
     setActiveItem: (state, action) => {
@@ -19,12 +22,5 @@ export const navigationSlice = createSlice({
   },
 }).injectInto(rootReducer);
 
-const selectNavigationState = (state) => state.navigation;
-
-export const selectActiveItem = createSelector(
-  [selectNavigationState],
-  (navigation) => navigation.activeItem
-);
-
 export const { setActiveItem } = navigationSlice.actions;
-// export const { selectActiveItem } = navigationSlice.selectors;
+export const { selectActiveItem } = navigationSlice.selectors;
