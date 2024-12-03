@@ -1,11 +1,11 @@
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import MainNavItemsList from '@/modules/navigation/ui/containers/MainNavItemsList';
+import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
 
 const BottomMainNavbar = ({
   navItems,
-  activeItem,
   handleNavItemClick,
+  getIsActive,
   getNavItemColor,
 }) => {
   return (
@@ -15,10 +15,10 @@ const BottomMainNavbar = ({
       sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
     >
       <BottomNavigation sx={{ backgroundColor: 'transparent' }}>
-        <MainNavItemsList
+        <NavItemsList
           navItems={navItems}
-          activeItem={activeItem}
           handleNavItemClick={handleNavItemClick}
+          getIsActive={getIsActive}
           getNavItemColor={getNavItemColor}
         />
       </BottomNavigation>

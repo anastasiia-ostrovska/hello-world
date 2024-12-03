@@ -1,22 +1,22 @@
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
-import MainNavItemsList from '@/modules/navigation/ui/containers/MainNavItemsList';
+import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
 
 const SideMainNavbar = ({
   navItems,
-  activeItem,
   handleNavItemClick,
+  getIsActive,
   getNavItemColor,
 }) => {
   return (
     <Paper elevation={3} sx={{ position: 'fixed', borderRadius: 3 }}>
       <List>
-        <MainNavItemsList
+        <NavItemsList
           navItems={navItems}
-          activeItem={activeItem}
           handleNavItemClick={handleNavItemClick}
+          getIsActive={getIsActive}
           getNavItemColor={getNavItemColor}
-          isSide
+          type="side"
         />
       </List>
     </Paper>

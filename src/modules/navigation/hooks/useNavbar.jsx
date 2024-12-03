@@ -1,39 +1,25 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useEffect } from 'react';
-import {
-  selectActiveItem,
-  setActiveItem,
-} from '@/modules/navigation/store/navigationSlice';
+import { useCallback } from 'react';
 
-const useNavbar = (navItems) => {
+const useNavbar = () => {
   const { pathname } = useLocation();
-  const activeItem = useSelector(selectActiveItem);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const currentItem = navItems.find((item) =>
-      pathname.includes(item.path)
-    ) || {
-      id: '',
-      path: '',
-    };
-
-    if (currentItem.id !== activeItem.id) {
-      const { id, path } = currentItem;
-      dispatch(setActiveItem({ id, path }));
-    }
-  }, [activeItem.id, dispatch, navItems, pathname]);
+  const getIsActive = useCallback(
+    (path) => {
+      return pathname.startsWith(path);
+    },
+    [pathname]
+  );
 
   const handleNavItemClick = useCallback(
-    (newItem) => {
-      navigate(newItem.path);
+    (path) => {
+      navigate(path);
     },
     [navigate]
   );
 
-  return [activeItem, handleNavItemClick];
+  return { getIsActive, handleNavItemClick };
 };
 
 export default useNavbar;

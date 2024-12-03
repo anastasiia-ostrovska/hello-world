@@ -4,10 +4,8 @@ import { useCallback } from 'react';
 const useNavItemColor = () => {
   const theme = useTheme();
 
-  const getNavItemColor = useCallback(
-    (activeId, currentId) => {
-      const isActive = activeId === currentId;
-
+  const getColor = useCallback(
+    (isActive) => {
       return isActive
         ? theme.palette.primary.main
         : theme.palette.text.secondary;
@@ -15,7 +13,7 @@ const useNavItemColor = () => {
     [theme]
   );
 
-  return getNavItemColor;
+  return getColor;
 };
 
 export default useNavItemColor;

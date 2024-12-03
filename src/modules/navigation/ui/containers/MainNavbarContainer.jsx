@@ -1,22 +1,21 @@
 import { useMediaQueryType } from '@/shared/hooks';
-import { MAIN_NAVIGATION } from '@/modules/navigation/constants/navigationItems';
-import useNavbar from '@/modules/navigation/hooks/useNavbar';
-import useNavItemColor from '@/modules/navigation/hooks/useNavItemColor';
 import SideMainNavbar from '@/modules/navigation/ui/containers/SideMainNavbar';
 import BottomMainNavbar from '@/modules/navigation/ui/containers/BottomMainNavbar';
+import useNavbar from '@/modules/navigation/hooks/useNavbar';
+import useNavItemColor from '@/modules/navigation/hooks/useNavItemColor';
 
-const MainNavbarContainer = () => {
-  const [activeItem, handleNavItemClick] = useNavbar(MAIN_NAVIGATION);
-  const getNavItemColor = useNavItemColor();
+const MainNavbarContainer = ({ navItems }) => {
   const { isUpSM } = useMediaQueryType();
+  const { getIsActive, handleNavItemClick } = useNavbar();
+  const getNavItemColor = useNavItemColor();
 
   const Navbar = isUpSM ? SideMainNavbar : BottomMainNavbar;
 
   return (
     <Navbar
-      navItems={MAIN_NAVIGATION}
-      activeItem={activeItem}
+      navItems={navItems}
       handleNavItemClick={handleNavItemClick}
+      getIsActive={getIsActive}
       getNavItemColor={getNavItemColor}
     />
   );
