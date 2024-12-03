@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import { useMediaQueryType } from '@/shared/hooks';
 import { MAIN_NAVIGATION, MainNavbar } from '@/modules/navigation';
-import Header from '@components/Home/Header/Header';
 import Stack from '@mui/material/Stack';
 import Grid2 from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
+import Header from './Header';
 
 const Layout = () => {
   const { isUpSM } = useMediaQueryType();

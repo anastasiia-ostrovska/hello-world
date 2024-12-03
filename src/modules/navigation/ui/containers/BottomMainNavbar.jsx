@@ -10,8 +10,9 @@ const BottomMainNavbar = ({
 }) => {
   return (
     <Paper
-      elevation={3}
+      component="nav"
       square
+      variant="outlined"
       sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
     >
       <BottomNavigation sx={{ backgroundColor: 'transparent' }}>

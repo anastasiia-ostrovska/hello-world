@@ -9,7 +9,11 @@ const SideMainNavbar = ({
   getNavItemColor,
 }) => {
   return (
-    <Paper elevation={3} sx={{ position: 'fixed', borderRadius: 3 }}>
+    <Paper
+      component="nav"
+      elevation={3}
+      sx={{ position: 'fixed', borderRadius: 3 }}
+    >
       <List>
         <NavItemsList
           navItems={navItems}
