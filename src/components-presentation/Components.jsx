@@ -2,7 +2,7 @@ import { ModeSwitcher } from '@/modules/mode-switcher';
 import {
   MAIN_NAVIGATION,
   TOP_NAVIGATION,
-} from '@/modules/navigation/constants/navigationItems';
+} from '@/modules/navigation/constants/navItemsData';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
@@ -10,8 +10,8 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import TopNavItems from '@/modules/navigation/ui/components/TopNavItems';
-import MainNavbarContainer from '@/modules/navigation/ui/containers/MainNavbarContainer';
+import TopNavItems from '@/modules/navigation/ui/containers/TopNavItems';
+import MainNavbar from '@/modules/navigation/ui/containers/MainNavbar';
 
 const Components = () => {
   return (
@@ -92,7 +92,7 @@ const Components = () => {
         <TopNavItems navItems={TOP_NAVIGATION} />
       </Box>
 
-      <MainNavbarContainer navItems={MAIN_NAVIGATION} />
+      <MainNavbar navItems={MAIN_NAVIGATION} />
     </Stack>
   );
 };

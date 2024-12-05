@@ -36,5 +36,3 @@ export const TOP_NAVIGATION = [
     icon: <NotificationsIcon />,
   },
 ];
-
-export const LAYOUT_NAVIGATION = [...MAIN_NAVIGATION, ...TOP_NAVIGATION];

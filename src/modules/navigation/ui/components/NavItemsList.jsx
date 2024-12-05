@@ -1,59 +1,22 @@
-import SideMainNavItem from '@/modules/navigation/ui/components/SideMainNavItem';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import TopNavItem from '@/modules/navigation/ui/components/TopNavItem';
+import useNavbar from '@/modules/navigation/hooks/useNavbar';
+import NavItem from '@/modules/navigation/ui/components/NavItem';
 
-const NavItemsList = ({
-  navItems,
-  handleNavItemClick,
-  getIsActive,
-  getNavItemColor,
-  type = 'bottom',
-  ariaLabel = '',
-  count = null,
-}) => {
+const NavItemsList = ({ navItems, type }) => {
+  const handleNavItemClick = useNavbar();
+
   return (
     <>
       {navItems.map((item) => {
-        const { label, icon, path, id } = item;
-
-        const isActive = getIsActive(path);
-        const color = getNavItemColor(isActive);
-
-        if (type === 'side') {
-          return (
-            <SideMainNavItem
-              key={id}
-              label={label}
-              aria-label={label}
-              icon={icon}
-              path={path}
-              color={color}
-              onClick={handleNavItemClick}
-            />
-          );
-        }
-
-        if (type === 'top') {
-          return (
-            <TopNavItem
-              key={id}
-              path={path}
-              ariaLabel={ariaLabel}
-              count={count}
-              icon={icon}
-              color={color}
-              onClick={handleNavItemClick}
-            />
-          );
-        }
+        const { id, label, icon, path } = item;
 
         return (
-          <BottomNavigationAction
+          <NavItem
             key={id}
-            aria-label={label}
+            type={type}
+            label={label}
             icon={icon}
-            onClick={() => handleNavItemClick(path)}
-            sx={{ color }}
+            path={path}
+            handleClick={handleNavItemClick}
           />
         );
       })}

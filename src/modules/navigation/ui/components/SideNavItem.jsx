@@ -4,9 +4,14 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-const SideMainNavItem = ({ label, icon, path, color, onClick }) => {
+const SideNavItem = ({ label, icon, path, color, onClick }) => {
   return (
-    <ListItem disablePadding onClick={() => onClick(path)} sx={{ color }}>
+    <ListItem
+      disablePadding
+      aria-label={label}
+      onClick={() => onClick(path)}
+      sx={{ color }}
+    >
       <ListItemButton>
         <ListItemIcon sx={{ color }}>{icon}</ListItemIcon>
         <ListItemText primary={label} />
@@ -15,4 +20,4 @@ const SideMainNavItem = ({ label, icon, path, color, onClick }) => {
   );
 };
 
-export default memo(SideMainNavItem);
+export default memo(SideNavItem);

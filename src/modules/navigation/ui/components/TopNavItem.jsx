@@ -1,18 +1,12 @@
+import { memo } from 'react';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 
-const TopNavItem = ({ path, ariaLabel, count, icon, color, onClick }) => {
+const TopNavItem = ({ label, icon, path, color, onClick }) => {
   return (
-    <IconButton
-      aria-label={ariaLabel}
-      onClick={() => onClick(path)}
-      sx={{ color }}
-    >
-      <Badge badgeContent={count} color="error">
-        {icon}
-      </Badge>
+    <IconButton aria-label={label} onClick={() => onClick(path)} sx={{ color }}>
+      {icon}
     </IconButton>
   );
 };
 
-export default TopNavItem;
+export default memo(TopNavItem);

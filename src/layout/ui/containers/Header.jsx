@@ -1,7 +1,7 @@
-import { TOP_NAVIGATION } from '@/modules/navigation/constants/navigationItems';
+import { TOP_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
 import { ModeSwitcher } from '@/modules/mode-switcher';
 import AppBar from '@mui/material/AppBar';
-import TopNavItems from '@/modules/navigation/ui/components/TopNavItems';
+import TopNavItems from '@/modules/navigation/ui/containers/TopNavItems';
 import Box from '@mui/material/Box';
 
 const Header = () => {
@@ -11,6 +11,7 @@ const Header = () => {
       position="fixed"
       color="inherit"
       variant="outlined"
+      elevation={0}
       sx={{
         display: 'flex',
         flexDirection: 'row',

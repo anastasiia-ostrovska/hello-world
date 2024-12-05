@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { useGetAuthDataQuery } from '@reducers/authApi';
 
-import TopNavItems from '@/modules/navigation/ui/components/TopNavItems';
-import { TOP_NAVIGATION } from '@/modules/navigation/constants/navigationItems';
+import TopNavItems from '@/modules/navigation/ui/containers/TopNavItems';
+import { TOP_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
 import styles from './Header.module.css';
 
 const Header = () => {
