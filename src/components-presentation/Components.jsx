@@ -1,5 +1,8 @@
 import { ModeSwitcher } from '@/modules/mode-switcher';
-import { MAIN_NAVIGATION } from '@/modules/navigation/constants/navigationItems';
+import {
+  MAIN_NAVIGATION,
+  TOP_NAVIGATION,
+} from '@/modules/navigation/constants/navItemsData';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
@@ -7,15 +10,10 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import BottomMainNavbar from '@/modules/navigation/ui/containers/BottomMainNavbar';
-import SideMainNavbar from '@/modules/navigation/ui/containers/SideMainNavbar';
-import useNavbar from '@/modules/navigation/hooks/useNavbar';
-import useNavItemColor from '@/modules/navigation/hooks/useNavItemColor';
+import TopNavItems from '@/modules/navigation/ui/containers/TopNavItems';
+import MainNavbar from '@/modules/navigation/ui/containers/MainNavbar';
 
 const Components = () => {
-  const [activeIndex, handleNavItemClick] = useNavbar(MAIN_NAVIGATION);
-  const getNavItemColor = useNavItemColor();
-
   return (
     <Stack
       spacing={2}
@@ -90,18 +88,11 @@ const Components = () => {
           backgroundImageSize={60}
         />
       </Box>
-      <BottomMainNavbar
-        navItems={MAIN_NAVIGATION}
-        activeIndex={activeIndex}
-        handleNavItemClick={handleNavItemClick}
-        getNavItemColor={getNavItemColor}
-      />
-      <SideMainNavbar
-        navItems={MAIN_NAVIGATION}
-        activeIndex={activeIndex}
-        handleNavItemClick={handleNavItemClick}
-        getNavItemColor={getNavItemColor}
-      />
+      <Box>
+        <TopNavItems navItems={TOP_NAVIGATION} />
+      </Box>
+
+      <MainNavbar navItems={MAIN_NAVIGATION} />
     </Stack>
   );
 };

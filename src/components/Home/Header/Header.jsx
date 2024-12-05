@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { useGetAuthDataQuery } from '@reducers/authApi';
 
+import TopNavItems from '@/modules/navigation/ui/containers/TopNavItems';
+import { TOP_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -10,7 +12,10 @@ const Header = () => {
     return (
       <header className={styles.header}>
         {authData.resultCode === 0 ? (
-          <div>{authData.data.login}</div>
+          <>
+            <div>{authData.data.login}</div>
+            <TopNavItems navItems={TOP_NAVIGATION} />
+          </>
         ) : (
           <NavLink to="/login">Login</NavLink>
         )}

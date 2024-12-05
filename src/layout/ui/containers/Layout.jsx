@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import { useMediaQueryType } from '@/shared/hooks';
-import { MainNavbar } from '@/modules/navigation';
-import Header from '@components/Home/Header/Header';
+import { MAIN_NAVIGATION, MainNavbar } from '@/modules/navigation';
 import Stack from '@mui/material/Stack';
 import Grid2 from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
+import Header from './Header';
 
 const Layout = () => {
   const { isUpSM } = useMediaQueryType();
@@ -22,7 +22,7 @@ const Layout = () => {
           }}
         >
           <Grid2 size={3}>
-            <MainNavbar />
+            <MainNavbar navItems={MAIN_NAVIGATION} />
           </Grid2>
           <Grid2 size={9}>
             <Box component="main">
@@ -35,7 +35,7 @@ const Layout = () => {
           <Box component="main" sx={{ mb: 9, px: 2 }}>
             <Outlet />
           </Box>
-          <MainNavbar />
+          <MainNavbar navItems={MAIN_NAVIGATION} />
         </Stack>
       )}
     </Stack>
