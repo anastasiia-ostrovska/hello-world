@@ -14,7 +14,7 @@ const UserAvatar = ({ name, src, size, sx = {} }) => {
       sx={{
         width: size,
         height: size,
-        fontSize: size * 0.4,
+        fontSize: size * 0.5,
         backgroundColor: src ? 'transparent' : color,
         ...sx,
       }}
