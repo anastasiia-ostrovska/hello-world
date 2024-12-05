@@ -4,34 +4,40 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import EmailIcon from '@mui/icons-material/Email';
+import * as ROUTES from './routes';
 
 export const MAIN_NAVIGATION = [
-  { id: 'news', path: '/news', label: 'Home', icon: <HomeIcon /> },
+  { id: 'home', path: ROUTES.HOME, label: 'Home', icon: <HomeIcon /> },
   {
-    id: 'users',
-    path: '/users',
+    id: 'network',
+    path: ROUTES.NETWORK,
     label: 'My Network',
     icon: <GroupIcon />,
   },
   {
-    id: 'create-post',
-    path: '/create-post',
+    id: 'new-post',
+    path: ROUTES.NEW_POST,
     label: 'New Post',
     icon: <AddBoxIcon />,
   },
   {
     id: 'favourites',
-    path: '/favourites',
+    path: ROUTES.FAVOURITES,
     label: 'Favourites',
     icon: <FavoriteIcon />,
   },
 ];
 
 export const TOP_NAVIGATION = [
-  { id: 'dialogs', path: '/dialogs', label: 'Dialogs', icon: <EmailIcon /> },
+  {
+    id: 'dialogs',
+    path: ROUTES.DIALOGS,
+    label: 'Dialogs',
+    icon: <EmailIcon />,
+  },
   {
     id: 'notifications',
-    path: '/notifications',
+    path: ROUTES.NOTIFICATIONS,
     label: 'Notifications',
     icon: <NotificationsIcon />,
   },

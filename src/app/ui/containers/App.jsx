@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { ROUTES } from '@/modules/navigation';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
 const Components = lazy(() => import('@/components-presentation/Components'));
@@ -22,11 +23,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<ProfileContainer />} />
+          <Route path={ROUTES.DIALOGS} element={<Dialogs />} />
+          <Route path={ROUTES.NETWORK} element={<Users />} />
+          <Route path={ROUTES.FAVOURITES} element={<Saved />} />
+          <Route path={ROUTES.HOME} element={<News />} />
           <Route path="profile/:userId?" element={<ProfileContainer />} />
-          <Route path="dialogs/*" element={<Dialogs />} />
-          <Route path="users" element={<Users />} />
-          <Route path="saved" element={<Saved />} />
-          <Route path="news" element={<News />} />
           <Route path="settings" element={<Settings />} />
         </Route>
         <Route path="/components" element={<Components />} />
