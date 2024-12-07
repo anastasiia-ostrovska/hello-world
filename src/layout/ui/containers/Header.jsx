@@ -1,8 +1,12 @@
-import { TOP_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
+import {
+  PROFILE_NAVIGATION,
+  TOP_NAVIGATION,
+} from '@/modules/navigation/constants/navItemsData';
 import { ModeSwitcher } from '@/modules/mode-switcher';
 import { TopNavbar } from '@/modules/navigation';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import ProfileNavbar from '@/modules/navigation/ui/containers/ProfileNavbar';
 
 const Header = () => {
   return (
@@ -23,7 +27,9 @@ const Header = () => {
       <Box sx={{ display: 'flex' }}>
         <ModeSwitcher />
       </Box>
-      <TopNavbar navItems={TOP_NAVIGATION} />
+      <TopNavbar navItems={TOP_NAVIGATION}>
+        <ProfileNavbar navItems={PROFILE_NAVIGATION} />
+      </TopNavbar>
     </AppBar>
   );
 };
