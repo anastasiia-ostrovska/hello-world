@@ -9,13 +9,16 @@ const Layout = lazy(() =>
   import('@/layout').then((module) => ({ default: module.Layout }))
 );
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
-const Saved = lazy(() => import('@components/Saved/Saved'));
-const News = lazy(() => import('@components/News/News'));
-const Settings = lazy(() => import('@components/Settings/Settings'));
-const Users = lazy(() => import('@components/Users/Users'));
+const Notifications = lazy(() => import('@/pages/Notifications'));
+const Home = lazy(() => import('@components/News/News'));
+const Network = lazy(() => import('@components/Users/Users'));
+const NewPost = lazy(() => import('@/pages/NewPost'));
+const Favourites = lazy(() => import('@components/Saved/Saved'));
 const ProfileContainer = lazy(
   () => import('@components/Profile/ProfileContainer')
 );
+const Library = lazy(() => import('@/pages/Library'));
+const Settings = lazy(() => import('@/pages/Settings'));
 
 const App = () => {
   return (
@@ -24,11 +27,17 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<ProfileContainer />} />
           <Route path={ROUTES.DIALOGS} element={<Dialogs />} />
-          <Route path={ROUTES.NETWORK} element={<Users />} />
-          <Route path={ROUTES.FAVOURITES} element={<Saved />} />
-          <Route path={ROUTES.HOME} element={<News />} />
-          <Route path="profile/:userId?" element={<ProfileContainer />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path={ROUTES.NOTIFICATIONS} element={<Notifications />} />
+          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.NETWORK} element={<Network />} />
+          <Route path={ROUTES.NEW_POST} element={<NewPost />} />
+          <Route path={ROUTES.FAVOURITES} element={<Favourites />} />
+          <Route
+            path={`${ROUTES.PROFILE}/:userId?`}
+            element={<ProfileContainer />}
+          />
+          <Route path={ROUTES.LIBRARY} element={<Library />} />
+          <Route path={ROUTES.SETTINGS} element={<Settings />} />
         </Route>
         <Route path="/components" element={<Components />} />
       </Routes>

@@ -1,27 +1,14 @@
-import { useProfileData, ProfileIconButton } from '@/modules/profile';
-import IconButton from '@mui/material/IconButton';
-import CircularProgress from '@mui/material/CircularProgress';
+import { memo } from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
 
-const ProfileNavItem = ({ size, onClick }) => {
-  const { data, isLoading } = useProfileData();
-
-  if (isLoading) {
-    return (
-      <IconButton aria-label="profile is loading">
-        <CircularProgress size={size} />
-      </IconButton>
-    );
-  }
-
+const ProfileNavItem = ({ label, icon, path, color, onClick }) => {
   return (
-    <ProfileIconButton
-      name={data.fullName}
-      src={data.photos.small}
-      onClick={onClick}
-      size={size}
-      ariaLabel={`${data.fullName} profile menu`}
-    />
+    <MenuItem onClick={() => onClick(path)} sx={{ color }}>
+      <ListItemIcon sx={{ color }}>{icon}</ListItemIcon>
+      {label}
+    </MenuItem>
   );
 };
 
-export default ProfileNavItem;
+export default memo(ProfileNavItem);

@@ -1,17 +1,19 @@
+import useNavigationHandler from '@/modules/navigation/hooks/useNavigationHandler';
 import NAVIGATION_TYPES from '@/modules/navigation/constants/navTypes';
 import Box from '@mui/material/Box';
 import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
-import ProfileNavItem from '@/modules/navigation/ui/components/ProfileNavItem';
 
-const TopNavbar = ({ navItems }) => {
-  const handleProfileIconClick = () => {
-    alert('show profile');
-  };
+const TopNavbar = ({ navItems, children }) => {
+  const handleNavigate = useNavigationHandler();
 
   return (
-    <Box component="nav" sx={{ display: 'flex', justifySelf: 'right' }}>
-      <NavItemsList navItems={navItems} type={NAVIGATION_TYPES.TOP} />
-      <ProfileNavItem size={24} onClick={handleProfileIconClick} />
+    <Box component="nav" sx={{ display: 'flex' }}>
+      <NavItemsList
+        navItems={navItems}
+        type={NAVIGATION_TYPES.TOP}
+        onClick={handleNavigate}
+      />
+      {children}
     </Box>
   );
 };

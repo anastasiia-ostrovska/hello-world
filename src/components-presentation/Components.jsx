@@ -1,6 +1,7 @@
 import { ModeSwitcher } from '@/modules/mode-switcher';
 import {
   MAIN_NAVIGATION,
+  PROFILE_NAVIGATION,
   TOP_NAVIGATION,
 } from '@/modules/navigation/constants/navItemsData';
 import Stack from '@mui/material/Stack';
@@ -12,6 +13,7 @@ import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
 import TopNavbar from '@/modules/navigation/ui/containers/TopNavbar';
 import MainNavbar from '@/modules/navigation/ui/containers/MainNavbar';
+import ProfileNavbar from '@/modules/navigation/ui/containers/ProfileNavbar';
 
 const Components = () => {
   return (
@@ -74,6 +76,11 @@ const Components = () => {
           avatarBorderColor="white"
         />
       </Box>
+      <Box>
+        <TopNavbar navItems={TOP_NAVIGATION}>
+          <ProfileNavbar navItems={PROFILE_NAVIGATION} />
+        </TopNavbar>
+      </Box>
       <Box
         sx={{
           width: 250,
@@ -88,10 +95,6 @@ const Components = () => {
           backgroundImageSize={60}
         />
       </Box>
-      <Box>
-        <TopNavbar navItems={TOP_NAVIGATION} />
-      </Box>
-
       <MainNavbar navItems={MAIN_NAVIGATION} />
     </Stack>
   );

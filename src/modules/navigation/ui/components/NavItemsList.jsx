@@ -1,9 +1,6 @@
-import useNavbar from '@/modules/navigation/hooks/useNavbar';
 import NavItem from '@/modules/navigation/ui/components/NavItem';
 
-const NavItemsList = ({ navItems, type }) => {
-  const handleNavItemClick = useNavbar();
-
+const NavItemsList = ({ navItems, type, onClick }) => {
   return (
     <>
       {navItems.map((item) => {
@@ -16,7 +13,7 @@ const NavItemsList = ({ navItems, type }) => {
             label={label}
             icon={icon}
             path={path}
-            handleClick={handleNavItemClick}
+            handleClick={onClick}
           />
         );
       })}

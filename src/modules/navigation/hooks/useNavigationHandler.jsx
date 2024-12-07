@@ -1,17 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
-const useNavbar = () => {
+const useNavigationHandler = () => {
   const navigate = useNavigate();
 
-  const handleNavItemClick = useCallback(
+  const handleNavigate = useCallback(
     (path) => {
-      navigate(path);
+      if (path) navigate(path);
     },
     [navigate]
   );
 
-  return handleNavItemClick;
+  return handleNavigate;
 };
 
-export default useNavbar;
+export default useNavigationHandler;
