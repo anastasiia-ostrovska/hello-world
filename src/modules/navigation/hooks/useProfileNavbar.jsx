@@ -10,17 +10,17 @@ const useProfileNavbar = () => {
     setAnchorEl(event.currentTarget);
   }, []);
 
-  const handleMenuItemClick = useCallback(
-    (event, path) => {
-      handleNavItemClick(path);
-      handleMenuButtonClick(event);
-    },
-    [handleMenuButtonClick, handleNavItemClick]
-  );
-
   const handleMenuClose = useCallback(() => {
     setAnchorEl(null);
   }, []);
+
+  const handleMenuItemClick = useCallback(
+    (path) => {
+      handleMenuClose();
+      handleNavItemClick(path);
+    },
+    [handleMenuClose, handleNavItemClick]
+  );
 
   return {
     anchorEl,

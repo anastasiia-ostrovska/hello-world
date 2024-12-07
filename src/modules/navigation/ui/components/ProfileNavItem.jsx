@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 
 const ProfileNavItem = ({ label, icon, path, color, onClick }) => {
   return (
-    <MenuItem onClick={(event) => onClick(event, path)} sx={{ color }}>
+    <MenuItem onClick={() => onClick(path)} sx={{ color }}>
       <ListItemIcon sx={{ color }}>{icon}</ListItemIcon>
       {label}
     </MenuItem>

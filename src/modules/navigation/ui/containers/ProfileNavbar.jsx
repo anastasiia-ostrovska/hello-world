@@ -15,7 +15,7 @@ const ProfileNavbar = ({ navItems }) => {
   } = useProfileNavbar();
 
   return (
-    <div>
+    <Box>
       <Box
         id="profile-menu-button"
         aria-controls={isMenuOpen ? 'profile-menu' : undefined}
@@ -39,7 +39,7 @@ const ProfileNavbar = ({ navItems }) => {
           onClick={handleMenuItemClick}
         />
       </Menu>
-    </div>
+    </Box>
   );
 };
 
