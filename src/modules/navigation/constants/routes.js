@@ -7,5 +7,5 @@ export const DIALOGS = '/dialogs';
 export const NOTIFICATIONS = '/notifications';
 
 export const PROFILE = '/profile';
-export const LIBRARY = `${PROFILE}/library`;
-export const SETTINGS = `${PROFILE}/settings`;
+export const LIBRARY = '/library';
+export const SETTINGS = '/settings';
