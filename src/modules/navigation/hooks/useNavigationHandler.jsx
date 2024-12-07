@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
-const useNavbar = () => {
+const useNavigationHandler = () => {
   const navigate = useNavigate();
 
   const handleNavItemClick = useCallback(
@@ -14,4 +14,4 @@ const useNavbar = () => {
   return handleNavItemClick;
 };
 
-export default useNavbar;
+export default useNavigationHandler;
