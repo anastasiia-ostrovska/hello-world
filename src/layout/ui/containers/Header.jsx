@@ -15,14 +15,15 @@ const Header = () => {
       sx={{
         display: 'flex',
         flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
         height: 56,
       }}
     >
-      <TopNavbar navItems={TOP_NAVIGATION} />
       <Box sx={{ display: 'flex' }}>
         <ModeSwitcher />
       </Box>
+      <TopNavbar navItems={TOP_NAVIGATION} />
     </AppBar>
   );
 };
