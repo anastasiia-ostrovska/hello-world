@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 
 const ProfileIconButton = ({ name, src, onClick, size, ariaLabel }) => {
   return (
-    <IconButton aria-label={ariaLabel} onClick={() => onClick()}>
+    <IconButton aria-label={ariaLabel} onClick={(event) => onClick(event)}>
       <UserAvatar name={name} src={src} size={size} />
     </IconButton>
   );

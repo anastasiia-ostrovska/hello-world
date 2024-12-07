@@ -4,7 +4,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import EmailIcon from '@mui/icons-material/Email';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PersonIcon from '@mui/icons-material/Person';
 import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
 import * as ROUTES from './routes';
@@ -51,7 +51,7 @@ export const PROFILE_NAVIGATION = [
     id: 'profile',
     path: ROUTES.PROFILE,
     label: 'Profile',
-    icon: <AccountCircleIcon />,
+    icon: <PersonIcon />,
   },
   {
     id: 'library',

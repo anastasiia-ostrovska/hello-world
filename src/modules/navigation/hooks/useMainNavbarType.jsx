@@ -2,7 +2,7 @@ import { useMediaQueryType } from '@/shared/hooks';
 import NAVIGATION_TYPES from '@/modules/navigation/constants/navTypes';
 import NAVIGATION_CONTAINERS from '@/modules/navigation/constants/navItemContainers';
 
-const useMainNavigation = () => {
+const useMainNavbarType = () => {
   const { isUpSM } = useMediaQueryType();
   const type = isUpSM ? NAVIGATION_TYPES.SIDE : NAVIGATION_TYPES.BOTTOM;
   const NavbarContainer = NAVIGATION_CONTAINERS[type];
@@ -10,4 +10,4 @@ const useMainNavigation = () => {
   return { type, NavbarContainer };
 };
 
-export default useMainNavigation;
+export default useMainNavbarType;
