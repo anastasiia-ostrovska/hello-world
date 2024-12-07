@@ -4,14 +4,14 @@ import Box from '@mui/material/Box';
 import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
 
 const TopNavbar = ({ navItems, children }) => {
-  const handleNavItemClick = useNavigationHandler();
+  const handleNavigate = useNavigationHandler();
 
   return (
     <Box component="nav" sx={{ display: 'flex' }}>
       <NavItemsList
         navItems={navItems}
         type={NAVIGATION_TYPES.TOP}
-        onClick={handleNavItemClick}
+        onClick={handleNavigate}
       />
       {children}
     </Box>
