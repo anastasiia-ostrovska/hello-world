@@ -1,7 +1,7 @@
 import { TOP_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
 import { ModeSwitcher } from '@/modules/mode-switcher';
 import AppBar from '@mui/material/AppBar';
-import TopNavItems from '@/modules/navigation/ui/containers/TopNavItems';
+import TopNavbar from '@/modules/navigation/ui/containers/TopNavbar';
 import Box from '@mui/material/Box';
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
         height: 56,
       }}
     >
-      <TopNavItems navItems={TOP_NAVIGATION} />
+      <TopNavbar navItems={TOP_NAVIGATION} />
       <Box sx={{ display: 'flex' }}>
         <ModeSwitcher />
       </Box>

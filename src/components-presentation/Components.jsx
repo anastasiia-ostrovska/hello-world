@@ -10,7 +10,7 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import TopNavItems from '@/modules/navigation/ui/containers/TopNavItems';
+import TopNavbar from '@/modules/navigation/ui/containers/TopNavbar';
 import MainNavbar from '@/modules/navigation/ui/containers/MainNavbar';
 
 const Components = () => {
@@ -89,7 +89,7 @@ const Components = () => {
         />
       </Box>
       <Box>
-        <TopNavItems navItems={TOP_NAVIGATION} />
+        <TopNavbar navItems={TOP_NAVIGATION} />
       </Box>
 
       <MainNavbar navItems={MAIN_NAVIGATION} />
