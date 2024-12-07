@@ -4,6 +4,9 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import EmailIcon from '@mui/icons-material/Email';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import TurnedInIcon from '@mui/icons-material/TurnedIn';
+import SettingsIcon from '@mui/icons-material/Settings';
 import * as ROUTES from './routes';
 
 export const MAIN_NAVIGATION = [
@@ -40,5 +43,26 @@ export const TOP_NAVIGATION = [
     path: ROUTES.NOTIFICATIONS,
     label: 'Notifications',
     icon: <NotificationsIcon />,
+  },
+];
+
+export const PROFILE_NAVIGATION = [
+  {
+    id: 'profile',
+    path: ROUTES.PROFILE,
+    label: 'Profile',
+    icon: <AccountCircleIcon />,
+  },
+  {
+    id: 'library',
+    path: ROUTES.LIBRARY,
+    label: 'Library',
+    icon: <TurnedInIcon />,
+  },
+  {
+    id: 'settings',
+    path: ROUTES.SETTINGS,
+    label: 'Settings',
+    icon: <SettingsIcon />,
   },
 ];

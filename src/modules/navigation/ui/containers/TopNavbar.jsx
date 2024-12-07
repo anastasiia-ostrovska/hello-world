@@ -9,7 +9,7 @@ const TopNavbar = ({ navItems }) => {
   };
 
   return (
-    <Box component="nav" sx={{ display: 'flex', justifySelf: 'right' }}>
+    <Box component="nav">
       <NavItemsList navItems={navItems} type={NAVIGATION_TYPES.TOP} />
       <ProfileNavItem size={24} onClick={handleProfileIconClick} />
     </Box>
