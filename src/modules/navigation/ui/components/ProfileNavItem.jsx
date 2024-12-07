@@ -1,11 +1,26 @@
-import { UserAvatar } from '@/modules/users';
+import { useProfileData, ProfileIconButton } from '@/modules/profile';
 import IconButton from '@mui/material/IconButton';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const ProfileNavItem = ({ name, src, onClick, size }) => {
+const ProfileNavItem = ({ size, onClick }) => {
+  const { data, isLoading } = useProfileData();
+
+  if (isLoading) {
+    return (
+      <IconButton aria-label="profile is loading">
+        <CircularProgress size={size} />
+      </IconButton>
+    );
+  }
+
   return (
-    <IconButton aria-label={name} onClick={() => onClick()}>
-      <UserAvatar name={name} src={src} size={size} />
-    </IconButton>
+    <ProfileIconButton
+      name={data.fullName}
+      src={data.photos.small}
+      onClick={onClick}
+      size={size}
+      ariaLabel={`${data.fullName} profile menu`}
+    />
   );
 };
 

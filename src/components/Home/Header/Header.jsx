@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useGetAuthDataQuery } from '@reducers/authApi';
+import { useGetAuthDataQuery } from '@/modules/profile/store/authApi';
 
 import TopNavbar from '@/modules/navigation/ui/containers/TopNavbar';
 import { TOP_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
