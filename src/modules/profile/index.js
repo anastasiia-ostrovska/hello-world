@@ -1,3 +1,1 @@
-export { default as useProfileData } from './hooks/useProfileData';
-
-export { default as ProfileIconButton } from './ui/components/ProfileIconButton';
+export { default as ProfileAvatar } from './ui/components/ProfileAvatar';
