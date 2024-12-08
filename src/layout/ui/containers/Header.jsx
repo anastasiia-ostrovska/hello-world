@@ -28,7 +28,7 @@ const Header = () => {
         <ModeSwitcher />
       </Box>
       <TopNavbar navItems={TOP_NAVIGATION}>
-        <ProfileNavbar navItems={PROFILE_NAVIGATION} />
+        <ProfileNavbar navItems={PROFILE_NAVIGATION} iconSize={24} />
       </TopNavbar>
     </AppBar>
   );
