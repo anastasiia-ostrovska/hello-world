@@ -15,10 +15,10 @@ const PageFallback = () => {
       role="status"
       aria-label="Loading page"
     >
-      <CircularProgress size="15vw" />
       <Typography sx={{ mt: 5, fontSize: { xs: 18, sm: 36, md: 48 } }}>
         Loading...
       </Typography>
+      <CircularProgress size="15vw" />
     </Box>
   );
 };
