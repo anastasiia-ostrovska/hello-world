@@ -36,6 +36,7 @@ const ProfileNavbar = ({ iconSize }) => {
           'aria-labelledby': 'profile-menu-button',
         }}
         elevation={3}
+        sx={{ mt: 2 }}
       >
         <NavItemsList
           navItems={PROFILE_NAVIGATION}

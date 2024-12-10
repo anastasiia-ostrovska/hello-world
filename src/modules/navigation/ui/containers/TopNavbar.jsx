@@ -9,7 +9,15 @@ const TopNavbar = () => {
   const handleNavigate = useNavigationHandler();
 
   return (
-    <Box component="nav" sx={{ display: 'flex' }}>
+    <Box
+      component="nav"
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: { sm: 150 },
+        mr: '-8px',
+      }}
+    >
       <NavItemsList
         navItems={TOP_NAVIGATION}
         type={NAVIGATION_TYPES.TOP}
