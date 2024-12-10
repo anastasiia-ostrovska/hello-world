@@ -1,6 +1,5 @@
 import { ModeSwitcher } from '@/modules/mode-switcher';
 import {
-  MAIN_NAVIGATION,
   PROFILE_NAVIGATION,
   TOP_NAVIGATION,
 } from '@/modules/navigation/constants/navItemsData';
@@ -9,10 +8,8 @@ import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
 import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
 
-import UserPhoto from '@assets/user.svg';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
 import TopNavbar from '@/modules/navigation/ui/containers/TopNavbar';
-import MainNavbar from '@/modules/navigation/ui/containers/MainNavbar';
 import ProfileNavbar from '@/modules/navigation/ui/containers/ProfileNavbar';
 
 const Components = () => {
@@ -27,7 +24,6 @@ const Components = () => {
         <ModeSwitcher />
       </Box>
       <Stack spacing={1} direction="row" useFlexGap>
-        <UserAvatar src={UserPhoto} name="Some Name" />
         <UserAvatar name="Some Name" size={200} />
         <UserAvatar name="john doe" size={100} />
         <UserAvatar name="Nana" size={30} />
@@ -95,7 +91,6 @@ const Components = () => {
           backgroundImageSize={60}
         />
       </Box>
-      <MainNavbar navItems={MAIN_NAVIGATION} />
     </Stack>
   );
 };
