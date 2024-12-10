@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { ROUTES } from '@/modules/navigation';
-import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
+// import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
 const Components = lazy(() => import('@/components-presentation/Components'));
 
 const Layout = lazy(() => import('@/layout'));
+const PageFallback = lazy(() => import('@/pages/PageFallback'));
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
 const Notifications = lazy(() => import('@/pages/Notifications'));
 const Home = lazy(() => import('@components/News/News'));
@@ -20,7 +21,7 @@ const Settings = lazy(() => import('@/pages/Settings'));
 
 const App = () => {
   return (
-    <Suspense fallback={<LinearPreloader />}>
+    <Suspense fallback={<PageFallback />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<ProfileContainer />} />
@@ -38,6 +39,7 @@ const App = () => {
           <Route path={ROUTES.SETTINGS} element={<Settings />} />
         </Route>
         <Route path="/components" element={<Components />} />
+        <Route path="/loader" element={<PageFallback />} />
       </Routes>
     </Suspense>
   );
