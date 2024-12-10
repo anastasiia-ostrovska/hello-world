@@ -5,9 +5,7 @@ import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
 const Components = lazy(() => import('@/components-presentation/Components'));
 
-const Layout = lazy(() =>
-  import('@/layout').then((module) => ({ default: module.Layout }))
-);
+const Layout = lazy(() => import('@/layout'));
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
 const Notifications = lazy(() => import('@/pages/Notifications'));
 const Home = lazy(() => import('@components/News/News'));

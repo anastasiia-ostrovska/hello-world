@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import Navigation from '@/layout/ui/components/Navigation';
-import Content from '../components/Content';
-import Header from '../components/Header';
+import Content from '@/layout/ui/components/Content';
+import Header from '@/layout/ui/components/Header';
 
 const Layout = () => {
   return (

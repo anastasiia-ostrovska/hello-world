@@ -1,13 +1,14 @@
+import { PROFILE_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
+import { LogoutButton } from '@/modules/loginization';
 import NAVIGATION_TYPES from '@/modules/navigation/constants/navTypes';
 import useProfileNavbar from '@/modules/navigation/hooks/useProfileNavbar';
-import { LogoutButton } from '@/modules/loginization';
 import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
 import ProfileMenuButton from '@/modules/navigation/ui/components/ProfileMenuButton';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
-const ProfileNavbar = ({ navItems, iconSize }) => {
+const ProfileNavbar = ({ iconSize }) => {
   const {
     anchorEl,
     isMenuOpen,
@@ -37,7 +38,7 @@ const ProfileNavbar = ({ navItems, iconSize }) => {
         elevation={3}
       >
         <NavItemsList
-          navItems={navItems}
+          navItems={PROFILE_NAVIGATION}
           type={NAVIGATION_TYPES.PROFILE}
           onClick={handleMenuItemClick}
         />

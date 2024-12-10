@@ -18,10 +18,7 @@ const Users = () => {
 
   if (!isLoading) {
     return (
-      <Stack
-        spacing={2}
-        sx={{ alignItems: 'center', backgroundColor: 'white' }}
-      >
+      <Stack spacing={2} sx={{ alignItems: 'center' }}>
         <Pagination
           count={getPagesCount(users.totalCount, usersPerPageCount)}
           page={currentPage}
