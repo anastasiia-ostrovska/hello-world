@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import rootReducer from '@/app/store/rootReducer';
+import rootReducer from '@/store/rootReducer';
 import { createSelector } from 'reselect';
 
 const initialState = {

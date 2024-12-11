@@ -1,4 +1,4 @@
-import baseApi from '@/services/baseApi';
+import baseApi from '@/store/baseApi';
 import * as endpoints from '@/shared/constants/api';
 
 const usersApi = baseApi.injectEndpoints({

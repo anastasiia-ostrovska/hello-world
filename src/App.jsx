@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 import { ROUTES } from '@/modules/navigation';
 import Layout from '@/layout';
 import PageFallback from '@/modules/loaders/ui/containers/PageFallback';
-import Components from '@/components-presentation/Components';
+import Components from '@components/components-presentation/Components';
 
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
 const Notifications = lazy(() => import('@/pages/Notifications'));
