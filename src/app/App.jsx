@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { ROUTES } from '@/modules/navigation';
 import Layout from '@/layout';
-import PageFallback from '@/pages/PageFallback';
+import PageFallback from '@/modules/loaders/ui/containers/PageFallback';
 import Components from '@/components-presentation/Components';
 
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
