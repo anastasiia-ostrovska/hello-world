@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseApi = createApi({
+const baseAPI = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_PROXY_BASE_URL,
     tagTypes: ['Users'],
@@ -15,4 +15,4 @@ const baseApi = createApi({
   endpoints: () => ({}),
 });
 
-export default baseApi;
+export default baseAPI;

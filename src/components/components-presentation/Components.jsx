@@ -1,8 +1,5 @@
 import { ModeSwitcher } from '@/modules/mode-switcher';
-import {
-  PROFILE_NAVIGATION,
-  TOP_NAVIGATION,
-} from '@/modules/navigation/constants/navItemsData';
+import { PROFILE, TOP } from '@/modules/navigation/constants/navigation-config';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
@@ -73,8 +70,8 @@ const Components = () => {
         />
       </Box>
       <Box>
-        <TopNavbar navItems={TOP_NAVIGATION}>
-          <ProfileNavbar navItems={PROFILE_NAVIGATION} />
+        <TopNavbar navItems={TOP}>
+          <ProfileNavbar navItems={PROFILE} />
         </TopNavbar>
       </Box>
       <Box

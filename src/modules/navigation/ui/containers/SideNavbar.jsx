@@ -1,5 +1,5 @@
-import { MAIN_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
-import NAVIGATION_TYPES from '@/modules/navigation/constants/navTypes';
+import { MAIN } from '@/modules/navigation/constants/navigation-config';
+import NAVIGATION_TYPES from '@/modules/navigation/constants/navigation-types';
 import useNavigationHandler from '@/modules/navigation/hooks/useNavigationHandler';
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
@@ -16,7 +16,7 @@ const SideNavbar = () => {
     >
       <List>
         <NavItemsList
-          navItems={MAIN_NAVIGATION}
+          navItems={MAIN}
           type={NAVIGATION_TYPES.SIDE}
           onClick={handleNavigate}
         />

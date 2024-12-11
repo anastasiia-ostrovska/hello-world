@@ -1,4 +1,4 @@
-import NAVIGATION_ITEMS from '@/modules/navigation/constants/navItemComponents';
+import NAVIGATION_ITEMS from '@/modules/navigation/constants/navigation-items-config';
 import useNavItemColor from '@/modules/navigation/hooks/useNavItemColor';
 import useNavItemActive from '@/modules/navigation/hooks/useNavItemActive';
 

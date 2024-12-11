@@ -1,5 +1,5 @@
-import { MAIN_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
-import NAVIGATION_TYPES from '@/modules/navigation/constants/navTypes';
+import { MAIN } from '@/modules/navigation/constants/navigation-config';
+import NAVIGATION_TYPES from '@/modules/navigation/constants/navigation-types';
 import useNavigationHandler from '@/modules/navigation/hooks/useNavigationHandler';
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -12,7 +12,6 @@ const BottomNavbar = () => {
     <Paper
       component="nav"
       square
-      // variant="outlined"
       elevation={3}
       sx={{
         position: 'fixed',
@@ -23,7 +22,7 @@ const BottomNavbar = () => {
     >
       <BottomNavigation sx={{ backgroundColor: 'transparent' }}>
         <NavItemsList
-          navItems={MAIN_NAVIGATION}
+          navItems={MAIN}
           type={NAVIGATION_TYPES.BOTTOM}
           onClick={handleNavigate}
         />

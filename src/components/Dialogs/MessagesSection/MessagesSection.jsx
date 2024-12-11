@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMessages, sendNewMessage } from '@reducers/dialogsReducer';
-import { useInputValue } from '@/shared/hooks';
+import useInputValue from '@/shared/hooks/useInputValue';
 import MessagesList from './MessagesList/MessagesList';
 import NewMessage from './NewMessage/NewMessage';
 
