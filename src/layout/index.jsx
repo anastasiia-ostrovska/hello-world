@@ -12,6 +12,7 @@ const Layout = () => {
         sx={{
           height: 'inherit',
           pt: 10,
+          pb: { xs: 10, md: 3 },
         }}
       >
         <Content />
