@@ -1,5 +1,5 @@
-import { useMediaQueryType } from '@/shared/hooks';
 import { SideNavbar, BottomNavbar } from '@/modules/navigation';
+import useMediaQueryType from '@/shared/hooks/useMediaQueryType';
 
 const Navigation = () => {
   const { isUpMD } = useMediaQueryType();

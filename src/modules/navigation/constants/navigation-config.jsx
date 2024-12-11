@@ -1,3 +1,4 @@
+import { ROUTES } from '@/routing';
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 import AddBoxIcon from '@mui/icons-material/AddBox';
@@ -7,9 +8,8 @@ import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
 import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
-import * as ROUTES from './routes';
 
-export const MAIN_NAVIGATION = [
+export const MAIN = [
   { id: 'home', path: ROUTES.HOME, label: 'Home', icon: <HomeIcon /> },
   {
     id: 'network',
@@ -31,7 +31,7 @@ export const MAIN_NAVIGATION = [
   },
 ];
 
-export const TOP_NAVIGATION = [
+export const TOP = [
   {
     id: 'dialogs',
     path: ROUTES.DIALOGS,
@@ -46,7 +46,7 @@ export const TOP_NAVIGATION = [
   },
 ];
 
-export const PROFILE_NAVIGATION = [
+export const PROFILE = [
   {
     id: 'profile',
     path: ROUTES.PROFILE,

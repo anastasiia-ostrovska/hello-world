@@ -1,4 +1,4 @@
-import { useMediaQueryType } from '@/shared/hooks';
+import useMediaQueryType from '@/shared/hooks/useMediaQueryType';
 
 const usePageFallbackProgressSize = () => {
   const { isUpMD } = useMediaQueryType();

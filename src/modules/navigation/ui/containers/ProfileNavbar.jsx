@@ -1,6 +1,6 @@
-import { PROFILE_NAVIGATION } from '@/modules/navigation/constants/navItemsData';
+import { PROFILE } from '@/modules/navigation/constants/navigation-config';
 import { LogoutButton } from '@/modules/loginization';
-import NAVIGATION_TYPES from '@/modules/navigation/constants/navTypes';
+import NAVIGATION_TYPES from '@/modules/navigation/constants/navigation-types';
 import useProfileNavbar from '@/modules/navigation/hooks/useProfileNavbar';
 import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
 import ProfileMenuButton from '@/modules/navigation/ui/components/ProfileMenuButton';
@@ -39,7 +39,7 @@ const ProfileNavbar = ({ iconSize }) => {
         sx={{ mt: 2 }}
       >
         <NavItemsList
-          navItems={PROFILE_NAVIGATION}
+          navItems={PROFILE}
           type={NAVIGATION_TYPES.PROFILE}
           onClick={handleMenuItemClick}
         />

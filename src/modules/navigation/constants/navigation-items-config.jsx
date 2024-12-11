@@ -1,4 +1,4 @@
-import NAVIGATION_TYPES from '@/modules/navigation/constants/navTypes';
+import NAVIGATION_TYPES from '@/modules/navigation/constants/navigation-types';
 import TopNavItem from '@/modules/navigation/ui/components/TopNavItem';
 import SideNavItem from '@/modules/navigation/ui/components/SideNavItem';
 import BottomNavItem from '@/modules/navigation/ui/components/BottomNavItem';

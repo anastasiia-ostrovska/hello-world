@@ -1,16 +1,10 @@
 import { ModeSwitcher } from '@/modules/mode-switcher';
-import {
-  PROFILE_NAVIGATION,
-  TOP_NAVIGATION,
-} from '@/modules/navigation/constants/navItemsData';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
 import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
 
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import TopNavbar from '@/modules/navigation/ui/containers/TopNavbar';
-import ProfileNavbar from '@/modules/navigation/ui/containers/ProfileNavbar';
 
 const Components = () => {
   return (
@@ -71,11 +65,6 @@ const Components = () => {
           avatarSrc="https://everyone.plos.org/wp-content/uploads/sites/5/2021/02/kirsten-scaled-e1613041313402-982x1024.jpg"
           avatarBorderColor="white"
         />
-      </Box>
-      <Box>
-        <TopNavbar navItems={TOP_NAVIGATION}>
-          <ProfileNavbar navItems={PROFILE_NAVIGATION} />
-        </TopNavbar>
       </Box>
       <Box
         sx={{

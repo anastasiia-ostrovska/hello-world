@@ -1,7 +1,7 @@
-import baseApi from '@/services/baseApi';
-import * as endpoints from '@/shared/constants/api';
+import baseAPI from '@/store/base-API';
+import * as endpoints from '@/shared/constants/API-endpoints';
 
-const usersApi = baseApi.injectEndpoints({
+const usersApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
       query: ({ usersPerPageCount, currentPage }) =>
