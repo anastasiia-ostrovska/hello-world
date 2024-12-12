@@ -1,6 +1,6 @@
 import { lazy } from 'react';
-import ProfileContainer from '@/components/Profile/ProfileContainer';
-import SuspenseRoute from '../ui/components/SuspenseRoute';
+import ProfileContainer from '@components/Profile/ProfileContainer';
+import SuspenseRoute from './components/SuspenseRoute';
 import * as ROUTES from './routing-paths';
 
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
@@ -13,7 +13,7 @@ const Library = lazy(() => import('@/pages/Library'));
 const Settings = lazy(() => import('@/pages/Settings'));
 
 const Components = lazy(
-  () => import('@/components/components-presentation/Components')
+  () => import('@components/components-presentation/Components')
 );
 
 const ROUTES_CONFIG = [

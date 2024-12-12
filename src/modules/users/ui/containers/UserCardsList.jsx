@@ -10,7 +10,7 @@ const UserCardsList = ({ users }) => {
       container
       component="ul"
       rowSpacing={2}
-      aria-label="Grid container"
+      aria-label="List of users"
       columnSpacing={{ xs: 1, md: 2 }}
       sx={{ width: '100%', m: 0, p: 0 }}
     >
