@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import ProfileContainer from '@components/Profile/ProfileContainer';
-import SuspenseRoute from './components/SuspenseRoute';
+import SuspenseRoute from '../shared/components/SuspenseRoute';
 import * as ROUTES from './routing-paths';
 
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));

@@ -1,9 +1,29 @@
+import { useState } from 'react';
+import { useGetUsersQuery } from '@/modules/users/store/usersApi';
 import useUserCardClick from '@/modules/users/hooks/useUserCardClick';
+import useCurrentPage from '@/modules/users/hooks/useCurrentPage';
 import Grid2 from '@mui/material/Grid2';
 import UserCard from '@/modules/users/ui/containers/UserCard';
 
-const UserCardsList = ({ users }) => {
+const UserCardsList = () => {
   const handleUserCardClick = useUserCardClick();
+
+  const [usersPerPageCount] = useState(12);
+  const [
+    currentPage,
+    // handlePageChange
+  ] = useCurrentPage(1);
+
+  const { data, isLoading } = useGetUsersQuery({
+    usersPerPageCount,
+    currentPage,
+  });
+
+  const users = data?.items;
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Grid2
