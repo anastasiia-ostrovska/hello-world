@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useGetUsersQuery } from '@/modules/users/store/usersApi';
 import { Block } from '@/layout';
-import useCurrentPage from '@/modules/users/hooks/useCurrentPage';
-import UserCardsList from '@/modules/users/ui/containers/UserCardsList';
+import { UserCardsList, useCurrentPage } from '@/modules/users';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 
 const Network = () => {

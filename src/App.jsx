@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { ROUTES_CONFIG } from '@/routing';
+import ROUTES_CONFIG from '@/routing/routes-config';
 import Layout from '@/layout/Layout';
 import ProfileContainer from '@/components/Profile/ProfileContainer';
 

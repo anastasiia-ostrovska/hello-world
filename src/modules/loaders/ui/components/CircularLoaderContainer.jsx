@@ -12,10 +12,9 @@ const CircularLoaderContainer = ({
       variant={containerVariant}
       sx={{
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
+        flexGrow: 1,
         ...containerSX,
       }}
       role="status"
