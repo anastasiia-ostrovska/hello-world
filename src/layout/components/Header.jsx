@@ -8,10 +8,11 @@ const Header = () => {
     <Paper
       component="header"
       position="fixed"
-      elevation={3}
+      elevation={2}
       square
       sx={{
         position: 'fixed',
+        zIndex: 1,
         top: 0,
         right: 0,
         left: 0,

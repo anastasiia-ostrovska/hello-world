@@ -8,8 +8,10 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 const Users = () => {
-  const [usersPerPageCount] = useState(8);
+  const [usersPerPageCount] = useState(2);
   const [currentPage, handlePageChange] = useCurrentPage(1);
+
+  // xs :
 
   const { data: users, isLoading } = useGetUsersQuery({
     usersPerPageCount,
