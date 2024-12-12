@@ -10,15 +10,12 @@ const UserCardsList = ({ users }) => {
       container
       component="ul"
       rowSpacing={2}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-      sx={{ width: '100%' }}
+      aria-label="Grid container"
+      columnSpacing={{ xs: 1, md: 2 }}
+      sx={{ width: '100%', m: 0, p: 0 }}
     >
       {users.map((user) => (
-        <Grid2
-          key={user.id}
-          size={{ xs: 6, sm: 4, md: 3, lg: 2 }}
-          component="li"
-        >
+        <Grid2 key={user.id} component="li" size={{ xs: 6, sm: 4, md: 3 }}>
           <UserCard
             data={user}
             avatarSize={60}

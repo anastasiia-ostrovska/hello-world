@@ -11,7 +11,7 @@ const SideNavbar = () => {
   return (
     <Paper
       component="nav"
-      elevation={3}
+      elevation={2}
       sx={{ position: 'fixed', width: '180px' }}
     >
       <List>

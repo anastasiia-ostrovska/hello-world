@@ -6,7 +6,7 @@ import * as ROUTES from './routing-paths';
 const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
 const Notifications = lazy(() => import('@/pages/Notifications'));
 const Home = lazy(() => import('@components/News/News'));
-const Network = lazy(() => import('@components/Users/Users'));
+const Network = lazy(() => import('@/pages/Network'));
 const NewPost = lazy(() => import('@/pages/NewPost'));
 const Favourites = lazy(() => import('@components/Saved/Saved'));
 const Library = lazy(() => import('@/pages/Library'));

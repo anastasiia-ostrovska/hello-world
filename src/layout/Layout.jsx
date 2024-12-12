@@ -5,14 +5,17 @@ import Header from '@/layout/components/Header';
 
 const Layout = () => {
   return (
-    <Stack sx={{ height: '100vh', px: { xs: 2, sm: 4, lg: '10%', xl: '15%' } }}>
+    <Stack
+      sx={{
+        px: { xs: 2, sm: 4, lg: '10%', xl: '15%' },
+      }}
+    >
       <Header />
       <Stack
         direction="row"
         sx={{
-          height: 'inherit',
-          pt: 10,
-          pb: { xs: 10, md: 3 },
+          pt: { xs: 8, sm: 9, md: 10 },
+          pb: { xs: 8, sm: 9, md: 3 },
         }}
       >
         <Content />

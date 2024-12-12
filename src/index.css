@@ -3,9 +3,14 @@
 }
 
 body {
-    height: 100vh;
+    height: 100%;
 
     #root {
-        height: 100%;
+        height: inherit;
+
+        li {
+            list-style: none;
+        }
     }
 }
+
