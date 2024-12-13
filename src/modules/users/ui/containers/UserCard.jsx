@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
-import useFollowButtonClick from '@/modules/users/hooks/useFollowButtonClick';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
@@ -27,9 +26,6 @@ const UserCard = ({
   // temporarily mocked
   const jobTitle = 'Mocked job title';
   const country = 'Mocked country';
-
-  const { handleFollowClick, handleUnfollowClick, isDisabled } =
-    useFollowButtonClick();
 
   return (
     <Card
@@ -72,10 +68,9 @@ const UserCard = ({
       </CardActionArea>
       <CardActions sx={{ px: 4, py: 2 }}>
         <FollowButton
+          userId={id}
           isFollowed={followed}
-          disabled={isDisabled}
-          onFollowClick={() => handleFollowClick(id)}
-          onUnfollowClick={() => handleUnfollowClick(id)}
+          sx={{ width: '100%' }}
         />
       </CardActions>
     </Card>
