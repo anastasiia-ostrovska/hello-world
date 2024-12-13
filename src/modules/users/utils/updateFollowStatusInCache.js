@@ -15,12 +15,12 @@ const updateFollowStatusInCache = async ({
 
   if (!getUsersQuery?.originalArgs) return;
 
-  const { usersPerPageCount, currentPage } = getUsersQuery.originalArgs;
+  const { usersQueryCount, currentPage } = getUsersQuery.originalArgs;
 
   const patchResult = dispatch(
     usersApi.util.updateQueryData(
       endpointName,
-      { usersPerPageCount, currentPage },
+      { usersQueryCount, currentPage },
       (draft) => {
         const user = draft.items.find((user) => user.id === userId);
         if (user) {

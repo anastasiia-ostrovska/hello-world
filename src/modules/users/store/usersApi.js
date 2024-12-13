@@ -5,8 +5,8 @@ import updateFollowStatusInCache from '@/modules/users/utils/updateFollowStatusI
 const usersApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: ({ usersPerPageCount, currentPage }) =>
-        `${USERS}?count=${usersPerPageCount}&page=${currentPage}`,
+      query: ({ usersQueryCount, currentPage }) =>
+        `${USERS}?count=${usersQueryCount}&page=${currentPage}`,
       providesTags: ['Users'],
     }),
 

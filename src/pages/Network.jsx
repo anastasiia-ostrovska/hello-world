@@ -1,30 +1,15 @@
-// import { useState } from 'react';
-// import { useGetUsersQuery } from '@/modules/users/store/usersApi';
-import { UserCardsList } from '@/modules/users';
-import ContentBlock from '@/shared/components/ContentBlock';
-// import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
+import { UserCardsSection } from '@/modules/users';
+import SectionWrapper from '@/shared/components/SectionWrapper';
 
 const Network = () => {
-  // const [usersPerPageCount] = useState(12);
-  // const [currentPage, handlePageChange] = useCurrentPage(1);
-  //
-  // const { data: users, isLoading } = useGetUsersQuery({
-  //   usersPerPageCount,
-  //   currentPage,
-  // });
-
-  // if (!isLoading) {
   return (
     <>
-      <ContentBlock>Pagination</ContentBlock>
-      <ContentBlock>
-        <UserCardsList />
-      </ContentBlock>
+      <SectionWrapper>Pagination</SectionWrapper>
+      <SectionWrapper>
+        <UserCardsSection />
+      </SectionWrapper>
     </>
   );
-  // }
-
-  // return <LinearPreloader />;
 };
 
 export default Network;

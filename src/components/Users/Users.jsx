@@ -8,13 +8,13 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 const Users = () => {
-  const [usersPerPageCount] = useState(2);
+  const [usersQueryCount] = useState(2);
   const [currentPage, handlePageChange] = useCurrentPage(1);
 
   // xs :
 
   const { data: users, isLoading } = useGetUsersQuery({
-    usersPerPageCount,
+    usersQueryCount,
     currentPage,
   });
 
@@ -22,7 +22,7 @@ const Users = () => {
     return (
       <Stack spacing={2} sx={{ alignItems: 'center' }}>
         <Pagination
-          count={getPagesCount(users.totalCount, usersPerPageCount)}
+          count={getPagesCount(users.totalCount, usersQueryCount)}
           page={currentPage}
           onChange={handlePageChange}
           sx={{ p: 2 }}
