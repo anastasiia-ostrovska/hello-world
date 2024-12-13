@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
 import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
 
-import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
+import UserAvatarWithBackground from '@/modules/users/ui/components/UserAvatarWithBackground';
 
 const Components = () => {
   return (

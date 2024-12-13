@@ -1,6 +1,6 @@
 import Paper from '@mui/material/Paper';
 
-const ContentBlock = ({ children, sx = {} }) => {
+const SectionWrapper = ({ children, sx = {} }) => {
   return (
     <Paper elevation={2} sx={{ p: { xs: 1, sm: 2, md: 3 }, ...sx }}>
       {children}
@@ -8,4 +8,4 @@ const ContentBlock = ({ children, sx = {} }) => {
   );
 };
 
-export default ContentBlock;
+export default SectionWrapper;

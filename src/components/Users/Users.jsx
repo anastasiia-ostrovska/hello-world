@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useGetUsersQuery } from '@/modules/users/store/usersApi';
-import { UserCardsList } from '@/modules/users';
 import useCurrentPage from '@/modules/users/hooks/useCurrentPage';
 import getPagesCount from '@/modules/users/utils/getPagesCount';
+import UserCardsList from '@/modules/users/ui/components/UserCardsList';
 import LinearPreloader from '@components/common/prealoaders/LinearPreloader';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';

@@ -1,7 +1,7 @@
 import useFollowButtonClick from '@/modules/users/hooks/useFollowButtonClick';
 import Button from '@mui/material/Button';
 
-const FollowButton = ({ userId, isFollowed, sx }) => {
+const FollowButton = ({ userId, isFollowed, sx = {} }) => {
   const { handleFollowClick, handleUnfollowClick, isDisabled } =
     useFollowButtonClick();
 
