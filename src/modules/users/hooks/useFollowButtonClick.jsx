@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import {
   useFollowUserMutation,
   useUnfollowUserMutation,
@@ -10,13 +11,19 @@ const useFollowButtonClick = () => {
 
   const isDisabled = isLoadingFollow || isLoadingUnfollow;
 
-  const handleFollowClick = (userId) => {
-    followUser(userId);
-  };
+  const handleFollowClick = useCallback(
+    (userId) => {
+      followUser(userId);
+    },
+    [followUser]
+  );
 
-  const handleUnfollowClick = (userId) => {
-    unfollowUser(userId);
-  };
+  const handleUnfollowClick = useCallback(
+    (userId) => {
+      unfollowUser(userId);
+    },
+    [unfollowUser]
+  );
 
   return { handleFollowClick, handleUnfollowClick, isDisabled };
 };

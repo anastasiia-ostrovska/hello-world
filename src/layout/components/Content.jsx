@@ -6,11 +6,7 @@ const Content = () => {
     <Stack
       component="main"
       spacing={{ xs: 1, md: 2 }}
-      sx={{
-        flexGrow: 1,
-        height: '100%',
-        marginLeft: { md: '204px' },
-      }}
+      sx={{ flexGrow: 1, ml: { md: '204px' } }}
     >
       <Outlet />
     </Stack>

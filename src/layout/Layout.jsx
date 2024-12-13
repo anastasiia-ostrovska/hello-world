@@ -8,16 +8,13 @@ const Layout = () => {
     <Stack
       sx={{
         px: { xs: 2, sm: 4, lg: '10%', xl: '15%' },
+        pt: { xs: 8, sm: 9, md: 10 },
+        pb: { xs: 8, sm: 9, md: 3 },
+        minHeight: 'inherit',
       }}
     >
       <Header />
-      <Stack
-        direction="row"
-        sx={{
-          pt: { xs: 8, sm: 9, md: 10 },
-          pb: { xs: 8, sm: 9, md: 3 },
-        }}
-      >
+      <Stack sx={{ flexGrow: 1 }}>
         <Content />
         <Navigation />
       </Stack>

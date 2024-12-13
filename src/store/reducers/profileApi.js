@@ -1,10 +1,10 @@
+import { PROFILE } from '@/shared/constants/API-endpoints';
 import baseAPI from '@/store/base-API';
-import * as endpoints from '@/shared/constants/API-endpoints';
 
 const profileApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getUserProfile: builder.query({
-      query: (userId) => `${endpoints.PROFILE}/${userId}`,
+      query: (userId) => `${PROFILE}/${userId}`,
     }),
   }),
 });
