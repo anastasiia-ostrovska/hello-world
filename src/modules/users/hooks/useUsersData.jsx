@@ -4,6 +4,7 @@ import {
   selectUsersQueryCount,
 } from '@/modules/users/store/usersSlice';
 import { useGetUsersQuery } from '@/modules/users/store/usersApi';
+import generateMockUsers from '@/modules/users/utils/generateMockUsers';
 
 const useUsersData = () => {
   const usersQueryCount = useSelector(selectUsersQueryCount);
@@ -14,7 +15,11 @@ const useUsersData = () => {
     currentPage,
   });
 
-  return { usersData: data?.items, isLoading };
+  const users = isLoading
+    ? generateMockUsers(usersQueryCount)
+    : data?.items || [];
+
+  return { users, isLoading };
 };
 
 export default useUsersData;
