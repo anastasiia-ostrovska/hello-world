@@ -1,7 +1,7 @@
 import Grid2 from '@mui/material/Grid2';
 import UserCard from '@/modules/users/ui/components/UserCard';
 
-const UserCardsList = ({ users, handleUserCardClick }) => {
+const UserCardsList = ({ users, isLoading, handleUserCardClick }) => {
   return (
     <Grid2
       container
@@ -10,16 +10,27 @@ const UserCardsList = ({ users, handleUserCardClick }) => {
       columnSpacing={{ xs: 1, md: 2 }}
       sx={{ width: '100%', m: 0, p: 0 }}
     >
-      {users.map((user) => (
-        <Grid2 key={user.id} component="li" size={{ xs: 6, sm: 4, md: 3 }}>
-          <UserCard
-            userData={user}
-            avatarSize={60}
-            backgroundImageSize={60}
-            onUserCardClick={handleUserCardClick}
-          />
-        </Grid2>
-      ))}
+      {users.map((user) => {
+        const { id, name, followed, photos } = user;
+        const avatarSrc = photos?.small;
+        const backgroundSrc = photos?.large;
+
+        return (
+          <Grid2 key={id} component="li" size={{ xs: 6, sm: 4, md: 3 }}>
+            <UserCard
+              isLoading={isLoading}
+              userId={id}
+              userName={name}
+              isFollowed={followed}
+              avatarSrc={avatarSrc}
+              backgroundSrc={backgroundSrc}
+              avatarSize={60}
+              backgroundImageSize={60}
+              onUserCardClick={handleUserCardClick}
+            />
+          </Grid2>
+        );
+      })}
     </Grid2>
   );
 };
