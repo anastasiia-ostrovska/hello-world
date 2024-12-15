@@ -3,16 +3,13 @@ import useUsersData from '@/modules/users/hooks/useUsersData';
 import useUserCardClick from '@/modules/users/hooks/useUserCardClick';
 
 const UserCardsSection = () => {
-  const { usersData, isLoading } = useUsersData();
+  const { users, isLoading } = useUsersData();
   const handleUserCardClick = useUserCardClick();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <UserCardsList
-      users={usersData}
+      users={users}
+      isLoading={isLoading}
       handleUserCardClick={handleUserCardClick}
     />
   );

@@ -7,21 +7,20 @@ import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import UserAvatarWithBackground from '@/modules/users/ui/components/UserAvatarWithBackground';
 import FollowButton from '@/modules/users/ui/components/FollowButton';
+import Skeleton from '@mui/material/Skeleton';
 
 const UserCard = ({
-  userData,
+  isLoading,
+  userId,
+  userName,
+  isFollowed,
+  avatarSrc,
+  backgroundSrc,
   avatarSize,
   backgroundImageSize,
   onUserCardClick,
 }) => {
-  const { palette } = useTheme();
-
-  const {
-    id,
-    name,
-    followed,
-    photos: { small: avatarSrc, large: backgroundSrc },
-  } = userData;
+  const theme = useTheme();
 
   // temporarily mocked
   const jobTitle = 'Mocked job title';
@@ -36,37 +35,68 @@ const UserCard = ({
       }}
     >
       <CardActionArea
-        aria-label={`Visit ${name} profile`}
-        onClick={() => onUserCardClick(id)}
+        aria-label={`Visit ${userName} profile`}
+        onClick={() => onUserCardClick(userId)}
       >
         <UserAvatarWithBackground
-          name={name}
+          isLoading={isLoading}
+          name={userName}
           avatarSrc={avatarSrc}
           backgroundSrc={backgroundSrc}
           avatarSize={avatarSize}
           backgroundImageSize={backgroundImageSize}
-          avatarBorderColor={palette.background.userCard}
+          avatarBorderColor={theme.palette.background.userCard}
           avatarBorderWidth="3px"
           sx={{ mb: avatarSize / 16 }}
         />
         <CardContent align="center">
           <Typography gutterBottom noWrap variant="h6" component="h5">
-            {name}
+            {isLoading ? (
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: theme.typography.h6.fontSize }}
+              />
+            ) : (
+              userName
+            )}
           </Typography>
           <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-            {jobTitle}
+            {isLoading ? (
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: theme.typography.body1.fontSize }}
+              />
+            ) : (
+              jobTitle
+            )}
           </Typography>
           <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-            {country}
+            {isLoading ? (
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: theme.typography.body1.fontSize }}
+              />
+            ) : (
+              country
+            )}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
-        <FollowButton
-          userId={id}
-          isFollowed={followed}
-          sx={{ width: '100%', maxWidth: 180 }}
-        />
+        {isLoading ? (
+          <Skeleton
+            variant="rectangular"
+            height={36}
+            width="100%"
+            sx={{ borderRadius: '2rem', maxWidth: 180 }}
+          />
+        ) : (
+          <FollowButton
+            userId={userId}
+            isFollowed={isFollowed}
+            sx={{ width: '100%', maxWidth: 180, height: 36 }}
+          />
+        )}
       </CardActions>
     </Card>
   );
