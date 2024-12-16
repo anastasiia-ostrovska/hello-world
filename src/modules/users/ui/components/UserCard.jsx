@@ -33,10 +33,11 @@ const UserCard = ({
       sx={{
         width: '100%',
         backgroundColor: 'background.userCard',
+        pointerEvents: isLoading ? 'none' : 'auto',
       }}
     >
       <CardActionArea
-        aria-label={`Visit ${userName} profile`}
+        aria-label={isLoading ? 'Loading profile' : `Visit ${userName} profile`}
         onClick={() => onUserCardClick(userId)}
       >
         <UserAvatarWithBackground
