@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Delayed = ({ delay = 300, children }) => {
+const Delayed = ({ delay = 100, children }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
