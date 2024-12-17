@@ -16,12 +16,7 @@ const UserCardsList = ({ users, isLoading, handleUserCardClick }) => {
         const backgroundSrc = photos?.large;
 
         return (
-          <Grid2
-            key={id}
-            component="li"
-            // size={{ xs: 6, sm: 4, md: 3 }}
-            size={{ xs: 6, md: 4, lg: 3 }}
-          >
+          <Grid2 key={id} component="li" size={{ xs: 6, md: 4, lg: 3 }}>
             <UserCard
               isLoading={isLoading}
               userId={id}

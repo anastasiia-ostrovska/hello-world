@@ -1,9 +1,9 @@
 import UserCardsList from '@/modules/users/ui/components/UserCardsList';
-import useUsersData from '@/modules/users/hooks/useUsersData';
+import useUsersItemsData from '@/modules/users/hooks/useUsersItemsData';
 import useUserCardClick from '@/modules/users/hooks/useUserCardClick';
 
 const UserCardsSection = () => {
-  const { users, isLoading } = useUsersData();
+  const { users, isLoading } = useUsersItemsData();
   const handleUserCardClick = useUserCardClick();
 
   return (
