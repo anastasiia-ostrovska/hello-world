@@ -7,9 +7,9 @@ const Layout = () => {
   return (
     <Stack
       sx={{
-        px: { xs: 2, sm: 4, lg: '10%', xl: '15%' },
-        pt: { xs: 8, sm: 9, md: 10 },
-        pb: { xs: 8, sm: 9, md: 3 },
+        px: { xs: 1, sm: 8, lg: '10%', xl: '15%' },
+        pt: { xs: 8, md: 9 },
+        pb: { xs: 8, md: 2 },
         minHeight: 'inherit',
       }}
     >
