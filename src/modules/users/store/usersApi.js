@@ -1,41 +1,29 @@
 import baseAPI from '@/store/base-API';
-import * as endpoints from '@/shared/constants/API-endpoints';
+import { USERS, FOLLOW } from '@/shared/constants/API-endpoints';
+import updateFollowStatusInCache from '@/modules/users/utils/updateFollowStatusInCache';
 
 const usersApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: ({ usersPerPageCount, currentPage }) =>
-        `${endpoints.USERS}?count=${usersPerPageCount}&page=${currentPage}`,
+      query: ({ usersQueryCount, currentPage }) =>
+        `${USERS}?count=${usersQueryCount}&page=${currentPage}`,
       providesTags: ['Users'],
     }),
 
     unfollowUser: builder.mutation({
       query: (userId) => ({
         method: 'DELETE',
-        url: `${endpoints.FOLLOW}/${userId}`,
+        url: `${FOLLOW}/${userId}`,
       }),
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
-        const {
-          users: { usersPerPageCount, currentPage },
-        } = getState();
-
-        const patchResult = dispatch(
-          usersApi.util.updateQueryData(
-            'getUsers',
-            { usersPerPageCount, currentPage },
-            (draft) => {
-              const user = draft.items.find((user) => user.id === userId);
-              if (user) {
-                user.followed = false;
-              }
-            }
-          )
-        );
-        try {
-          await queryFulfilled;
-        } catch (error) {
-          patchResult.undo();
-        }
+        await updateFollowStatusInCache({
+          userId,
+          dispatch,
+          getState,
+          queryFulfilled,
+          usersApi,
+          isFollowed: false,
+        });
       },
       invalidatesTags: ['Users'],
     }),
@@ -43,31 +31,18 @@ const usersApi = baseAPI.injectEndpoints({
     followUser: builder.mutation({
       query: (userId) => ({
         method: 'POST',
-        url: `${endpoints.FOLLOW}/${userId}`,
+        url: `${FOLLOW}/${userId}`,
       }),
 
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
-        const {
-          users: { usersPerPageCount, currentPage },
-        } = getState();
-
-        const patchResult = dispatch(
-          usersApi.util.updateQueryData(
-            'getUsers',
-            { usersPerPageCount, currentPage },
-            (draft) => {
-              const user = draft.items.find((user) => user.id === userId);
-              if (user) {
-                user.followed = true;
-              }
-            }
-          )
-        );
-        try {
-          await queryFulfilled;
-        } catch (error) {
-          patchResult.undo();
-        }
+        await updateFollowStatusInCache({
+          userId,
+          dispatch,
+          getState,
+          queryFulfilled,
+          usersApi,
+          isFollowed: true,
+        });
       },
       invalidatesTags: ['Users'],
     }),

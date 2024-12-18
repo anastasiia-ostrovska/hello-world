@@ -1,13 +1,13 @@
 import usePageFallbackProgressSize from '@/modules/loaders/hooks/usePageFallbackProgressSize';
 import Delayed from '@/shared/components/Delayed';
-import CircularLoaderContainer from '@/modules/loaders/ui/components/CircularLoaderContainer';
+import CircularLoaderBlock from '@/modules/loaders/ui/components/CircularLoaderBlock';
 
 const PageFallback = () => {
   const size = usePageFallbackProgressSize();
 
   return (
     <Delayed>
-      <CircularLoaderContainer progressSize={size} />
+      <CircularLoaderBlock progressSize={size} />
     </Delayed>
   );
 };

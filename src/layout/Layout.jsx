@@ -5,16 +5,16 @@ import Header from '@/layout/components/Header';
 
 const Layout = () => {
   return (
-    <Stack sx={{ height: '100vh', px: { xs: 2, sm: 4, lg: '10%', xl: '15%' } }}>
+    <Stack
+      sx={{
+        px: { xs: 1, sm: 8, lg: '10%', xl: '15%' },
+        pt: { xs: 8, md: 9 },
+        pb: { xs: 8, md: 2 },
+        minHeight: 'inherit',
+      }}
+    >
       <Header />
-      <Stack
-        direction="row"
-        sx={{
-          height: 'inherit',
-          pt: 10,
-          pb: { xs: 10, md: 3 },
-        }}
-      >
+      <Stack sx={{ flexGrow: 1 }}>
         <Content />
         <Navigation />
       </Stack>

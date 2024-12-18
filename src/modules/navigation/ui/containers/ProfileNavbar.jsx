@@ -35,8 +35,9 @@ const ProfileNavbar = ({ iconSize }) => {
         MenuListProps={{
           'aria-labelledby': 'profile-menu-button',
         }}
-        elevation={3}
+        elevation={5}
         sx={{ mt: 2 }}
+        disableScrollLock
       >
         <NavItemsList
           navItems={PROFILE}

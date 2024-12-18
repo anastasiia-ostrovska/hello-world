@@ -1,4 +1,4 @@
-import { ROUTES } from '@/routing';
+import * as ROUTES from '@/routing/routing-paths';
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 import AddBoxIcon from '@mui/icons-material/AddBox';

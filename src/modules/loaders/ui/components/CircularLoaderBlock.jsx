@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
 
-const CircularLoaderContainer = ({
+const CircularLoaderBlock = ({
   containerVariant = 'outlined',
   containerSX = {},
   progressColor = 'primary',
@@ -12,10 +12,9 @@ const CircularLoaderContainer = ({
       variant={containerVariant}
       sx={{
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
+        flexGrow: 1,
         ...containerSX,
       }}
       role="status"
@@ -26,4 +25,4 @@ const CircularLoaderContainer = ({
   );
 };
 
-export default CircularLoaderContainer;
+export default CircularLoaderBlock;

@@ -1,10 +1,10 @@
+import { AUTH_ME } from '@/shared/constants/API-endpoints';
 import baseAPI from '@/store/base-API';
-import * as endpoints from '@/shared/constants/API-endpoints';
 
 const authApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getAuthData: builder.query({
-      query: () => endpoints.AUTH_ME,
+      query: () => AUTH_ME,
     }),
   }),
   overrideExisting: true,

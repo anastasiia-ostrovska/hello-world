@@ -7,20 +7,34 @@ const UserAvatar = ({ name, src, size, sx = {} }) => {
   const color = useAvatarColor(name);
   const initials = useMemo(() => getInitials(name), [name]);
 
+  if (name) {
+    return (
+      <Avatar
+        alt={name}
+        src={src}
+        sx={{
+          width: size,
+          height: size,
+          fontSize: size * 0.5,
+          backgroundColor: src ? 'transparent' : color,
+          ...sx,
+        }}
+      >
+        {initials}
+      </Avatar>
+    );
+  }
+
   return (
     <Avatar
-      alt={name}
-      src={src}
+      alt="Avatar is loading..."
+      src=""
       sx={{
         width: size,
         height: size,
-        fontSize: size * 0.5,
-        backgroundColor: src ? 'transparent' : color,
         ...sx,
       }}
-    >
-      {initials}
-    </Avatar>
+    />
   );
 };
 

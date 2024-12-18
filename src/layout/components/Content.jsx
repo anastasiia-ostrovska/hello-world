@@ -1,17 +1,15 @@
 import { Outlet } from 'react-router-dom';
-import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 const Content = () => {
   return (
-    <Box
+    <Stack
       component="main"
-      sx={{
-        flexGrow: 1,
-        marginLeft: { md: '204px' },
-      }}
+      spacing={{ xs: 1, md: 2 }}
+      sx={{ flexGrow: 1, ml: { md: '204px' } }}
     >
       <Outlet />
-    </Box>
+    </Stack>
   );
 };
 
