@@ -37,6 +37,7 @@ const ProfileNavbar = ({ iconSize }) => {
         }}
         elevation={5}
         sx={{ mt: 2 }}
+        disableScrollLock
       >
         <NavItemsList
           navItems={PROFILE}
