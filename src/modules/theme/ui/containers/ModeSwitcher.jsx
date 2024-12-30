@@ -1,19 +1,16 @@
-import {
-  selectIsLightMode,
-  toggleMode,
-} from '@/modules/theme/store/themeSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import useMode from '@/modules/theme/hooks/useMode';
 import SwitchButton from '../components/SwitchButton';
 
 const ModeSwitcher = () => {
-  const dispatch = useDispatch();
-  const isLightMode = useSelector(selectIsLightMode);
+  const { isLightMode, modeToSwitch, handleSwitchMode } = useMode();
 
-  const handleSwitchMode = () => {
-    dispatch(toggleMode());
-  };
-
-  return <SwitchButton isLightMode={isLightMode} onClick={handleSwitchMode} />;
+  return (
+    <SwitchButton
+      isLightMode={isLightMode}
+      modeToSwitch={modeToSwitch}
+      onClick={handleSwitchMode}
+    />
+  );
 };
 
 export default ModeSwitcher;
