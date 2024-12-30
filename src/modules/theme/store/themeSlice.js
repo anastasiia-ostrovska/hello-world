@@ -12,7 +12,7 @@ const initialState = {
   isLightMode: !!JSON.parse(localStorage.getItem(modeKey)),
 };
 
-export const themeSlice = createSlice({
+const themeSlice = createSlice({
   name: 'theme',
   initialState,
   selectors: {
@@ -31,10 +31,11 @@ export const themeSlice = createSlice({
 
 const { toggleIsLightMode } = themeSlice.actions;
 
-export const { selectMode } = themeSlice.selectors;
-
 export const toggleMode = () => (dispatch) => {
   const isLightMode = !!JSON.parse(localStorage.getItem(modeKey));
   localStorage.setItem(modeKey, JSON.stringify(!isLightMode));
   dispatch(toggleIsLightMode());
 };
+
+export const { selectIsLightMode, selectMode, selectModeToSwitch } =
+  themeSlice.selectors;
