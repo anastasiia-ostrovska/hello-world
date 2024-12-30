@@ -1,12 +1,8 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectMode } from '../../store/themeSlice';
-import getTheme from '../../utils/getTheme';
+import useAppTheme from '@/modules/theme/hooks/useAppTheme';
 
 const ThemeWrapper = ({ children }) => {
-  const mode = useSelector(selectMode);
-  const theme = useMemo(() => getTheme(mode), [mode]);
+  const theme = useAppTheme();
 
   return (
     <ThemeProvider theme={theme}>

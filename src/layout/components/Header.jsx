@@ -1,4 +1,4 @@
-import { ModeSwitcher } from '@/modules/mode-switcher';
+import { ModeSwitcher } from '@/modules/theme';
 import { TopNavbar } from '@/modules/navigation';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';

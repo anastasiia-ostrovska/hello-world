@@ -1,19 +1,19 @@
 import { lazy } from 'react';
-import ProfileContainer from '@components/Profile/ProfileContainer';
+import ProfileContainer from '@/_old-version/components/Profile/ProfileContainer';
 import SuspenseRoute from '../shared/components/SuspenseRoute';
 import * as ROUTES from './routing-paths';
 
-const Dialogs = lazy(() => import('@components/Dialogs/Dialogs'));
+const Dialogs = lazy(() => import('@/_old-version/components/Dialogs/Dialogs'));
 const Notifications = lazy(() => import('@/pages/Notifications'));
-const Home = lazy(() => import('@components/News/News'));
+const Home = lazy(() => import('@/pages/Home'));
 const Network = lazy(() => import('@/pages/Network'));
 const NewPost = lazy(() => import('@/pages/NewPost'));
-const Favourites = lazy(() => import('@components/Saved/Saved'));
+const Favourites = lazy(() => import('@/pages/Favourites'));
 const Library = lazy(() => import('@/pages/Library'));
 const Settings = lazy(() => import('@/pages/Settings'));
 
 const Components = lazy(
-  () => import('@components/components-presentation/Components')
+  () => import('@/_old-version/components-presentation/Components')
 );
 
 const ROUTES_CONFIG = [

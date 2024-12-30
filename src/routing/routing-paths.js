@@ -14,4 +14,4 @@ export const PROFILE = '/profile';
 
 export const LIBRARY = '/library';
 
-export const SETTINGS = '/settings';
+export const SETTINGS = '/theme';
