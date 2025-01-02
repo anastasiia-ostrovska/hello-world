@@ -21,6 +21,8 @@ const UserCardsList = ({ users, isLoading, handleUserCardClick }) => {
               isLoading={isLoading}
               userId={id}
               userName={name}
+              jobTitle="Mocked job title"
+              country="Mocked country"
               isFollowed={followed}
               avatarSrc={avatarSrc}
               backgroundSrc={backgroundSrc}

@@ -5,13 +5,15 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import FollowButton from '@/modules/users/ui/components/FollowButton';
 import UserCardContent from '@/modules/users/ui/components/UserCardContent';
+import FollowButton from '@/modules/users/ui/components/FollowButton';
 
 const UserCard = ({
   isLoading,
   userId,
   userName,
+  jobTitle,
+  country,
   isFollowed,
   avatarSrc,
   backgroundSrc,
@@ -19,11 +21,7 @@ const UserCard = ({
   backgroundImageSize,
   onUserCardClick,
 }) => {
-  const theme = useTheme();
-
-  // temporarily mocked
-  const jobTitle = 'Mocked job title';
-  const country = 'Mocked country';
+  const { palette } = useTheme();
 
   return (
     <Card
@@ -44,7 +42,7 @@ const UserCard = ({
           backgroundSrc={backgroundSrc}
           avatarSize={avatarSize}
           backgroundImageSize={backgroundImageSize}
-          avatarBorderColor={theme.palette.background.userCard}
+          avatarBorderColor={palette.background.userCard}
           avatarBorderWidth="3px"
           sx={{ mb: avatarSize / 16 }}
         />
