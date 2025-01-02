@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from '@/modules/users/store/usersSlice';
-import useUsers from '@/modules/users/hooks/useUsers';
-import useUsersQueryParamsSelectors from '@/modules/users/hooks/useUsersQueryParamsSelectors';
+import useUsers from '@/modules/users/hooks/api/useUsers';
+import useUsersQueryParams from '@/modules/users/hooks/state/useUsersQueryParams';
 
 const usePagination = () => {
-  const { usersQueryCount, currentPage } = useUsersQueryParamsSelectors();
+  const { usersQueryCount, currentPage } = useUsersQueryParams();
   const { data, isLoading } = useUsers();
   const dispatch = useDispatch();
 

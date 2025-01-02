@@ -1,4 +1,4 @@
-import useFollowButton from '@/modules/users/hooks/useFollowButton';
+import useFollowButton from '@/modules/users/hooks/ui/useFollowButton';
 import Button from '@mui/material/Button';
 
 const FollowButton = ({ userId, isFollowed, sx = {} }) => {
