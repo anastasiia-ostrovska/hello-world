@@ -1,14 +1,12 @@
 import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { SkeletonLoaderWrapper } from '@/modules/loaders';
-import Skeleton from '@mui/material/Skeleton';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-import UserAvatarWithBackground from '@/modules/users/ui/components/UserAvatarWithBackground';
+import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
 import FollowButton from '@/modules/users/ui/components/FollowButton';
+import UserCardContent from '@/modules/users/ui/components/UserCardContent';
 
 const UserCard = ({
   isLoading,
@@ -50,17 +48,12 @@ const UserCard = ({
           avatarBorderWidth="3px"
           sx={{ mb: avatarSize / 16 }}
         />
-        <CardContent align="center">
-          <Typography gutterBottom noWrap variant="h6" component="h5">
-            {isLoading ? <Skeleton /> : userName}
-          </Typography>
-          <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-            {isLoading ? <Skeleton /> : jobTitle}
-          </Typography>
-          <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-            {isLoading ? <Skeleton /> : country}
-          </Typography>
-        </CardContent>
+        <UserCardContent
+          isLoading={isLoading}
+          userName={userName}
+          jobTitle={jobTitle}
+          country={country}
+        />
       </CardActionArea>
       <CardActions sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
         <SkeletonLoaderWrapper
