@@ -4,11 +4,11 @@ import {
   selectUsersQueryCount,
 } from '@/modules/users/store/usersSlice';
 
-const useUsersQueryParamsSelectors = () => {
+const useUsersQueryParams = () => {
   const usersQueryCount = useSelector(selectUsersQueryCount);
   const currentPage = useSelector(selectCurrentPage);
 
   return { usersQueryCount, currentPage };
 };
 
-export default useUsersQueryParamsSelectors;
+export default useUsersQueryParams;

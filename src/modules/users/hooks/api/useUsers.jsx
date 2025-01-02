@@ -1,8 +1,8 @@
 import { useGetUsersQuery } from '@/modules/users/store/usersApi';
-import useUsersQueryParamsSelectors from '@/modules/users/hooks/useUsersQueryParamsSelectors';
+import useUsersQueryParams from '@/modules/users/hooks/state/useUsersQueryParams';
 
 const useUsers = () => {
-  const { usersQueryCount, currentPage } = useUsersQueryParamsSelectors();
+  const { usersQueryCount, currentPage } = useUsersQueryParams();
   const { data, isLoading } = useGetUsersQuery({
     usersQueryCount,
     currentPage,

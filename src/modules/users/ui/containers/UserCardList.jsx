@@ -1,7 +1,10 @@
+import useUserCardList from '@/modules/users/hooks/ui/useUserCardList';
 import Grid2 from '@mui/material/Grid2';
 import UserCard from '@/modules/users/ui/components/UserCard';
 
-const UserCardsList = ({ users, isLoading, handleUserCardClick }) => {
+const UserCardList = () => {
+  const { users, isLoading, handleUserCardClick } = useUserCardList();
+
   return (
     <Grid2
       container
@@ -21,6 +24,8 @@ const UserCardsList = ({ users, isLoading, handleUserCardClick }) => {
               isLoading={isLoading}
               userId={id}
               userName={name}
+              jobTitle="Mocked job title"
+              country="Mocked country"
               isFollowed={followed}
               avatarSrc={avatarSrc}
               backgroundSrc={backgroundSrc}
@@ -35,4 +40,4 @@ const UserCardsList = ({ users, isLoading, handleUserCardClick }) => {
   );
 };
 
-export default UserCardsList;
+export default UserCardList;

@@ -1,4 +1,4 @@
-import { UsersPagination, UserCardsSection } from '@/modules/users';
+import { UsersPagination, UserCardList } from '@/modules/users';
 import SectionWrapper from '@/shared/components/SectionWrapper';
 
 const Network = () => {
@@ -8,7 +8,7 @@ const Network = () => {
         <UsersPagination />
       </SectionWrapper>
       <SectionWrapper>
-        <UserCardsSection />
+        <UserCardList />
       </SectionWrapper>
     </>
   );

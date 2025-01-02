@@ -1,20 +1,14 @@
-import usePaginationSize from '@/modules/users/hooks/usePaginationSize';
-import usePagination from '@/modules/users/hooks/usePagination';
+import usePagination from '@/modules/users/hooks/ui/usePagination';
 import Pagination from '@mui/material/Pagination';
 
 const UsersPagination = () => {
-  const size = usePaginationSize();
-  const {
-    currentPage: page,
-    pagesCount: count,
-    handlePageChange,
-  } = usePagination();
+  const { size, pagesCount, currentPage, handlePageChange } = usePagination();
 
   return (
     <Pagination
       size={size}
-      count={count}
-      page={page}
+      count={pagesCount}
+      page={currentPage}
       onChange={handlePageChange}
     />
   );

@@ -1,5 +1,5 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import useAppTheme from '@/modules/theme/hooks/useAppTheme';
+import useAppTheme from '@/modules/theme/hooks/ui/useAppTheme';
 
 const ThemeWrapper = ({ children }) => {
   const theme = useAppTheme();

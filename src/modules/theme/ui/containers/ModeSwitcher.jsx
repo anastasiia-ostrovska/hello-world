@@ -1,4 +1,4 @@
-import useMode from '@/modules/theme/hooks/useMode';
+import useMode from '@/modules/theme/hooks/ui/useMode';
 import SwitchButton from '../components/SwitchButton';
 
 const ModeSwitcher = () => {
