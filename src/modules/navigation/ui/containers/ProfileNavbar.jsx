@@ -1,7 +1,7 @@
 import { profileNavItems } from '@/modules/navigation/config/navigation-items';
 import { LogoutButton } from '@/modules/loginization';
 import NAVIGATION_TYPE from '@/modules/navigation/constants/navigation-types';
-import useProfileNavbar from '@/modules/navigation/hooks/useProfileNavbar';
+import useProfileNavbar from '@/modules/navigation/hooks/ui/useProfileNavbar';
 import NavigationList from '@/modules/navigation/ui/components/NavigationList';
 import ProfileMenuButton from '@/modules/navigation/ui/components/ProfileMenuButton';
 import Menu from '@mui/material/Menu';
@@ -31,7 +31,7 @@ const ProfileNavbar = ({ iconSize }) => {
         id="profile-menu"
         anchorEl={anchorEl}
         open={isMenuOpen}
-        onClick={handleMenuClose}
+        onClose={handleMenuClose}
         MenuListProps={{
           'aria-labelledby': 'profile-menu-button',
         }}
