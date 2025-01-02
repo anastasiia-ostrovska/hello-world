@@ -1,9 +1,9 @@
 import { useTheme } from '@mui/material/styles';
 
 const useNavItemColor = (isActive) => {
-  const theme = useTheme();
+  const { palette } = useTheme();
 
-  return isActive ? theme.palette.primary.main : theme.palette.text.secondary;
+  return isActive ? palette.primary.main : palette.text.secondary;
 };
 
 export default useNavItemColor;
