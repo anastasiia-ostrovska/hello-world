@@ -2,6 +2,7 @@
  * Hash function to compute a hash value for a string.
  * @param {string} name - The user's name.
  * @returns {number} - The hash value.
+ * Returns 0 if the input is invalid
  */
 
 const getNameHash = (name) => {
@@ -9,8 +10,8 @@ const getNameHash = (name) => {
 
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
-    const char = name.charCodeAt(i);
-    hash = (hash * 31 + char) % 4294967296; // 2^32
+    const charCode = name.charCodeAt(i);
+    hash = (hash * 31 + charCode) % 4294967296; // 2^32
   }
 
   return hash;

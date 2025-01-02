@@ -1,5 +1,5 @@
 import useUsers from '@/modules/users/hooks/useUsers';
-import generateMockUsers from '@/modules/users/utils/generateMockUsers';
+import generateMockUsers from '@/modules/users/helpers/generateMockUsers';
 import useUsersQueryParamsSelectors from '@/modules/users/hooks/useUsersQueryParamsSelectors';
 
 const useUsersItemsData = () => {
