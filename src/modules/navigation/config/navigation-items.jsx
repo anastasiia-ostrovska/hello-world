@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-export const MAIN = [
+export const mainNavItems = [
   { id: 'home', path: ROUTES.HOME, label: 'Home', icon: <HomeIcon /> },
   {
     id: 'network',
@@ -31,7 +31,7 @@ export const MAIN = [
   },
 ];
 
-export const TOP = [
+export const topNavItems = [
   {
     id: 'dialogs',
     path: ROUTES.DIALOGS,
@@ -46,7 +46,7 @@ export const TOP = [
   },
 ];
 
-export const PROFILE = [
+export const profileNavItems = [
   {
     id: 'profile',
     path: ROUTES.PROFILE,

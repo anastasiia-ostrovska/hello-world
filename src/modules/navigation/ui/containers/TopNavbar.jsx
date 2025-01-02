@@ -1,6 +1,6 @@
-import { TOP } from '@/modules/navigation/constants/navigation-config';
+import { topNavItems } from '@/modules/navigation/config/navigation-items';
 import useNavigationHandler from '@/modules/navigation/hooks/useNavigationHandler';
-import NAVIGATION_TYPES from '@/modules/navigation/constants/navigation-types';
+import NAVIGATION_TYPE from '@/modules/navigation/constants/navigation-types';
 import Box from '@mui/material/Box';
 import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
 import ProfileNavbar from '@/modules/navigation/ui/containers/ProfileNavbar';
@@ -19,8 +19,8 @@ const TopNavbar = () => {
       }}
     >
       <NavItemsList
-        navItems={TOP}
-        type={NAVIGATION_TYPES.TOP}
+        navItems={topNavItems}
+        type={NAVIGATION_TYPE.TOP}
         onClick={handleNavigate}
       />
       <ProfileNavbar iconSize={24} />

@@ -1,6 +1,6 @@
-import { PROFILE } from '@/modules/navigation/constants/navigation-config';
+import { profileNavItems } from '@/modules/navigation/config/navigation-items';
 import { LogoutButton } from '@/modules/loginization';
-import NAVIGATION_TYPES from '@/modules/navigation/constants/navigation-types';
+import NAVIGATION_TYPE from '@/modules/navigation/constants/navigation-types';
 import useProfileNavbar from '@/modules/navigation/hooks/useProfileNavbar';
 import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
 import ProfileMenuButton from '@/modules/navigation/ui/components/ProfileMenuButton';
@@ -40,8 +40,8 @@ const ProfileNavbar = ({ iconSize }) => {
         disableScrollLock
       >
         <NavItemsList
-          navItems={PROFILE}
-          type={NAVIGATION_TYPES.PROFILE}
+          navItems={profileNavItems}
+          type={NAVIGATION_TYPE.PROFILE}
           onClick={handleMenuItemClick}
         />
         <Divider />
