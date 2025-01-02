@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import useNavigationHandler from '@/modules/navigation/hooks/useNavigationHandler';
+import useNavigateToPath from '@/modules/navigation/hooks/handlers/useNavigateToPath';
 
 const useProfileNavbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [pendingPath, setPendingPath] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  const handleNavigate = useNavigationHandler();
+  const handleNavigate = useNavigateToPath();
 
   useEffect(() => {
     if (!isMenuOpen && pendingPath) {

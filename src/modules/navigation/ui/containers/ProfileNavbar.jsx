@@ -1,8 +1,8 @@
-import { PROFILE } from '@/modules/navigation/constants/navigation-config';
+import { profileNavItems } from '@/modules/navigation/config/navigation-items';
 import { LogoutButton } from '@/modules/loginization';
-import NAVIGATION_TYPES from '@/modules/navigation/constants/navigation-types';
-import useProfileNavbar from '@/modules/navigation/hooks/useProfileNavbar';
-import NavItemsList from '@/modules/navigation/ui/components/NavItemsList';
+import NAVIGATION_TYPE from '@/modules/navigation/constants/navigation-types';
+import useProfileNavbar from '@/modules/navigation/hooks/ui/useProfileNavbar';
+import NavigationList from '@/modules/navigation/ui/components/NavigationList';
 import ProfileMenuButton from '@/modules/navigation/ui/components/ProfileMenuButton';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
@@ -31,7 +31,7 @@ const ProfileNavbar = ({ iconSize }) => {
         id="profile-menu"
         anchorEl={anchorEl}
         open={isMenuOpen}
-        onClick={handleMenuClose}
+        onClose={handleMenuClose}
         MenuListProps={{
           'aria-labelledby': 'profile-menu-button',
         }}
@@ -39,9 +39,9 @@ const ProfileNavbar = ({ iconSize }) => {
         sx={{ mt: 2 }}
         disableScrollLock
       >
-        <NavItemsList
-          navItems={PROFILE}
-          type={NAVIGATION_TYPES.PROFILE}
+        <NavigationList
+          items={profileNavItems}
+          type={NAVIGATION_TYPE.PROFILE}
           onClick={handleMenuItemClick}
         />
         <Divider />
