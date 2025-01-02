@@ -12,6 +12,7 @@ const FollowButton = ({ userId, isFollowed, sx = {} }) => {
       variant={variant}
       onClick={handleClick}
       disabled={isDisabled}
+      aria-label={label}
       sx={{ ...sx }}
     >
       {label}

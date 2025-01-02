@@ -1,6 +1,6 @@
-import baseAPI from '@/store/base-API';
 import { USERS, FOLLOW } from '@/shared/constants/API-endpoints';
-import updateFollowStatusInCache from '@/modules/users/utils/updateFollowStatusInCache';
+import baseAPI from '@/store/base-API';
+import updateFollowStatusInCache from '@/modules/users/store/helpers/updateFollowStatusInCache';
 
 const usersApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
@@ -22,7 +22,7 @@ const usersApi = baseAPI.injectEndpoints({
           getState,
           queryFulfilled,
           usersApi,
-          isFollowed: false,
+          isFollowed: true,
         });
       },
       invalidatesTags: ['Users'],
@@ -41,7 +41,7 @@ const usersApi = baseAPI.injectEndpoints({
           getState,
           queryFulfilled,
           usersApi,
-          isFollowed: true,
+          isFollowed: false,
         });
       },
       invalidatesTags: ['Users'],

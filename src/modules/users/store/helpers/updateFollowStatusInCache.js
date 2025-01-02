@@ -24,7 +24,7 @@ const updateFollowStatusInCache = async ({
       (draft) => {
         const user = draft.items.find((user) => user.id === userId);
         if (user) {
-          user.followed = isFollowed;
+          user.followed = !isFollowed;
         }
       }
     )
