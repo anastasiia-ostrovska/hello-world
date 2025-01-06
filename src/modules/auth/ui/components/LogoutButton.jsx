@@ -1,8 +1,8 @@
-import { ProfileAvatar } from '@/modules/profile';
 import useLogout from '@/modules/auth/hooks/handlers/useLogout';
 import Chip from '@mui/material/Chip';
+import LogoutIcon from '@/modules/auth/ui/components/LogoutIcon';
 
-const LogoutButton = ({ avatarSize }) => {
+const LogoutButton = ({ iconSize }) => {
   const handleLogout = useLogout();
 
   return (
@@ -13,7 +13,7 @@ const LogoutButton = ({ avatarSize }) => {
       label="Log out"
       aria-label="Log out"
       color="error"
-      avatar={<ProfileAvatar size={avatarSize} />}
+      avatar={<LogoutIcon iconSize={iconSize} />}
       onClick={handleLogout}
       sx={{ display: 'flex', justifySelf: 'center', pl: '3px' }}
     />
