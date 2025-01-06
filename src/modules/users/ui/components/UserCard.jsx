@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { SkeletonLoaderWrapper } from '@/modules/loaders';
+import { SkeletonWrapper } from '@/modules/loaders';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
@@ -54,7 +54,7 @@ const UserCard = ({
         />
       </CardActionArea>
       <CardActions sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
-        <SkeletonLoaderWrapper
+        <SkeletonWrapper
           isLoading={isLoading}
           element={
             <FollowButton
