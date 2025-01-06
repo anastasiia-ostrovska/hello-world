@@ -1,6 +1,6 @@
 import Skeleton from '@mui/material/Skeleton';
 
-const SkeletonLoaderWrapper = ({
+const SkeletonWrapper = ({
   isLoading,
   element,
   animation = 'pulse',
@@ -16,4 +16,4 @@ const SkeletonLoaderWrapper = ({
   return element;
 };
 
-export default SkeletonLoaderWrapper;
+export default SkeletonWrapper;
