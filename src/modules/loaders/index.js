@@ -1,2 +1,3 @@
-export { default as PageFallback } from './ui/containers/PageFallback';
-export { default as SkeletonLoaderWrapper } from './ui/components/SkeletonLoaderWrapper';
+export { default as SkeletonText } from './ui/components/SkeletonText';
+export { default as SkeletonWrapper } from './ui/components/SkeletonWrapper';
+export { default as SuspenseRoute } from './ui/containers/SuspenseRoute';

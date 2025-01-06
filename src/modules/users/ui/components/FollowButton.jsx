@@ -1,31 +1,21 @@
-import useFollowButtonClick from '@/modules/users/hooks/useFollowButtonClick';
+import useFollowButton from '@/modules/users/hooks/ui/useFollowButton';
 import Button from '@mui/material/Button';
 
 const FollowButton = ({ userId, isFollowed, sx = {} }) => {
-  const { handleFollowClick, handleUnfollowClick, isDisabled } =
-    useFollowButtonClick();
-
-  if (isFollowed) {
-    return (
-      <Button
-        variant="outlined"
-        onClick={() => handleUnfollowClick(userId)}
-        disabled={isDisabled}
-        sx={{ ...sx }}
-      >
-        Unfollow
-      </Button>
-    );
-  }
+  const { handleClick, isDisabled, label, variant } = useFollowButton({
+    userId,
+    isFollowed,
+  });
 
   return (
     <Button
-      variant="contained"
-      onClick={() => handleFollowClick(userId)}
+      variant={variant}
+      onClick={handleClick}
       disabled={isDisabled}
+      aria-label={label}
       sx={{ ...sx }}
     >
-      Follow
+      {label}
     </Button>
   );
 };

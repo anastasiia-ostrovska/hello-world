@@ -1,12 +1,12 @@
 import { UserAvatar } from '@/modules/users';
-import { SkeletonLoaderWrapper } from '@/modules/loaders';
-import useProfileData from '@/modules/profile/hooks/useProfileData';
+import { SkeletonWrapper } from '@/modules/loaders';
+import useMyProfileData from '@/modules/profile/hooks/api/useMyProfileData';
 
 const ProfileAvatar = ({ size }) => {
-  const { data, isLoading } = useProfileData();
+  const { data, isLoading } = useMyProfileData();
 
   return (
-    <SkeletonLoaderWrapper
+    <SkeletonWrapper
       variant="circular"
       isLoading={isLoading}
       element={
