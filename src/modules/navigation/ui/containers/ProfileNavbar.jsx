@@ -1,5 +1,5 @@
 import { profileNavItems } from '@/modules/navigation/config/navigation-items';
-import { LogoutButton } from 'src/modules/auth';
+import { LogoutButton } from '@/modules/auth';
 import NAVIGATION_TYPE from '@/modules/navigation/constants/navigation-types';
 import useProfileNavbar from '@/modules/navigation/hooks/ui/useProfileNavbar';
 import NavigationList from '@/modules/navigation/ui/components/NavigationList';
@@ -45,7 +45,7 @@ const ProfileNavbar = ({ iconSize }) => {
           onClick={handleMenuItemClick}
         />
         <Divider />
-        <LogoutButton avatarSize={iconSize} />
+        <LogoutButton iconSize={iconSize} />
       </Menu>
     </Box>
   );
