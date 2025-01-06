@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useGetUserProfileQuery } from '@/_old-version/reducers/profileApi';
+import { useGetUserProfileQuery } from '@/modules/profile/store/profileApi';
 import LinearProgress from '@mui/material/LinearProgress';
 import Profile from './Profile';
 

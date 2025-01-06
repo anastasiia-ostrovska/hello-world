@@ -1,5 +1,5 @@
 import { useGetAuthDataQuery } from '@/modules/auth';
-import { useGetUserProfileQuery } from '@/_old-version/reducers/profileApi';
+import { useGetUserProfileQuery } from '@/modules/profile/store/profileApi';
 
 const useProfileData = () => {
   const { data: authData, isLoading: isAuthDataLoading } =
