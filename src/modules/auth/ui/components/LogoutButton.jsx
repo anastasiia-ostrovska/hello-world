@@ -1,10 +1,9 @@
 import { ProfileAvatar } from '@/modules/profile';
+import useLogout from '@/modules/auth/hooks/handlers/useLogout';
 import Chip from '@mui/material/Chip';
 
 const LogoutButton = ({ avatarSize }) => {
-  const handleLogout = () => {
-    alert('Logout');
-  };
+  const handleLogout = useLogout();
 
   return (
     <Chip

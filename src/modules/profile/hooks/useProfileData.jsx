@@ -1,4 +1,4 @@
-import { useGetAuthDataQuery } from '@/modules/profile/store/authApi';
+import { useGetAuthDataQuery } from '@/modules/auth';
 import { useGetUserProfileQuery } from '@/_old-version/reducers/profileApi';
 
 const useProfileData = () => {
