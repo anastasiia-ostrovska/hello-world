@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from '@/layout';
-import ROUTES_CONFIG from '@/routing/routes-config';
+import { ROUTES_CONFIG } from '@/routing';
 import Home from '@/pages/Home';
 
 const App = () => {

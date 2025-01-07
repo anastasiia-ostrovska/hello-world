@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { SuspenseRoute } from '@/modules/loaders';
-import * as ROUTES from './routing-paths';
+import * as ROUTES from '../constants/paths';
 
 const Profile = lazy(
   () => import('@/_old-version/components/Profile/ProfileContainer')
@@ -21,7 +21,7 @@ const Components = lazy(
 const ROUTES_CONFIG = [
   {
     path: `${ROUTES.PROFILE}/:userId?`,
-    element: <Profile />,
+    element: <SuspenseRoute element={<Profile />} />,
   },
   { path: ROUTES.DIALOGS, element: <SuspenseRoute element={<Dialogs />} /> },
   {
