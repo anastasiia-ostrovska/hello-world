@@ -3,7 +3,7 @@ import { TopNavbar } from '@/modules/navigation';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
-const Header = () => {
+const Header = ({ isAuth }) => {
   return (
     <Paper
       component="header"
@@ -27,7 +27,7 @@ const Header = () => {
       <Box sx={{ display: 'flex' }}>
         <ModeSwitcher />
       </Box>
-      <TopNavbar />
+      {isAuth ? <TopNavbar /> : <div>lOGIN</div>}
     </Paper>
   );
 };
