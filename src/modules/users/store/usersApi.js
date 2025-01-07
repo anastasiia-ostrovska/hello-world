@@ -1,5 +1,5 @@
+import { baseAPI } from '@/redux';
 import { USERS, FOLLOW } from '@/shared/constants/API-endpoints';
-import baseAPI from '@/store/base-API';
 import updateFollowStatusInCache from '@/modules/users/store/helpers/updateFollowStatusInCache';
 
 const usersApi = baseAPI.injectEndpoints({
