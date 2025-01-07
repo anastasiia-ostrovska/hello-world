@@ -1,11 +1,13 @@
+import { useAuth } from '@/modules/auth';
 import { useGetUserProfileQuery } from '@/modules/profile/store/profileApi';
-import useMyId from '@/modules/profile/hooks/api/useMyId';
 
 const useMyProfileData = () => {
-  const { userId, isAuthDataLoading } = useMyId();
+  const { authData, isLoading: isAuthDataLoading } = useAuth();
   const { data, isLoading: isProfileDataLoading } = useGetUserProfileQuery(
-    userId,
-    { skip: !userId }
+    authData?.id,
+    {
+      skip: !authData?.id,
+    }
   );
 
   const isLoading = isAuthDataLoading || isProfileDataLoading;
