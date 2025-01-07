@@ -1,8 +1,8 @@
-import Stack from '@mui/material/Stack';
-import Navigation from '@/layout/ui/containers/Navigation';
-import Content from '@/layout/ui/containers/Content';
-import Header from '@/layout/ui/containers/Header';
 import useAuth from '@/modules/auth/hooks/api/useAuth';
+import Stack from '@mui/material/Stack';
+import Header from '@/layout/ui/containers/Header';
+import Content from '@/layout/ui/containers/Content';
+import Navigation from './Navigation';
 
 const Layout = () => {
   const { isAuth, messages } = useAuth();

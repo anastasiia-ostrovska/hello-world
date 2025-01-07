@@ -4,11 +4,11 @@ import SideNavItem from '@/modules/navigation/ui/components/SideNavItem';
 import BottomNavItem from '@/modules/navigation/ui/components/BottomNavItem';
 import ProfileNavItem from '@/modules/navigation/ui/components/ProfileNavItem';
 
-const NAVIGATION_ITEMS = {
+const NAVIGATION_COMPONENTS = {
   [NAVIGATION_TYPE.TOP]: TopNavItem,
   [NAVIGATION_TYPE.SIDE]: SideNavItem,
   [NAVIGATION_TYPE.BOTTOM]: BottomNavItem,
   [NAVIGATION_TYPE.PROFILE]: ProfileNavItem,
 };
 
-export default NAVIGATION_ITEMS;
+export default NAVIGATION_COMPONENTS;

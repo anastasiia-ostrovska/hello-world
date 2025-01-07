@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
-import { PROFILE } from '@/routing/routing-paths';
+import { PROFILE } from '@/routing/constants/paths';
 
 const useUserCardClick = () => {
   const navigate = useNavigate();

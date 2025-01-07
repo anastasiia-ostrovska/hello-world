@@ -1,4 +1,3 @@
-import * as ROUTES from '@/routing/routing-paths';
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 import AddBoxIcon from '@mui/icons-material/AddBox';
@@ -8,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
 import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
+import * as ROUTES from '@/routing/constants/paths';
 
 export const mainNavItems = [
   { id: 'home', path: ROUTES.HOME, label: 'Home', icon: <HomeIcon /> },
