@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { AppDispatch } from '@/redux/store';
 import rootReducer from '@/redux/root-reducer';
 
@@ -38,17 +38,20 @@ const themeSlice = createSlice({
     selectThemeMode: (state) => state.mode,
   },
   reducers: {
-    switchMode: (state, action: PayloadAction<ThemeMode>) => {
-      state.mode = action.payload;
+    toggleMode: (state) => {
+      state.mode =
+        state.mode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark;
     },
   },
 }).injectInto(rootReducer);
 
-const { switchMode } = themeSlice.actions;
+const { toggleMode } = themeSlice.actions;
 
-export const toggleThemeMode = (mode: ThemeMode) => (dispatch: AppDispatch) => {
-  dispatch(switchMode(mode));
-  localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(mode));
-};
+export const toggleThemeMode =
+  () => (dispatch: AppDispatch, getState: () => ThemeState) => {
+    dispatch(toggleMode());
+    const newMode = getState().mode;
+    localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(newMode));
+  };
 
 export const { selectThemeMode } = themeSlice.selectors;
