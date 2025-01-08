@@ -1,5 +1,5 @@
 import { PROFILE } from '@/shared/constants/API-endpoints';
-import baseAPI from '@/store/base-API';
+import baseAPI from '@/redux/base-API';
 
 const profileApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({

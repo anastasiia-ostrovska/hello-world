@@ -1,5 +1,5 @@
 import { combineSlices } from '@reduxjs/toolkit';
-import baseAPI from '@/store/base-API';
+import baseAPI from '@/redux/base-API';
 
 const rootReducer = combineSlices(baseAPI);
 

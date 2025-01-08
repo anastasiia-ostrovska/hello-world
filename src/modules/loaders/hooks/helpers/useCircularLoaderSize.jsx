@@ -1,4 +1,4 @@
-import useMediaQueryType from '@/shared/hooks/useMediaQueryType';
+import useMediaQueryType from '@/shared/hooks/helpers/useMediaQueryType';
 
 const useCircularLoaderSize = () => {
   const { isUpMD } = useMediaQueryType();
