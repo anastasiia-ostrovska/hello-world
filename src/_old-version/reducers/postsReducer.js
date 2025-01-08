@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import rootReducer from '@/store/root-reducer';
+import rootReducer from '@/redux/root-reducer';
 
 const initialState = {
   posts: [
