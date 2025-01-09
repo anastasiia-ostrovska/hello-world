@@ -1,7 +1,11 @@
 import Stack from '@mui/material/Stack';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
-const LogoutIcon = ({ iconSize }) => {
+interface LogoutIconProps {
+  iconSize: number;
+}
+
+const LogoutIcon = ({ iconSize }: LogoutIconProps) => {
   return (
     <Stack
       sx={{

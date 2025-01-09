@@ -2,7 +2,11 @@ import useLogout from '@/modules/auth/hooks/handlers/useLogout';
 import Chip from '@mui/material/Chip';
 import LogoutIcon from '@/modules/auth/ui/components/LogoutIcon';
 
-const LogoutButton = ({ iconSize }) => {
+interface LogoutButtonProps {
+  iconSize: number;
+}
+
+const LogoutButton = ({ iconSize }: LogoutButtonProps) => {
   const handleLogout = useLogout();
 
   return (
