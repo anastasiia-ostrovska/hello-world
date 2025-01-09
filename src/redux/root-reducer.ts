@@ -1,7 +1,7 @@
 import { combineSlices } from '@reduxjs/toolkit';
-import { themeSlice } from '@/modules/theme';
+import { themeSlice, usersSlice } from '@/modules';
 import baseAPI from '@/redux/base-API';
 
-const rootReducer = combineSlices(baseAPI, themeSlice);
+const rootReducer = combineSlices(baseAPI, themeSlice, usersSlice);
 
 export default rootReducer;
