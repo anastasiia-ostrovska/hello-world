@@ -1,10 +1,10 @@
-const useLogout = () => {
+type LogoutHandler = () => void;
+
+const useLogout = (): LogoutHandler => {
   // temporary mock
-  const handleLogout = () => {
+  return () => {
     alert('Logout');
   };
-
-  return handleLogout;
 };
 
 export default useLogout;
