@@ -6,8 +6,8 @@ const useAvatarColor = (name) => {
   const { palette } = useTheme();
 
   const colors = useMemo(
-    () => Object.values(palette.background.avatar),
-    [palette.background.avatar]
+    () => Object.values(palette.customBackground.avatar),
+    [palette.customBackground.avatar]
   );
 
   const avatarColor = useMemo(
