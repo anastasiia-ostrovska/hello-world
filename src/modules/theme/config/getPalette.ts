@@ -6,10 +6,11 @@ import {
   teal,
   yellow,
 } from '@mui/material/colors';
+import { ThemeMode } from '@/modules/theme/types';
 
-const getPalette = (mode) => ({
+const getPalette = (mode: ThemeMode) => ({
   mode,
-  background: {
+  customBackground: {
     avatar: {
       purple: purple[400],
       teal: teal[400],
@@ -18,7 +19,7 @@ const getPalette = (mode) => ({
       pink: pink[400],
       green: green[600],
     },
-    userCard: mode === 'dark' ? '#1e1e1e' : '#fff',
+    userCard: mode === ThemeMode.Dark ? '#1d1d1d' : '#fff',
   },
 });
 
