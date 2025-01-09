@@ -1,14 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { THEME_STORAGE_KEY } from '@/modules/theme/constants/theme-storage-key';
+import { THEME_STORAGE_KEY } from '@/modules/theme/constants';
+import { ThemeMode } from '@/modules/theme/types';
 import getStoredThemeMode from '@/modules/theme/helpers/getStoredThemeMode';
-// import { AppThunk } from '@/redux/types';
-
-export enum ThemeMode {
-  Dark = 'dark',
-  Light = 'light',
-}
-
-// const THEME_STORAGE_KEY = 'themeMode';
 
 interface ThemeState {
   mode: ThemeMode;
@@ -33,12 +26,5 @@ const themeSlice = createSlice({
 });
 
 export const { toggleMode } = themeSlice.actions;
-
-// export const toggleThemeMode = (): AppThunk => (dispatch, getState) => {
-//   dispatch(toggleMode());
-//   const newMode = getState().theme.mode;
-//   localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(newMode));
-// };
-
 export const { selectThemeMode } = themeSlice.selectors;
 export default themeSlice;
