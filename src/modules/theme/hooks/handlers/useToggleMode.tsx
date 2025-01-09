@@ -7,11 +7,9 @@ export type ToggleModeHandler = () => void;
 const useToggleMode = (): ToggleModeHandler => {
   const dispatch = useAppDispatch();
 
-  const handleToggleMode = useCallback((): void => {
+  return useCallback((): void => {
     dispatch(toggleThemeMode());
   }, [dispatch]);
-
-  return handleToggleMode;
 };
 
 export default useToggleMode;
