@@ -1,17 +1,20 @@
+import { AuthMeResponse } from '@/modules/auth/types';
 import { useGetAuthDataQuery } from '@/modules/auth/store/authApi';
-import { useMemo } from 'react';
 
-const useAuth = () => {
+interface UseAuthResult {
+  authData: AuthMeResponse['data'] | undefined;
+  messages: AuthMeResponse['messages'] | undefined;
+  isAuth: boolean;
+  isLoading: boolean;
+}
+
+const useAuth = (): UseAuthResult => {
   const { data, isLoading } = useGetAuthDataQuery();
 
-  const { authData, messages, isAuth } = useMemo(() => {
-    const authData = data?.data;
-    const resultCode = data?.resultCode;
-    const messages = data?.messages;
-    const isAuth = resultCode === 0;
-
-    return { authData, messages, isAuth };
-  }, [data]);
+  const authData = data?.data;
+  const resultCode = data?.resultCode;
+  const messages = data?.messages;
+  const isAuth = resultCode === 0;
 
   return { authData, messages, isAuth, isLoading };
 };
