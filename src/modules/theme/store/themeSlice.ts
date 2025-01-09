@@ -1,26 +1,14 @@
-import { createSlice, ThunkAction, UnknownAction } from '@reduxjs/toolkit';
-import { RootState } from '@/redux/store';
+import { createSlice } from '@reduxjs/toolkit';
+import { THEME_STORAGE_KEY } from '@/modules/theme/constants/theme-storage-key';
+import getStoredThemeMode from '@/modules/theme/helpers/getStoredThemeMode';
+// import { AppThunk } from '@/redux/types';
 
 export enum ThemeMode {
   Dark = 'dark',
   Light = 'light',
 }
 
-const THEME_STORAGE_KEY = 'themeMode';
-
-const getStoredThemeMode = (key: string): ThemeMode => {
-  const storedMode: string | null = localStorage.getItem(key);
-
-  if (storedMode) {
-    const parsedMode: unknown = JSON.parse(storedMode);
-
-    if (Object.values(ThemeMode).includes(parsedMode as ThemeMode)) {
-      return parsedMode as ThemeMode;
-    }
-  }
-
-  return ThemeMode.Dark;
-};
+// const THEME_STORAGE_KEY = 'themeMode';
 
 interface ThemeState {
   mode: ThemeMode;
@@ -44,20 +32,13 @@ const themeSlice = createSlice({
   },
 });
 
-const { toggleMode } = themeSlice.actions;
+export const { toggleMode } = themeSlice.actions;
 
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  UnknownAction
->;
-
-export const toggleThemeMode = (): AppThunk => (dispatch, getState) => {
-  dispatch(toggleMode());
-  const newMode = getState().theme.mode;
-  localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(newMode));
-};
+// export const toggleThemeMode = (): AppThunk => (dispatch, getState) => {
+//   dispatch(toggleMode());
+//   const newMode = getState().theme.mode;
+//   localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(newMode));
+// };
 
 export const { selectThemeMode } = themeSlice.selectors;
 export default themeSlice;
