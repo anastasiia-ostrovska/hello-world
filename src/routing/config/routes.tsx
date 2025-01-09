@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, ReactElement } from 'react';
 import { SuspenseRoute } from '@/modules/loaders';
 import * as ROUTES from '../constants/paths';
 
@@ -18,7 +18,12 @@ const Components = lazy(
   () => import('@/_old-version/components-presentation/Components')
 );
 
-const ROUTES_CONFIG = [
+interface RouteConfig {
+  path: string;
+  element: ReactElement;
+}
+
+const ROUTES_CONFIG: RouteConfig[] = [
   {
     path: `${ROUTES.PROFILE}/:userId?`,
     element: <SuspenseRoute element={<Profile />} />,
