@@ -28,7 +28,7 @@ const UserCard = ({
       variant="outlined"
       sx={{
         width: '100%',
-        backgroundColor: 'background.userCard',
+        backgroundColor: 'customBackground.userCard',
         pointerEvents: isLoading ? 'none' : 'auto',
       }}
     >
@@ -42,7 +42,7 @@ const UserCard = ({
           backgroundSrc={backgroundSrc}
           avatarSize={avatarSize}
           backgroundImageSize={backgroundImageSize}
-          avatarBorderColor={palette.background.userCard}
+          avatarBorderColor={palette.customBackground.userCard}
           avatarBorderWidth="3px"
           sx={{ mb: avatarSize / 16 }}
         />
