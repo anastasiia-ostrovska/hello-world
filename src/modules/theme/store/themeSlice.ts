@@ -1,6 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { AppDispatch } from '@/redux/store';
-import rootReducer from '@/redux/root-reducer';
+import { createSlice, ThunkAction, UnknownAction } from '@reduxjs/toolkit';
+import { RootState } from '@/redux/store';
 
 export enum ThemeMode {
   Dark = 'dark',
@@ -43,15 +42,22 @@ const themeSlice = createSlice({
         state.mode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark;
     },
   },
-}).injectInto(rootReducer);
+});
 
 const { toggleMode } = themeSlice.actions;
 
-export const toggleThemeMode =
-  () => (dispatch: AppDispatch, getState: () => ThemeState) => {
-    dispatch(toggleMode());
-    const newMode = getState().mode;
-    localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(newMode));
-  };
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  UnknownAction
+>;
+
+export const toggleThemeMode = (): AppThunk => (dispatch, getState) => {
+  dispatch(toggleMode());
+  const newMode = getState().theme.mode;
+  localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(newMode));
+};
 
 export const { selectThemeMode } = themeSlice.selectors;
+export default themeSlice;
