@@ -1,17 +1,9 @@
 import { ThemeMode } from '@/modules/theme/types';
 import { useAppSelector } from '@/shared/hooks/redux';
 import { selectThemeMode } from '@/modules/theme/store/themeSlice';
-import useToggleMode, {
-  ToggleModeHandler,
-} from '@/modules/theme/hooks/handlers/useToggleMode';
+import useToggleMode from '@/modules/theme/hooks/handlers/useToggleMode';
 
-interface UseThemeModeResult {
-  isDarkMode: boolean;
-  nextMode: ThemeMode;
-  handleToggleMode: ToggleModeHandler;
-}
-
-const useThemeMode = (): UseThemeModeResult => {
+const useThemeMode = () => {
   const currentMode = useAppSelector(selectThemeMode);
   const handleToggleMode = useToggleMode();
 

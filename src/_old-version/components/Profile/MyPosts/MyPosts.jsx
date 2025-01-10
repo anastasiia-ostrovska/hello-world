@@ -10,7 +10,7 @@ import styles from './MyPosts.module.css';
 const MyPosts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
-  const [postText, handleTextChange, resetText] = useInputValue('');
+  const { postText, handleTextChange, resetText } = useInputValue('');
 
   const handleAddNewPost = () => {
     dispatch(addNewPost(postText));
