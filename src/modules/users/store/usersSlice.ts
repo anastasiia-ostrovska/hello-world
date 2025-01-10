@@ -1,12 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface UsersQueryParamsState {
+  usersQueryCount: number;
+  currentPage: number;
+}
+
+const initialState: UsersQueryParamsState = {
   usersQueryCount: 12,
   currentPage: 1,
 };
 
 const usersSlice = createSlice({
-  name: 'usersQueryParameters',
+  name: 'usersQueryParams',
   initialState,
   selectors: {
     selectUsersQueryCount: (state) => state.usersQueryCount,
