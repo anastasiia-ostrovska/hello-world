@@ -1,10 +1,10 @@
-type Photo = string | null;
+import { Photos, UserId, UserName } from '@/modules/users/types';
 
 export interface ProfileDataResponse {
-  userId: number;
+  userId: UserId;
   lookingForAJob: boolean;
   lookingForAJobDescription: string;
   contacts: Record<string, string>;
-  fullName: string;
-  photos: { small: Photo; large: Photo };
+  fullName: UserName;
+  photos: Photos;
 }

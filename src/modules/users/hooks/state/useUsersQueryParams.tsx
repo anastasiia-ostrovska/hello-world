@@ -1,11 +1,11 @@
+import { UsersQueryParams } from '@/modules/users/types';
 import { useAppSelector } from '@/shared/hooks/redux';
 import {
   selectCurrentPage,
   selectUsersQueryCount,
 } from '@/modules/users/store/usersSlice';
-import { UsersQueryParamsState } from '@/modules/users/types';
 
-const useUsersQueryParams = (): UsersQueryParamsState => {
+const useUsersQueryParams = (): UsersQueryParams => {
   const usersQueryCount = useAppSelector(selectUsersQueryCount);
   const currentPage = useAppSelector(selectCurrentPage);
 

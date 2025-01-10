@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UsersQueryParamsState } from '@/modules/users/types';
+import { UsersQueryParams } from '@/modules/users/types';
 
-const initialState: UsersQueryParamsState = {
+const initialState: UsersQueryParams = {
   usersQueryCount: 12,
   currentPage: 1,
 };
