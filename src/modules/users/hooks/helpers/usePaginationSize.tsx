@@ -1,6 +1,7 @@
 import useMediaQueryType from '@/shared/hooks/helpers/useMediaQueryType';
+import { PaginationProps } from '@mui/material';
 
-const usePaginationSize = () => {
+const usePaginationSize = (): PaginationProps['size'] => {
   const { isUpSM, isUpLG } = useMediaQueryType();
 
   if (isUpLG) return 'large';
