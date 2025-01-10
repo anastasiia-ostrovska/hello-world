@@ -1,10 +1,16 @@
+import { ProfileDataResponse } from '@/modules/profile/types';
 import { useAuth } from '@/modules/auth';
 import { useGetUserProfileQuery } from '@/modules/profile/store/profileApi';
 
-const useMyProfileData = () => {
+interface UseMyProfileDataResult {
+  data: ProfileDataResponse | undefined;
+  isLoading: boolean;
+}
+
+const useMyProfileData = (): UseMyProfileDataResult => {
   const { authData, isLoading: isAuthDataLoading } = useAuth();
   const { data, isLoading: isProfileDataLoading } = useGetUserProfileQuery(
-    authData?.id,
+    authData?.id as number,
     {
       skip: !authData?.id,
     }
