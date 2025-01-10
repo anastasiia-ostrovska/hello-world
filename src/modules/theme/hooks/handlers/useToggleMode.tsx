@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import toggleThemeMode from '@/modules/theme/store/toggleModeThunk';
 import { useAppDispatch } from '@/shared/hooks/redux';
+import toggleThemeMode from '@/modules/theme/store/toggleModeThunk';
 
 export type ToggleModeHandler = () => void;
 

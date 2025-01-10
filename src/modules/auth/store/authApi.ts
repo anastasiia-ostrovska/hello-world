@@ -8,7 +8,6 @@ const authApi = baseAPI.injectEndpoints({
       query: () => AUTH_ME,
     }),
   }),
-  overrideExisting: true,
 });
 
 export const { useGetAuthDataQuery } = authApi;
