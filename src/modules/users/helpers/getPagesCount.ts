@@ -8,7 +8,7 @@
  * If the total count is perfectly divisible by the items per page, the result is an integer.
  */
 
-const getPagesCount = (totalCount, itemsPerPage) => {
+const getPagesCount = (totalCount: number, itemsPerPage: number): number => {
   return Math.ceil(totalCount / itemsPerPage);
 };
 
