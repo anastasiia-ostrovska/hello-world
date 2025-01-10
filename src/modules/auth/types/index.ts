@@ -1,4 +1,4 @@
-import { ApiMutationResponse } from '@/shared/types';
+import { ApiMutationResponse } from '@/shared/types/api-response';
 
 export interface AuthData {
   id: number;
