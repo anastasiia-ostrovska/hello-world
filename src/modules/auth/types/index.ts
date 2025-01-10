@@ -1,4 +1,4 @@
-import { ApiMutationResponse } from '@/shared/types/api-response';
+import { ResponseData } from '@/shared/types/response-data';
 
 export interface AuthData {
   id: number;
@@ -6,4 +6,4 @@ export interface AuthData {
   login: string;
 }
 
-export type AuthMeResponse = ApiMutationResponse<AuthData>;
+export type AuthMeResponse = ResponseData<AuthData>;
