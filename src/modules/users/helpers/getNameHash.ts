@@ -1,3 +1,5 @@
+import { UserName } from '@/modules/users/types';
+
 /**
  * Hash function to compute a hash value for a string.
  * @param {string} name - The user's name.
@@ -5,8 +7,8 @@
  * Returns 0 if the input is invalid
  */
 
-const getNameHash = (name) => {
-  if (typeof name !== 'string' || name.length === 0) return 0;
+const getNameHash = (name: UserName): number => {
+  if (name.length === 0) return 0;
 
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
