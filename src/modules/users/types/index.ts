@@ -1,4 +1,4 @@
-export type UserId = number;
+export type UserId = number | string;
 
 export type UserName = string;
 
