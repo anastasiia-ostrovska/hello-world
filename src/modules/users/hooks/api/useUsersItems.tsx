@@ -4,12 +4,7 @@ import useUsers from '@/modules/users/hooks/api/useUsers';
 import useUsersQueryParams from '@/modules/users/hooks/state/useUsersQueryParams';
 import generateMockUsers from '@/modules/users/helpers/generateMockUsers';
 
-interface UsersItems {
-  users: User[];
-  isLoading: boolean;
-}
-
-const useUsersItems = (): UsersItems => {
+const useUsersItems = () => {
   const { data, isLoading } = useUsers();
   const { usersQueryCount } = useUsersQueryParams();
 
@@ -17,7 +12,7 @@ const useUsersItems = (): UsersItems => {
     if (isLoading) {
       return generateMockUsers(usersQueryCount);
     }
-    return data?.items || [];
+    return (data?.items as User[]) || [];
   }, [data, isLoading, usersQueryCount]);
 
   return { users, isLoading };
