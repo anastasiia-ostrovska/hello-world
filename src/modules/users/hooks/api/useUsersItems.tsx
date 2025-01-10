@@ -1,9 +1,15 @@
+import { User } from '@/modules/users/types';
 import { useMemo } from 'react';
 import useUsers from '@/modules/users/hooks/api/useUsers';
 import useUsersQueryParams from '@/modules/users/hooks/state/useUsersQueryParams';
 import generateMockUsers from '@/modules/users/helpers/generateMockUsers';
 
-const useUsersItems = () => {
+interface UsersItems {
+  users: User[];
+  isLoading: boolean;
+}
+
+const useUsersItems = (): UsersItems => {
   const { data, isLoading } = useUsers();
   const { usersQueryCount } = useUsersQueryParams();
 
