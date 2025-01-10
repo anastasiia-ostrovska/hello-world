@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
-import { selectThemeMode } from '@/modules/theme/store/themeSlice';
 import { useMemo } from 'react';
+import { useAppSelector } from '@/shared/hooks/redux';
+import { selectThemeMode } from '@/modules/theme/store/themeSlice';
+import { Theme } from '@mui/material';
 import createAppTheme from '@/modules/theme/config/createAppTheme';
 
-const useTheme = () => {
-  const mode = useSelector(selectThemeMode);
-  const theme = useMemo(() => createAppTheme(mode), [mode]);
+const useTheme = (): Theme => {
+  const mode = useAppSelector(selectThemeMode);
 
-  return theme;
+  return useMemo(() => createAppTheme(mode), [mode]);
 };
 
 export default useTheme;

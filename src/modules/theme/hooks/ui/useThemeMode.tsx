@@ -1,6 +1,6 @@
+import { ThemeMode } from '@/modules/theme/types';
 import { useAppSelector } from '@/shared/hooks/redux';
 import { selectThemeMode } from '@/modules/theme/store/themeSlice';
-import { ThemeMode } from '@/modules/theme/types';
 import useToggleMode, {
   ToggleModeHandler,
 } from '@/modules/theme/hooks/handlers/useToggleMode';
