@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-interface UsersQueryParamsState {
-  usersQueryCount: number;
-  currentPage: number;
-}
+import { UsersQueryParamsState } from '@/modules/users/types';
 
 const initialState: UsersQueryParamsState = {
   usersQueryCount: 12,
