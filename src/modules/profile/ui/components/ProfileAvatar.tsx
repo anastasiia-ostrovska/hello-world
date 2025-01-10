@@ -2,7 +2,11 @@ import { UserAvatar } from '@/modules/users';
 import { SkeletonWrapper } from '@/modules/loaders';
 import useMyProfileData from '@/modules/profile/hooks/api/useMyProfileData';
 
-const ProfileAvatar = ({ size }) => {
+interface ProfileAvatarProps {
+  size: number;
+}
+
+const ProfileAvatar = ({ size }: ProfileAvatarProps) => {
   const { data, isLoading } = useMyProfileData();
 
   return (
