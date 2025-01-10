@@ -1,24 +1,20 @@
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
-import {
-  CircularProgressColor,
-  PaperVariant,
-  ProgressSize,
-  Styles,
-} from '@/shared/types/mui-props';
+import { CircularProgressProps, PaperProps } from '@mui/material';
+import { Styles } from '@/shared/types/mui-props';
 
 interface CircularBlockProps {
-  containerVariant: PaperVariant;
-  containerSX: Styles;
-  progressColor: CircularProgressColor;
-  progressSize: ProgressSize;
+  containerVariant?: PaperProps['variant'];
+  containerSX?: Styles;
+  progressColor?: CircularProgressProps['color'];
+  progressSize?: number | string;
 }
 
 const CircularBlock = ({
-  containerVariant = 'outlined',
-  containerSX = {},
-  progressColor = 'primary',
-  progressSize = 60,
+  containerVariant,
+  containerSX,
+  progressColor,
+  progressSize,
 }: Partial<CircularBlockProps>) => {
   return (
     <Paper
@@ -36,6 +32,13 @@ const CircularBlock = ({
       <CircularProgress size={progressSize} color={progressColor} />
     </Paper>
   );
+};
+
+CircularBlock.defaultProps = {
+  containerVariant: 'outlined',
+  containerSX: {},
+  progressColor: 'primary',
+  progressSize: 60,
 };
 
 export default CircularBlock;

@@ -6,13 +6,13 @@ const UserCardContent = ({ isLoading, userName, jobTitle, country }) => {
   return (
     <CardContent align="center">
       <Typography gutterBottom noWrap variant="h6" component="h5">
-        <SkeletonText isLoading={isLoading}>{userName}</SkeletonText>
+        <SkeletonText isLoading={isLoading} element={userName} />
       </Typography>
       <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-        <SkeletonText isLoading={isLoading}>{jobTitle}</SkeletonText>
+        <SkeletonText isLoading={isLoading} element={jobTitle} />
       </Typography>
       <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-        <SkeletonText isLoading={isLoading}>{country}</SkeletonText>
+        <SkeletonText isLoading={isLoading} element={country} />
       </Typography>
     </CardContent>
   );
