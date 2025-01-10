@@ -7,7 +7,7 @@ interface CircularBlockDelayedProps {
   delay?: number;
 }
 
-const CircularBlockDelayed = ({ delay }: CircularBlockDelayedProps) => {
+const CircularBlockDelayed = ({ delay = DELAY }: CircularBlockDelayedProps) => {
   const size = useCircularLoaderSize();
 
   return (
@@ -15,10 +15,6 @@ const CircularBlockDelayed = ({ delay }: CircularBlockDelayedProps) => {
       <CircularBlock progressSize={size} />
     </Delayed>
   );
-};
-
-CircularBlockDelayed.defaultProps = {
-  delay: DELAY,
 };
 
 export default CircularBlockDelayed;

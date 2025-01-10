@@ -7,14 +7,10 @@ interface DelayedProps {
   children: ReactNode;
 }
 
-const Delayed = ({ delay, children }: DelayedProps) => {
+const Delayed = ({ delay = DELAY, children }: DelayedProps) => {
   const isShow = useShowDelayedComponent(delay);
 
   return isShow ? children : null;
-};
-
-Delayed.defaultProps = {
-  delay: DELAY,
 };
 
 export default Delayed;

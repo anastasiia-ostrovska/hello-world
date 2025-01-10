@@ -1,6 +1,6 @@
-import { JSX } from 'react';
+import { ReactNode } from 'react';
 
 export interface LoaderProps {
   isLoading: boolean;
-  element: JSX.Element;
+  element: ReactNode;
 }
