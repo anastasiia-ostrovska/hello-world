@@ -1,12 +1,25 @@
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
+import {
+  CircularProgressColor,
+  PaperVariant,
+  ProgressSize,
+  Styles,
+} from '@/shared/types/mui-props';
+
+interface CircularBlockProps {
+  containerVariant: PaperVariant;
+  containerSX: Styles;
+  progressColor: CircularProgressColor;
+  progressSize: ProgressSize;
+}
 
 const CircularBlock = ({
   containerVariant = 'outlined',
   containerSX = {},
   progressColor = 'primary',
   progressSize = 60,
-}) => {
+}: Partial<CircularBlockProps>) => {
   return (
     <Paper
       variant={containerVariant}
