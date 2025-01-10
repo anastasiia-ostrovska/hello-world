@@ -1,10 +1,23 @@
+import { UserName } from '@/modules/users/types';
 import { SkeletonText } from '@/modules/loaders';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 
-const UserCardContent = ({ isLoading, userName, jobTitle, country }) => {
+interface UserCardContentProps {
+  isLoading: boolean;
+  userName: UserName;
+  jobTitle: string;
+  country: string;
+}
+
+const UserCardContent = ({
+  isLoading,
+  userName,
+  jobTitle,
+  country,
+}: UserCardContentProps) => {
   return (
-    <CardContent align="center">
+    <CardContent sx={{ justifyContent: 'center' }}>
       <Typography gutterBottom noWrap variant="h6" component="h5">
         <SkeletonText isLoading={isLoading} element={userName} />
       </Typography>

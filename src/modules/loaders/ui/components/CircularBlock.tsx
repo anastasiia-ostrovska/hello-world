@@ -11,11 +11,11 @@ interface CircularBlockProps {
 }
 
 const CircularBlock = ({
-  containerVariant,
-  containerSX,
-  progressColor,
-  progressSize,
-}: Partial<CircularBlockProps>) => {
+  containerVariant = 'outlined',
+  containerSX = {},
+  progressColor = 'primary',
+  progressSize = 60,
+}: CircularBlockProps) => {
   return (
     <Paper
       variant={containerVariant}
@@ -32,13 +32,6 @@ const CircularBlock = ({
       <CircularProgress size={progressSize} color={progressColor} />
     </Paper>
   );
-};
-
-CircularBlock.defaultProps = {
-  containerVariant: 'outlined',
-  containerSX: {},
-  progressColor: 'primary',
-  progressSize: 60,
 };
 
 export default CircularBlock;

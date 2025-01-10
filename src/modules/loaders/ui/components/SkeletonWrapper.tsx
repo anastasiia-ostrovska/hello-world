@@ -11,9 +11,9 @@ interface SkeletonWrapperProps extends LoaderProps {
 const SkeletonWrapper = ({
   isLoading,
   element,
-  animation,
-  variant,
-  sx,
+  animation = 'pulse',
+  variant = 'rectangular',
+  sx = {},
 }: SkeletonWrapperProps) => {
   if (isLoading)
     return (
@@ -22,12 +22,6 @@ const SkeletonWrapper = ({
       </Skeleton>
     );
   return element || null;
-};
-
-SkeletonWrapper.defaultProps = {
-  animation: 'pulse',
-  variant: 'rectangular',
-  sx: {},
 };
 
 export default SkeletonWrapper;
