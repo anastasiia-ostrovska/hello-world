@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box';
+import { Photo } from '@/modules/users/types';
 
 interface UserBackgroundImageProps {
   size: number;
-  src: string;
+  src: Photo;
 }
 
 const UserBackgroundImage = ({ size, src }: UserBackgroundImageProps) => {
@@ -12,7 +13,7 @@ const UserBackgroundImage = ({ size, src }: UserBackgroundImageProps) => {
       sx={{
         height: size,
         width: '100%',
-        backgroundImage: `url(${src})`,
+        backgroundImage: `url(${src || ''})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

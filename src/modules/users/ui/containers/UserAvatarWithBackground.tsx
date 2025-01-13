@@ -1,13 +1,13 @@
-import { UserName } from '@/modules/users/types';
+import { Photo, UserName } from '@/modules/users/types';
 import { Styles } from '@/shared/types/mui-props';
 import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
 import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
 
 export interface UserAvatarWithBackgroundProps {
-  name: UserName;
-  avatarSrc: string;
-  backgroundSrc: string;
+  userName: UserName;
+  avatarSrc: Photo;
+  backgroundSrc: Photo;
   avatarSize: number;
   backgroundImageSize: number;
   avatarBorderColor?: string;
@@ -17,7 +17,7 @@ export interface UserAvatarWithBackgroundProps {
 }
 
 const UserAvatarWithBackground = ({
-  name,
+  userName,
   avatarSrc,
   backgroundSrc,
   avatarSize,
@@ -38,7 +38,7 @@ const UserAvatarWithBackground = ({
     >
       <UserBackgroundImage size={backgroundImageSize} src={backgroundSrc} />
       <UserAvatar
-        name={name}
+        userName={userName}
         src={avatarSrc}
         size={avatarSize}
         sx={{

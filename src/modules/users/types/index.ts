@@ -7,7 +7,7 @@ export type UserId = number | string;
 
 export type UserName = string;
 
-type Photo = string | null;
+export type Photo = string | null;
 export interface Photos {
   small: Photo;
   large: Photo;
