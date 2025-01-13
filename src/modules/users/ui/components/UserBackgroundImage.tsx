@@ -1,6 +1,11 @@
 import Box from '@mui/material/Box';
 
-const UserBackgroundImage = ({ size, src }) => {
+interface UserBackgroundImageProps {
+  size: number;
+  src: string;
+}
+
+const UserBackgroundImage = ({ size, src }: UserBackgroundImageProps) => {
   return (
     <Box
       bgcolor="grey.300"
