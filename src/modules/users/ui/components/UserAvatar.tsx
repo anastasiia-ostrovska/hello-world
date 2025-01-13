@@ -1,13 +1,22 @@
+import { UserName } from '@/modules/users/types';
+import { Styles } from '@/shared/types/mui-props';
 import useAvatar from '@/modules/users/hooks/ui/useAvatar';
 import Avatar from '@mui/material/Avatar';
 
-const UserAvatar = ({ name, src, size, sx = {} }) => {
+interface UserAvatarProps {
+  name: UserName;
+  src: string;
+  size: number;
+  sx: Styles;
+}
+
+const UserAvatar = ({ name, src, size, sx = {} }: UserAvatarProps) => {
   const { bgColor, initials } = useAvatar(name);
 
   return (
     <Avatar
       alt={name || 'Avatar is loading...'}
-      src={src || ''}
+      src={src}
       sx={{
         width: size,
         height: size,
