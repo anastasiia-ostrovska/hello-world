@@ -2,7 +2,10 @@ import { ChangeEvent, useCallback } from 'react';
 import { useAppDispatch } from '@/shared/hooks/redux';
 import { setCurrentPage } from '@/modules/users/store/usersSlice';
 
-type PageChangeHandler = (event: ChangeEvent<unknown>, page: number) => void;
+export type PageChangeHandler = (
+  event: ChangeEvent<unknown>,
+  page: number
+) => void;
 
 const usePageChange = (): PageChangeHandler => {
   const dispatch = useAppDispatch();

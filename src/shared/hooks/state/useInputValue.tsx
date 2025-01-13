@@ -1,12 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 
-type InputValue = string | number;
+type InputValue = string;
 type InputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => void;
 type InputResetHandler = () => void;
 
-type UseInputValueResult = [InputValue, InputChangeHandler, InputResetHandler];
-
-const useInputValue = (initialValue: InputValue): UseInputValueResult => {
+const useInputValue = (initialValue: InputValue) => {
   const [value, setValue] = useState(initialValue);
 
   const handleChange: InputChangeHandler = (event) => {
@@ -17,7 +15,7 @@ const useInputValue = (initialValue: InputValue): UseInputValueResult => {
     setValue(initialValue);
   };
 
-  return [value, handleChange, resetValue];
+  return { value, handleChange, resetValue };
 };
 
 export default useInputValue;

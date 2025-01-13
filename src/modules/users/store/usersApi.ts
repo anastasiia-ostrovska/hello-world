@@ -1,4 +1,4 @@
-import { ResponseData } from '@/shared/types/response-data';
+import { ApiResponseTemplate } from '@/shared/types/response-data';
 import { UserId, UsersQueryParams, UsersResponse } from '@/modules/users/types';
 import { USERS, FOLLOW } from '@/shared/constants/query-endpoints';
 import { DELETE, POST } from '@/shared/constants/query-methods';
@@ -12,7 +12,7 @@ const usersApi = baseAPI.injectEndpoints({
       providesTags: ['Users'],
     }),
 
-    unfollowUser: builder.mutation<ResponseData, UserId>({
+    unfollowUser: builder.mutation<ApiResponseTemplate, UserId>({
       query: (userId) => ({
         method: DELETE,
         url: `${FOLLOW}/${userId}`,
@@ -30,7 +30,7 @@ const usersApi = baseAPI.injectEndpoints({
       invalidatesTags: ['Users'],
     }),
 
-    followUser: builder.mutation<ResponseData, UserId>({
+    followUser: builder.mutation<ApiResponseTemplate, UserId>({
       query: (userId) => ({
         method: POST,
         url: `${FOLLOW}/${userId}`,

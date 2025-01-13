@@ -1,9 +1,11 @@
-import useUserCardList from '@/modules/users/hooks/ui/useUserCardList';
 import Grid2 from '@mui/material/Grid2';
 import UserCard from '@/modules/users/ui/components/UserCard';
+import useUsersItems from '@/modules/users/hooks/api/useUsersItems';
+import useUserCardClick from '@/modules/users/hooks/handlers/useUserCardClick';
 
 const UserCardList = () => {
-  const { users, isLoading, handleUserCardClick } = useUserCardList();
+  const { users, isLoading } = useUsersItems();
+  const handleUserCardClick = useUserCardClick();
 
   return (
     <Grid2

@@ -1,5 +1,10 @@
-export interface ResponseData<T = object> {
+export interface ApiResponseTemplate<D = object> {
   resultCode: number;
   messages: string[];
-  data: T;
+  data: D;
+}
+
+export interface ResponseDataState<D = object> {
+  data: D | undefined;
+  isLoading: boolean;
 }

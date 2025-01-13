@@ -15,8 +15,8 @@ const ProfileAvatar = ({ size }: ProfileAvatarProps) => {
       isLoading={isLoading}
       element={
         <UserAvatar
-          name={data?.fullName}
-          src={data?.photos?.small}
+          userName={data?.fullName || ''}
+          src={data?.photos?.small || null}
           size={size}
         />
       }

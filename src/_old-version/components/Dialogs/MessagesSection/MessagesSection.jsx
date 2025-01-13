@@ -12,7 +12,7 @@ import styles from './MessagesSection.module.css';
 const MessagesSection = () => {
   const dispatch = useDispatch();
   const messages = useSelector(selectMessages);
-  const [messageText, handleChangeText, resetText] = useInputValue('');
+  const { messageText, handleChangeText, resetText } = useInputValue('');
 
   const handleSendMessage = () => {
     dispatch(sendNewMessage(messageText));
