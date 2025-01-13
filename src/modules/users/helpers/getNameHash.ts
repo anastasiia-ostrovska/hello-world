@@ -8,7 +8,7 @@ import { UserName } from '@/modules/users/types';
  */
 
 const getNameHash = (name: UserName): number => {
-  if (name.length === 0) return 0;
+  if (!name) return 0;
 
   let hash = 0;
   for (let i = 0; i < name.length; i++) {

@@ -1,3 +1,5 @@
+import { UserName } from '@/modules/users/types';
+import { AvatarColor } from '@/modules/theme';
 import getNameHash from '@/modules/users/helpers/getNameHash';
 
 /**
@@ -9,7 +11,7 @@ import getNameHash from '@/modules/users/helpers/getNameHash';
  * @returns {string} - The color assigned to the avatar.
  */
 
-const getAvatarColor = (name, colors) => {
+const getAvatarColor = (name: UserName, colors: AvatarColor[]): AvatarColor => {
   const hash = getNameHash(name);
   const colorIndex = hash % colors.length;
 
