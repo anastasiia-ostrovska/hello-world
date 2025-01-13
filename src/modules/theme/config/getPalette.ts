@@ -1,3 +1,4 @@
+import { ThemeMode } from '@/modules/theme/types';
 import {
   green,
   orange,
@@ -6,37 +7,38 @@ import {
   teal,
   yellow,
 } from '@mui/material/colors';
-import { ThemeMode } from '@/modules/theme/types';
+import { PaletteOptions } from '@mui/material/styles';
 
-type AvatarColors = Record<string, string>;
+const avatarColors = {
+  purple: purple[400],
+  teal: teal[400],
+  orange: orange[800],
+  yellow: yellow[900],
+  pink: pink[400],
+  green: green[600],
+} as const;
+
+export type AvatarColors = typeof avatarColors;
+export type AvatarColor = AvatarColors[keyof AvatarColors];
+export type CustomBackground = {
+  avatar: AvatarColors;
+  userCard: string;
+};
 
 declare module '@mui/material/styles' {
   interface Palette {
-    customBackground: {
-      avatar: AvatarColors;
-      userCard: string;
-    };
+    customBackground: CustomBackground;
   }
 
   interface PaletteOptions {
-    customBackground?: {
-      avatar?: Partial<AvatarColors>;
-      userCard?: string;
-    };
+    customBackground?: Partial<CustomBackground>;
   }
 }
 
-const getPalette = (mode: ThemeMode) => ({
+const getPalette = (mode: ThemeMode): PaletteOptions => ({
   mode,
   customBackground: {
-    avatar: {
-      purple: purple[400],
-      teal: teal[400],
-      orange: orange[800],
-      yellow: yellow[900],
-      pink: pink[400],
-      green: green[600],
-    },
+    avatar: avatarColors,
     userCard: mode === ThemeMode.Dark ? '#1d1d1d' : '#fff',
   },
 });
