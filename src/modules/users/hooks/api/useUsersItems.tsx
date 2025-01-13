@@ -5,7 +5,9 @@ import useUsers from '@/modules/users/hooks/api/useUsers';
 import useUsersQueryParams from '@/modules/users/hooks/state/useUsersQueryParams';
 import generateMockUsers from '@/modules/users/helpers/generateMockUsers';
 
-const useUsersItems = (): ResponseDataState<User[]> => {
+export type UsersItemsResponseState = ResponseDataState<User[]>;
+
+const useUsersItems = (): UsersItemsResponseState => {
   const { data, isLoading } = useUsers();
   const { usersQueryCount } = useUsersQueryParams();
 
