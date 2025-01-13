@@ -12,7 +12,7 @@ import { UserName } from '@/modules/users/types';
 export type Initials = string;
 
 const getInitials = (fullName: UserName): Initials => {
-  if (fullName.trim() === '') return '';
+  if (!fullName || fullName.trim() === '') return '';
 
   return fullName
     .split(' ') // Split the name by spaces
