@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 export interface FollowButtonProps {
   userId: UserId;
   isFollowed: boolean;
-  sx: Styles;
+  sx?: Styles;
 }
 
 const FollowButton = ({ userId, isFollowed, sx = {} }: FollowButtonProps) => {

@@ -7,7 +7,7 @@ interface UserAvatarProps {
   userName: UserName;
   src: Photo;
   size: number;
-  sx: Styles;
+  sx?: Styles;
 }
 
 const UserAvatar = ({ userName, src, size, sx = {} }: UserAvatarProps) => {

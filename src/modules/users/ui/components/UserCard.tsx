@@ -15,12 +15,9 @@ import FollowButton, {
 } from '@/modules/users/ui/components/FollowButton';
 import { UserCardClickHandler } from '@/modules/users/hooks/handlers/useUserCardClick';
 
-type UserCardProps = Omit<
-  UserAvatarWithBackgroundProps &
-    UserCardContentProps &
-    FollowButtonProps & { onUserCardClick: UserCardClickHandler },
-  'sx'
->;
+type UserCardProps = UserAvatarWithBackgroundProps &
+  UserCardContentProps &
+  FollowButtonProps & { onUserCardClick: UserCardClickHandler };
 
 const UserCard = ({
   isLoading,
