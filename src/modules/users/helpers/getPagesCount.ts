@@ -7,8 +7,12 @@
  * @returns {number} - The total number of pages needed to display all items, rounded up.
  * If the total count is perfectly divisible by the items per page, the result is an integer.
  */
+export type PagesCount = number;
 
-const getPagesCount = (totalCount: number, itemsPerPage: number): number => {
+const getPagesCount = (
+  totalCount: number,
+  itemsPerPage: number
+): PagesCount => {
   return Math.ceil(totalCount / itemsPerPage);
 };
 

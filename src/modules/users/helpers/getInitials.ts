@@ -9,7 +9,9 @@ import { UserName } from '@/modules/users/types';
  * Returns an empty string if the input is not a valid name.
  */
 
-const getInitials = (fullName: UserName): string => {
+export type Initials = string;
+
+const getInitials = (fullName: UserName): Initials => {
   if (fullName.trim() === '') return '';
 
   return fullName

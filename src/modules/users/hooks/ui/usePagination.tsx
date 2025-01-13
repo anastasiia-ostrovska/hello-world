@@ -1,9 +1,21 @@
+import { PaginationProps } from '@mui/material';
+import { UsersQueryParams } from '@/modules/users/types';
+import { PagesCount } from '@/modules/users/helpers/getPagesCount';
 import useUsersQueryParams from '@/modules/users/hooks/state/useUsersQueryParams';
 import usePaginationSize from '@/modules/users/hooks/helpers/usePaginationSize';
-import usePageChange from '@/modules/users/hooks/handlers/usePageChange';
+import usePageChange, {
+  PageChangeHandler,
+} from '@/modules/users/hooks/handlers/usePageChange';
 import usePagesCount from '@/modules/users/hooks/helpers/usePagesCount';
 
-const usePagination = () => {
+interface UsersPaginationProps {
+  size: PaginationProps['size'];
+  currentPage: UsersQueryParams['currentPage'];
+  pagesCount: PagesCount;
+  handlePageChange: PageChangeHandler;
+}
+
+const usePagination = (): UsersPaginationProps => {
   const { currentPage } = useUsersQueryParams();
   const pagesCount = usePagesCount();
   const handlePageChange = usePageChange();

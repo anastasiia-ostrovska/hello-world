@@ -1,4 +1,4 @@
-import { ResponseData } from '@/shared/types/response-data';
+import { ApiResponseTemplate } from '@/shared/types/response-data';
 
 export interface AuthData {
   id: number;
@@ -6,4 +6,4 @@ export interface AuthData {
   login: string;
 }
 
-export type AuthMeResponse = ResponseData<AuthData>;
+export type AuthMeResponse = ApiResponseTemplate<AuthData>;

@@ -7,7 +7,9 @@ import { UserName } from '@/modules/users/types';
  * Returns 0 if the input is invalid
  */
 
-const getNameHash = (name: UserName): number => {
+export type Hash = number;
+
+const getNameHash = (name: UserName): Hash => {
   if (!name) return 0;
 
   let hash = 0;
