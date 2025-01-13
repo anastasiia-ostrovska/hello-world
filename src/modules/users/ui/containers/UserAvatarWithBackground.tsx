@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import UserAvatar from '@/modules/users/ui/components/UserAvatar';
 import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
 
-interface UserAvatarWithBackgroundProps {
+export interface UserAvatarWithBackgroundProps {
   name: UserName;
   avatarSrc: string;
   backgroundSrc: string;

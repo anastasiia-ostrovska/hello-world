@@ -4,9 +4,20 @@ import { SkeletonWrapper } from '@/modules/loaders';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
-import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import UserCardContent from '@/modules/users/ui/components/UserCardContent';
-import FollowButton from '@/modules/users/ui/components/FollowButton';
+import UserAvatarWithBackground, {
+  UserAvatarWithBackgroundProps,
+} from '@/modules/users/ui/containers/UserAvatarWithBackground';
+import UserCardContent, {
+  UserCardContentProps,
+} from '@/modules/users/ui/components/UserCardContent';
+import FollowButton, {
+  FollowButtonProps,
+} from '@/modules/users/ui/components/FollowButton';
+import { UserCardClickHandler } from '@/modules/users/hooks/handlers/useUserCardClick';
+
+type UserCardProps = UserAvatarWithBackgroundProps &
+  UserCardContentProps &
+  FollowButtonProps & { onUserCardClick: UserCardClickHandler };
 
 const UserCard = ({
   isLoading,
@@ -20,7 +31,7 @@ const UserCard = ({
   avatarSize,
   backgroundImageSize,
   onUserCardClick,
-}) => {
+}: UserCardProps) => {
   const { palette } = useTheme();
 
   return (

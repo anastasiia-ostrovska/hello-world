@@ -3,7 +3,7 @@ import { Styles } from '@/shared/types/mui-props';
 import useFollowButton from '@/modules/users/hooks/ui/useFollowButton';
 import Button from '@mui/material/Button';
 
-interface FollowButtonProps {
+export interface FollowButtonProps {
   userId: UserId;
   isFollowed: boolean;
   sx: Styles;

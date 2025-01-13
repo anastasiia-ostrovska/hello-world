@@ -3,7 +3,7 @@ import { SkeletonText } from '@/modules/loaders';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 
-interface UserCardContentProps {
+export interface UserCardContentProps {
   isLoading: boolean;
   userName: UserName;
   jobTitle: string;
