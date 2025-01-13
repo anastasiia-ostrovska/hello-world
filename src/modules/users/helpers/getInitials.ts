@@ -1,3 +1,5 @@
+import { UserName } from '@/modules/users/types';
+
 /**
  * Function to extract the first two initials from a full name.
  * If the name has only one word, it returns the initial of that word.
@@ -7,8 +9,8 @@
  * Returns an empty string if the input is not a valid name.
  */
 
-const getInitials = (fullName) => {
-  if (typeof fullName !== 'string' || fullName.trim() === '') return '';
+const getInitials = (fullName: UserName): string => {
+  if (fullName.trim() === '') return '';
 
   return fullName
     .split(' ') // Split the name by spaces
