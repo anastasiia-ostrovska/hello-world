@@ -1,14 +1,18 @@
 import { profileNavItems } from '@/modules/navigation/config/navigation-items';
 import { LogoutButton } from '@/modules/auth';
-import NAVIGATION_TYPE from '@/modules/navigation/constants/navigation-types';
 import useProfileNavbar from '@/modules/navigation/hooks/ui/useProfileNavbar';
-import NavigationList from '@/modules/navigation/ui/components/NavigationList';
 import ProfileMenuButton from '@/modules/navigation/ui/components/ProfileMenuButton';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import ProfileNavItem from '@/modules/navigation/ui/components/ProfileNavItem';
+import NavigationList from '@/modules/navigation/ui/components/NavigationList';
 
-const ProfileNavbar = ({ iconSize }) => {
+interface ProfileNavbarProps {
+  iconSize: number;
+}
+
+const ProfileNavbar = ({ iconSize }: ProfileNavbarProps) => {
   const {
     anchorEl,
     isMenuOpen,
@@ -41,11 +45,11 @@ const ProfileNavbar = ({ iconSize }) => {
       >
         <NavigationList
           items={profileNavItems}
-          type={NAVIGATION_TYPE.PROFILE}
+          NavigationItem={ProfileNavItem}
           onClick={handleMenuItemClick}
         />
         <Divider />
-        <LogoutButton iconSize={iconSize} />
+        <LogoutButton iconSize={iconSize} onClick={handleMenuClose} />
       </Menu>
     </Box>
   );
