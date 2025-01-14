@@ -1,14 +1,13 @@
-import useLogout from '@/modules/auth/hooks/handlers/useLogout';
+import { MenuCloseHandler } from '@/modules/navigation';
 import Chip from '@mui/material/Chip';
 import LogoutIcon from '@/modules/auth/ui/components/LogoutIcon';
 
 interface LogoutButtonProps {
   iconSize: number;
+  onClick: MenuCloseHandler;
 }
 
-const LogoutButton = ({ iconSize }: LogoutButtonProps) => {
-  const handleLogout = useLogout();
-
+const LogoutButton = ({ iconSize, onClick }: LogoutButtonProps) => {
   return (
     <Chip
       component="button"
@@ -18,7 +17,7 @@ const LogoutButton = ({ iconSize }: LogoutButtonProps) => {
       aria-label="Log out"
       color="error"
       avatar={<LogoutIcon iconSize={iconSize} />}
-      onClick={handleLogout}
+      onClick={onClick}
       sx={{ display: 'flex', justifySelf: 'center', pl: '3px' }}
     />
   );

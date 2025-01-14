@@ -23,3 +23,4 @@ export interface NavigationListProps
 }
 
 export type MenuBtnClickHandler = (event: MouseEvent<HTMLElement>) => void;
+export type MenuCloseHandler = () => void;
