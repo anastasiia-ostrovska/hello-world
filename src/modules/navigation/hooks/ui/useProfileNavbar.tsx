@@ -1,9 +1,8 @@
-import { Path } from '@/modules/navigation/types';
-import { MouseEvent, useCallback, useEffect, useState } from 'react';
+import { MenuBtnClickHandler, Path } from '@/modules/navigation/types';
+import { useCallback, useEffect, useState } from 'react';
 import useNavigateToPath from '@/modules/navigation/hooks/handlers/useNavigateToPath';
 
 type AnchorEl = HTMLElement | null;
-type MenuBtnClickHandler = (event: MouseEvent<HTMLElement>) => void;
 type MenuCloseHandler = () => void;
 type MenuItemClickHandler = (path: Path) => void;
 

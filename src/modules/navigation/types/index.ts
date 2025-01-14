@@ -1,4 +1,4 @@
-import { ComponentType, ReactNode } from 'react';
+import { ComponentType, MouseEvent, ReactNode } from 'react';
 
 export type Path = string;
 
@@ -21,3 +21,5 @@ export interface NavigationListProps
   items: NavigationItem[];
   NavigationItem: ComponentType<NavigationItemProps>;
 }
+
+export type MenuBtnClickHandler = (event: MouseEvent<HTMLElement>) => void;
