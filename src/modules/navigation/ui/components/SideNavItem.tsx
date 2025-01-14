@@ -1,10 +1,17 @@
+import { NavigationItemProps } from '@/modules/navigation/types';
 import { memo } from 'react';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-const SideNavItem = ({ label, icon, path, color, onClick }) => {
+const SideNavItem = ({
+  label,
+  icon,
+  path,
+  color,
+  onClick,
+}: NavigationItemProps) => {
   return (
     <ListItem
       disablePadding
