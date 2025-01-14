@@ -1,8 +1,8 @@
 import { mainNavItems } from '@/modules/navigation/config/navigation-items';
-import NAVIGATION_TYPE from '@/modules/navigation/constants/navigation-types';
 import useNavigateToPath from '@/modules/navigation/hooks/handlers/useNavigateToPath';
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavItem from '@/modules/navigation/ui/components/BottomNavItem';
 import NavigationList from '@/modules/navigation/ui/components/NavigationList';
 
 const BottomNavbar = () => {
@@ -23,7 +23,7 @@ const BottomNavbar = () => {
       <BottomNavigation sx={{ backgroundColor: 'transparent' }}>
         <NavigationList
           items={mainNavItems}
-          type={NAVIGATION_TYPE.BOTTOM}
+          NavigationItem={BottomNavItem}
           onClick={handleNavigate}
         />
       </BottomNavigation>
