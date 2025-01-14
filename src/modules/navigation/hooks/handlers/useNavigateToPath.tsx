@@ -1,17 +1,16 @@
+import { NavigateToPathHandler } from '@/modules/navigation/types';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
-const useNavigateToPath = () => {
+const useNavigateToPath = (): NavigateToPathHandler => {
   const navigate = useNavigate();
 
-  const handleNavigate = useCallback(
+  return useCallback(
     (path) => {
       if (path) navigate(path);
     },
     [navigate]
   );
-
-  return handleNavigate;
 };
 
 export default useNavigateToPath;
