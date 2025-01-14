@@ -20,7 +20,7 @@ const Layout = () => {
       {isAuth ? (
         <Stack sx={{ flexGrow: 1 }}>
           <Content />
-          <Navigation isAuth={isAuth} />
+          <Navigation />
         </Stack>
       ) : (
         messages && <div>{messages[0]}</div>
