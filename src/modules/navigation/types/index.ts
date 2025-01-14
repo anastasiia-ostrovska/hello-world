@@ -1,8 +1,10 @@
 import { ComponentType, ReactNode } from 'react';
 
+export type Path = string;
+
 export interface NavigationItem {
   id: string;
-  path: string;
+  path: Path;
   label: string;
   icon: ReactNode;
 }
