@@ -1,3 +1,4 @@
+import { NavigationItem } from '@/modules/navigation/types';
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 import AddBoxIcon from '@mui/icons-material/AddBox';
@@ -9,7 +10,7 @@ import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
 import * as ROUTES from '@/routing/constants/paths';
 
-export const mainNavItems = [
+export const mainNavItems: NavigationItem[] = [
   { id: 'home', path: ROUTES.HOME, label: 'Home', icon: <HomeIcon /> },
   {
     id: 'network',
@@ -31,7 +32,7 @@ export const mainNavItems = [
   },
 ];
 
-export const topNavItems = [
+export const topNavItems: NavigationItem[] = [
   {
     id: 'dialogs',
     path: ROUTES.DIALOGS,
@@ -46,7 +47,7 @@ export const topNavItems = [
   },
 ];
 
-export const profileNavItems = [
+export const profileNavItems: NavigationItem[] = [
   {
     id: 'profile',
     path: ROUTES.PROFILE,
