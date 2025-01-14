@@ -1,6 +1,8 @@
 import { useLocation } from 'react-router-dom';
 
-const useIsActivePath = (path) => {
+type IsActivePath = boolean;
+
+const useIsActivePath = (path: string): IsActivePath => {
   const { pathname } = useLocation();
 
   return pathname.startsWith(path);
