@@ -1,12 +1,9 @@
-import {
-  MenuBtnClickHandler,
-  MenuCloseHandler,
-  Path,
-} from '@/modules/navigation/types';
+import { MenuBtnClickHandler, Path } from '@/modules/navigation/types';
 import { useCallback, useEffect, useState } from 'react';
 import useNavigateToPath from '@/modules/navigation/hooks/handlers/useNavigateToPath';
 
 type AnchorEl = HTMLElement | null;
+type MenuCloseHandler = () => void;
 type MenuItemClickHandler = (path: Path) => void;
 
 type ProfileNavbarChildrenProps = {
