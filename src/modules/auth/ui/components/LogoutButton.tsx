@@ -1,10 +1,9 @@
-import { MenuCloseHandler } from '@/modules/navigation';
 import Chip from '@mui/material/Chip';
 import LogoutIcon from '@/modules/auth/ui/components/LogoutIcon';
 
 interface LogoutButtonProps {
   iconSize: number;
-  onClick: MenuCloseHandler;
+  onClick: () => void;
 }
 
 const LogoutButton = ({ iconSize, onClick }: LogoutButtonProps) => {
