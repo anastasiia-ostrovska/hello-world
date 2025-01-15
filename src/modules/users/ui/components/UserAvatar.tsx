@@ -3,7 +3,7 @@ import { Styles } from '@/shared/types/mui-props';
 import useAvatar from '@/modules/users/hooks/ui/useAvatar';
 import Avatar from '@mui/material/Avatar';
 
-interface UserAvatarProps {
+export interface UserAvatarProps {
   userName: UserName;
   src: Photo;
   size: number;
