@@ -1,7 +1,7 @@
 import { ProfileDataResponse } from '@/modules/profile/types';
 import { UserId } from '@/modules/users/types';
 import { PROFILE } from '@/shared/constants/query-endpoints';
-import baseAPI from '@/redux/base-API';
+import { baseAPI } from '@/redux';
 
 const profileApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
