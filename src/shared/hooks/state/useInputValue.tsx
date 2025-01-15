@@ -4,7 +4,13 @@ type InputValue = string;
 type InputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => void;
 type InputResetHandler = () => void;
 
-const useInputValue = (initialValue: InputValue) => {
+interface InputProps {
+  value: InputValue;
+  handleChange: InputChangeHandler;
+  resetValue: InputResetHandler;
+}
+
+const useInputValue = (initialValue: InputValue): InputProps => {
   const [value, setValue] = useState(initialValue);
 
   const handleChange: InputChangeHandler = (event) => {
