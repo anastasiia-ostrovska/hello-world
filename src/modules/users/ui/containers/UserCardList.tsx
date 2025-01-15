@@ -1,5 +1,5 @@
 import Grid2 from '@mui/material/Grid2';
-import UserCard from '@/modules/users/ui/components/UserCard';
+import UserCard from '@/modules/users/ui/containers/UserCard';
 import useUsersItems from '@/modules/users/hooks/api/useUsersItems';
 import useUserCardClick from '@/modules/users/hooks/handlers/useUserCardClick';
 

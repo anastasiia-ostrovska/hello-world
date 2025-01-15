@@ -1,15 +1,18 @@
-import { Photo, UserName } from '@/modules/users/types';
 import { Styles } from '@/shared/types/mui-props';
 import Box from '@mui/material/Box';
-import UserAvatar from '@/modules/users/ui/components/UserAvatar';
-import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
+import UserAvatar, {
+  UserAvatarProps,
+} from '@/modules/users/ui/components/UserAvatar';
+import UserBackgroundImage, {
+  UserBackgroundImageProps,
+} from '@/modules/users/ui/components/UserBackgroundImage';
 
 export interface UserAvatarWithBackgroundProps {
-  userName: UserName;
-  avatarSrc: Photo;
-  backgroundSrc: Photo;
-  avatarSize: number;
-  backgroundImageSize: number;
+  userName: UserAvatarProps['userName'];
+  avatarSrc: UserAvatarProps['src'];
+  backgroundSrc: UserBackgroundImageProps['src'];
+  avatarSize: UserAvatarProps['size'];
+  backgroundImageSize: UserBackgroundImageProps['size'];
   avatarBorderColor?: string;
   avatarBorderWidth?: `${number}px`;
   avatarPosition?: 'center' | 'left';

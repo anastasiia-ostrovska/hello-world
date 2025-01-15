@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { Photo } from '@/modules/users/types';
 
-interface UserBackgroundImageProps {
+export interface UserBackgroundImageProps {
   size: number;
   src: Photo;
 }
