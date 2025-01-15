@@ -1,6 +1,6 @@
 import { AuthMeResponse } from '@/modules/auth/types';
 import { AUTH_ME } from '@/shared/constants/query-endpoints';
-import baseAPI from '@/redux/base-API';
+import { baseAPI } from '@/redux';
 
 const authApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
