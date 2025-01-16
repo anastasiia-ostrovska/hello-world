@@ -3,11 +3,14 @@ import { TopNavbar } from '@/modules/navigation';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
-const Header = ({ isAuth }) => {
+interface HeaderProps {
+  isAuth: boolean;
+}
+
+const Header = ({ isAuth }: HeaderProps) => {
   return (
     <Paper
       component="header"
-      position="fixed"
       elevation={2}
       square
       sx={{
@@ -27,7 +30,7 @@ const Header = ({ isAuth }) => {
       <Box sx={{ display: 'flex' }}>
         <ModeSwitcher />
       </Box>
-      {isAuth ? <TopNavbar /> : <div>lOGIN</div>}
+      {isAuth ? <TopNavbar /> : <div>LOGIN</div>}
     </Paper>
   );
 };
