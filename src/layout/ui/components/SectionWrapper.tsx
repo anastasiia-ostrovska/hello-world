@@ -1,6 +1,13 @@
+import { ReactNode } from 'react';
+import { Styles } from '@/shared/types/mui-props';
 import Paper from '@mui/material/Paper';
 
-const SectionWrapper = ({ children, sx = {} }) => {
+interface SectionWrapperProps {
+  children: ReactNode;
+  sx?: Styles;
+}
+
+const SectionWrapper = ({ children, sx = {} }: SectionWrapperProps) => {
   return (
     <Paper
       component="section"
