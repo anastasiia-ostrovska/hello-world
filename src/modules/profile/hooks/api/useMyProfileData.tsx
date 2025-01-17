@@ -1,5 +1,6 @@
 import { ProfileDataResponse } from '@/modules/profile/types';
 import { useAuth } from '@/modules/auth';
+import { skipToken } from '@reduxjs/toolkit/query';
 import { useGetUserProfileQuery } from '@/modules/profile/store/profileApi';
 
 interface MyProfileData {
@@ -10,10 +11,7 @@ interface MyProfileData {
 const useMyProfileData = (): MyProfileData => {
   const { authData, isLoading: isAuthDataLoading } = useAuth();
   const { data, isLoading: isProfileDataLoading } = useGetUserProfileQuery(
-    authData?.id as number,
-    {
-      skip: !authData?.id,
-    }
+    authData?.id ?? skipToken
   );
 
   const isLoading = isAuthDataLoading || isProfileDataLoading;

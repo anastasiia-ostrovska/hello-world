@@ -103,5 +103,3 @@ export const {
   useUnfollowUserMutation,
   useFollowUserMutation,
 } = usersApi;
-
-// export default usersApi;
