@@ -3,7 +3,7 @@ import {
   selectMessages,
   sendNewMessage,
 } from '@/_old-version/reducers/dialogsReducer';
-import useInputValue from '@/shared/hooks/useInputValue';
+import useInputValue from '@/shared/hooks/state/useInputValue';
 import MessagesList from './MessagesList/MessagesList';
 import NewMessage from './NewMessage/NewMessage';
 
@@ -12,7 +12,7 @@ import styles from './MessagesSection.module.css';
 const MessagesSection = () => {
   const dispatch = useDispatch();
   const messages = useSelector(selectMessages);
-  const [messageText, handleChangeText, resetText] = useInputValue('');
+  const { messageText, handleChangeText, resetText } = useInputValue('');
 
   const handleSendMessage = () => {
     dispatch(sendNewMessage(messageText));

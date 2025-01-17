@@ -32,6 +32,7 @@ module.exports = {
     },
   },
   rules: {
+    'react/react-in-jsx-scope': 'off',
     'react/function-component-definition': [
       'error',
       {
@@ -56,11 +57,12 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'], // allows state mutations in reducers
       },
     ],
-    'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
     'import/prefer-default-export': 'off',
     '@typescript-eslint/no-shadow': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'no-plusplus': 'off',
   },
 };
