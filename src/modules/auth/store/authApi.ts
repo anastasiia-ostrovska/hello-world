@@ -21,4 +21,4 @@ const authApi = baseAPI.injectEndpoints({
   }),
 });
 
-export const { useGetAuthDataQuery } = authApi;
+export const { useLogInMutation, useGetAuthDataQuery } = authApi;
