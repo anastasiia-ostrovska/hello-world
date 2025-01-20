@@ -11,7 +11,7 @@ const baseAPI = createApi({
     },
     credentials: 'include',
   }),
-  tagTypes: ['Users'],
+  tagTypes: ['Users', 'Auth'],
   endpoints: () => ({}),
 });
 

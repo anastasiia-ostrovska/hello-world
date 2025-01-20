@@ -1,5 +1,5 @@
 import { ProfileDataResponse } from '@/modules/profile/types';
-import { UserId } from '@/modules/users/types';
+import { UserId } from '@/modules/users';
 import { PROFILE } from '@/shared/constants/query-endpoints';
 import { baseAPI } from '@/redux';
 
