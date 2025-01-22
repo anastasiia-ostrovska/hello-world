@@ -5,6 +5,7 @@ import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundIma
 
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
 import { ModeSwitcher } from '@/modules/theme';
+import { LogInForm } from '@/modules/auth';
 
 const Components = () => {
   return (
@@ -18,20 +19,20 @@ const Components = () => {
         <ModeSwitcher />
       </Box>
       <Stack spacing={1} direction="row" useFlexGap>
-        <UserAvatar name="Some Name" size={200} />
-        <UserAvatar name="john doe" size={100} />
-        <UserAvatar name="Nana" size={30} />
-        <UserAvatar name="" size={30} />
+        <UserAvatar src={null} userName="Some Name" size={200} />
+        <UserAvatar src={null} userName="john doe" size={100} />
+        <UserAvatar src={null} userName="Nana" size={30} />
+        <UserAvatar src={null} userName="" size={30} />
       </Stack>
       <UserBackgroundImage
-        height="200px"
+        size={200}
         src="https://uploads.sitepoint.com/wp-content/uploads/2016/05/1689772525css-object-fit.jpg"
       />
       <Box sx={{ width: 500, borderRadius: 15 }}>
-        <UserBackgroundImage height="200px" />
+        <UserBackgroundImage size={200} src={null} />
       </Box>
       <Box sx={{ width: 150, borderRadius: 5 }}>
-        <UserBackgroundImage height="200px" />
+        <UserBackgroundImage size={200} src={null} />
       </Box>
       <Box
         sx={{
@@ -42,8 +43,9 @@ const Components = () => {
         }}
       >
         <UserAvatarWithBackground
-          name="Anna"
+          userName="Anna"
           avatarSize={150}
+          avatarSrc={null}
           backgroundImageSize={200}
           avatarPosition="left"
           avatarBorderColor="white"
@@ -59,7 +61,8 @@ const Components = () => {
         }}
       >
         <UserAvatarWithBackground
-          name="Janine Goo"
+          userName="Janine Goo"
+          backgroundSrc={null}
           avatarSize={120}
           backgroundImageSize={100}
           avatarSrc="https://everyone.plos.org/wp-content/uploads/sites/5/2021/02/kirsten-scaled-e1613041313402-982x1024.jpg"
@@ -75,11 +78,14 @@ const Components = () => {
         }}
       >
         <UserAvatarWithBackground
-          name="Valery T"
+          userName="Valery T"
           avatarSize={60}
           backgroundImageSize={60}
+          avatarSrc={null}
+          backgroundSrc={null}
         />
       </Box>
+      <LogInForm />
     </Stack>
   );
 };
