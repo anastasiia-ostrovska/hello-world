@@ -1,14 +1,8 @@
-import { Styles } from '@/shared/types/mui-props';
+import { LogInInputProps } from '@/modules/auth/types';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
 import FormHelperText from '@mui/material/FormHelperText';
-
-interface LogInInputProps
-  extends Pick<OutlinedInputProps, 'id' | 'label' | 'type' | 'error'> {
-  helperText: string;
-  sx?: Styles;
-}
 
 const LogInInput = ({
   id,
