@@ -9,7 +9,7 @@ interface LogInInputProps {
   name: string;
   label: string;
   helperText: string;
-  type?: string;
+  type: string;
   rules?: UseControllerProps['rules'];
   required?: boolean;
 }
@@ -18,7 +18,7 @@ const LogInInput = ({
   name,
   label,
   helperText,
-  type = 'text',
+  type,
   rules = {},
   required = true,
 }: LogInInputProps) => {

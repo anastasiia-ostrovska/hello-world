@@ -39,6 +39,7 @@ const LogInForm = () => {
           <Typography variant="h5">Log in</Typography>
           <Stack spacing={2}>
             <LogInInput
+              type="email"
               name="email"
               label="Email"
               helperText="in the format: example@domain.com"
