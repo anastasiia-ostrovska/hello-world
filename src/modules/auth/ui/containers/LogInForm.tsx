@@ -17,6 +17,8 @@ interface LogInData {
 const LogInForm = () => {
   const methods = useForm<LogInData>({
     defaultValues: { email: '', password: '', rememberMe: true },
+    delayError: 500,
+    mode: 'onTouched',
   });
   const { control, handleSubmit } = methods;
 
@@ -26,7 +28,7 @@ const LogInForm = () => {
 
   return (
     <FormProvider {...methods}>
-      <Paper elevation={2} sx={{ p: 2 }}>
+      <Paper elevation={2} sx={{ width: 300, p: 2 }}>
         <Stack
           component="form"
           onSubmit={handleSubmit(onSubmit)}
@@ -37,14 +39,44 @@ const LogInForm = () => {
           <Typography variant="h5">Log in</Typography>
           <Stack spacing={2}>
             <LogInInput
+              type="email"
               name="email"
               label="Email"
-              helperText="e.g., example@mail.com"
+              helperText="in the format: example@domain.com"
+              rules={{
+                required: 'Please, enter your email',
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message:
+                    'Please enter a valid email address in the format: example@domain.com.',
+                },
+              }}
             />
             <LogInInput
+              type="password"
               name="password"
               label="Password"
-              helperText="8+ chars, uppercase, number and symbol"
+              helperText="16+ chars, uppercase, number and symbol"
+              rules={{
+                required: 'Please, enter your password',
+                validate: {
+                  containsUppercase: (value: string) =>
+                    /[A-Z]/.test(value) ||
+                    'Your password must contain at least one uppercase letter.',
+                  containsDigit: (value: string) =>
+                    /\d/.test(value) ||
+                    'Your password must contain at least one digit.',
+                  containsSpecialCharacter: (value: string) =>
+                    /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
+                    'Your password must contain at least one special character.',
+                  minLength: (value: string) => {
+                    return (
+                      value.length >= 16 ||
+                      'Your password must be at least 16 characters long.'
+                    );
+                  },
+                },
+              }}
             />
             <LogInCheckbox
               name="rememberMe"
