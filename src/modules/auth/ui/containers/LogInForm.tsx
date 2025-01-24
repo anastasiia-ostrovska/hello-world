@@ -37,7 +37,7 @@ const LogInForm = () => {
               helperText="8+ chars, uppercase, number and symbol"
             />
             <LogInCheckbox
-              id="remember-me"
+              name="rememberMe"
               label="Remember me"
               helperText="Stay logged in on this device"
             />
