@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import LogInInput from '@/modules/auth/ui/components/LogInInput';
 import LogInCheckbox from '@/modules/auth/ui/components/LogInCheckbox';
-import Button from '@mui/material/Button';
+import LogInSubmitButton from '@/modules/auth/ui/components/LogInSubmitButton';
 
 interface LogInData {
   email: string;
@@ -84,9 +84,7 @@ const LogInForm = () => {
               helperText="Stay logged in on this device"
             />
           </Stack>
-          <Button type="submit" variant="contained" sx={{ mt: 8 }}>
-            Log in
-          </Button>
+          <LogInSubmitButton />
         </Stack>
         <DevTool control={control} /> {/* set up the dev tool */}
       </Paper>
