@@ -1,3 +1,6 @@
+import { useForm } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { DevTool } from '@hookform/devtools';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -6,6 +9,8 @@ import LogInCheckbox from '@/modules/auth/ui/components/LogInCheckbox';
 import Button from '@mui/material/Button';
 
 const LogInForm = () => {
+  const { control } = useForm({});
+
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
       <Stack component="form" noValidate spacing={4} sx={{ width: '100%' }}>
@@ -35,6 +40,7 @@ const LogInForm = () => {
           Log in
         </Button>
       </Stack>
+      <DevTool control={control} /> {/* set up the dev tool */}
     </Paper>
   );
 };
