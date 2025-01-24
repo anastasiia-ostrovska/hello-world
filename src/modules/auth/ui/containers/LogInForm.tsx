@@ -17,6 +17,7 @@ interface LogInData {
 const LogInForm = () => {
   const methods = useForm<LogInData>({
     defaultValues: { email: '', password: '', rememberMe: true },
+    delayError: 500,
     mode: 'onTouched',
   });
   const { control, handleSubmit } = methods;
