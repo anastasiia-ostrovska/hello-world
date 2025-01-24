@@ -8,22 +8,32 @@ import LogInInput from '@/modules/auth/ui/components/LogInInput';
 import LogInCheckbox from '@/modules/auth/ui/components/LogInCheckbox';
 import Button from '@mui/material/Button';
 
-interface LogInInputs {
+interface LogInData {
   email: string;
   password: string;
   rememberMe: boolean;
 }
 
 const LogInForm = () => {
-  const methods = useForm<LogInInputs>({
+  const methods = useForm<LogInData>({
     defaultValues: { email: '', password: '', rememberMe: true },
   });
-  const { control } = methods;
+  const { control, handleSubmit } = methods;
+
+  const onSubmit = (data: LogInData) => {
+    console.log(data);
+  };
 
   return (
     <FormProvider {...methods}>
       <Paper elevation={2} sx={{ p: 2 }}>
-        <Stack component="form" noValidate spacing={4} sx={{ width: '100%' }}>
+        <Stack
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+          spacing={4}
+          sx={{ width: '100%' }}
+        >
           <Typography variant="h5">Log in</Typography>
           <Stack spacing={2}>
             <LogInInput
