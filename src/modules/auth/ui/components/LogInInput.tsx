@@ -1,35 +1,23 @@
-import { LogInInputProps } from '@/modules/auth/types';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import FormHelperText from '@mui/material/FormHelperText';
+import { Controller, useFormContext } from 'react-hook-form';
+import { TextField } from '@mui/material';
 
-const LogInInput = ({
-  id,
-  label,
-  type,
-  error,
-  helperText,
-  sx = {},
-}: LogInInputProps) => {
+interface LogInInputProps {
+  name: string;
+  label: string;
+  helperText: string;
+}
+
+const LogInInput = ({ name, label, helperText }: LogInInputProps) => {
+  const { control } = useFormContext();
+
   return (
-    <FormControl
-      required
-      fullWidth
-      error={error}
-      margin="normal"
-      variant="outlined"
-      sx={{ ...sx }}
-    >
-      <InputLabel htmlFor={id}>{label}</InputLabel>
-      <OutlinedInput
-        id={id}
-        type={type}
-        label="Password"
-        aria-describedby={`${id}-helper-text`}
-      />
-      <FormHelperText id={`${id}-helper-text`}>{helperText}</FormHelperText>
-    </FormControl>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <TextField fullWidth {...field} label={label} helperText={helperText} />
+      )}
+    />
   );
 };
 
