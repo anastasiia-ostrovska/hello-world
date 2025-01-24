@@ -31,13 +31,13 @@ const LogInInput = ({
       rules={rules}
       render={({ field, fieldState: { error } }) => (
         <TextField
-          fullWidth
           {...field}
+          fullWidth
           required={required}
           type={type}
           error={!!error}
           label={label}
-          helperText={error ? error?.message : helperText}
+          helperText={error ? error.message : helperText}
         />
       )}
     />
