@@ -67,10 +67,12 @@ const LogInForm = () => {
                   containsSpecialCharacter: (value: string) =>
                     /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
                     'Your password must contain at least one special character.',
-                },
-                minLength: {
-                  value: 16,
-                  message: 'Al least 16 symbols',
+                  minLength: (value: string) => {
+                    return (
+                      value.length >= 16 ||
+                      'Your password must be at least 16 characters long.'
+                    );
+                  },
                 },
               }}
             />
