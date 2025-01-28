@@ -1,17 +1,14 @@
-import {
-  Controller,
-  UseControllerProps,
-  useFormContext,
-} from 'react-hook-form';
-import { TextField } from '@mui/material';
+import { UseControllerProps } from 'react-hook-form';
+import { ControlledTextField } from '@/modules/forms';
 
 interface LogInInputProps {
   name: string;
   label: string;
   helperText: string;
   type: string;
-  rules?: UseControllerProps['rules'];
-  required?: boolean;
+  rules: UseControllerProps['rules'];
+  required: boolean;
+  autoComplete: string;
 }
 
 const LogInInput = ({
@@ -19,27 +16,20 @@ const LogInInput = ({
   label,
   helperText,
   type,
-  rules = {},
-  required = true,
+  rules,
+  required,
+  autoComplete,
 }: LogInInputProps) => {
-  const { control } = useFormContext();
-
   return (
-    <Controller
+    <ControlledTextField
       name={name}
-      control={control}
+      type={type}
+      helperText={helperText}
       rules={rules}
-      render={({ field, fieldState: { error } }) => (
-        <TextField
-          {...field}
-          fullWidth
-          required={required}
-          type={type}
-          error={!!error}
-          label={label}
-          helperText={error ? error.message : helperText}
-        />
-      )}
+      fullWidth
+      required={required}
+      label={label}
+      autoComplete={autoComplete}
     />
   );
 };
