@@ -1,27 +1,21 @@
-import {
-  Controller,
-  UseControllerProps,
-  useFormContext,
-} from 'react-hook-form';
+import { Styles } from '@/shared/types/mui-props';
+import { ControlledInputProps } from '@/modules/forms/types';
+import { Controller, useFormContext } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
 import FormHelperText from '@mui/material/FormHelperText';
-import { Styles } from '@/shared/types/mui-props';
 
-interface ControlledCheckboxProps extends CheckboxProps {
-  name: string;
-  label: string;
-  formControlSx?: Styles;
-  helperText?: string;
-  showError?: boolean;
-  rules?: UseControllerProps['rules'];
+interface ControlledCheckboxProps
+  extends Omit<CheckboxProps, 'name'>,
+    ControlledInputProps {
+  wrapperSx?: Styles;
 }
 
 const ControlledCheckbox = ({
   name,
   label,
-  formControlSx = {},
+  wrapperSx = {},
   helperText = '',
   showError = true,
   rules = {},
@@ -30,7 +24,7 @@ const ControlledCheckbox = ({
   const { control } = useFormContext();
 
   return (
-    <FormControl sx={{ ...formControlSx }}>
+    <FormControl sx={{ ...wrapperSx }}>
       <Controller
         name={name}
         control={control}
