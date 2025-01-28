@@ -30,7 +30,7 @@ const ControlledTextField = ({
       control={control}
       rules={rules}
       render={({ field, fieldState: { error } }) => {
-        const errorState = showError && error;
+        const hasErrorToShow = showError && error;
 
         return (
           <TextField
@@ -38,7 +38,7 @@ const ControlledTextField = ({
             {...field}
             type={type}
             error={!!error}
-            helperText={errorState ? error.message : helperText}
+            helperText={hasErrorToShow ? error.message : helperText}
           />
         );
       }}
