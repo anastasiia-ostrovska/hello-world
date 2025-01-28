@@ -14,10 +14,6 @@ const Favourites = lazy(() => import('@/pages/Favourites'));
 const Library = lazy(() => import('@/pages/Library'));
 const Settings = lazy(() => import('@/pages/Settings'));
 
-const Components = lazy(
-  () => import('@/_old-version/components-presentation/Components')
-);
-
 interface RouteConfig {
   path: string;
   element: ReactElement;
@@ -42,8 +38,6 @@ const ROUTES_CONFIG: RouteConfig[] = [
   },
   { path: ROUTES.LIBRARY, element: <SuspenseRoute element={<Library />} /> },
   { path: ROUTES.SETTINGS, element: <SuspenseRoute element={<Settings />} /> },
-
-  { path: '/components', element: <SuspenseRoute element={<Components />} /> },
 ];
 
 export default ROUTES_CONFIG;
