@@ -42,7 +42,9 @@ const LogInForm = () => {
               type="email"
               name="email"
               label="Email"
+              autoComplete="email"
               helperText="in the format: example@domain.com"
+              required
               rules={{
                 required: 'Please, enter your email',
                 pattern: {
@@ -56,6 +58,8 @@ const LogInForm = () => {
               type="password"
               name="password"
               label="Password"
+              autoComplete="current-password"
+              required
               helperText="16+ chars, uppercase, number and symbol"
               rules={{
                 required: 'Please, enter your password',
