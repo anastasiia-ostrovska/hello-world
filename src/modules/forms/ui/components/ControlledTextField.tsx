@@ -1,6 +1,7 @@
 import { TextFieldProps } from '@mui/material';
 import { ControlledInputProps } from '@/modules/forms/types';
 import { Controller, useFormContext } from 'react-hook-form';
+import getHelperTextWithID from '@/modules/forms/helpers/getHelperTextWithID';
 import TextField from '@mui/material/TextField';
 
 interface ControlledTextFieldProps
@@ -12,6 +13,8 @@ interface ControlledTextFieldProps
 const ControlledTextField = ({
   name,
   type,
+  label,
+  required = true,
   helperText = '',
   showError = true,
   rules = {},
@@ -25,15 +28,22 @@ const ControlledTextField = ({
       control={control}
       rules={rules}
       render={({ field, fieldState: { error } }) => {
-        const hasErrorToShow = showError && error;
+        const { text } = getHelperTextWithID({
+          name,
+          error,
+          showError,
+          helperText,
+        });
 
         return (
           <TextField
             {...textFieldMuiProps}
             {...field}
+            required={required}
+            label={label}
             type={type}
             error={!!error}
-            helperText={hasErrorToShow ? error.message : helperText}
+            helperText={text}
           />
         );
       }}
