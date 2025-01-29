@@ -17,7 +17,7 @@ interface LogInData {
 const LogInForm = () => {
   const methods = useForm<LogInData>({
     defaultValues: { email: '', password: '', rememberMe: true },
-    delayError: 500,
+    delayError: 300,
     mode: 'onTouched',
   });
   const { control, handleSubmit } = methods;
@@ -82,11 +82,7 @@ const LogInForm = () => {
                 },
               }}
             />
-            <LogInCheckbox
-              name="rememberMe"
-              label="Remember me"
-              helperText="Stay logged in on this device"
-            />
+            <LogInCheckbox />
           </Stack>
           <LogInSubmitButton />
         </Stack>
