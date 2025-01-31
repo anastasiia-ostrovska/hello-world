@@ -7,6 +7,15 @@ import Stack from '@mui/material/Stack';
 import LogInInput from '@/modules/auth/ui/components/LogInInput';
 import LogInCheckbox from '@/modules/auth/ui/components/LogInCheckbox';
 import LogInSubmitButton from '@/modules/auth/ui/components/LogInSubmitButton';
+import {
+  emailRequired,
+  minLengthMustBe16,
+  mustBeInValidEmailFormat,
+  mustContainDigit,
+  mustContainSpecialCharacter,
+  mustContainUppercase,
+  passwordRequired,
+} from '@/modules/forms/validators';
 
 interface LogInData {
   email: string;
@@ -17,7 +26,7 @@ interface LogInData {
 const LogInForm = () => {
   const methods = useForm<LogInData>({
     defaultValues: { email: '', password: '', rememberMe: true },
-    delayError: 500,
+    delayError: 300,
     mode: 'onTouched',
   });
   const { control, handleSubmit } = methods;
@@ -42,47 +51,29 @@ const LogInForm = () => {
               type="email"
               name="email"
               label="Email"
+              autoComplete="email"
               helperText="in the format: example@domain.com"
-              rules={{
-                required: 'Please, enter your email',
-                pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                  message:
-                    'Please enter a valid email address in the format: example@domain.com.',
-                },
-              }}
+              required
+              rules={{ validate: { emailRequired, mustBeInValidEmailFormat } }}
             />
             <LogInInput
               type="password"
               name="password"
               label="Password"
+              autoComplete="current-password"
+              required
               helperText="16+ chars, uppercase, number and symbol"
               rules={{
-                required: 'Please, enter your password',
                 validate: {
-                  containsUppercase: (value: string) =>
-                    /[A-Z]/.test(value) ||
-                    'Your password must contain at least one uppercase letter.',
-                  containsDigit: (value: string) =>
-                    /\d/.test(value) ||
-                    'Your password must contain at least one digit.',
-                  containsSpecialCharacter: (value: string) =>
-                    /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
-                    'Your password must contain at least one special character.',
-                  minLength: (value: string) => {
-                    return (
-                      value.length >= 16 ||
-                      'Your password must be at least 16 characters long.'
-                    );
-                  },
+                  passwordRequired,
+                  mustContainUppercase,
+                  mustContainDigit,
+                  mustContainSpecialCharacter,
+                  minLengthMustBe16,
                 },
               }}
             />
-            <LogInCheckbox
-              name="rememberMe"
-              label="Remember me"
-              helperText="Stay logged in on this device"
-            />
+            <LogInCheckbox />
           </Stack>
           <LogInSubmitButton />
         </Stack>
