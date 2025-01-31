@@ -4,18 +4,10 @@ import { DevTool } from '@hookform/devtools';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import LogInInput from '@/modules/auth/ui/components/LogInInput';
+import LogInEmailInput from '@/modules/auth/ui/components/LogInEmailInput';
+import LogInPasswordInput from '@/modules/auth/ui/components/LogInPasswordInput';
 import LogInCheckbox from '@/modules/auth/ui/components/LogInCheckbox';
 import LogInSubmitButton from '@/modules/auth/ui/components/LogInSubmitButton';
-import {
-  emailRequired,
-  minLengthMustBe16,
-  mustBeInValidEmailFormat,
-  mustContainDigit,
-  mustContainSpecialCharacter,
-  mustContainUppercase,
-  passwordRequired,
-} from '@/modules/forms/validators';
 
 interface LogInData {
   email: string;
@@ -47,32 +39,8 @@ const LogInForm = () => {
         >
           <Typography variant="h5">Log in</Typography>
           <Stack spacing={2}>
-            <LogInInput
-              type="email"
-              name="email"
-              label="Email"
-              autoComplete="email"
-              helperText="in the format: example@domain.com"
-              required
-              rules={{ validate: { emailRequired, mustBeInValidEmailFormat } }}
-            />
-            <LogInInput
-              type="password"
-              name="password"
-              label="Password"
-              autoComplete="current-password"
-              required
-              helperText="16+ chars, uppercase, number and symbol"
-              rules={{
-                validate: {
-                  passwordRequired,
-                  mustContainUppercase,
-                  mustContainDigit,
-                  mustContainSpecialCharacter,
-                  minLengthMustBe16,
-                },
-              }}
-            />
+            <LogInEmailInput />
+            <LogInPasswordInput />
             <LogInCheckbox />
           </Stack>
           <LogInSubmitButton />
