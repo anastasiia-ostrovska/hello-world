@@ -9,11 +9,7 @@ const SideNavbar = () => {
   const handleNavigate = useNavigateToPath();
 
   return (
-    <Paper
-      component="nav"
-      elevation={2}
-      sx={{ position: 'fixed', width: '180px' }}
-    >
+    <Paper component="nav" sx={{ position: 'fixed', width: '180px' }}>
       <List>
         <NavigationList
           items={mainNavItems}

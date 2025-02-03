@@ -12,7 +12,6 @@ const BottomNavbar = () => {
     <Paper
       component="nav"
       square
-      elevation={2}
       sx={{
         position: 'fixed',
         bottom: 0,
