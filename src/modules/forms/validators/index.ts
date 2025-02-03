@@ -45,3 +45,11 @@ export const requiredField = (message: string) => (value: string) => {
 
 export const emailRequired = requiredField('Please, enter your email');
 export const passwordRequired = requiredField('Please, enter your password');
+
+export const validateEmptySpaces = (message: string) => (value: string) => {
+  return value === value.replace(/\s+/g, '') || message;
+};
+
+export const mustNotContainEmptySpaces = validateEmptySpaces(
+  'Please, remove empty spaces'
+);
