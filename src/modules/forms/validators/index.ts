@@ -34,9 +34,9 @@ export const validateMinLength =
     return value.length >= length || message;
   };
 
-export const minLengthMustBe16 = validateMinLength(
-  16,
-  'Your password must be at least 16 characters long.'
+export const minLengthMustBe14 = validateMinLength(
+  14,
+  'Your password must be at least 14 characters long.'
 );
 
 export const requiredField = (message: string) => (value: string) => {
