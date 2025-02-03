@@ -1,16 +1,6 @@
-import { useMemo } from 'react';
-import { useFormContext } from 'react-hook-form';
 import Button from '@mui/material/Button';
 
-const LogInSubmitButton = () => {
-  const {
-    formState: { isSubmitting, isValid },
-  } = useFormContext();
-
-  const isDisabled = useMemo(() => {
-    return isSubmitting || !isValid;
-  }, [isValid, isSubmitting]);
-
+const LogInSubmitButton = ({ isDisabled }: { isDisabled: boolean }) => {
   return (
     <Button
       type="submit"

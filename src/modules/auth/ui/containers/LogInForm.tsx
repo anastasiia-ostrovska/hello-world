@@ -1,6 +1,7 @@
 import { FormProvider, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { DevTool } from '@hookform/devtools';
+import { useMemo } from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -21,7 +22,18 @@ const LogInForm = () => {
     delayError: 300,
     mode: 'onTouched',
   });
-  const { control, handleSubmit } = methods;
+  const {
+    control,
+    handleSubmit,
+    formState: { dirtyFields, errors, isSubmitting },
+  } = methods;
+
+  const isDisabled = useMemo(() => {
+    const isEmptyField = !dirtyFields.email || !dirtyFields.password;
+    const hasError = Object.keys(errors).length > 0;
+
+    return isEmptyField || hasError || isSubmitting;
+  }, [dirtyFields.email, dirtyFields.password, errors, isSubmitting]);
 
   const onSubmit = (data: LogInData) => {
     console.log(data);
@@ -43,7 +55,7 @@ const LogInForm = () => {
             <LogInPasswordInput />
             <LogInCheckbox />
           </Stack>
-          <LogInSubmitButton />
+          <LogInSubmitButton isDisabled={isDisabled} />
         </Stack>
         <DevTool control={control} /> {/* set up the dev tool */}
       </Paper>
