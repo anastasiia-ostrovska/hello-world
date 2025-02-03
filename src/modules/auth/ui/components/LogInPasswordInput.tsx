@@ -5,6 +5,7 @@ import {
   mustContainDigit,
   mustContainSpecialCharacter,
   minLengthMustBe16,
+  mustNotContainEmptySpaces,
 } from '@/modules/forms/validators';
 
 const LogInEmailInput = () => {
@@ -19,6 +20,7 @@ const LogInEmailInput = () => {
       rules={{
         validate: {
           passwordRequired,
+          mustNotContainEmptySpaces,
           mustContainUppercase,
           mustContainDigit,
           mustContainSpecialCharacter,
