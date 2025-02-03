@@ -4,7 +4,7 @@ import {
   mustContainUppercase,
   mustContainDigit,
   mustContainSpecialCharacter,
-  minLengthMustBe16,
+  minLengthMustBe14,
   mustNotContainEmptySpaces,
 } from '@/modules/forms/validators';
 
@@ -24,7 +24,7 @@ const LogInEmailInput = () => {
           mustContainUppercase,
           mustContainDigit,
           mustContainSpecialCharacter,
-          minLengthMustBe16,
+          minLengthMustBe16: minLengthMustBe14,
         },
       }}
     />
