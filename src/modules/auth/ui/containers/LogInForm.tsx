@@ -10,6 +10,7 @@ import LogInEmailInput from '@/modules/auth/ui/components/LogInEmailInput';
 import LogInPasswordInput from '@/modules/auth/ui/components/LogInPasswordInput';
 import LogInCheckbox from '@/modules/auth/ui/components/LogInCheckbox';
 import LogInSubmitButton from '@/modules/auth/ui/components/LogInSubmitButton';
+import { useLogInMutation } from '@/modules/auth/store/authApi';
 
 interface LogInData {
   email: string;
@@ -29,6 +30,7 @@ const LogInForm = () => {
     setValue,
     formState: { dirtyFields, errors, isSubmitting },
   } = methods;
+  const [logIn] = useLogInMutation();
 
   const isDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
@@ -38,7 +40,7 @@ const LogInForm = () => {
   }, [dirtyFields.email, dirtyFields.password, errors, isSubmitting]);
 
   const onSubmit = (data: LogInData) => {
-    console.log(data);
+    logIn(data);
   };
 
   const handleFillGuestData = () => {
