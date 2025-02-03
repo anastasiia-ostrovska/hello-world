@@ -40,19 +40,16 @@ const LogInForm = () => {
   }, [dirtyFields.email, dirtyFields.password, errors, isSubmitting]);
 
   const onSubmit = (data: LogInData) => {
+    console.log(data);
     logIn(data);
   };
 
   const handleFillGuestData = () => {
-    const encodedPassword = encodeURIComponent(
-      import.meta.env.VITE_GUEST_PASSWORD
-    );
-
     setValue('email', import.meta.env.VITE_GUEST_EMAIL, {
       shouldValidate: true,
       shouldDirty: true,
     });
-    setValue('password', encodedPassword, {
+    setValue('password', import.meta.env.VITE_GUEST_PASSWORD, {
       shouldValidate: true,
       shouldDirty: true,
     });
