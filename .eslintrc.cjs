@@ -40,7 +40,6 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'func-style': ['error', 'expression'],
     'prefer-arrow-callback': 'error',
     'no-confusing-arrow': 'error',
     'react/jsx-no-bind': [
@@ -54,7 +53,7 @@ module.exports = {
       'error',
       {
         props: true,
-        ignorePropertyModificationsFor: ['state'], // allows state mutations in reducers
+        ignorePropertyModificationsFor: ['state'],
       },
     ],
     'react/prop-types': 'off',
