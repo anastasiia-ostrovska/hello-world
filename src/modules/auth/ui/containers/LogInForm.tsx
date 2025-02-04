@@ -23,15 +23,14 @@ const LogInForm = () => {
     control,
     handleSubmit,
     setValue,
-    formState: { dirtyFields, errors, isSubmitting },
+    formState: { dirtyFields, isSubmitting },
   } = methods;
   const [logIn] = useLogInMutation();
 
   const isDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
-    const hasError = Object.keys(errors).length > 0;
-    return isEmptyField || hasError || isSubmitting;
-  }, [dirtyFields.email, dirtyFields.password, errors, isSubmitting]);
+    return isEmptyField || isSubmitting;
+  }, [dirtyFields.email, dirtyFields.password, isSubmitting]);
 
   const onSubmit = (data: LogInData) => {
     logIn(data);
@@ -50,12 +49,16 @@ const LogInForm = () => {
 
   return (
     <FormProvider {...methods}>
-      <Stack spacing={1} sx={{ maxWidth: 350, width: '100%' }}>
+      <Stack spacing={1} sx={{ maxWidth: 300, width: '100%' }}>
         <Typography variant="h5" sx={{ alignSelf: 'center' }}>
           Log in
         </Typography>
         <SectionWrapper
-          sx={{ flexDirection: 'column', gap: 1, alignItems: 'center' }}
+          sx={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 1,
+          }}
         >
           <Typography
             variant="caption"
