@@ -5,7 +5,7 @@ interface UseLogOutResult {
   isLoading: boolean;
 }
 
-const useLogoutButton = (): UseLogOutResult => {
+const useLogOutButton = (): UseLogOutResult => {
   const [logOut, { isLoading }] = useLogOutMutation();
 
   const handleLogOut = () => {
@@ -15,4 +15,4 @@ const useLogoutButton = (): UseLogOutResult => {
   return { handleLogOut, isLoading };
 };
 
-export default useLogoutButton;
+export default useLogOutButton;
