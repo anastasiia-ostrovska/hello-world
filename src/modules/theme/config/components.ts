@@ -4,6 +4,16 @@ const components = {
       elevation: 2,
     },
   },
+  MuiTextField: {
+    defaultProps: {
+      size: 'small',
+    },
+  },
+  MuiCheckbox: {
+    defaultProps: {
+      size: 'small',
+    },
+  },
   MuiButton: {
     styleOverrides: {
       root: {
