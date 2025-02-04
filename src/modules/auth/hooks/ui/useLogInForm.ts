@@ -1,11 +1,12 @@
 import { LogInData } from '@/modules/auth/types';
+import { useCallback, useMemo } from 'react';
 import { SubmitHandler, UseFormReturn, useForm } from 'react-hook-form';
 import { useLogInMutation } from '@/modules/auth/store/authApi';
-import { useMemo } from 'react';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LogInData>;
   handleFormSubmit: (data: LogInData) => void;
+  handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
 }
 
@@ -16,6 +17,7 @@ const useLogInForm = (): UseLogInFormResult => {
     mode: 'onTouched',
   });
   const {
+    setValue,
     formState: { dirtyFields, isSubmitting },
   } = methods;
   const [logIn] = useLogInMutation();
@@ -25,10 +27,26 @@ const useLogInForm = (): UseLogInFormResult => {
     return isEmptyField || isSubmitting;
   }, [dirtyFields.email, dirtyFields.password, isSubmitting]);
 
+  const handleFillGuestData = useCallback(() => {
+    setValue('email', import.meta.env.VITE_GUEST_EMAIL, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+    setValue('password', import.meta.env.VITE_GUEST_PASSWORD, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  }, [setValue]);
+
   const handleFormSubmit: SubmitHandler<LogInData> = (data) => {
     logIn(data);
   };
 
-  return { methods, handleFormSubmit, isSubmitButtonDisabled };
+  return {
+    methods,
+    handleFormSubmit,
+    handleFillGuestData,
+    isSubmitButtonDisabled,
+  };
 };
 export default useLogInForm;

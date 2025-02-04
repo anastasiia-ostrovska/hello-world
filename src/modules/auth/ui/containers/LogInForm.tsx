@@ -9,10 +9,10 @@ import SectionWrapper from '../../../../layout/ui/components/SectionWrapper';
 
 interface LogInFormProps {
   onSubmit: SubmitHandler<LogInData>;
-  isSubmitButtonDisabled: boolean;
+  isButtonDisabled: boolean;
 }
 
-const LogInForm = ({ onSubmit, isSubmitButtonDisabled }: LogInFormProps) => {
+const LogInForm = ({ onSubmit, isButtonDisabled }: LogInFormProps) => {
   const { handleSubmit } = useFormContext<LogInData>();
 
   return (
@@ -29,7 +29,7 @@ const LogInForm = ({ onSubmit, isSubmitButtonDisabled }: LogInFormProps) => {
           <LogInPasswordInput />
           <LogInCheckbox />
         </Stack>
-        <LogInSubmitButton isDisabled={isSubmitButtonDisabled} />
+        <LogInSubmitButton isDisabled={isButtonDisabled} />
       </Stack>
     </SectionWrapper>
   );
