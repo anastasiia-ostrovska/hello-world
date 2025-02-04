@@ -1,3 +1,5 @@
+export const LOGIN = '/login';
+
 export const HOME = '/home';
 
 export const NETWORK = '/users';
