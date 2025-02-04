@@ -6,14 +6,17 @@ import GuestCredentials from '@/modules/auth/ui/containers/GuestCredentials';
 import LogInForm from '@/modules/auth/ui/containers/LogInForm';
 
 const LogInFormContainer = () => {
-  const { methods, handleFormSubmit } = useLogInForm();
+  const { methods, handleFormSubmit, isSubmitButtonDisabled } = useLogInForm();
 
   return (
     <FormProvider {...methods}>
       <Stack spacing={1} sx={{ maxWidth: 300, width: '100%' }}>
         <LogInHeader />
         <GuestCredentials />
-        <LogInForm onSubmit={handleFormSubmit} />
+        <LogInForm
+          onSubmit={handleFormSubmit}
+          isSubmitButtonDisabled={isSubmitButtonDisabled}
+        />
       </Stack>
     </FormProvider>
   );
