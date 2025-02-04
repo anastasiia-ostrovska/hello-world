@@ -7,14 +7,10 @@ export interface LogInData {
   rememberMe: boolean;
 }
 
-export type LogInResponse = ApiResponseTemplate<{
-  userId: UserId;
-}>;
-
 export interface AuthData {
   id: UserId;
-  email: string;
   login: string;
+  email: string;
 }
 
 export type AuthMeResponse = ApiResponseTemplate<AuthData>;

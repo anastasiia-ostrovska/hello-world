@@ -1,5 +1,6 @@
 import Chip from '@mui/material/Chip';
 import LogoutIcon from '@/modules/auth/ui/components/LogoutIcon';
+import { useLogOutMutation } from '@/modules/auth/store/authApi';
 
 interface LogoutButtonProps {
   iconSize: number;
@@ -7,6 +8,13 @@ interface LogoutButtonProps {
 }
 
 const LogoutButton = ({ iconSize, onClick }: LogoutButtonProps) => {
+  const [logOut] = useLogOutMutation();
+
+  const handleLogOut = () => {
+    onClick();
+    logOut();
+  };
+
   return (
     <Chip
       component="button"
@@ -16,7 +24,7 @@ const LogoutButton = ({ iconSize, onClick }: LogoutButtonProps) => {
       aria-label="Log out"
       color="error"
       avatar={<LogoutIcon iconSize={iconSize} />}
-      onClick={onClick}
+      onClick={handleLogOut}
       sx={{ display: 'flex', justifySelf: 'center', pl: '3px' }}
     />
   );

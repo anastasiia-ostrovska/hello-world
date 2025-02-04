@@ -11,7 +11,6 @@ const Header = ({ isAuth }: HeaderProps) => {
   return (
     <Paper
       component="header"
-      elevation={2}
       square
       sx={{
         position: 'fixed',
