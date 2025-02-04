@@ -6,7 +6,6 @@ const LogInCheckbox = () => {
       name="rememberMe"
       label="Remember me"
       helperText="Stay logged in on this device"
-      size="small"
     />
   );
 };

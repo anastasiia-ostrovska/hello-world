@@ -21,7 +21,6 @@ const LogInEmailInput = () => {
           mustBeInValidEmailFormat,
         },
       }}
-      size="small"
     />
   );
 };

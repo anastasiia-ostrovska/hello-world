@@ -27,7 +27,6 @@ const LogInEmailInput = () => {
           minLengthMustBe16: minLengthMustBe14,
         },
       }}
-      size="small"
     />
   );
 };
