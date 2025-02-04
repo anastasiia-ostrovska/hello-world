@@ -1,5 +1,3 @@
-import { OutlinedInputProps } from '@mui/material/OutlinedInput';
-import { Styles } from '@/shared/types/mui-props';
 import { ApiResponseTemplate } from '@/shared/types/response-data';
 import { UserId } from '@/modules/users';
 
@@ -9,20 +7,10 @@ export interface LogInData {
   rememberMe: boolean;
 }
 
-export type LogInResponse = ApiResponseTemplate<{
-  userId: UserId;
-}>;
-
 export interface AuthData {
   id: UserId;
-  email: string;
   login: string;
+  email: string;
 }
 
 export type AuthMeResponse = ApiResponseTemplate<AuthData>;
-
-export interface LogInInputProps
-  extends Pick<OutlinedInputProps, 'id' | 'label' | 'type' | 'error'> {
-  helperText: string;
-  sx?: Styles;
-}

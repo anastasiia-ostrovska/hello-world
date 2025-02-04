@@ -1,7 +1,9 @@
+import { LogInData } from '@/modules/auth/types';
 import { FormProvider, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { DevTool } from '@hookform/devtools';
 import { useMemo } from 'react';
+import { useLogInMutation } from '@/modules/auth/store/authApi';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
@@ -10,13 +12,6 @@ import LogInEmailInput from '@/modules/auth/ui/components/LogInEmailInput';
 import LogInPasswordInput from '@/modules/auth/ui/components/LogInPasswordInput';
 import LogInCheckbox from '@/modules/auth/ui/components/LogInCheckbox';
 import LogInSubmitButton from '@/modules/auth/ui/components/LogInSubmitButton';
-import { useLogInMutation } from '@/modules/auth/store/authApi';
-
-interface LogInData {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-}
 
 const LogInForm = () => {
   const methods = useForm<LogInData>({
@@ -35,12 +30,10 @@ const LogInForm = () => {
   const isDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
     const hasError = Object.keys(errors).length > 0;
-
     return isEmptyField || hasError || isSubmitting;
   }, [dirtyFields.email, dirtyFields.password, errors, isSubmitting]);
 
   const onSubmit = (data: LogInData) => {
-    console.log(data);
     logIn(data);
   };
 
