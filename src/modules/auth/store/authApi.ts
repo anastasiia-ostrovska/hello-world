@@ -1,8 +1,16 @@
 import { ApiResponseTemplate } from '@/shared/types/response-data';
-import { AuthMeResponse, LogInData, LogInResponse } from '@/modules/auth/types';
+import { AuthMeResponse, LogInData } from '@/modules/auth/types';
 import { baseAPI } from '@/redux';
 import { POST, DELETE } from '@/shared/constants/query-methods';
 import { LOGIN, AUTH_ME } from '@/shared/constants/query-endpoints';
+import { UserId } from '@/modules/users';
+
+interface LogInResponseData {
+  userId: UserId;
+  token: string;
+}
+
+type LogInResponse = ApiResponseTemplate<LogInResponseData>;
 
 const authApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
