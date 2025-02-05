@@ -1,17 +1,22 @@
+import {
+  REGEXP_MATCH_ALL_WHITESPACES,
+  REGEXP_MATCH_DIGIT,
+  REGEXP_MATCH_SPECIAL_CHARACTER,
+  REGEXP_MATCH_UPPERCASE,
+  REGEXP_VALID_EMAIL,
+} from '@/modules/forms/constants';
+
 const validateWithRegExp =
   (regExp: RegExp) => (message: string) => (value: string) => {
     return regExp.test(value) || message;
   };
 
-export const containsUppercase = validateWithRegExp(/\p{Lu}/u);
-export const containsDigit = validateWithRegExp(/\d/);
+export const containsUppercase = validateWithRegExp(REGEXP_MATCH_UPPERCASE);
+export const containsDigit = validateWithRegExp(REGEXP_MATCH_DIGIT);
 export const containsSpecialCharacter = validateWithRegExp(
-  /[!@#$%^&*(),.?":{}|<>]/
+  REGEXP_MATCH_SPECIAL_CHARACTER
 );
-
-export const inValidEmailFormat = validateWithRegExp(
-  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-);
+export const inValidEmailFormat = validateWithRegExp(REGEXP_VALID_EMAIL);
 
 export const mustContainUppercase = containsUppercase(
   'Your password must contain at least one uppercase letter.'
@@ -47,7 +52,7 @@ export const emailRequired = requiredField('Please, enter your email');
 export const passwordRequired = requiredField('Please, enter your password');
 
 export const validateEmptySpaces = (message: string) => (value: string) => {
-  return value === value.replace(/\s+/g, '') || message;
+  return value === value.replace(REGEXP_MATCH_ALL_WHITESPACES, '') || message;
 };
 
 export const mustNotContainEmptySpaces = validateEmptySpaces(
