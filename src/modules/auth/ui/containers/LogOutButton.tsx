@@ -1,23 +1,18 @@
+import useLogOutButton from '@/modules/auth/hooks/ui/useLogOutButton';
 import Chip from '@mui/material/Chip';
 import LogoutIcon from '@/modules/auth/ui/components/LogoutIcon';
-import { useLogOutMutation } from '@/modules/auth/store/authApi';
 
-interface LogoutButtonProps {
+interface LogOutButtonProps {
   iconSize: number;
-  onClick: () => void;
 }
 
-const LogoutButton = ({ iconSize, onClick }: LogoutButtonProps) => {
-  const [logOut] = useLogOutMutation();
-
-  const handleLogOut = () => {
-    onClick();
-    logOut();
-  };
+const LogOutButton = ({ iconSize }: LogOutButtonProps) => {
+  const { handleLogOut, isLoading } = useLogOutButton();
 
   return (
     <Chip
       component="button"
+      disabled={isLoading}
       clickable
       variant="outlined"
       label="Log out"
@@ -30,4 +25,4 @@ const LogoutButton = ({ iconSize, onClick }: LogoutButtonProps) => {
   );
 };
 
-export default LogoutButton;
+export default LogOutButton;

@@ -1,23 +1,12 @@
-import { useFormContext } from 'react-hook-form';
-import { LogInData } from '@/modules/auth/types';
 import Typography from '@mui/material/Typography';
 import FillGuestDataButton from '@/modules/auth/ui/components/FillGuestDataButton';
 import SectionWrapper from '@/layout/ui/components/SectionWrapper';
 
-const GuestCredentials = () => {
-  const { setValue } = useFormContext<LogInData>();
+interface GuestCredentialsProps {
+  onClick: () => void;
+}
 
-  const handleFillGuestData = () => {
-    setValue('email', import.meta.env.VITE_GUEST_EMAIL, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-    setValue('password', import.meta.env.VITE_GUEST_PASSWORD, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-  };
-
+const GuestCredentials = ({ onClick }: GuestCredentialsProps) => {
   return (
     <SectionWrapper
       sx={{
@@ -33,7 +22,7 @@ const GuestCredentials = () => {
       >
         * Please, use the Guest credentials to log in.
       </Typography>
-      <FillGuestDataButton onClick={handleFillGuestData} />
+      <FillGuestDataButton onClick={onClick} />
     </SectionWrapper>
   );
 };
