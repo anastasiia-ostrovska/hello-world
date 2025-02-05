@@ -15,6 +15,9 @@ const components = {
     },
   },
   MuiButton: {
+    defaultProps: {
+      variant: 'contained',
+    },
     styleOverrides: {
       root: {
         borderRadius: '2rem',
