@@ -1,9 +1,5 @@
 import { ControlledInputProps } from '@/modules/forms/types';
-import {
-  emailRequired,
-  mustBeInValidEmailFormat,
-  mustNotContainEmptySpaces,
-} from '@/modules/forms/validators';
+import { emailValidationRules } from '@/modules/forms/validation/validation-rules';
 import ControlledTextField from './ControlledTextField';
 
 const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
@@ -16,11 +12,7 @@ const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
       helperText="in the format: example@domain.com"
       required
       rules={{
-        validate: {
-          emailRequired,
-          mustNotContainEmptySpaces,
-          mustBeInValidEmailFormat,
-        },
+        validate: emailValidationRules,
       }}
     />
   );

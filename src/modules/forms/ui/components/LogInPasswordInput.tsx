@@ -1,12 +1,5 @@
 import { ControlledInputProps } from '@/modules/forms/types';
-import {
-  passwordRequired,
-  mustContainUppercase,
-  mustContainDigit,
-  mustContainSpecialCharacter,
-  minLengthMustBe14,
-  mustNotContainEmptySpaces,
-} from '@/modules/forms/validators';
+import { passwordValidationRules } from '@/modules/forms/validation/validation-rules';
 import ControlledTextField from './ControlledTextField';
 
 const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
@@ -19,14 +12,7 @@ const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
       required
       helperText="16+ chars, uppercase, number and symbol"
       rules={{
-        validate: {
-          passwordRequired,
-          mustNotContainEmptySpaces,
-          mustContainUppercase,
-          mustContainDigit,
-          mustContainSpecialCharacter,
-          minLengthMustBe16: minLengthMustBe14,
-        },
+        validate: passwordValidationRules,
       }}
     />
   );
