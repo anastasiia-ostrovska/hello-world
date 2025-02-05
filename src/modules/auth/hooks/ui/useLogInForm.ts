@@ -1,11 +1,12 @@
 import { LogInData } from '@/modules/auth/types';
-import { useCallback, useMemo } from 'react';
+import { BaseSyntheticEvent, useCallback, useMemo } from 'react';
 import { SubmitHandler, UseFormReturn, useForm } from 'react-hook-form';
 import { useLogInMutation } from '@/modules/auth/store/authApi';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LogInData>;
-  handleFormSubmit: (data: LogInData) => void;
+  // handleFormSubmit: (data: LogInData) => void;
+  handleFormSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
   handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
 }
@@ -17,6 +18,7 @@ const useLogInForm = (): UseLogInFormResult => {
     mode: 'onTouched',
   });
   const {
+    handleSubmit,
     setValue,
     formState: { dirtyFields, isSubmitting },
   } = methods;
@@ -44,7 +46,7 @@ const useLogInForm = (): UseLogInFormResult => {
 
   return {
     methods,
-    handleFormSubmit,
+    handleFormSubmit: handleSubmit(handleFormSubmit),
     handleFillGuestData,
     isSubmitButtonDisabled,
   };

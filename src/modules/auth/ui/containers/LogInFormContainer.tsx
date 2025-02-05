@@ -1,9 +1,9 @@
 import { FormProvider } from 'react-hook-form';
+import { LogInForm } from '@/modules/forms';
 import useLogInForm from '@/modules/auth/hooks/ui/useLogInForm';
 import Stack from '@mui/material/Stack';
 import LogInHeader from '@/modules/auth/ui/components/LogInHeader';
 import GuestCredentials from '@/modules/auth/ui/components/GuestCredentials';
-import LogInForm from '@/modules/auth/ui/containers/LogInForm';
 
 const LogInFormContainer = () => {
   const {
