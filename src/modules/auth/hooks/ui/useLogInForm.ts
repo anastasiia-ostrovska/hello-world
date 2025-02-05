@@ -22,12 +22,12 @@ const useLogInForm = (): UseLogInFormResult => {
     setValue,
     formState: { dirtyFields, isSubmitting },
   } = methods;
-  const [logIn] = useLogInMutation();
+  const [logIn, { isLoading }] = useLogInMutation();
 
   const isSubmitButtonDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
-    return isEmptyField || isSubmitting;
-  }, [dirtyFields.email, dirtyFields.password, isSubmitting]);
+    return isEmptyField || isSubmitting || isLoading;
+  }, [dirtyFields.email, dirtyFields.password, isLoading, isSubmitting]);
 
   const handleFillGuestData = useCallback(() => {
     setValue('email', import.meta.env.VITE_GUEST_EMAIL, {
