@@ -1,29 +1,29 @@
 const components = {
   MuiPaper: {
     defaultProps: {
-      elevation: 2,
-    },
+      elevation: 2
+    }
   },
   MuiTextField: {
     defaultProps: {
-      size: 'small',
-    },
+      size: "small"
+    }
   },
   MuiCheckbox: {
     defaultProps: {
-      size: 'small',
-    },
+      size: "small"
+    }
   },
   MuiButton: {
     defaultProps: {
-      variant: 'contained',
+      variant: "contained"
     },
     styleOverrides: {
       root: {
-        borderRadius: '2rem',
-      },
-    },
-  },
+        borderRadius: "2rem"
+      }
+    }
+  }
 };
 
 export default components;
