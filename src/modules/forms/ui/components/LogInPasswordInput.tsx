@@ -2,7 +2,7 @@ import { ControlledInputProps } from '@/modules/forms/types';
 import { passwordValidationRules } from '@/modules/forms/validation/validation-rules';
 import ControlledTextField from './ControlledTextField';
 
-const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
+const LogInPasswordInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
   return (
     <ControlledTextField
       name={name}
@@ -18,4 +18,4 @@ const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
   );
 };
 
-export default LogInEmailInput;
+export default LogInPasswordInput;
