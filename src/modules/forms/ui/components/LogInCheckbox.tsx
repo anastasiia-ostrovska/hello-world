@@ -1,12 +1,13 @@
-import { ControlledInputProps } from '@/modules/forms/types';
+import { LogInInputProps } from '@/modules/forms/types';
 import ControlledCheckbox from './ControlledCheckbox';
 
-const LogInCheckbox = ({ name }: Pick<ControlledInputProps, 'name'>) => {
+const LogInCheckbox = ({ name, disabled }: LogInInputProps) => {
   return (
     <ControlledCheckbox
       name={name}
       label="Remember me"
       helperText="Stay logged in on this device"
+      disabled={disabled}
     />
   );
 };

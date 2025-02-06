@@ -8,9 +8,14 @@ import SubmitButton from '@/modules/forms/ui/components/SubmitButton';
 interface LogInFormProps {
   onSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
   isButtonDisabled: boolean;
+  isLogInRequestLoading: boolean;
 }
 
-const LogInForm = ({ onSubmit, isButtonDisabled }: LogInFormProps) => {
+const LogInForm = ({
+  onSubmit,
+  isButtonDisabled,
+  isLogInRequestLoading,
+}: LogInFormProps) => {
   return (
     <Stack
       component="form"
@@ -20,9 +25,9 @@ const LogInForm = ({ onSubmit, isButtonDisabled }: LogInFormProps) => {
       sx={{ width: '100%' }}
     >
       <Stack spacing={2}>
-        <LogInEmailInput name="email" />
-        <LogInPasswordInput name="password" />
-        <LogInCheckbox name="rememberMe" />
+        <LogInEmailInput name="email" disabled={isLogInRequestLoading} />
+        <LogInPasswordInput name="password" disabled={isLogInRequestLoading} />
+        <LogInCheckbox name="rememberMe" disabled={isLogInRequestLoading} />
       </Stack>
       <SubmitButton disabled={isButtonDisabled}>Log in</SubmitButton>
     </Stack>

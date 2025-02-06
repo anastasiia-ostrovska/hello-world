@@ -1,8 +1,8 @@
-import { ControlledInputProps } from '@/modules/forms/types';
+import { LogInInputProps } from '@/modules/forms/types';
 import { emailValidationRules } from '@/modules/forms/validation/validation-rules';
 import ControlledTextField from './ControlledTextField';
 
-const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
+const LogInEmailInput = ({ name, disabled }: LogInInputProps) => {
   return (
     <ControlledTextField
       name={name}
@@ -14,6 +14,7 @@ const LogInEmailInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
       rules={{
         validate: emailValidationRules,
       }}
+      disabled={disabled}
     />
   );
 };
