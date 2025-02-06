@@ -1,8 +1,8 @@
-import { ControlledInputProps } from '@/modules/forms/types';
+import { LogInInputProps } from '@/modules/forms/types';
 import { passwordValidationRules } from '@/modules/forms/validation/validation-rules';
 import ControlledTextField from './ControlledTextField';
 
-const LogInPasswordInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
+const LogInPasswordInput = ({ name, disabled }: LogInInputProps) => {
   return (
     <ControlledTextField
       name={name}
@@ -14,6 +14,7 @@ const LogInPasswordInput = ({ name }: Pick<ControlledInputProps, 'name'>) => {
       rules={{
         validate: passwordValidationRules,
       }}
+      disabled={disabled}
     />
   );
 };

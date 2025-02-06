@@ -12,6 +12,7 @@ const LogInFormContainer = () => {
     handleFormSubmit,
     handleFillGuestData,
     isSubmitButtonDisabled,
+    isLogInRequestLoading,
   } = useLogInForm();
 
   return (
@@ -23,6 +24,7 @@ const LogInFormContainer = () => {
           <LogInForm
             onSubmit={handleFormSubmit}
             isButtonDisabled={isSubmitButtonDisabled}
+            isLogInRequestLoading={isLogInRequestLoading}
           />
         </SectionWrapper>
       </Stack>
