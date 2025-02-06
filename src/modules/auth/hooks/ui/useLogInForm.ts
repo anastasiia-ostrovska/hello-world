@@ -1,11 +1,10 @@
 import { LogInData } from '@/modules/auth/types';
-import { BaseSyntheticEvent, useCallback, useMemo } from 'react';
+import { BaseSyntheticEvent, useCallback, useEffect, useMemo } from 'react';
 import { SubmitHandler, UseFormReturn, useForm } from 'react-hook-form';
 import { useLogInMutation } from '@/modules/auth/store/authApi';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LogInData>;
-  // handleFormSubmit: (data: LogInData) => void;
   handleFormSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
   handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
@@ -14,15 +13,21 @@ interface UseLogInFormResult {
 const useLogInForm = (): UseLogInFormResult => {
   const methods = useForm<LogInData>({
     defaultValues: { email: '', password: '', rememberMe: true },
-    delayError: 300,
     mode: 'onTouched',
   });
   const {
     handleSubmit,
-    setValue,
-    formState: { dirtyFields, isSubmitting },
+    reset,
+    formState: { dirtyFields, isSubmitting, isSubmitSuccessful },
   } = methods;
-  const [logIn, { isLoading }] = useLogInMutation();
+  const [logIn, { isLoading, isSuccess: logInRequestSuccess }] =
+    useLogInMutation();
+
+  useEffect(() => {
+    if (isSubmitSuccessful && logInRequestSuccess) {
+      reset();
+    }
+  }, [isSubmitSuccessful, logInRequestSuccess, reset]);
 
   const isSubmitButtonDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
@@ -30,15 +35,17 @@ const useLogInForm = (): UseLogInFormResult => {
   }, [dirtyFields.email, dirtyFields.password, isLoading, isSubmitting]);
 
   const handleFillGuestData = useCallback(() => {
-    setValue('email', import.meta.env.VITE_GUEST_EMAIL, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-    setValue('password', import.meta.env.VITE_GUEST_PASSWORD, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-  }, [setValue]);
+    reset(
+      {
+        email: import.meta.env.VITE_GUEST_EMAIL,
+        password: import.meta.env.VITE_GUEST_PASSWORD,
+      },
+      {
+        keepDefaultValues: true,
+        keepTouched: true,
+      }
+    );
+  }, [reset]);
 
   const handleFormSubmit: SubmitHandler<LogInData> = (data) => {
     logIn(data);
