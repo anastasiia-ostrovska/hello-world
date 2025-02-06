@@ -8,3 +8,8 @@ export interface ControlledInputProps {
   showError?: boolean;
   rules?: UseControllerProps['rules'];
 }
+
+export interface LogInInputProps {
+  name: ControlledInputProps['name'];
+  disabled: boolean;
+}
