@@ -8,6 +8,7 @@ interface UseLogInFormResult {
   handleFormSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
   handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
+  isLogInRequestLoading: boolean;
 }
 
 const useLogInForm = (): UseLogInFormResult => {
@@ -20,8 +21,10 @@ const useLogInForm = (): UseLogInFormResult => {
     reset,
     formState: { dirtyFields, isSubmitting, isSubmitSuccessful },
   } = methods;
-  const [logIn, { isLoading, isSuccess: logInRequestSuccess }] =
-    useLogInMutation();
+  const [
+    logIn,
+    { isLoading: isLogInRequestLoading, isSuccess: logInRequestSuccess },
+  ] = useLogInMutation();
 
   useEffect(() => {
     if (isSubmitSuccessful && logInRequestSuccess) {
@@ -31,8 +34,13 @@ const useLogInForm = (): UseLogInFormResult => {
 
   const isSubmitButtonDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
-    return isEmptyField || isSubmitting || isLoading;
-  }, [dirtyFields.email, dirtyFields.password, isLoading, isSubmitting]);
+    return isEmptyField || isSubmitting || isLogInRequestLoading;
+  }, [
+    dirtyFields.email,
+    dirtyFields.password,
+    isLogInRequestLoading,
+    isSubmitting,
+  ]);
 
   const handleFillGuestData = useCallback(() => {
     reset(
@@ -56,6 +64,7 @@ const useLogInForm = (): UseLogInFormResult => {
     handleFormSubmit: handleSubmit(handleFormSubmit),
     handleFillGuestData,
     isSubmitButtonDisabled,
+    isLogInRequestLoading,
   };
 };
 export default useLogInForm;
