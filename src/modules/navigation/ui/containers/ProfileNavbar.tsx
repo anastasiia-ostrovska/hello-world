@@ -1,6 +1,7 @@
 import { profileNavItems } from '@/modules/navigation/config/navigation-items';
-import { LogoutButton } from '@/modules/auth';
+import { LogOutButton } from '@/modules/auth';
 import useProfileNavbar from '@/modules/navigation/hooks/ui/useProfileNavbar';
+import useNavigateToPath from '@/modules/navigation/hooks/handlers/useNavigateToPath';
 import ProfileMenuButton from '@/modules/navigation/ui/components/ProfileMenuButton';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
@@ -13,13 +14,9 @@ interface ProfileNavbarProps {
 }
 
 const ProfileNavbar = ({ iconSize }: ProfileNavbarProps) => {
-  const {
-    anchorEl,
-    isMenuOpen,
-    handleMenuButtonClick,
-    handleMenuItemClick,
-    handleMenuClose,
-  } = useProfileNavbar();
+  const { anchorEl, isMenuOpen, handleMenuButtonClick, handleMenuClose } =
+    useProfileNavbar();
+  const handleNavigate = useNavigateToPath();
 
   return (
     <Box>
@@ -35,7 +32,7 @@ const ProfileNavbar = ({ iconSize }: ProfileNavbarProps) => {
         id="profile-menu"
         anchorEl={anchorEl}
         open={isMenuOpen}
-        onClose={handleMenuClose}
+        onClick={handleMenuClose}
         MenuListProps={{
           'aria-labelledby': 'profile-menu-button',
         }}
@@ -46,10 +43,10 @@ const ProfileNavbar = ({ iconSize }: ProfileNavbarProps) => {
         <NavigationList
           items={profileNavItems}
           NavigationItem={ProfileNavItem}
-          onClick={handleMenuItemClick}
+          onClick={handleNavigate}
         />
         <Divider />
-        <LogoutButton iconSize={iconSize} onClick={handleMenuClose} />
+        <LogOutButton iconSize={iconSize} />
       </Menu>
     </Box>
   );

@@ -1,9 +1,16 @@
 import { ApiResponseTemplate } from '@/shared/types/response-data';
+import { UserId } from '@/modules/users';
+
+export interface LogInData {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
 
 export interface AuthData {
-  id: number;
-  email: string;
+  id: UserId;
   login: string;
+  email: string;
 }
 
 export type AuthMeResponse = ApiResponseTemplate<AuthData>;
