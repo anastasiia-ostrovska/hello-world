@@ -4,6 +4,7 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import svgr from 'vite-plugin-svgr';
 import * as path from 'node:path';
 
 export default defineConfig({
@@ -16,7 +17,19 @@ export default defineConfig({
       '@reducers': path.resolve(__dirname, './src/redux/reducers'),
     },
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    svgr({
+      // svgr options: https://react-svgr.com/docs/options/
+      svgrOptions: {
+        exportType: 'default',
+        ref: true,
+        svgo: false,
+        titleProp: true,
+      },
+      include: '**/*.svg',
+    }),
+  ],
   test: {
     globals: true,
     environment: 'jsdom',

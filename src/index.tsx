@@ -10,11 +10,11 @@ import './index.css';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <ThemeWrapper>
-        <BrowserRouter>
+      <BrowserRouter>
+        <ThemeWrapper>
           <App />
-        </BrowserRouter>
-      </ThemeWrapper>
+        </ThemeWrapper>
+      </BrowserRouter>
     </Provider>
   </StrictMode>
 );
