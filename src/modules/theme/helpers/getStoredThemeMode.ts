@@ -1,6 +1,6 @@
 import { ThemeMode } from '@/modules/theme/types';
 
-const getStoredThemeMode = (key: string): ThemeMode => {
+const getStoredThemeMode = (key: string): ThemeMode | null => {
   const storedMode: string | null = localStorage.getItem(key);
 
   if (storedMode) {
@@ -11,7 +11,7 @@ const getStoredThemeMode = (key: string): ThemeMode => {
     }
   }
 
-  return ThemeMode.Dark;
+  return null;
 };
 
 export default getStoredThemeMode;

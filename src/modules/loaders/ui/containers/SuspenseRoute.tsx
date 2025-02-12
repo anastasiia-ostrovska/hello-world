@@ -1,9 +1,9 @@
-import { JSX, Suspense } from 'react';
+import { ReactElement, Suspense } from 'react';
 import CircularBlockDelayed from '@/modules/loaders/ui/containers/CircularBlockDelayed';
 
 interface SuspenseRouteProps {
-  fallback?: JSX.Element;
-  element: JSX.Element;
+  fallback?: ReactElement;
+  element: ReactElement;
 }
 
 const SuspenseRoute = ({

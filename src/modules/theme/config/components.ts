@@ -1,29 +1,31 @@
+import { ButtonProps, CheckboxProps, TextFieldProps } from '@mui/material';
+
 const components = {
   MuiPaper: {
     defaultProps: {
-      elevation: 2
-    }
+      elevation: 2,
+    },
   },
   MuiTextField: {
     defaultProps: {
-      size: "small"
-    }
+      size: 'small' as TextFieldProps['size'],
+    },
   },
   MuiCheckbox: {
     defaultProps: {
-      size: "small"
-    }
+      size: 'small' as CheckboxProps['size'],
+    },
   },
   MuiButton: {
     defaultProps: {
-      variant: "contained"
+      variant: 'contained' as ButtonProps['variant'],
     },
     styleOverrides: {
       root: {
-        borderRadius: "2rem"
-      }
-    }
-  }
+        borderRadius: '2rem',
+      },
+    },
+  },
 };
 
 export default components;
