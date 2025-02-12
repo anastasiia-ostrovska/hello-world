@@ -1,3 +1,5 @@
+import { ButtonProps, CheckboxProps, TextFieldProps } from '@mui/material';
+
 const components = {
   MuiPaper: {
     defaultProps: {
@@ -6,17 +8,17 @@ const components = {
   },
   MuiTextField: {
     defaultProps: {
-      size: 'small',
+      size: 'small' as TextFieldProps['size'],
     },
   },
   MuiCheckbox: {
     defaultProps: {
-      size: 'small',
+      size: 'small' as CheckboxProps['size'],
     },
   },
   MuiButton: {
     defaultProps: {
-      variant: 'contained',
+      variant: 'contained' as ButtonProps['variant'],
     },
     styleOverrides: {
       root: {
