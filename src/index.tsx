@@ -2,9 +2,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { ThemeWrapper } from '@/modules/theme';
 import { store } from '@/redux';
-import App from './App';
+import { ThemeWrapper } from '@/modules/theme';
+import AppInitializer from './app/AppInitializer';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <BrowserRouter>
         <ThemeWrapper>
-          <App />
+          <AppInitializer />
         </ThemeWrapper>
       </BrowserRouter>
     </Provider>
