@@ -1,12 +1,12 @@
-import { JSX } from 'react';
+import { ReactElement } from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Logo from '@assets/logo.svg';
 
 interface AppInitLoaderLayoutProps {
-  loader: JSX.Element;
-  logo: JSX.Element;
+  loader: ReactElement;
+  logo: ReactElement;
 }
 
 const AppInitLoaderLayout = ({ loader, logo }: AppInitLoaderLayoutProps) => {
