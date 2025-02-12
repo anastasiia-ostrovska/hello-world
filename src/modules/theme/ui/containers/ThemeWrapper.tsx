@@ -1,13 +1,13 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ReactNode } from 'react';
-import useTheme from '@/modules/theme/hooks/ui/useTheme';
+import useAppTheme from '@/modules/theme/hooks/ui/useAppTheme';
 
 interface ThemeWrapperProps {
   children: ReactNode;
 }
 
 const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <ThemeProvider theme={theme}>
