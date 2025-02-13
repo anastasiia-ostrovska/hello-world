@@ -1,5 +1,5 @@
 import useInitializeApp from '@/app/hooks/useInitializeApp';
-import AppInitLoader from '../modules/loaders/ui/components/AppInitLoader';
+import { AppInitLoader } from '../modules/loaders';
 import App from './App';
 
 const AppInitializer = () => {

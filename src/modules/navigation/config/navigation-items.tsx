@@ -8,7 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
 import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
-import * as ROUTES from '@/routing/constants/paths';
+import * as ROUTES from '@/routing/constants';
 
 export const mainNavItems: NavigationItem[] = [
   { id: 'home', path: ROUTES.HOME, label: 'Home', icon: <HomeIcon /> },

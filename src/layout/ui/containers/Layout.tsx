@@ -1,12 +1,9 @@
-import useAuth from '@/modules/auth/hooks/api/useAuth';
 import Stack from '@mui/material/Stack';
 import Header from '@/layout/ui/containers/Header';
 import Content from '@/layout/ui/containers/Content';
 import Navigation from './Navigation';
 
 const Layout = () => {
-  const { isAuth, messages } = useAuth();
-
   return (
     <Stack
       sx={{
@@ -16,15 +13,11 @@ const Layout = () => {
         minHeight: 'inherit',
       }}
     >
-      <Header isAuth={isAuth} />
-      {isAuth ? (
-        <Stack sx={{ flexGrow: 1 }}>
-          <Content />
-          <Navigation />
-        </Stack>
-      ) : (
-        messages && <div>{messages[0]}</div>
-      )}
+      <Header />
+      <Stack sx={{ flexGrow: 1 }}>
+        <Content />
+        <Navigation />
+      </Stack>
     </Stack>
   );
 };
