@@ -1,6 +1,6 @@
-import { useAuth } from '@/modules/auth';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from '@/shared/hooks/redux';
+import { useAuth } from '@/modules/auth';
 import {
   getStoredThemeMode,
   setMode,

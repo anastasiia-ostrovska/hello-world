@@ -1,15 +1,13 @@
 import { ReactElement } from 'react';
-import LinearProgress from '@mui/material/LinearProgress';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Logo from '@assets/logo.svg';
 
 interface AppInitLoaderLayoutProps {
   loader: ReactElement;
   logo: ReactElement;
 }
 
-const AppInitLoaderLayout = ({ loader, logo }: AppInitLoaderLayoutProps) => {
+const AppLoaderLayout = ({ loader, logo }: AppInitLoaderLayoutProps) => {
   return (
     <Stack component="main" sx={{ height: '100%' }}>
       {loader}
@@ -26,8 +24,4 @@ const AppInitLoaderLayout = ({ loader, logo }: AppInitLoaderLayoutProps) => {
   );
 };
 
-const AppInitLoader = () => {
-  return <AppInitLoaderLayout loader={<LinearProgress />} logo={<Logo />} />;
-};
-
-export default AppInitLoader;
+export default AppLoaderLayout;
