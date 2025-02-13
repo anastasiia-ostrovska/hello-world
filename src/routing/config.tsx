@@ -1,5 +1,5 @@
 import { lazy, ReactElement } from 'react';
-import RouteSuspense from './components/RouteSuspense';
+import RouteSuspense from './components/ui/RouteSuspense';
 import * as ROUTES from './constants';
 
 const Profile = lazy(
