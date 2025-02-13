@@ -11,7 +11,7 @@ interface ProtectedRouteProps {
 const ProtectedRoute = ({
   isAllowed,
   redirectPath = ROUTES.LOGIN,
-  children,
+  children = null,
 }: ProtectedRouteProps) => {
   const location = useLocation();
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { DELAY } from '@/shared/constants/defaults';
 
-const useShowDelayedComponent = (delay = DELAY): boolean => {
+const useShowDelayed = (delay: number): boolean => {
   const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
@@ -15,4 +14,4 @@ const useShowDelayedComponent = (delay = DELAY): boolean => {
   return isShow;
 };
 
-export default useShowDelayedComponent;
+export default useShowDelayed;

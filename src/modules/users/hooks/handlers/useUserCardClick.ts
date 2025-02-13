@@ -1,7 +1,7 @@
 import { UserId } from '@/modules/users/types';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
-import { PROFILE } from '@/routing/constants/paths';
+import { PROFILE } from '@/routing/constants';
 
 export type UserCardClickHandler = (userId: UserId) => void;
 
