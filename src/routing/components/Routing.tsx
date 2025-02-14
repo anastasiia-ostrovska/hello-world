@@ -14,16 +14,26 @@ interface RoutingProps {
 const Routing = ({ isAuth }: RoutingProps) => {
   return (
     <Routes>
-      <Route path={ROUTES.LOGIN} element={<LogIn />} />
+      {/* Public Route - Login */}
+      <Route
+        path={ROUTES.LOGIN}
+        element={
+          <ProtectedRoute isAllowed={!isAuth} redirectPath={ROUTES.HOME}>
+            <LogIn />
+          </ProtectedRoute>
+        }
+      />
+      {/* Private Routes - Requires Authentication */}
       <Route element={<ProtectedRoute isAllowed={isAuth} />}>
-        <Route path="/" element={<AppLayout />}>
+        <Route path={ROUTES.ROOT} element={<AppLayout />}>
           <Route index element={<Home />} />
           {AUTH_PAGES.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
         </Route>
       </Route>
-      <Route path="/components" element={<Components />} />;
+      {/* Public Route (temporary) - Components Presentation */}
+      <Route path="/components" element={<Components />} />
     </Routes>
   );
 };
