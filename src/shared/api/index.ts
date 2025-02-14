@@ -1,3 +1,5 @@
+export type { ApiResponseTemplate } from './response-type';
+
 export * from './endpoints';
 export * from './methods';
 

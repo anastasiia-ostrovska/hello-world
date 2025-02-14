@@ -1,4 +1,4 @@
-import { ApiResponseTemplate } from '@/shared/types/response-data';
+import { ApiResponseTemplate } from '@/shared/api';
 import { UserId } from '@/modules/users';
 
 export interface LogInData {

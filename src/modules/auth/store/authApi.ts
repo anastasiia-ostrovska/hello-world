@@ -1,6 +1,12 @@
-import { ApiResponseTemplate } from '@/shared/types/response-data';
+import {
+  ApiResponseTemplate,
+  AUTH_ME,
+  baseAPI,
+  DELETE,
+  LOGIN,
+  POST,
+} from '@/shared/api';
 import { AuthMeResponse, LogInData } from '@/modules/auth/types';
-import { AUTH_ME, baseAPI, DELETE, LOGIN, POST } from '@/shared/api';
 import { UserId } from '@/modules/users';
 
 interface LogInResponseData {
