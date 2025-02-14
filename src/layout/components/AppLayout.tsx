@@ -1,5 +1,6 @@
 import { BottomNavbar, SideNavbar, TopNavbar } from '@/modules/navigation';
 import useMediaQueryType from '@/shared/hooks/helpers/useMediaQueryType';
+import LogoFull from '@assets/logo-full.svg';
 import Layout from './ui/Layout';
 
 const AppLayout = () => {
@@ -7,7 +8,11 @@ const AppLayout = () => {
   const Navigation = isUpMD ? SideNavbar : BottomNavbar;
 
   return (
-    <Layout topNavigation={<TopNavbar />} sideNavigation={<Navigation />} />
+    <Layout
+      logo={<LogoFull />}
+      topNavigation={<TopNavbar />}
+      sideNavigation={<Navigation />}
+    />
   );
 };
 

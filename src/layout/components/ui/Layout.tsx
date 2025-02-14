@@ -2,13 +2,15 @@ import { ReactElement } from 'react';
 import Stack from '@mui/material/Stack';
 import { Outlet } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 
 interface LayoutProps {
+  logo: ReactElement;
   topNavigation: ReactElement;
   sideNavigation: ReactElement;
 }
 
-const Layout = ({ topNavigation, sideNavigation }: LayoutProps) => {
+const Layout = ({ logo, topNavigation, sideNavigation }: LayoutProps) => {
   return (
     <Stack
       sx={{
@@ -35,6 +37,7 @@ const Layout = ({ topNavigation, sideNavigation }: LayoutProps) => {
           px: 'inherit',
         }}
       >
+        <Box sx={{ height: '100%', py: { xs: 2.2, sm: 2 } }}>{logo}</Box>
         {topNavigation}
       </Paper>
       <Stack
