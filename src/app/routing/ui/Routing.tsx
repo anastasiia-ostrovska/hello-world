@@ -5,7 +5,7 @@ import Home from '@/pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
 import * as ROUTES from '@/shared/router/routes';
 import ProtectedRoute from '@/app/routing/ui/ProtectedRoute';
-import AUTH_PAGES from './config';
+import AUTH_PAGES from '../config';
 
 interface RoutingProps {
   isAuth: boolean;
