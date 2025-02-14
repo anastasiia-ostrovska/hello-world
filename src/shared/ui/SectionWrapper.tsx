@@ -1,6 +1,6 @@
 import { PaperProps } from '@mui/material';
 import { ReactNode } from 'react';
-import { Styles } from '@/shared/types/mui-props';
+import { Styles } from '@/shared/mui';
 import Paper from '@mui/material/Paper';
 
 interface SectionWrapperProps extends PaperProps {

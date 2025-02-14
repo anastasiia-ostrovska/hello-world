@@ -4,7 +4,7 @@ import MyPosts from './MyPosts/MyPosts';
 
 import styles from './Profile.module.css';
 
-const Profile = ({ profile }) => {
+const Profile = ({ profile }: { profile: unknown }) => {
   return (
     <div className={styles.profile_wrapper}>
       <div className={styles.image_container}>

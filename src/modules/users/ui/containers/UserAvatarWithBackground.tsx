@@ -1,4 +1,4 @@
-import { Styles } from '@/shared/types/mui-props';
+import { Styles } from '@/shared/mui';
 import Box from '@mui/material/Box';
 import UserAvatar, {
   UserAvatarProps,

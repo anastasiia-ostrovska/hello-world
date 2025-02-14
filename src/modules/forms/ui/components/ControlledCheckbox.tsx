@@ -1,4 +1,4 @@
-import { Styles } from '@/shared/types/mui-props';
+import { Styles } from '@/shared/mui';
 import { ControlledInputProps } from '@/modules/forms/types';
 import { Controller, useFormContext } from 'react-hook-form';
 import getHelperTextWithID from '@/modules/forms/helpers/getHelperTextWithID';
