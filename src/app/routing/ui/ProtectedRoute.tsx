@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import * as ROUTES from '@/shared/constants/routes';
+import * as ROUTES from '@/shared/router/routes';
 
 interface ProtectedRouteProps {
   isAllowed: boolean;

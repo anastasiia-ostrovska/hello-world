@@ -1,6 +1,6 @@
 import { ProfileDataResponse } from '@/modules/profile/types';
 import { UserId } from '@/modules/users';
-import { PROFILE } from '@/shared/constants/query-endpoints';
+import { PROFILE } from '@/shared/api/endpoints';
 import { baseAPI } from '@/shared/api';
 
 const profileApi = baseAPI.injectEndpoints({
