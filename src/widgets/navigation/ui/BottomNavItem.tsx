@@ -4,8 +4,6 @@ import { BottomNavigationAction } from '@mui/material';
 import { NavigationItemProps } from '../model/types';
 
 const BottomNavItem = ({ label, icon, path, color }: NavigationItemProps) => {
-  console.log('rerendered', label);
-
   return (
     <RouterLink to={path} style={{ display: 'flex', width: '100%' }}>
       <BottomNavigationAction aria-label={label} icon={icon} sx={{ color }} />

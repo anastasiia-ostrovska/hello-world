@@ -1,15 +1,11 @@
-import { ReactElement } from 'react';
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavItem from './BottomNavItem';
 import useNavItemColor from '../model/useNavItemColor';
+import { NavbarLayoutProps } from '../model/types';
 import { SIDE_NAV_ITEMS } from '../config/side-items';
 
-interface BottomNavbarLayoutProps {
-  navItems: ReactElement[];
-}
-
-const BottomNavbarLayout = ({ navItems }: BottomNavbarLayoutProps) => {
+const BottomNavbarLayout = ({ navItems }: NavbarLayoutProps) => {
   return (
     <Paper
       component="nav"

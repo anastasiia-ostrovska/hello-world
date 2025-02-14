@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export interface NavigationItem {
   id: string;
@@ -11,8 +11,6 @@ export interface NavigationItemProps extends Omit<NavigationItem, 'id'> {
   color: string;
 }
 
-// export interface NavigationListProps
-//   extends Pick<NavigationItemProps, 'onClick'> {
-//   items: NavigationItem[];
-//   NavigationItem: ComponentType<NavigationItemProps>;
-// }
+export interface NavbarLayoutProps {
+  navItems: ReactElement[];
+}

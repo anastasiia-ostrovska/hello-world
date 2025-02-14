@@ -1,6 +1,6 @@
 import { useMediaQueryState } from '@/shared/mui';
-import { SideNavbar, TopNavbar } from '@/modules/navigation';
-import { BottomNavbar } from '@/widgets/navigation';
+import { TopNavbar } from '@/modules/navigation';
+import { BottomNavbar, SideNavbar } from '@/widgets/navigation';
 import LogoFull from '@assets/logo-full.svg';
 import Layout from '@/app/layout/ui/Layout';
 
