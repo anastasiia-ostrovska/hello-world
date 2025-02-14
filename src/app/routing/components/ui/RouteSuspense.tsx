@@ -1,5 +1,5 @@
 import { ReactElement, Suspense } from 'react';
-import PageLoaderWithDelay from '@/routing/components/PageLoaderWithDelay';
+import PageLoaderWithDelay from '../PageLoaderWithDelay';
 
 interface RouteSuspenseProps {
   element: ReactElement;
