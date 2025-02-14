@@ -1,6 +1,6 @@
 import { lazy, ReactElement } from 'react';
+import * as ROUTES from '@/shared/constants/routes';
 import RouteSuspense from './components/ui/RouteSuspense';
-import * as ROUTES from './constants';
 
 const Profile = lazy(
   () => import('@/_old-version/components/Profile/ProfileContainer')

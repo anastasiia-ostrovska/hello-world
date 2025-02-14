@@ -1,5 +1,5 @@
-import { SectionWrapper } from '@/layout';
-import { UsersPagination, UserCardList } from '@/modules/users';
+import { UserCardList, UsersPagination } from '@/modules/users';
+import SectionWrapper from '@/shared/components/SectionWrapper';
 
 const Network = () => {
   return (

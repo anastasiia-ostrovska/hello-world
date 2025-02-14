@@ -18,7 +18,7 @@ const AppLoaderLayout = ({ loader, logo }: AppInitLoaderLayoutProps) => {
           alignItems: 'center',
         }}
       >
-        <Box sx={{ minWidth: 160, width: '25vw' }}>{logo}</Box>
+        <Box sx={{ minWidth: 200, width: '50vw' }}>{logo}</Box>
       </Stack>
     </Stack>
   );

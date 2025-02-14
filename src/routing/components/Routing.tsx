@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from '@/layout';
+import { AppLayout } from '@/layout';
 import LogIn from '@/pages/LogIn';
-import ProtectedRoute from '@/routing/components/ProtectedRoute';
 import Home from '@/pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
-import AUTH_PAGES from '@/routing/config';
-import * as ROUTES from '../constants';
+import * as ROUTES from '@/shared/constants/routes';
+import ProtectedRoute from './ProtectedRoute';
+import AUTH_PAGES from '../config';
 
 interface RoutingProps {
   isAuth: boolean;
@@ -16,7 +16,7 @@ const Routing = ({ isAuth }: RoutingProps) => {
     <Routes>
       <Route path={ROUTES.LOGIN} element={<LogIn />} />
       <Route element={<ProtectedRoute isAllowed={isAuth} />}>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<AppLayout />}>
           <Route index element={<Home />} />
           {AUTH_PAGES.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />

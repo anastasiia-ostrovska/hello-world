@@ -1,2 +1,1 @@
-export { default as Layout } from './ui/containers/Layout';
-export { default as SectionWrapper } from './ui/components/SectionWrapper';
+export { default as AppLayout } from './components/AppLayout';
