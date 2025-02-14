@@ -2,7 +2,7 @@ import { FormProvider } from 'react-hook-form';
 import { LogInForm } from '@/modules/forms';
 import useLogInForm from '@/modules/auth/hooks/ui/useLogInForm';
 import Stack from '@mui/material/Stack';
-import SectionWrapper from '@/shared/components/SectionWrapper';
+import SectionWrapper from '@/shared/ui/SectionWrapper';
 import LogInHeader from '@/modules/auth/ui/components/LogInHeader';
 import GuestCredentials from '@/modules/auth/ui/components/GuestCredentials';
 

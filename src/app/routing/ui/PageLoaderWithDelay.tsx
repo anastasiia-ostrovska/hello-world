@@ -1,4 +1,4 @@
-import Delayed from '@/shared/components/Delayed';
+import Delayed from '@/shared/ui/Delayed';
 import useMediaQueryType from '@/shared/hooks/helpers/useMediaQueryType';
 import PageLoader from './PageLoader';
 

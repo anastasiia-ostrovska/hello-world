@@ -1,5 +1,5 @@
 import { UserCardList, UsersPagination } from '@/modules/users';
-import SectionWrapper from '@/shared/components/SectionWrapper';
+import SectionWrapper from '@/shared/ui/SectionWrapper';
 
 const Network = () => {
   return (
