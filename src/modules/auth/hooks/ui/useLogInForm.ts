@@ -3,6 +3,7 @@ import { BaseSyntheticEvent, useCallback, useEffect, useMemo } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useLogInMutation } from '@/modules/auth/store/authApi';
+import { HOME } from '@/shared/constants/routes';
 import useAuth from '@/modules/auth/hooks/api/useAuth';
 
 interface UseLogInFormResult {
@@ -32,24 +33,22 @@ const useLogInForm = (): UseLogInFormResult => {
   const location = useLocation();
 
   useEffect(() => {
+    const from: string = location.state?.from?.pathname || HOME;
+
     if (isSubmitSuccessful && logInRequestSuccess) {
       reset();
+      if (isAuth) {
+        navigate(from, { replace: true });
+      }
     }
   }, [
+    isAuth,
     isSubmitSuccessful,
-    location.state.from,
+    location.state?.from?.pathname,
     logInRequestSuccess,
     navigate,
     reset,
   ]);
-
-  const from = location.state?.from?.pathname || '/';
-
-  useEffect(() => {
-    if (isAuth) {
-      navigate(from, { replace: true });
-    }
-  }, [from, isAuth, navigate]);
 
   const isSubmitButtonDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
