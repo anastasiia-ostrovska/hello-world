@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeWrapper } from '@/modules/theme';
-import { store } from '@/redux';
+import { store } from '../../store';
 
 interface ProvidersProps {
   children: ReactElement;

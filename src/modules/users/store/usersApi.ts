@@ -1,7 +1,8 @@
-import { RootState, baseAPI, AppDispatch } from '@/redux';
+import { AppDispatch, RootState } from '@/store';
 import { ApiResponseTemplate } from '@/shared/types/response-data';
 import { UserId, UsersQueryParams, UsersResponse } from '@/modules/users/types';
-import { USERS, FOLLOW } from '@/shared/constants/query-endpoints';
+import { baseAPI } from '@/shared/api';
+import { FOLLOW, USERS } from '@/shared/constants/query-endpoints';
 import { DELETE, POST } from '@/shared/constants/query-methods';
 
 interface UpdateFollowStatusCacheParams {
