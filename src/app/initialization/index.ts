@@ -1,1 +1,1 @@
-export { default as AppInitializer } from './components/AppInitializer';
+export { default as AppInitializer } from './AppInitializer';

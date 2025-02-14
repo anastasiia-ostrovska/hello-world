@@ -1,1 +1,1 @@
-export { default as Routing } from './components/Routing';
+export { default as Routing } from './Routing';
