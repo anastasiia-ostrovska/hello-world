@@ -3,7 +3,7 @@ import {
   selectMessages,
   sendNewMessage,
 } from '@/_old-version/reducers/dialogsReducer';
-import useInputValue from '@/shared/hooks/state/useInputValue';
+import useInputValue from '@/_old-version/useInputValue';
 import MessagesList from './MessagesList/MessagesList';
 import NewMessage from './NewMessage/NewMessage';
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch } from '@/shared/hooks/redux';
+import { useAppDispatch } from '@/store';
 import { useAuth } from '@/modules/auth';
 import {
   getStoredThemeMode,

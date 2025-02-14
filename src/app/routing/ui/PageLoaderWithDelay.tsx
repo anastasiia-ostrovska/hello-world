@@ -1,5 +1,5 @@
-import Delayed from '@/shared/components/Delayed';
-import useMediaQueryType from '@/shared/hooks/helpers/useMediaQueryType';
+import { useMediaQueryType } from '@/shared/mui';
+import Delayed from '@/shared/ui/Delayed';
 import PageLoader from './PageLoader';
 
 const PAGE_LOADER_DELAY = 100;

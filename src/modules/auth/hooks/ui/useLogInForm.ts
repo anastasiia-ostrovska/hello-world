@@ -3,7 +3,7 @@ import { BaseSyntheticEvent, useCallback, useEffect, useMemo } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useLogInMutation } from '@/modules/auth/store/authApi';
-import { HOME } from '@/shared/constants/routes';
+import { HOME } from '@/shared/router';
 import useAuth from '@/modules/auth/hooks/api/useAuth';
 
 interface UseLogInFormResult {

@@ -1,9 +1,13 @@
 import { AppDispatch, RootState } from '@/store';
-import { ApiResponseTemplate } from '@/shared/types/response-data';
+import {
+  ApiResponseTemplate,
+  baseAPI,
+  DELETE,
+  FOLLOW,
+  POST,
+  USERS,
+} from '@/shared/api';
 import { UserId, UsersQueryParams, UsersResponse } from '@/modules/users/types';
-import { baseAPI } from '@/shared/api';
-import { FOLLOW, USERS } from '@/shared/constants/query-endpoints';
-import { DELETE, POST } from '@/shared/constants/query-methods';
 
 interface UpdateFollowStatusCacheParams {
   state: RootState;

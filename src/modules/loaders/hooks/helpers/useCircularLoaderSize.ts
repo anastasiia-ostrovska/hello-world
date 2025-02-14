@@ -1,4 +1,4 @@
-import useMediaQueryType from '@/shared/hooks/helpers/useMediaQueryType';
+import { useMediaQueryType } from '@/shared/mui';
 
 enum CircularLoaderSize {
   Small = 60,

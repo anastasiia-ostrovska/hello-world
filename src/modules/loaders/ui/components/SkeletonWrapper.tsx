@@ -1,5 +1,5 @@
 import { LoaderProps } from '@/modules/loaders/types';
-import { Styles } from '@/shared/types/mui-props';
+import { Styles } from '@/shared/mui';
 import Skeleton, { SkeletonProps } from '@mui/material/Skeleton';
 
 interface SkeletonWrapperProps extends LoaderProps {

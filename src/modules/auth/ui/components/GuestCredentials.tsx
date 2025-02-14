@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import FillGuestDataButton from '@/modules/auth/ui/components/FillGuestDataButton';
-import SectionWrapper from '@/shared/components/SectionWrapper';
+import SectionWrapper from '@/shared/ui/SectionWrapper';
 
 interface GuestCredentialsProps {
   onClick: () => void;

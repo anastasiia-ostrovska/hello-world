@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import * as ROUTES from '@/shared/constants/routes';
+import { LOGIN } from '@/shared/router';
 
 interface ProtectedRouteProps {
   isAllowed: boolean;
@@ -10,7 +10,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({
   isAllowed,
-  redirectPath = ROUTES.LOGIN,
+  redirectPath = LOGIN,
   children = null,
 }: ProtectedRouteProps) => {
   const location = useLocation();
