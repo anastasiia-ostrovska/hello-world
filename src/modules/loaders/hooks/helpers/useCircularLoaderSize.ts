@@ -1,4 +1,4 @@
-import { useMediaQueryType } from '@/shared/mui';
+import { useMediaQueryState } from '@/shared/mui';
 
 enum CircularLoaderSize {
   Small = 60,
@@ -6,7 +6,7 @@ enum CircularLoaderSize {
 }
 
 const useCircularLoaderSize = (): CircularLoaderSize => {
-  const { isUpMD } = useMediaQueryType();
+  const { isUpMD } = useMediaQueryState();
 
   return isUpMD ? CircularLoaderSize.Medium : CircularLoaderSize.Small;
 };

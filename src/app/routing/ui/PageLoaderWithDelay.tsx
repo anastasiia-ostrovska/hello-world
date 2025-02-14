@@ -1,4 +1,4 @@
-import { useMediaQueryType } from '@/shared/mui';
+import { useMediaQueryState } from '@/shared/mui';
 import Delayed from '@/shared/ui/Delayed';
 import PageLoader from './PageLoader';
 
@@ -10,7 +10,7 @@ enum CircularLoaderSize {
 }
 
 const PageLoaderWithDelay = () => {
-  const { isUpMD } = useMediaQueryType();
+  const { isUpMD } = useMediaQueryState();
   const spinnerSize = isUpMD
     ? CircularLoaderSize.Medium
     : CircularLoaderSize.Small;

@@ -1,6 +1,7 @@
 import { NavigationItemProps } from '@/modules/navigation/types';
 import { memo } from 'react';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { Link as RouterLink } from 'react-router-dom';
+import { BottomNavigationAction } from '@mui/material';
 
 const BottomNavItem = ({
   label,
@@ -10,12 +11,14 @@ const BottomNavItem = ({
   onClick,
 }: NavigationItemProps) => {
   return (
-    <BottomNavigationAction
-      aria-label={label}
-      icon={icon}
-      onClick={() => onClick(path)}
-      sx={{ color }}
-    />
+    <RouterLink to={path} style={{ display: 'flex', width: '100%' }}>
+      <BottomNavigationAction
+        aria-label={label}
+        icon={icon}
+        onClick={() => onClick(path)}
+        sx={{ color }}
+      />
+    </RouterLink>
   );
 };
 

@@ -1,8 +1,8 @@
 import { PaginationProps } from '@mui/material';
-import { useMediaQueryType } from '@/shared/mui';
+import { useMediaQueryState } from '@/shared/mui';
 
 const usePaginationSize = (): PaginationProps['size'] => {
-  const { isUpSM, isUpLG } = useMediaQueryType();
+  const { isUpSM, isUpLG } = useMediaQueryState();
 
   if (isUpLG) return 'large';
   if (isUpSM) return 'medium';

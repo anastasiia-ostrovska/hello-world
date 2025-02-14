@@ -8,7 +8,7 @@ interface MediaQueryTypeState {
   isUpXL: boolean;
 }
 
-export const useMediaQueryType = (): MediaQueryTypeState => {
+export const useMediaQueryState = (): MediaQueryTypeState => {
   const theme = useTheme();
   const isUpSM = useMediaQuery(theme.breakpoints.up('sm'));
   const isUpMD = useMediaQuery(theme.breakpoints.up('md'));
