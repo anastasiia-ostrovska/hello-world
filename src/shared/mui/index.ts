@@ -1,3 +1,3 @@
 export * from './props-type';
 
-export { useMediaQueryType } from './useMediaQueryType';
+export { useMediaQueryState } from './useMediaQueryState';

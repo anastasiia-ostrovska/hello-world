@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { AppLayout } from '@/app/layout';
+import { AppLayout } from '@/widgets/layout';
 import LogIn from '@/pages/LogIn';
 import Home from '@/pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
-import * as ROUTES from '@/shared/router';
 import ProtectedRoute from '@/app/routing/ui/ProtectedRoute';
+import * as ROUTES from '@/shared/router';
 import AUTH_PAGES from '../config';
 
 interface RoutingProps {

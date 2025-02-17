@@ -1,4 +1,4 @@
-export * from './hook-with-types';
-export * from './store';
+export * from './model/hook-with-types';
+export * from './model/store';
 
-export { default as store } from './store';
+export { default as store } from './model/store';
