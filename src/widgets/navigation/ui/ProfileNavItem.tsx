@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { Link as RouterLink } from 'react-router-dom';
@@ -13,4 +12,4 @@ const ProfileNavItem = ({ label, icon, path, color }: NavigationItemProps) => {
   );
 };
 
-export default memo(ProfileNavItem);
+export default ProfileNavItem;
