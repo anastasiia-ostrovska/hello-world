@@ -1,11 +1,13 @@
 import { ReactElement } from 'react';
 import { LogOutButton } from '@/modules/auth';
+import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';
 import ProfileMenuButton from './ProfileMenuButton';
 import ProfileNavItem from './ProfileNavItem';
 import useProfileNavbar from '../model/useProfileNavbar';
 import useNavItemColor from '../model/useNavItemColor';
+import { NavbarLayoutProps } from '../model/types';
 import { PROFILE_NAV_ITEMS } from '../config/profile-items';
 
 type MenuProps = Omit<
@@ -13,12 +15,11 @@ type MenuProps = Omit<
   'handleMenuButtonClick'
 >;
 
-interface ProfileNavbarLayoutProps {
+interface ProfileNavbarLayoutProps extends NavbarLayoutProps {
   menuID: string;
   menuLabeledBy: string;
   menuProps: MenuProps;
   profileButton: ReactElement;
-  profileNavItems: ReactElement[];
   logoutButton: ReactElement;
 }
 
@@ -26,13 +27,13 @@ const ProfileNavbarLayout = ({
   menuID,
   menuLabeledBy,
   profileButton,
-  profileNavItems,
+  navItems,
   logoutButton,
   menuProps,
 }: ProfileNavbarLayoutProps) => {
   const { anchorEl, isMenuOpen, handleMenuClose } = menuProps;
   return (
-    <>
+    <Box component="li">
       {profileButton}
       <Menu
         id={menuID}
@@ -46,11 +47,11 @@ const ProfileNavbarLayout = ({
         sx={{ mt: 2 }}
         disableScrollLock
       >
-        {profileNavItems}
+        {navItems}
         <Divider />
         {logoutButton}
       </Menu>
-    </>
+    </Box>
   );
 };
 
@@ -76,7 +77,7 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
           onClick={handleMenuButtonClick}
         />
       }
-      profileNavItems={PROFILE_NAV_ITEMS.map(({ id, path, ...itemProps }) => {
+      navItems={PROFILE_NAV_ITEMS.map(({ id, path, ...itemProps }) => {
         const itemColor = getColor(path);
 
         return (
