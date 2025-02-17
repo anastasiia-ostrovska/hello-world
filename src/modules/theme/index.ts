@@ -1,5 +1,3 @@
-export type { AvatarColor } from './config/getPalette';
-
 export { default as getStoredThemeMode } from './helpers/getStoredThemeMode';
 
 export { setMode } from './store/themeSlice';

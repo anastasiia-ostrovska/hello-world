@@ -18,9 +18,8 @@ const avatarColors = {
   green: green[600],
 } as const;
 
-export type AvatarColors = typeof avatarColors;
-export type AvatarColor = AvatarColors[keyof AvatarColors];
-export type CustomBackground = {
+type AvatarColors = typeof avatarColors;
+type CustomBackground = {
   avatar: AvatarColors;
   userCard: string;
 };
@@ -43,4 +42,5 @@ const getPalette = (mode: ThemeMode): PaletteOptions => ({
   },
 });
 
+export type AvatarColor = AvatarColors[keyof AvatarColors];
 export default getPalette;
