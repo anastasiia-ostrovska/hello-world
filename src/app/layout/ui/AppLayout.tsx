@@ -1,8 +1,7 @@
 import { useMediaQueryState } from '@/shared/mui';
-import { TopNavbar } from '@/modules/navigation';
-import { BottomNavbar, SideNavbar } from '@/widgets/navigation';
+import { BottomNavbar, SideNavbar, TopNavbar } from '@/widgets/navigation';
 import LogoFull from '@assets/logo-full.svg';
-import Layout from '@/app/layout/ui/Layout';
+import Layout from './Layout';
 
 const AppLayout = () => {
   const { isUpMD } = useMediaQueryState();
