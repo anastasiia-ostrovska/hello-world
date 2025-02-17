@@ -1,6 +1,6 @@
 import { useMediaQueryState } from '@/shared/mui';
-import { BottomNavbar, SideNavbar, TopNavbar } from '@/widgets/navigation';
 import LogoFull from '@assets/logo-full.svg';
+import { BottomNavbar, SideNavbar, TopNavbar } from '../../navigation';
 import Layout from './Layout';
 
 const AppLayout = () => {
