@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ThemeMode } from '@/modules/theme/types';
+import { ThemeMode } from '@/shared/theme';
 
 interface ThemeState {
   mode: ThemeMode;

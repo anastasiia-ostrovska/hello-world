@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from '@/store';
 import { useAuth } from '@/modules/auth';
-import { getStoredThemeMode, setMode } from '@/modules/theme';
-import { MODE_STORAGE_KEY } from '@/shared/theme';
+import { setMode } from '@/modules/theme';
+import { getStoredThemeMode } from '@/shared/theme';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
@@ -16,7 +16,8 @@ const useInitializeApp = (): UseInitializeAppResult => {
 
   useEffect(() => {
     if (!isAuthLoading) {
-      const mode = getStoredThemeMode(MODE_STORAGE_KEY);
+      const mode = getStoredThemeMode();
+
       if (mode) {
         dispatch(setMode(mode));
       }

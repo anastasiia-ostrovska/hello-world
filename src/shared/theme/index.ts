@@ -1,4 +1,4 @@
-export * from './types';
-export { MODE_STORAGE_KEY } from './config/mode-storage-key';
+export * from './model/types';
+export * from './model/storageHandlers';
 
 export { default as createAppTheme } from './config/createAppTheme';

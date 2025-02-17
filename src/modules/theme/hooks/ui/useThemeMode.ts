@@ -1,4 +1,4 @@
-import { ThemeMode } from '@/modules/theme/types';
+import { ThemeMode } from '@/shared/theme';
 import { useAppSelector } from '@/store';
 import { selectThemeMode } from '@/modules/theme/store/themeSlice';
 import useToggleMode, {
