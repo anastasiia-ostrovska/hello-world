@@ -1,5 +1,5 @@
 import { UsersQueryParams } from '@/modules/users/types';
-import { useAppSelector } from '@/store';
+import { useAppSelector } from '@/app/store/useAppStore';
 import {
   selectCurrentPage,
   selectUsersQueryCount,

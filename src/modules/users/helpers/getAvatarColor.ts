@@ -1,5 +1,5 @@
 import { UserName } from '@/modules/users/types';
-import { AvatarColor } from '@/modules/theme';
+import { AvatarColor } from '@/shared/theme';
 import getNameHash from '@/modules/users/helpers/getNameHash';
 
 /**
