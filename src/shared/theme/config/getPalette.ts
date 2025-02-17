@@ -1,4 +1,3 @@
-import { ThemeMode } from '@/modules/theme/types';
 import {
   green,
   orange,
@@ -8,6 +7,7 @@ import {
   yellow,
 } from '@mui/material/colors';
 import { PaletteOptions } from '@mui/material/styles';
+import { ThemeMode } from '../model/types';
 
 const avatarColors = {
   purple: purple[400],
@@ -34,13 +34,15 @@ declare module '@mui/material/styles' {
   }
 }
 
-const getPalette = (mode: ThemeMode): PaletteOptions => ({
-  mode,
-  customBackground: {
-    avatar: avatarColors,
-    userCard: mode === ThemeMode.Dark ? '#1d1d1d' : '#fff',
-  },
-});
+const getPalette = (mode: ThemeMode): PaletteOptions => {
+  return {
+    mode,
+    customBackground: {
+      avatar: avatarColors,
+      userCard: mode === ThemeMode.Dark ? '#1d1d1d' : '#fff',
+    },
+  };
+};
 
 export type AvatarColor = AvatarColors[keyof AvatarColors];
 export default getPalette;
