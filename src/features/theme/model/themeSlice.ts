@@ -9,7 +9,7 @@ const initialState: ThemeState = {
   mode: ThemeMode.Dark,
 };
 
-const themeSlice = createSlice({
+export const themeSlice = createSlice({
   name: 'theme',
   initialState,
   selectors: {
@@ -26,6 +26,5 @@ const themeSlice = createSlice({
   },
 });
 
-export const { setMode, toggleMode } = themeSlice.actions;
+export const { setMode } = themeSlice.actions;
 export const { selectThemeMode } = themeSlice.selectors;
-export default themeSlice;

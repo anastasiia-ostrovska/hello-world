@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch } from '@/store';
 import { useAuth } from '@/modules/auth';
-import { setMode } from '@/modules/theme';
+import { setMode } from '@/features/theme';
 import { getStoredThemeMode } from '@/shared/theme';
+import { useAppDispatch } from '../../store/useAppStore';
 
 interface UseInitializeAppResult {
   isAuth: boolean;

@@ -1,9 +1,9 @@
 import { ThemeMode } from '@/shared/theme';
-import { useAppSelector } from '@/store';
-import { selectThemeMode } from '@/modules/theme/store/themeSlice';
+import { useAppSelector } from '@/app/store/useAppStore';
 import useToggleMode, {
   ToggleModeHandler,
 } from '@/modules/theme/hooks/handlers/useToggleMode';
+import { selectThemeMode } from '@/features/theme';
 
 interface ThemeModeProps {
   isDarkMode: boolean;

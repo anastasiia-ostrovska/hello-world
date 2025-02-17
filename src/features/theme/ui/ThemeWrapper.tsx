@@ -1,6 +1,6 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ReactNode } from 'react';
-import useAppTheme from '@/features/theme/model/useAppTheme';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import useAppTheme from '../model/useAppTheme';
 
 interface ThemeWrapperProps {
   children: ReactNode;

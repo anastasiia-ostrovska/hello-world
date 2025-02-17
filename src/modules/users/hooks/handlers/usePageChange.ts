@@ -1,5 +1,5 @@
 import { ChangeEvent, useCallback } from 'react';
-import { useAppDispatch } from '@/store';
+import { useAppDispatch } from '@/app/store/useAppStore';
 import { setCurrentPage } from '@/modules/users/store/usersSlice';
 
 export type PageChangeHandler = (

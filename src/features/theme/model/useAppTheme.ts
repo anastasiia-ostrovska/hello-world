@@ -1,13 +1,12 @@
-import { useMemo } from 'react';
-import { useAppSelector } from '@/app/store/useAppStore';
-import { selectThemeMode } from '@/features/theme';
 import { Theme } from '@mui/material';
+import { useAppSelector } from '@/app/store/useAppStore';
 import { createAppTheme } from '@/shared/theme';
+import { selectThemeMode } from './themeSlice';
 
 const useAppTheme = (): Theme => {
   const mode = useAppSelector(selectThemeMode);
 
-  return useMemo(() => createAppTheme(mode), [mode]);
+  return createAppTheme(mode);
 };
 
 export default useAppTheme;

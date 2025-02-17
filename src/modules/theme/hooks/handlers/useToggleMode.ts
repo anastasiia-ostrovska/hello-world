@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { useAppDispatch } from '@/store';
-import toggleThemeMode from '@/modules/theme/store/toggleModeThunk';
+import { useAppDispatch } from '@/app/store/useAppStore';
+import { toggleThemeMode } from '@/features/theme/model/toggleThemeMode';
 
 export type ToggleModeHandler = () => void;
 
