@@ -1,23 +1,25 @@
 import { ThemeMode } from '@/shared/theme';
-import { useAppSelector } from '@/app/store/useAppStore';
-import useToggleMode, {
-  ToggleModeHandler,
-} from '@/modules/theme/hooks/handlers/useToggleMode';
-import { selectThemeMode } from '@/features/theme';
+import { useAppDispatch, useAppSelector } from '@/app/store/useAppStore';
+import { toggleThemeMode } from './toggleThemeMode';
+import { selectThemeMode } from './themeSlice';
 
 interface ThemeModeProps {
   isDarkMode: boolean;
   nextMode: ThemeMode;
-  handleToggleMode: ToggleModeHandler;
+  handleToggleMode: () => void;
 }
 
 const useThemeMode = (): ThemeModeProps => {
   const currentMode = useAppSelector(selectThemeMode);
-  const handleToggleMode = useToggleMode();
+  const dispatch = useAppDispatch();
 
   const isDarkMode = currentMode === ThemeMode.Dark;
   const nextMode =
     currentMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light;
+
+  const handleToggleMode = () => {
+    dispatch(toggleThemeMode());
+  };
 
   return { isDarkMode, nextMode, handleToggleMode };
 };

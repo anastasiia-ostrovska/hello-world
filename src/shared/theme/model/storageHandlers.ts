@@ -1,5 +1,5 @@
 import { getFromLocalStorage, setToLocalStorage } from '@/shared/webStorage';
-import { ThemeMode } from '@/shared/theme';
+import { ThemeMode } from './types';
 import { MODE_STORAGE_KEY } from '../config/mode-storage-key';
 
 export const setStoredThemeMode = setToLocalStorage(MODE_STORAGE_KEY);

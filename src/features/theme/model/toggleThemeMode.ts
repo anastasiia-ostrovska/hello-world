@@ -1,4 +1,4 @@
-import { AppThunk } from '@/app/store/model/types';
+import type { AppThunk } from '@/app/store';
 import { setStoredThemeMode } from '@/shared/theme';
 import { themeSlice } from './themeSlice';
 

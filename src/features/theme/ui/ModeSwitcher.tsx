@@ -1,6 +1,15 @@
-import useThemeMode from '@/modules/theme/hooks/ui/useThemeMode';
-import ModeIcon from '@/modules/theme/ui/components/ModeIcon';
 import IconButton from '@mui/material/IconButton';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import useThemeMode from '../model/useThemeMode';
+
+interface ModeIconProps {
+  isDarkMode: boolean;
+}
+
+const ModeIcon = ({ isDarkMode }: ModeIconProps) => {
+  return isDarkMode ? <LightModeIcon /> : <DarkModeIcon />;
+};
 
 const ModeSwitcher = () => {
   const { isDarkMode, nextMode, handleToggleMode } = useThemeMode();

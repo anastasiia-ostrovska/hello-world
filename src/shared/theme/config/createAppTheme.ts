@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material';
-import { ThemeMode } from '../model/types';
+import type { ThemeMode } from '../model/types';
 import getPalette from './getPalette';
 import components from './components';
 

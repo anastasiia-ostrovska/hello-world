@@ -1,4 +1,4 @@
-import { AppDispatch, RootState } from '@/app/store/model/types';
+import { AppDispatch, RootState } from '@/app/store';
 import {
   ApiResponseTemplate,
   baseAPI,
