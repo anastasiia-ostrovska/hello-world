@@ -1,5 +1,5 @@
 import Grid2 from '@mui/material/Grid2';
-import UserCard from '@/modules/users/ui/containers/UserCard';
+import { UserCard } from '@/features/users';
 import useUsersItems from '@/modules/users/hooks/api/useUsersItems';
 import useUserCardClick from '@/modules/users/hooks/handlers/useUserCardClick';
 
@@ -26,13 +26,13 @@ const UserCardList = () => {
               isLoading={isLoading}
               userId={id}
               userName={name}
-              jobTitle="Mocked job title"
-              country="Mocked country"
+              jobTitle="Fake job title"
+              country="Fake country"
               isFollowed={followed}
               avatarSrc={avatarSrc}
-              backgroundSrc={backgroundSrc}
+              bgImageSrc={backgroundSrc}
               avatarSize={100}
-              backgroundImageSize={80}
+              bgImageHeight={80}
               onUserCardClick={handleUserCardClick}
             />
           </Grid2>

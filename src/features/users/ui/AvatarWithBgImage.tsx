@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { Styles } from '@/shared/mui';
 import { ReactElement } from 'react';
-import { Photo, User } from '../model/types';
+import { AvatarWithBgImageProps } from '../model/types';
 import UserAvatar from './UserAvatar';
 
 interface AvatarWithBgImageLayoutProps {
@@ -29,18 +29,6 @@ const AvatarWithBgImageLayout = ({
     </Box>
   );
 };
-
-interface AvatarWithBgImageProps {
-  userName: User['name'];
-  avatarSrc: Photo;
-  bgImageSrc: Photo;
-  avatarSize: number;
-  bgImageHeight: number | `${number}px` | `${number}rem`;
-  avatarBorderColor?: string;
-  avatarBorderWidth?: `${number}px`;
-  avatarPosition?: 'center' | 'left';
-  sx?: Styles;
-}
 
 const UserBackgroundImage = ({
   bgImageHeight,
