@@ -1,6 +1,6 @@
 import { Theme } from '@mui/material';
-import { useAppSelector } from '@/app/store/useAppStore';
 import { createAppTheme } from '@/shared/theme';
+import { useAppSelector } from '@/shared/redux';
 import { selectThemeMode } from './themeSlice';
 
 const useAppTheme = (): Theme => {

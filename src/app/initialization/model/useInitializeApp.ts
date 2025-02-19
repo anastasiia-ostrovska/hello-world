@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '@/modules/auth';
 import { setMode } from '@/features/theme';
 import { getStoredThemeMode } from '@/shared/theme';
-import { useAppDispatch } from '../../store/useAppStore';
+import { useAppDispatch } from '@/shared/redux';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
