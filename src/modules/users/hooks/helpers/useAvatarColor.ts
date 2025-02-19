@@ -1,5 +1,5 @@
 import { UserName } from '@/modules/users/types';
-import { AvatarColor } from '@/modules/theme';
+import { AvatarColor } from '@/shared/theme';
 import { useMemo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import getAvatarColor from '@/modules/users/helpers/getAvatarColor';

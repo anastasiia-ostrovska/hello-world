@@ -4,7 +4,7 @@ import UserAvatar from '@/modules/users/ui/components/UserAvatar';
 import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
 
 import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import { ModeSwitcher } from '@/modules/theme';
+import { ModeSwitcher } from '@/features/theme';
 import { LogInForm } from '@/modules/auth';
 
 const Components = () => {

@@ -1,10 +1,10 @@
-import { Photo, UserName } from '@/modules/users/types';
 import { Styles } from '@/shared/mui';
+import useAvatar from '@/modules/users/hooks/ui/useAvatar';
 import Avatar from '@mui/material/Avatar';
-import useAvatar from '../../hooks/ui/useAvatar';
+import { Photo, User } from '../model/types';
 
 export interface UserAvatarProps {
-  userName: UserName;
+  userName: User['name'];
   src: Photo;
   size: number;
   sx?: Styles;

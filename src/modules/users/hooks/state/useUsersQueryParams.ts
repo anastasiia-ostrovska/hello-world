@@ -1,5 +1,5 @@
 import { UsersQueryParams } from '@/modules/users/types';
-import { useAppSelector } from '@/store';
+import { useAppSelector } from '@/shared/redux';
 import {
   selectCurrentPage,
   selectUsersQueryCount,

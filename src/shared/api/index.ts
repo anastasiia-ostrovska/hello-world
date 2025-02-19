@@ -1,6 +1,6 @@
-export type { ApiResponseTemplate } from './response-type';
+export type { ApiResponseTemplate } from './model/response-type';
 
-export * from './endpoints';
-export * from './methods';
+export * from './model/endpoints';
+export * from './model/methods';
 
 export { default as baseAPI } from './baseApi';

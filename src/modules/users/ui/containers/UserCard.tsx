@@ -4,9 +4,7 @@ import { SkeletonWrapper } from '@/modules/loaders';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
-import UserAvatarWithBackground, {
-  UserAvatarWithBackgroundProps,
-} from '@/modules/users/ui/containers/UserAvatarWithBackground';
+import { UserAvatarWithBackgroundProps } from '@/modules/users/ui/containers/UserAvatarWithBackground';
 import UserCardContent, {
   UserCardContentProps,
 } from '@/modules/users/ui/components/UserCardContent';
@@ -14,6 +12,7 @@ import FollowButton, {
   FollowButtonProps,
 } from '@/modules/users/ui/components/FollowButton';
 import { UserCardClickHandler } from '@/modules/users/hooks/handlers/useUserCardClick';
+import { AvatarWithBgImage } from '@/features/users';
 
 type UserCardProps = UserAvatarWithBackgroundProps &
   UserCardContentProps &
@@ -47,12 +46,12 @@ const UserCard = ({
         aria-label={isLoading ? 'Loading profile' : `Visit ${userName} profile`}
         onClick={() => onUserCardClick(userId)}
       >
-        <UserAvatarWithBackground
+        <AvatarWithBgImage
           userName={userName}
           avatarSrc={avatarSrc}
-          backgroundSrc={backgroundSrc}
+          bgImageSrc={backgroundSrc}
           avatarSize={avatarSize}
-          backgroundImageSize={backgroundImageSize}
+          bgImageHeight={backgroundImageSize}
           avatarBorderColor={palette.customBackground.userCard}
           avatarBorderWidth="3px"
           sx={{ mb: avatarSize / 16 }}
