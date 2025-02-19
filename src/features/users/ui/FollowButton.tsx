@@ -1,10 +1,10 @@
-import { UserId } from '@/modules/users/types';
 import { Styles } from '@/shared/mui';
-import useFollowButton from '@/modules/users/hooks/ui/useFollowButton';
 import Button from '@mui/material/Button';
+import useFollowButton from '../model/useFollowButton';
+import { User } from '../model/types';
 
 export interface FollowButtonProps {
-  userId: UserId;
+  userId: User['id'];
   isFollowed: boolean;
   sx?: Styles;
 }
