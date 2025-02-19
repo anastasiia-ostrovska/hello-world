@@ -1,7 +1,7 @@
 import { Photo, UserName } from '@/modules/users/types';
 import { Styles } from '@/shared/mui';
-import useAvatar from '@/modules/users/hooks/ui/useAvatar';
 import Avatar from '@mui/material/Avatar';
+import useAvatar from '../../hooks/ui/useAvatar';
 
 export interface UserAvatarProps {
   userName: UserName;

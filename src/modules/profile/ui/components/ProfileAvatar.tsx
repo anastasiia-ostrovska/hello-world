@@ -1,5 +1,5 @@
-import { UserAvatar } from '@/modules/users';
 import { SkeletonWrapper } from '@/modules/loaders';
+import { UserAvatar } from '@/features/users';
 import useMyProfileData from '@/modules/profile/hooks/api/useMyProfileData';
 
 interface ProfileAvatarProps {
