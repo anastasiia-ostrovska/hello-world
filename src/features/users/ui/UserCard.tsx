@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import CardActionArea from '@mui/material/CardActionArea';
-import FollowButton from '@/modules/users/ui/components/FollowButton';
 import AvatarWithBgImage from './AvatarWithBgImage';
+import FollowButton from './FollowButton';
 import { CardContentLayout, UserCardLayout } from './UserCardLayout';
 import {
   AvatarWithBgImageProps,
