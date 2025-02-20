@@ -1,10 +1,10 @@
-import { Photos, UserId, UserName } from '@/modules/users/types';
+import { User } from '@/shared/user';
 
 export interface ProfileDataResponse {
-  userId: UserId;
+  userId: User['id'];
   lookingForAJob: boolean;
   lookingForAJobDescription: string;
   contacts: Record<string, string>;
-  fullName: UserName;
-  photos: Photos;
+  fullName: User['name'];
+  photos: User['photos'];
 }

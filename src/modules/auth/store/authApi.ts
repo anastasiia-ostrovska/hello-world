@@ -7,10 +7,10 @@ import {
   POST,
 } from '@/shared/api';
 import { AuthMeResponse, LogInData } from '@/modules/auth/types';
-import { UserId } from '@/modules/users';
+import { User } from '@/shared/user';
 
 interface LogInResponseData {
-  userId: UserId;
+  userId: User['id'];
   token: string;
 }
 

@@ -7,7 +7,8 @@ import {
   POST,
   USERS,
 } from '@/shared/api';
-import { User, UsersQueryParams, UsersResponse } from '../model/types';
+import { User } from '@/shared/user';
+import { UsersQueryParams, UsersResponse } from '../model/types';
 
 interface UpdateFollowStatusCacheParams {
   state: RootState;
