@@ -1,5 +1,4 @@
-import { UserCardList } from '@/features/users';
-import { UsersPagination } from '@/modules/users';
+import { UserCardList, UsersPagination } from '@/features/users';
 import SectionWrapper from '@/shared/ui/SectionWrapper';
 
 const Network = () => {

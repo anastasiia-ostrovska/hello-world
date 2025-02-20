@@ -6,8 +6,8 @@ import {
 } from '../api/usersApi';
 
 enum ButtonLabel {
-  UNFOLLOW = 'unfollow',
-  FOLLOW = 'follow',
+  Unfollow = 'unfollow',
+  Follow = 'follow',
 }
 
 type ButtonVariant = Extract<ButtonProps['variant'], 'outlined' | 'contained'>;
@@ -35,7 +35,7 @@ const useFollowButton = ({
     useUnfollowUserMutation();
 
   const isDisabled = isLoading || isLoadingFollow || isLoadingUnfollow;
-  const label = isFollowed ? ButtonLabel.UNFOLLOW : ButtonLabel.FOLLOW;
+  const label = isFollowed ? ButtonLabel.Unfollow : ButtonLabel.Follow;
   const variant = isFollowed ? 'outlined' : 'contained';
 
   const handleButtonClick = () => {
