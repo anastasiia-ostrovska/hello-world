@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import { User, UsersQueryParams } from '@/modules/users/types';
+import { User } from './types';
 
 /**
- * Generates an array of mock users.
+ * Generates an array of fake users.
  *
  * @param {number} count - The number of users to create.
  * @returns {Array} - An array of user objects.
@@ -15,9 +15,7 @@ import { User, UsersQueryParams } from '@/modules/users/types';
  *   - followed: default value is false
  */
 
-const generateMockUsers = (
-  count: UsersQueryParams['usersQueryCount']
-): User[] =>
+const generateFakeUsers = (count: number): User[] =>
   Array.from({ length: count }, () => ({
     id: uuidv4(),
     name: '',
@@ -26,4 +24,4 @@ const generateMockUsers = (
     followed: false,
   }));
 
-export default generateMockUsers;
+export default generateFakeUsers;

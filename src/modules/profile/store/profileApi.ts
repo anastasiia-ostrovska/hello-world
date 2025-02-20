@@ -1,10 +1,10 @@
 import { ProfileDataResponse } from '@/modules/profile/types';
-import { UserId } from '@/modules/users';
 import { baseAPI, PROFILE } from '@/shared/api';
+import { User } from '@/shared/user';
 
 const profileApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
-    getUserProfile: builder.query<ProfileDataResponse, UserId>({
+    getUserProfile: builder.query<ProfileDataResponse, User['id']>({
       query: (userId) => `${PROFILE}/${userId}`,
     }),
   }),

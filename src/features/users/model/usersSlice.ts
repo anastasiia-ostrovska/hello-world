@@ -1,5 +1,5 @@
-import { UsersQueryParams } from '@/modules/users/types';
 import { createSlice } from '@reduxjs/toolkit';
+import { UsersQueryParams } from './types';
 
 const initialState: UsersQueryParams = {
   usersQueryCount: 12,

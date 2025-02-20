@@ -1,4 +1,4 @@
-import { UserName } from '@/modules/users/types';
+import { User } from './types';
 
 /**
  * Function to extract the first two initials from a full name.
@@ -9,9 +9,9 @@ import { UserName } from '@/modules/users/types';
  * Returns an empty string if the input is not a valid name.
  */
 
-export type Initials = string;
+type Initials = string;
 
-const getInitials = (fullName: UserName): Initials => {
+const getInitials = (fullName: User['name']): Initials => {
   if (!fullName || fullName.trim() === '') return '';
 
   return fullName

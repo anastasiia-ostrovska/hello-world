@@ -1,5 +1,5 @@
 import { ApiResponseTemplate } from '@/shared/api';
-import { UserId } from '@/modules/users';
+import { User } from '@/shared/user';
 
 export interface LogInData {
   email: string;
@@ -8,7 +8,7 @@ export interface LogInData {
 }
 
 export interface AuthData {
-  id: UserId;
+  id: User['id'];
   login: string;
   email: string;
 }

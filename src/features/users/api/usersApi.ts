@@ -1,4 +1,4 @@
-import { AppDispatch, RootState } from '@/app/store';
+import type { AppDispatch, RootState } from '@/app/store';
 import {
   ApiResponseTemplate,
   baseAPI,
@@ -7,13 +7,14 @@ import {
   POST,
   USERS,
 } from '@/shared/api';
-import { UserId, UsersQueryParams, UsersResponse } from '@/modules/users/types';
+import { User } from '@/shared/user';
+import { UsersQueryParams, UsersResponse } from '../model/types';
 
 interface UpdateFollowStatusCacheParams {
   state: RootState;
   dispatch: AppDispatch;
   usersApi: typeof usersApi;
-  userId: UserId;
+  userId: User['id'];
 }
 
 const updateFollowStatusCache = ({
@@ -35,7 +36,7 @@ const updateFollowStatusCache = ({
     getUsersQuery.originalArgs as UsersQueryParams;
 
   return dispatch(
-    usersApi.util.updateQueryData<'getUsers'>(
+    usersApi.util.updateQueryData(
       'getUsers',
       { usersQueryCount, currentPage },
       (draft: UsersResponse) => {
@@ -57,7 +58,7 @@ const usersApi = baseAPI.injectEndpoints({
       providesTags: ['Users'],
     }),
 
-    unfollowUser: builder.mutation<ApiResponseTemplate, UserId>({
+    unfollowUser: builder.mutation<ApiResponseTemplate, User['id']>({
       query: (userId) => ({
         method: DELETE,
         url: `${FOLLOW}/${userId}`,
@@ -79,7 +80,7 @@ const usersApi = baseAPI.injectEndpoints({
       },
     }),
 
-    followUser: builder.mutation<ApiResponseTemplate, UserId>({
+    followUser: builder.mutation<ApiResponseTemplate, User['id']>({
       query: (userId) => ({
         method: POST,
         url: `${FOLLOW}/${userId}`,
