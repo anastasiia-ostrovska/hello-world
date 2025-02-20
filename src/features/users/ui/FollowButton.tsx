@@ -4,15 +4,22 @@ import useFollowButton from '../model/useFollowButton';
 import { User } from '../model/types';
 
 export interface FollowButtonProps {
+  isLoading: boolean;
   userId: User['id'];
   isFollowed: boolean;
   sx?: Styles;
 }
 
-const FollowButton = ({ userId, isFollowed, sx = {} }: FollowButtonProps) => {
+const FollowButton = ({
+  isLoading,
+  userId,
+  isFollowed,
+  sx = {},
+}: FollowButtonProps) => {
   const { handleButtonClick, isDisabled, label, variant } = useFollowButton({
     userId,
     isFollowed,
+    isLoading,
   });
 
   return (

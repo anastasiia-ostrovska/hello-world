@@ -15,6 +15,7 @@ type ButtonVariant = Extract<ButtonProps['variant'], 'outlined' | 'contained'>;
 interface FollowButtonParams {
   userId: User['id'];
   isFollowed: boolean;
+  isLoading: boolean;
 }
 
 interface UseFollowButtonResult {
@@ -27,12 +28,13 @@ interface UseFollowButtonResult {
 const useFollowButton = ({
   userId,
   isFollowed,
+  isLoading,
 }: FollowButtonParams): UseFollowButtonResult => {
   const [followUser, { isLoading: isLoadingFollow }] = useFollowUserMutation();
   const [unfollowUser, { isLoading: isLoadingUnfollow }] =
     useUnfollowUserMutation();
 
-  const isDisabled = isLoadingFollow || isLoadingUnfollow;
+  const isDisabled = isLoading || isLoadingFollow || isLoadingUnfollow;
   const label = isFollowed ? ButtonLabel.UNFOLLOW : ButtonLabel.FOLLOW;
   const variant = isFollowed ? 'outlined' : 'contained';
 
