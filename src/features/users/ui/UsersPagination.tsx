@@ -25,6 +25,8 @@ const UsersPagination = () => {
   const { isLoading, size, pagesCount, currentPage, handlePageChange } =
     useUsersPagination();
 
+  if (pagesCount <= 1) return null;
+
   return (
     <UsersPaginationLayout
       isLoading={isLoading}
