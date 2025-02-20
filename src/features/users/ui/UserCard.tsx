@@ -62,6 +62,7 @@ const UserCard = ({
         <FollowButton
           userId={userId}
           isFollowed={isFollowed}
+          isLoading={isLoading}
           sx={{ width: '100%', maxWidth: 180, height: 36 }}
         />
       }
