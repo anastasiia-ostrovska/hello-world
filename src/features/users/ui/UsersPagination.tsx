@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { SkeletonWrapper } from '@/modules/loaders';
+import { SkeletonWrapper } from '@/shared/ui/SkeletonLoaders';
 import Pagination from '@mui/material/Pagination';
 import useUsersPagination from '../model/useUsersPagination';
 

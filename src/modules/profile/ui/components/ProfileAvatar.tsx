@@ -1,4 +1,4 @@
-import { SkeletonWrapper } from '@/modules/loaders';
+import { SkeletonWrapper } from '@/shared/ui/SkeletonLoaders';
 import { UserAvatar } from '@/features/users';
 import useMyProfileData from '@/modules/profile/hooks/api/useMyProfileData';
 

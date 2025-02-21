@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { SkeletonText, SkeletonWrapper } from '@/modules/loaders';
+import { SkeletonText, SkeletonWrapper } from '@/shared/ui/SkeletonLoaders';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
