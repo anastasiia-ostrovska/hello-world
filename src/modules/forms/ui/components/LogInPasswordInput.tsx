@@ -1,6 +1,6 @@
 import { LogInInputProps } from '@/modules/forms/types';
 import { passwordValidationRules } from '@/modules/forms/validation/validation-rules';
-import ControlledTextField from './ControlledTextField';
+import { ControlledTextField } from '@/shared/forms';
 
 const LogInPasswordInput = ({ name, disabled }: LogInInputProps) => {
   return (

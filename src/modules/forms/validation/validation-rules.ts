@@ -6,11 +6,11 @@ import {
   containsDigit,
   containsSpecialCharacter,
   containsUppercase,
+  fieldIsRequired,
+  minLength14,
   validEmailFormat,
-} from '@/modules/forms/validation/validators/regExpValidators';
-import { fieldIsRequired } from '@/modules/forms/validation/validators/requiredValidators';
-import { whitespacesForbidden } from '@/modules/forms/validation/validators/whitespaseValidators';
-import { minLength14 } from '@/modules/forms/validation/validators/lengthValidators';
+  whitespacesForbidden,
+} from '@/shared/forms';
 
 export const emailValidationRules = {
   fieldIsRequired: fieldIsRequired(emailValidationMessages.required),
