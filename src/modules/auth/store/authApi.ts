@@ -2,9 +2,9 @@ import {
   ApiResponseTemplate,
   AUTH_ME,
   baseAPI,
-  DELETE,
   LOGIN,
-  POST,
+  METHODS,
+  TAGS,
 } from '@/shared/api';
 import { AuthMeResponse, LogInData } from '@/modules/auth/types';
 import { User } from '@/shared/user';
@@ -20,24 +20,24 @@ const authApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getAuthData: builder.query<AuthMeResponse, void>({
       query: () => AUTH_ME,
-      providesTags: ['Auth'],
+      providesTags: [TAGS.AUTH],
     }),
 
     logIn: builder.mutation<LogInResponse, LogInData>({
       query: (logInData) => ({
-        method: POST,
+        method: METHODS.POST,
         url: LOGIN,
         body: logInData,
       }),
-      invalidatesTags: ['Auth'],
+      invalidatesTags: [TAGS.AUTH],
     }),
 
     logOut: builder.mutation<ApiResponseTemplate, void>({
       query: () => ({
-        method: DELETE,
+        method: METHODS.DELETE,
         url: LOGIN,
       }),
-      invalidatesTags: ['Auth'],
+      invalidatesTags: [TAGS.AUTH],
     }),
   }),
 });
