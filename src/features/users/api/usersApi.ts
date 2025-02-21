@@ -2,9 +2,9 @@ import type { AppDispatch, RootState } from '@/app/store';
 import {
   ApiResponseTemplate,
   baseAPI,
-  DELETE,
   FOLLOW,
-  POST,
+  METHODS,
+  TAGS,
   USERS,
 } from '@/shared/api';
 import { User } from '@/shared/user';
@@ -55,12 +55,12 @@ const usersApi = baseAPI.injectEndpoints({
     getUsers: builder.query<UsersResponse, UsersQueryParams>({
       query: ({ usersQueryCount, currentPage }) =>
         `${USERS}?count=${usersQueryCount}&page=${currentPage}`,
-      providesTags: ['Users'],
+      providesTags: [TAGS.USERS],
     }),
 
     unfollowUser: builder.mutation<ApiResponseTemplate, User['id']>({
       query: (userId) => ({
-        method: DELETE,
+        method: METHODS.DELETE,
         url: `${FOLLOW}/${userId}`,
       }),
 
@@ -82,7 +82,7 @@ const usersApi = baseAPI.injectEndpoints({
 
     followUser: builder.mutation<ApiResponseTemplate, User['id']>({
       query: (userId) => ({
-        method: POST,
+        method: METHODS.POST,
         url: `${FOLLOW}/${userId}`,
       }),
 
