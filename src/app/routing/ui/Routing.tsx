@@ -1,5 +1,6 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AppLayout } from '@/widgets/layout';
+import { useRedirect } from '@/shared/redirect';
 import LogIn from '@/pages/LogIn';
 import Home from '@/pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
@@ -12,7 +13,7 @@ interface RoutingProps {
 }
 
 const Routing = ({ isAuth }: RoutingProps) => {
-  const location = useLocation();
+  const { redirectedFrom } = useRedirect({ altRoute: ROUTES.HOME });
 
   return (
     <Routes>
@@ -20,10 +21,7 @@ const Routing = ({ isAuth }: RoutingProps) => {
       <Route
         path={ROUTES.LOGIN}
         element={
-          <ProtectedRoute
-            isAllowed={!isAuth}
-            redirectPath={location.state?.from?.pathname || ROUTES.HOME}
-          >
+          <ProtectedRoute isAllowed={!isAuth} redirectPath={redirectedFrom}>
             <LogIn />
           </ProtectedRoute>
         }

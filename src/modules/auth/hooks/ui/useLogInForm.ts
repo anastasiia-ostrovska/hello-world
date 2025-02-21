@@ -1,10 +1,7 @@
 import { LogInData } from '@/modules/auth/types';
 import { BaseSyntheticEvent, useCallback, useEffect, useMemo } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useLogInMutation } from '@/modules/auth/store/authApi';
-import { HOME } from '@/shared/router';
-import useAuth from '@/modules/auth/hooks/api/useAuth';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LogInData>;
@@ -28,27 +25,12 @@ const useLogInForm = (): UseLogInFormResult => {
     logIn,
     { isLoading: isLogInRequestLoading, isSuccess: logInRequestSuccess },
   ] = useLogInMutation();
-  const { isAuth } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    const from: string = location.state?.from?.pathname || HOME;
-
     if (isSubmitSuccessful && logInRequestSuccess) {
       reset();
-      if (isAuth) {
-        navigate(from, { replace: true });
-      }
     }
-  }, [
-    isAuth,
-    isSubmitSuccessful,
-    location.state?.from?.pathname,
-    logInRequestSuccess,
-    navigate,
-    reset,
-  ]);
+  }, [isSubmitSuccessful, logInRequestSuccess, reset]);
 
   const isSubmitButtonDisabled = useMemo(() => {
     const isEmptyField = !dirtyFields.email || !dirtyFields.password;
