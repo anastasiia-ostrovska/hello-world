@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { AppLayout } from '@/widgets/layout';
 import LogIn from '@/pages/LogIn';
 import Home from '@/pages/Home';
@@ -12,19 +12,28 @@ interface RoutingProps {
 }
 
 const Routing = ({ isAuth }: RoutingProps) => {
+  const location = useLocation();
+
   return (
     <Routes>
-      {/* Public Route - Login */}
+      {/* Private Route Login - Accessible only if user is not authorised */}
       <Route
         path={ROUTES.LOGIN}
         element={
-          <ProtectedRoute isAllowed={!isAuth} redirectPath={ROUTES.HOME}>
+          <ProtectedRoute
+            isAllowed={!isAuth}
+            redirectPath={location.state?.from?.pathname || ROUTES.HOME}
+          >
             <LogIn />
           </ProtectedRoute>
         }
       />
       {/* Private Routes - Requires Authentication */}
-      <Route element={<ProtectedRoute isAllowed={isAuth} />}>
+      <Route
+        element={
+          <ProtectedRoute isAllowed={isAuth} redirectPath={ROUTES.LOGIN} />
+        }
+      >
         <Route path={ROUTES.ROOT} element={<AppLayout />}>
           <Route index element={<Home />} />
           {AUTH_PAGES.map(({ path, element }) => (
