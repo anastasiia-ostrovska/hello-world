@@ -1,7 +1,7 @@
 import { Styles } from '@/shared/mui';
+import { Photo, User } from '@/shared/user';
 import Avatar from '@mui/material/Avatar';
 import useAvatar from '../model/useAvatar';
-import { Photo, User } from '../model/types';
 
 export interface UserAvatarProps {
   userName: User['name'];
@@ -25,7 +25,7 @@ const UserAvatar = ({ userName, src, size, sx = {} }: UserAvatarProps) => {
         ...sx,
       }}
     >
-      {userName && initials}
+      {!!userName && initials}
     </Avatar>
   );
 };
