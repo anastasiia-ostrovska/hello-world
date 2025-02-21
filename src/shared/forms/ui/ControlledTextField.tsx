@@ -1,8 +1,8 @@
 import { TextFieldProps } from '@mui/material';
-import { ControlledInputProps } from '@/modules/forms/types';
 import { Controller, useFormContext } from 'react-hook-form';
-import getHelperTextWithID from '@/modules/forms/helpers/getHelperTextWithID';
 import TextField from '@mui/material/TextField';
+import getHelperTextWithID from '../model/getHelperTextWithID';
+import { ControlledInputProps } from '../model/types';
 
 interface ControlledTextFieldProps
   extends Omit<TextFieldProps, 'name' | 'helperText' | 'label'>,
@@ -14,8 +14,8 @@ const ControlledTextField = ({
   name,
   type,
   label,
-  required = true,
   helperText = '',
+  required = true,
   showError = true,
   rules = {},
   ...textFieldMuiProps

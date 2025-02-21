@@ -1,11 +1,11 @@
 import { Styles } from '@/shared/mui';
-import { ControlledInputProps } from '@/modules/forms/types';
 import { Controller, useFormContext } from 'react-hook-form';
-import getHelperTextWithID from '@/modules/forms/helpers/getHelperTextWithID';
+import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
 import FormHelperText from '@mui/material/FormHelperText';
+import { ControlledInputProps } from '../model/types';
+import getHelperTextWithID from '../model/getHelperTextWithID';
 
 interface ControlledCheckboxProps
   extends Omit<CheckboxProps, 'name'>,
@@ -16,10 +16,10 @@ interface ControlledCheckboxProps
 const ControlledCheckbox = ({
   name,
   label,
-  required = true,
-  wrapperSx = {},
   helperText = '',
+  required = true,
   showError = true,
+  wrapperSx = {},
   rules = {},
   ...checkboxMuiProps
 }: ControlledCheckboxProps) => {
