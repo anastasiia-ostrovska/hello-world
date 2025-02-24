@@ -1,5 +1,11 @@
+export enum LogInInput {
+  Email = 'email',
+  Password = 'password',
+  RememberMe = 'rememberMe',
+}
+
 export interface LogInData {
-  email: string;
-  password: string;
-  rememberMe: boolean;
+  [LogInInput.Email]: string;
+  [LogInInput.Password]: string;
+  [LogInInput.RememberMe]: boolean;
 }
