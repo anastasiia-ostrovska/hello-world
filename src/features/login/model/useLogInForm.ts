@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useLogInMutation } from './loginApi';
-import { LogInData } from './types';
+import { LogInData, LogInInput } from './types';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LogInData>;
@@ -13,7 +13,11 @@ interface UseLogInFormResult {
 
 const useLogInForm = (): UseLogInFormResult => {
   const methods = useForm<LogInData>({
-    defaultValues: { email: '', password: '', rememberMe: true },
+    defaultValues: {
+      [LogInInput.Email]: '',
+      [LogInInput.Password]: '',
+      [LogInInput.RememberMe]: true,
+    },
     mode: 'onTouched',
   });
   const {
