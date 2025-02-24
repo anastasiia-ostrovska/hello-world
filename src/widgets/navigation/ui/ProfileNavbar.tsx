@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { LogOutButton } from '@/modules/auth';
+import { LogOutButton } from '@/features/login';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';

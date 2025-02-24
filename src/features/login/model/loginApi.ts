@@ -1,12 +1,12 @@
 import {
   ApiResponseTemplate,
   baseAPI,
-  LOGIN,
+  ENDPOINTS,
   METHODS,
   TAGS,
 } from '@/shared/api';
-import { LogInData } from '@/modules/auth/types';
 import { User } from '@/shared/user';
+import { LogInData } from './types';
 
 interface LogInResponseData {
   userId: User['id'];
@@ -20,7 +20,7 @@ const loginApi = baseAPI.injectEndpoints({
     logIn: builder.mutation<LogInResponse, LogInData>({
       query: (logInData) => ({
         method: METHODS.POST,
-        url: LOGIN,
+        url: ENDPOINTS.LOGIN,
         body: logInData,
       }),
       invalidatesTags: [TAGS.AUTH],
@@ -29,7 +29,7 @@ const loginApi = baseAPI.injectEndpoints({
     logOut: builder.mutation<ApiResponseTemplate, void>({
       query: () => ({
         method: METHODS.DELETE,
-        url: LOGIN,
+        url: ENDPOINTS.LOGIN,
       }),
       invalidatesTags: [TAGS.AUTH],
     }),

@@ -1,4 +1,5 @@
-import { LogInForm } from '@/modules/auth';
+import { LogInForm } from '@/features/login';
+
 import Stack from '@mui/material/Stack';
 
 const LogIn = () => {
