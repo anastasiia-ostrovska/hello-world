@@ -2,10 +2,9 @@ import type { AppDispatch, RootState } from '@/app/store';
 import {
   ApiResponseTemplate,
   baseAPI,
-  FOLLOW,
+  ENDPOINTS,
   METHODS,
   TAGS,
-  USERS,
 } from '@/shared/api';
 import { User } from '@/shared/user';
 import { UsersQueryParams, UsersResponse } from '../model/types';
@@ -54,14 +53,14 @@ const usersApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query<UsersResponse, UsersQueryParams>({
       query: ({ usersQueryCount, currentPage }) =>
-        `${USERS}?count=${usersQueryCount}&page=${currentPage}`,
+        `${ENDPOINTS.USERS}?count=${usersQueryCount}&page=${currentPage}`,
       providesTags: [TAGS.USERS],
     }),
 
     unfollowUser: builder.mutation<ApiResponseTemplate, User['id']>({
       query: (userId) => ({
         method: METHODS.DELETE,
-        url: `${FOLLOW}/${userId}`,
+        url: `${ENDPOINTS.FOLLOW}/${userId}`,
       }),
 
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
@@ -83,7 +82,7 @@ const usersApi = baseAPI.injectEndpoints({
     followUser: builder.mutation<ApiResponseTemplate, User['id']>({
       query: (userId) => ({
         method: METHODS.POST,
-        url: `${FOLLOW}/${userId}`,
+        url: `${ENDPOINTS.FOLLOW}/${userId}`,
       }),
 
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
