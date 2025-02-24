@@ -1,5 +1,5 @@
 import { LogInInputProps } from '@/modules/forms/types';
-import ControlledCheckbox from './ControlledCheckbox';
+import { ControlledCheckbox } from '@/shared/forms';
 
 const LogInCheckbox = ({ name, disabled }: LogInInputProps) => {
   return (
