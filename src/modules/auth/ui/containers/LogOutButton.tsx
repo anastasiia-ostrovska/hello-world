@@ -1,4 +1,4 @@
-import useLogOutButton from '@/modules/auth/hooks/ui/useLogOutButton';
+import useLogOut from '@/features/login/model/useLogOut';
 import Chip from '@mui/material/Chip';
 import LogoutIcon from '@/modules/auth/ui/components/LogoutIcon';
 
@@ -7,7 +7,7 @@ interface LogOutButtonProps {
 }
 
 const LogOutButton = ({ iconSize }: LogOutButtonProps) => {
-  const { handleLogOut, isLoading } = useLogOutButton();
+  const { handleLogOut, isLoading } = useLogOut();
 
   return (
     <Chip

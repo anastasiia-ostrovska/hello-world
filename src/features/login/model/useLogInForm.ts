@@ -1,7 +1,7 @@
-import { LogInData } from '@/modules/auth/types';
-import { BaseSyntheticEvent, useCallback, useEffect, useMemo } from 'react';
+import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
-import { useLogInMutation } from '@/modules/auth/store/loginApi';
+import { useLogInMutation } from './loginApi';
+import { LogInData } from './types';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LogInData>;
@@ -32,17 +32,11 @@ const useLogInForm = (): UseLogInFormResult => {
     }
   }, [isSubmitSuccessful, logInRequestSuccess, reset]);
 
-  const isSubmitButtonDisabled = useMemo(() => {
-    const isEmptyField = !dirtyFields.email || !dirtyFields.password;
-    return isEmptyField || isSubmitting || isLogInRequestLoading;
-  }, [
-    dirtyFields.email,
-    dirtyFields.password,
-    isLogInRequestLoading,
-    isSubmitting,
-  ]);
+  const isEmptyField = !dirtyFields.email || !dirtyFields.password;
+  const isSubmitButtonDisabled =
+    isEmptyField || isSubmitting || isLogInRequestLoading;
 
-  const handleFillGuestData = useCallback(() => {
+  const handleFillGuestData = () => {
     reset(
       {
         email: import.meta.env.VITE_GUEST_EMAIL,
@@ -53,7 +47,7 @@ const useLogInForm = (): UseLogInFormResult => {
         keepTouched: true,
       }
     );
-  }, [reset]);
+  };
 
   const handleFormSubmit: SubmitHandler<LogInData> = (data) => {
     logIn(data);
@@ -67,4 +61,5 @@ const useLogInForm = (): UseLogInFormResult => {
     isLogInRequestLoading,
   };
 };
+
 export default useLogInForm;
