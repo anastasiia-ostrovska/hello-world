@@ -52,3 +52,23 @@ export const GuestDataLayout = ({ text, button }: GuestDataLayoutProps) => {
     </>
   );
 };
+
+interface InputsLayoutProps {
+  email: ReactElement;
+  password: ReactElement;
+  rememberMe: ReactElement;
+}
+
+export const InputsLayout = ({
+  email,
+  password,
+  rememberMe,
+}: InputsLayoutProps) => {
+  return (
+    <Stack spacing={2}>
+      {email}
+      {password}
+      {rememberMe}
+    </Stack>
+  );
+};
