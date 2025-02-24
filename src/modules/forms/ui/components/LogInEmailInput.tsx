@@ -1,5 +1,5 @@
 import { LogInInputProps } from '@/modules/forms/types';
-import { emailValidationRules } from '@/modules/forms/validation/validation-rules';
+import { emailValidationRules } from '@/features/login/config/validation-rules';
 import { ControlledTextField } from '@/shared/forms';
 
 const LogInEmailInput = ({ name, disabled }: LogInInputProps) => {

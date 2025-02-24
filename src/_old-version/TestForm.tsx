@@ -4,7 +4,7 @@ import { Button, TextField } from '@mui/material';
 import {
   emailValidationRules,
   passwordValidationRules,
-} from '@/modules/forms/validation/validation-rules';
+} from '@/features/login/config/validation-rules';
 import FillGuestDataButton from '@/modules/auth/ui/components/FillGuestDataButton';
 
 type FormData = {
