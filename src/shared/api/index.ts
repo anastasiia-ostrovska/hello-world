@@ -1,7 +1,7 @@
-export type { ApiResponseTemplate } from './model/response-type';
+export type { ApiResponseTemplate } from './model/types';
 
-export * from './model/endpoints';
-export * as METHODS from './model/methods';
-export * as TAGS from './model/invalidation-tags';
+export * from './config/endpoints';
+export * as METHODS from './config/methods';
+export * as TAGS from './config/invalidation-tags';
 
 export { default as baseAPI } from './model/baseApi';
