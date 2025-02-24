@@ -1,4 +1,4 @@
-import { useLogOutMutation } from '@/modules/auth/store/authApi';
+import { useLogOutMutation } from '@/modules/auth/store/loginApi';
 
 interface UseLogOutResult {
   handleLogOut: () => void;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/modules/auth';
+import { useAuth } from '@/shared/api';
 import { setMode } from '@/features/theme';
 import { getStoredThemeMode } from '@/shared/theme';
 import { useAppDispatch } from '@/shared/redux';

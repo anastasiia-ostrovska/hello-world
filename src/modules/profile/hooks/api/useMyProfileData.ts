@@ -1,5 +1,5 @@
 import { ProfileDataResponse } from '@/modules/profile/types';
-import { useAuth } from '@/modules/auth';
+import { useAuth } from '@/shared/api';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useGetUserProfileQuery } from '@/modules/profile/store/profileApi';
 

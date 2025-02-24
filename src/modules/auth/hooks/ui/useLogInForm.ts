@@ -1,7 +1,7 @@
 import { LogInData } from '@/modules/auth/types';
 import { BaseSyntheticEvent, useCallback, useEffect, useMemo } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
-import { useLogInMutation } from '@/modules/auth/store/authApi';
+import { useLogInMutation } from '@/modules/auth/store/loginApi';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LogInData>;

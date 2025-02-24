@@ -1,9 +1,8 @@
-import { AuthMeResponse } from '@/modules/auth/types';
-import { useGetAuthDataQuery } from '@/modules/auth/store/authApi';
+import { useGetAuthDataQuery } from './authApi';
+import { AuthMeResponse } from './types';
 
 interface AuthData {
   authData: AuthMeResponse['data'] | undefined;
-  messages: AuthMeResponse['messages'] | undefined;
   isAuth: boolean;
   isLoading: boolean;
 }
@@ -13,10 +12,9 @@ const useAuth = (): AuthData => {
 
   const authData = data?.data;
   const resultCode = data?.resultCode;
-  const messages = data?.messages;
   const isAuth = resultCode === 0;
 
-  return { authData, messages, isAuth, isLoading };
+  return { authData, isAuth, isLoading };
 };
 
 export default useAuth;

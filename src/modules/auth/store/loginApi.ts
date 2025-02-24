@@ -1,12 +1,11 @@
 import {
   ApiResponseTemplate,
-  AUTH_ME,
   baseAPI,
   LOGIN,
   METHODS,
   TAGS,
 } from '@/shared/api';
-import { AuthMeResponse, LogInData } from '@/modules/auth/types';
+import { LogInData } from '@/modules/auth/types';
 import { User } from '@/shared/user';
 
 interface LogInResponseData {
@@ -16,13 +15,8 @@ interface LogInResponseData {
 
 type LogInResponse = ApiResponseTemplate<LogInResponseData>;
 
-const authApi = baseAPI.injectEndpoints({
+const loginApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
-    getAuthData: builder.query<AuthMeResponse, void>({
-      query: () => AUTH_ME,
-      providesTags: [TAGS.AUTH],
-    }),
-
     logIn: builder.mutation<LogInResponse, LogInData>({
       query: (logInData) => ({
         method: METHODS.POST,
@@ -42,5 +36,4 @@ const authApi = baseAPI.injectEndpoints({
   }),
 });
 
-export const { useGetAuthDataQuery, useLogInMutation, useLogOutMutation } =
-  authApi;
+export const { useLogInMutation, useLogOutMutation } = loginApi;
