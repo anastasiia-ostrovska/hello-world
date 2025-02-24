@@ -8,13 +8,14 @@ interface FormProps extends StackProps {
   sx?: Styles;
 }
 
-const Form = ({ onSubmit, children = null, sx = {} }: FormProps) => {
+const Form = ({ onSubmit, children = null, sx = {}, ...props }: FormProps) => {
   return (
     <Stack
       component="form"
       onSubmit={onSubmit}
       noValidate
       sx={{ width: '100%', ...sx }}
+      {...props}
     >
       {children}
     </Stack>

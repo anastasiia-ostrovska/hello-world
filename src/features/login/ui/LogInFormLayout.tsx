@@ -40,13 +40,7 @@ interface GuestDataLayoutProps {
 
 export const GuestDataLayout = ({ text, button }: GuestDataLayoutProps) => {
   return (
-    <SectionWrapper
-      sx={{
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 1,
-      }}
-    >
+    <>
       <Typography
         variant="caption"
         color="success"
@@ -55,6 +49,6 @@ export const GuestDataLayout = ({ text, button }: GuestDataLayoutProps) => {
         {text}
       </Typography>
       {button}
-    </SectionWrapper>
+    </>
   );
 };

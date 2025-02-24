@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { AvatarWithBgImage, UserAvatar } from '@/features/users';
 import { ModeSwitcher } from '@/features/theme';
-import { LogInForm } from '@/modules/auth';
+import { LogInForm } from '@/features/login';
 
 const Components = () => {
   return (
