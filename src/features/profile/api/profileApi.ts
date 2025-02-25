@@ -1,6 +1,6 @@
-import { ProfileDataResponse } from '@/modules/profile/types';
 import { baseAPI, ENDPOINTS } from '@/shared/api';
 import { User } from '@/shared/user';
+import { ProfileDataResponse } from '../model/types';
 
 const profileApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
