@@ -6,7 +6,7 @@ interface Photos {
 }
 
 export interface User {
-  id: number | string;
+  id: number;
   name: string;
   status: string;
   photos: Photos;

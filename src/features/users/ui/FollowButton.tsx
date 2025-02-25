@@ -1,7 +1,7 @@
 import { Styles } from '@/shared/mui';
+import { User } from '@/shared/user';
 import Button from '@mui/material/Button';
 import useFollowButton from '../model/useFollowButton';
-import { User } from '../model/types';
 
 export interface FollowButtonProps {
   isLoading: boolean;

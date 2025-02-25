@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 import { PROFILE } from '@/shared/router';
-import { User, UserCardClickHandler } from './types';
+import { User } from '@/shared/user';
+import { FakeUser, UserCardClickHandler } from './types';
 import { useGetUsersQuery } from '../api/usersApi';
 import generateFakeUsers from './generateFakeUsers';
 import useUsersQueryParams from './useUsersQueryParams';
 
 interface UseUsersResult {
-  users: User[];
+  users: User[] | FakeUser[];
   isLoading: boolean;
   handleUserCardClick: UserCardClickHandler;
 }

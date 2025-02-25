@@ -16,6 +16,7 @@ const UserAvatar = ({ userName, src, size, sx = {} }: UserAvatarProps) => {
   return (
     <Avatar
       alt={userName || 'Avatar is loading...'}
+      aria-label={userName || 'Avatar'}
       src={src || ''}
       sx={{
         width: size,

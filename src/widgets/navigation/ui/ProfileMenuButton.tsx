@@ -1,10 +1,12 @@
 import { MouseEvent } from 'react';
-import { ProfileAvatar } from '@/modules/profile';
+import { User } from '@/shared/user';
+import { ProfileAvatar } from '@/features/profile';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
 interface ProfileMenuButtonProps {
-  id: string;
+  userId: User['id'] | undefined;
+  buttonID: string;
   controlsID: string;
   size: number;
   isMenuOpen: boolean;
@@ -12,7 +14,8 @@ interface ProfileMenuButtonProps {
 }
 
 const ProfileMenuButton = ({
-  id,
+  userId,
+  buttonID,
   controlsID,
   size,
   isMenuOpen,
@@ -21,14 +24,14 @@ const ProfileMenuButton = ({
   return (
     <Tooltip title="Profile menu">
       <IconButton
-        id={id}
+        id={buttonID}
         aria-label="Profile menu"
         aria-haspopup="true"
         aria-controls={isMenuOpen ? controlsID : undefined}
         aria-expanded={isMenuOpen ? 'true' : undefined}
         onClick={(event) => onClick(event)}
       >
-        <ProfileAvatar size={size} />
+        <ProfileAvatar userId={userId} size={size} />
       </IconButton>
     </Tooltip>
   );
