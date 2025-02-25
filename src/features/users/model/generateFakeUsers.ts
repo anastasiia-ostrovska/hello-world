@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { User } from './types';
+import { FakeUser } from './types';
 
 /**
  * Generates an array of fake users.
@@ -15,7 +15,7 @@ import { User } from './types';
  *   - followed: default value is false
  */
 
-const generateFakeUsers = (count: number): User[] =>
+const generateFakeUsers = (count: number): FakeUser[] =>
   Array.from({ length: count }, () => ({
     id: uuidv4(),
     name: '',

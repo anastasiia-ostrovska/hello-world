@@ -1,4 +1,4 @@
-import { User } from './types';
+import { User } from '@/shared/user';
 
 /**
  * Function to extract the first two initials from a full name.

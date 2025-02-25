@@ -1,5 +1,5 @@
 import { ButtonProps } from '@mui/material';
-import { User } from './types';
+import { User } from '@/shared/user';
 import {
   useFollowUserMutation,
   useUnfollowUserMutation,
