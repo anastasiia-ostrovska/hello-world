@@ -1,11 +1,8 @@
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import UserAvatar from '@/modules/users/ui/components/UserAvatar';
-import UserBackgroundImage from '@/modules/users/ui/components/UserBackgroundImage';
-
-import UserAvatarWithBackground from '@/modules/users/ui/containers/UserAvatarWithBackground';
-import { ModeSwitcher } from '@/modules/theme';
-import { LogInForm } from '@/modules/auth';
+import { AvatarWithBgImage, UserAvatar } from '@/features/users';
+import { ModeSwitcher } from '@/features/theme';
+import { LogInForm } from '@/features/login';
 
 const Components = () => {
   return (
@@ -24,16 +21,6 @@ const Components = () => {
         <UserAvatar src={null} userName="Nana" size={30} />
         <UserAvatar src={null} userName="" size={30} />
       </Stack>
-      <UserBackgroundImage
-        size={200}
-        src="https://uploads.sitepoint.com/wp-content/uploads/2016/05/1689772525css-object-fit.jpg"
-      />
-      <Box sx={{ width: 500, borderRadius: 15 }}>
-        <UserBackgroundImage size={200} src={null} />
-      </Box>
-      <Box sx={{ width: 150, borderRadius: 5 }}>
-        <UserBackgroundImage size={200} src={null} />
-      </Box>
       <Box
         sx={{
           width: '100%',
@@ -42,14 +29,14 @@ const Components = () => {
           backgroundColor: 'white',
         }}
       >
-        <UserAvatarWithBackground
+        <AvatarWithBgImage
           userName="Anna"
           avatarSize={150}
           avatarSrc={null}
-          backgroundImageSize={200}
+          bgImageHeight={200}
           avatarPosition="left"
           avatarBorderColor="white"
-          backgroundSrc="https://images.squarespace-cdn.com/content/v1/5d777de8109c315fd22faf3a/1652899582924-FPWXES6GG7EGOQSRDE16/unsplash-image-pQMM63GE7fo.jpg?format=2500w"
+          bgImageSrc="https://images.squarespace-cdn.com/content/v1/5d777de8109c315fd22faf3a/1652899582924-FPWXES6GG7EGOQSRDE16/unsplash-image-pQMM63GE7fo.jpg?format=2500w"
         />
       </Box>
       <Box
@@ -60,11 +47,11 @@ const Components = () => {
           backgroundColor: 'white',
         }}
       >
-        <UserAvatarWithBackground
+        <AvatarWithBgImage
           userName="Janine Goo"
-          backgroundSrc={null}
+          bgImageSrc={null}
           avatarSize={120}
-          backgroundImageSize={100}
+          bgImageHeight={100}
           avatarSrc="https://everyone.plos.org/wp-content/uploads/sites/5/2021/02/kirsten-scaled-e1613041313402-982x1024.jpg"
           avatarBorderColor="white"
         />
@@ -77,12 +64,12 @@ const Components = () => {
           backgroundColor: 'white',
         }}
       >
-        <UserAvatarWithBackground
+        <AvatarWithBgImage
           userName="Valery T"
           avatarSize={60}
-          backgroundImageSize={60}
+          bgImageHeight={60}
           avatarSrc={null}
-          backgroundSrc={null}
+          bgImageSrc={null}
         />
       </Box>
       <LogInForm />

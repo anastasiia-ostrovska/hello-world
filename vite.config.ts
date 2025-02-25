@@ -10,11 +10,13 @@ import * as path from 'node:path';
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@api': path.resolve(__dirname, './src/services/api'),
+      '@app': path.resolve(__dirname, './src/app'),
       '@assets': path.resolve(__dirname, './src/assets'),
-      '@components': path.resolve(__dirname, './src/components'),
-      '@reducers': path.resolve(__dirname, './src/redux/reducers'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@widgets': path.resolve(__dirname, './src/widgets'),
+      '@features': path.resolve(__dirname, './src/features'),
+      '@shared': path.resolve(__dirname, './src/shared'),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   plugins: [
