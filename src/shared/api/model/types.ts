@@ -1,4 +1,4 @@
-import { User } from '@/shared/user';
+import { User } from '@shared/user';
 
 export interface ApiResponseTemplate<D = object> {
   resultCode: 0 | 1;

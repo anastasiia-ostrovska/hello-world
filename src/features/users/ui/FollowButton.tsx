@@ -1,5 +1,5 @@
-import { Styles } from '@/shared/mui';
-import { User } from '@/shared/user';
+import { Styles } from '@shared/mui';
+import { User } from '@shared/user';
 import Button from '@mui/material/Button';
 import useFollowButton from '../model/useFollowButton';
 

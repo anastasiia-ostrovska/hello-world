@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import Stack from '@mui/material/Stack';
-import useNavItemColor from '@/widgets/navigation/model/useNavItemColor';
+import useNavItemColor from '../model/useNavItemColor';
 import ProfileNavbar from './ProfileNavbar';
 import TopNavItem from './TopNavItem';
 import { NavbarLayoutProps } from '../model/types';

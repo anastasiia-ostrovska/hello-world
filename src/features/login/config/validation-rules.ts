@@ -6,7 +6,7 @@ import {
   minLength14,
   validEmailFormat,
   whitespacesForbidden,
-} from '@/shared/forms';
+} from '@shared/forms';
 import {
   emailValidationMessage,
   passwordValidationMessage,

@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import { AppLayout } from '@/widgets/layout';
-import { useRedirect } from '@/shared/redirect';
-import LogIn from '@/pages/LogIn';
-import Home from '@/pages/Home';
+import { AppLayout } from '@widgets/layout';
+import { useRedirect } from '@shared/redirect';
+import LogIn from '@pages/LogIn';
+import Home from '@pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
-import ProtectedRoute from '@/app/routing/ui/ProtectedRoute';
-import * as ROUTES from '@/shared/router';
-import AUTH_PAGES from '../config';
+import ProtectedRoute from '@app/routing/ui/ProtectedRoute';
+import { ROUTES } from '@shared/router';
+import AUTH_PAGES from '../config/auth-pages';
 
 interface RoutingProps {
   isAuth: boolean;

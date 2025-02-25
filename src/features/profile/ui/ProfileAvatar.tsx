@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
-import { User } from '@/shared/user';
-import { SkeletonWrapper } from '@/shared/ui/SkeletonLoaders';
-import { UserAvatar } from '@/features/users';
-import { useGetUserProfileQuery } from '@/features/profile/api/profileApi';
+import { User } from '@shared/user';
+import { SkeletonWrapper } from '@shared/ui/SkeletonLoaders';
+import { UserAvatar } from '@features/users';
+import { useGetUserProfileQuery } from '@features/profile/api/profileApi';
 import { skipToken } from '@reduxjs/toolkit/query';
 
 interface ProfileAvatarLayoutProps {

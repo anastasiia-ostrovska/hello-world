@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/shared/api';
-import { setMode } from '@/features/theme';
-import { getStoredThemeMode } from '@/shared/theme';
-import { useAppDispatch } from '@/shared/redux';
+import { useAppDispatch } from '@shared/redux';
+import { useAuth } from '@shared/api';
+import { getStoredThemeMode } from '@shared/theme';
+import { setMode } from '@features/theme';
 
 interface UseInitializeAppResult {
   isAuth: boolean;

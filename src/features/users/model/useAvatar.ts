@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material/styles';
-import { User } from '@/shared/user';
+import { User } from '@shared/user';
 import getAvatarColor from './getAvatarColor';
 import getInitials from './getInitials';
 

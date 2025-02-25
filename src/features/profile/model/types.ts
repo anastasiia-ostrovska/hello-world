@@ -1,4 +1,4 @@
-import { User } from '@/shared/user';
+import { User } from '@shared/user';
 
 export interface ProfileDataResponse {
   userId: User['id'];

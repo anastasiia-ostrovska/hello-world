@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Styles } from '@/shared/mui';
+import { Styles } from '@shared/mui';
 import Skeleton, { SkeletonProps } from '@mui/material/Skeleton';
 
 export interface LoaderProps {

@@ -1,9 +1,9 @@
-import { Styles } from '@/shared/mui';
 import { Controller, useFormContext } from 'react-hook-form';
 import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
+import { Styles } from '@shared/mui';
 import { ControlledInputProps } from '../model/types';
 import getHelperTextWithID from '../model/getHelperTextWithID';
 

@@ -1,5 +1,5 @@
 import { BaseSyntheticEvent, ReactNode } from 'react';
-import { Styles } from '@/shared/mui';
+import { Styles } from '@shared/mui';
 import Stack, { StackProps } from '@mui/material/Stack';
 
 interface FormProps extends StackProps {

@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/shared/redux';
+import { useAppSelector } from '@shared/redux';
 import { selectCurrentPage, selectUsersQueryCount } from './usersSlice';
 import { UsersQueryParams } from './types';
 

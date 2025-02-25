@@ -4,8 +4,8 @@ import {
   ENDPOINTS,
   METHODS,
   TAGS,
-} from '@/shared/api';
-import { User } from '@/shared/user';
+} from '@shared/api';
+import { User } from '@shared/user';
 import { LogInData } from './types';
 
 interface LogInResponseData {

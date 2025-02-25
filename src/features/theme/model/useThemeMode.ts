@@ -1,5 +1,5 @@
-import { ThemeMode } from '@/shared/theme';
-import { useAppDispatch, useAppSelector } from '@/shared/redux';
+import { ThemeMode } from '@shared/theme';
+import { useAppDispatch, useAppSelector } from '@shared/redux';
 import { toggleThemeMode } from './toggleThemeMode';
 import { selectThemeMode } from './themeSlice';
 
