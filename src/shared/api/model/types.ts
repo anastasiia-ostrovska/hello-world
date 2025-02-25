@@ -12,5 +12,3 @@ export interface AuthData {
   login: string;
   email: string;
 }
-
-export type AuthMeResponse = ApiResponseTemplate<AuthData>;

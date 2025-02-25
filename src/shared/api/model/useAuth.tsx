@@ -1,13 +1,13 @@
 import { useGetAuthDataQuery } from './authApi';
-import { AuthMeResponse } from './types';
+import { AuthData } from './types';
 
-interface AuthData {
-  authData: AuthMeResponse['data'] | undefined;
+interface UseAuthResult {
+  authData: AuthData | undefined;
   isAuth: boolean;
   isLoading: boolean;
 }
 
-const useAuth = (): AuthData => {
+const useAuth = (): UseAuthResult => {
   const { data, isLoading } = useGetAuthDataQuery();
 
   const authData = data?.data;

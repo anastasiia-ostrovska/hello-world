@@ -1,7 +1,9 @@
-import { AuthMeResponse } from './types';
+import { ApiResponseTemplate, AuthData } from './types';
 import { AUTH_ME } from '../config/endpoints';
 import * as TAGS from '../config/invalidation-tags';
 import baseAPI from './baseApi';
+
+type AuthMeResponse = ApiResponseTemplate<AuthData>;
 
 const authApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
