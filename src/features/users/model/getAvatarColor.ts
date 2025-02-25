@@ -1,5 +1,5 @@
-import { AvatarColor } from '@/shared/theme';
-import { User } from '@/shared/user';
+import { AvatarColor } from '@shared/theme';
+import { User } from '@shared/user';
 
 /**
  * Hash function to compute a hash value for a string.

@@ -1,6 +1,6 @@
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
-import SideNavItem from '@/widgets/navigation/ui/SideNavItem';
+import SideNavItem from './SideNavItem';
 import useNavItemColor from '../model/useNavItemColor';
 import { NavbarLayoutProps } from '../model/types';
 import { SIDE_NAV_ITEMS } from '../config/side-items';

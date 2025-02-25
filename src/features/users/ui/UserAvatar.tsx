@@ -1,5 +1,5 @@
-import { Styles } from '@/shared/mui';
-import { Photo, User } from '@/shared/user';
+import { Styles } from '@shared/mui';
+import { Photo, User } from '@shared/user';
 import Avatar from '@mui/material/Avatar';
 import useAvatar from '../model/useAvatar';
 

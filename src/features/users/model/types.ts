@@ -1,5 +1,5 @@
-import { Styles } from '@/shared/mui';
-import { Photo, User } from '@/shared/user';
+import { Styles } from '@shared/mui';
+import { Photo, User } from '@shared/user';
 
 export interface FakeUser extends Omit<User, 'id'> {
   id: string;

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
-import { PROFILE } from '@/shared/router';
-import { User } from '@/shared/user';
+import { PROFILE } from '@shared/router';
+import { User } from '@shared/user';
 import { FakeUser, UserCardClickHandler } from './types';
 import { useGetUsersQuery } from '../api/usersApi';
 import generateFakeUsers from './generateFakeUsers';

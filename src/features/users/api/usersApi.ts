@@ -1,12 +1,12 @@
-import type { AppDispatch, RootState } from '@/app/store';
+import type { AppDispatch, RootState } from '@app/store';
 import {
   ApiResponseTemplate,
   baseAPI,
   ENDPOINTS,
   METHODS,
   TAGS,
-} from '@/shared/api';
-import { User } from '@/shared/user';
+} from '@shared/api';
+import { User } from '@shared/user';
 import { UsersQueryParams, UsersResponse } from '../model/types';
 
 interface UpdateFollowStatusCacheParams {

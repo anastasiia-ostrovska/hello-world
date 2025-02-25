@@ -1,5 +1,5 @@
 import { useMediaQueryState } from '@/shared/mui';
-import Delayed from '@/shared/ui/Delayed';
+import Delayed from '@shared/ui/Delayed';
 import PageLoader from './PageLoader';
 
 const PAGE_LOADER_DELAY = 100;

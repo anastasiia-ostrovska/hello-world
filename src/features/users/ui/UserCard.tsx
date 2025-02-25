@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
+import { User } from '@shared/user';
 import CardActionArea from '@mui/material/CardActionArea';
 import AvatarWithBgImage from './AvatarWithBgImage';
 import FollowButton from './FollowButton';
@@ -7,13 +8,18 @@ import { CardContentLayout, UserCardLayout } from './UserCardLayout';
 import {
   AvatarWithBgImageProps,
   CardContentLayoutProps,
+  FakeUser,
   FollowButtonProps,
   UserCardClickHandler,
 } from '../model/types';
 
-type UserCardProps = AvatarWithBgImageProps &
-  CardContentLayoutProps &
-  FollowButtonProps & { onUserCardClick: UserCardClickHandler };
+interface UserCardProps
+  extends AvatarWithBgImageProps,
+    CardContentLayoutProps,
+    Omit<FollowButtonProps, 'userId'> {
+  userId: User['id'] | FakeUser['id'];
+  onUserCardClick: UserCardClickHandler;
+}
 
 const UserCard = ({
   isLoading,
@@ -38,7 +44,7 @@ const UserCard = ({
           aria-label={
             isLoading ? 'Loading profile' : `Visit ${userName} profile`
           }
-          onClick={() => onUserCardClick(userId)}
+          onClick={() => onUserCardClick(userId as User['id'])}
         >
           <AvatarWithBgImage
             userName={userName}
@@ -60,7 +66,7 @@ const UserCard = ({
       }
       button={
         <FollowButton
-          userId={userId}
+          userId={userId as User['id']}
           isFollowed={isFollowed}
           isLoading={isLoading}
           sx={{ width: '100%', maxWidth: 180, height: 36 }}

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { LogOutButton } from '@/features/login';
-import { useAuth } from '@/shared/api';
+import { useAuth } from '@shared/api';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';

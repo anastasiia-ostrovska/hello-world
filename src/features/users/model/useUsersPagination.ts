@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import { PaginationProps } from '@mui/material';
-import { useMediaQueryState } from '@/shared/mui';
-import { useAppDispatch } from '@/shared/redux';
+import { useMediaQueryState } from '@shared/mui';
+import { useAppDispatch } from '@shared/redux';
 import { useGetUsersQuery } from '../api/usersApi';
 import { setCurrentPage } from './usersSlice';
 import { UsersQueryParams } from './types';

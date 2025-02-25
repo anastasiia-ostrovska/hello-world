@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
-import { Styles } from '@/shared/mui';
 import { ReactElement } from 'react';
+import { Styles } from '@shared/mui';
 import { AvatarWithBgImageProps } from '../model/types';
 import UserAvatar from './UserAvatar';
 
