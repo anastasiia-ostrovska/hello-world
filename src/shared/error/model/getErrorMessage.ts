@@ -1,4 +1,5 @@
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { ERROR_MESSAGES } from '../config/error-messages';
 import {
   isFetchBaseQueryError,
   isSerializedError,
@@ -9,26 +10,25 @@ const getMessageAccordingToStatus = (
 ): string => {
   switch (status) {
     case 400:
-      return 'Invalid request. Please check your input.';
+      return ERROR_MESSAGES.INVALID_REQUEST;
     case 401:
-      return 'You are unauthorized. Please log in.';
+      return ERROR_MESSAGES.UNAUTHORIZED;
     case 403:
-      return "You don't have permission to perform this action.";
+      return ERROR_MESSAGES.FORBIDDEN;
     case 404:
-      return 'Requested resource is not found.';
+      return ERROR_MESSAGES.NOT_FOUND;
     case 500:
-      return 'Server error. Please try again later.';
+      return ERROR_MESSAGES.SERVER_ERROR;
     case 'FETCH_ERROR':
-      return 'Network error. Please check your internet connection.';
+      return ERROR_MESSAGES.NETWORK_ERROR;
     case 'PARSING_ERROR':
-      return 'Invalid response from the server.';
+      return ERROR_MESSAGES.PARSING_ERROR;
     default:
-      return 'An unexpected error occurred.';
+      return ERROR_MESSAGES.UNEXPECTED_ERROR;
   }
 };
 
 const getErrorMessage = (error: unknown): string => {
-  debugger;
   if (isFetchBaseQueryError(error)) {
     const { data, status } = error;
 
@@ -43,10 +43,10 @@ const getErrorMessage = (error: unknown): string => {
   }
 
   if (isSerializedError(error)) {
-    return error.message || 'An unexpected error occurred.';
+    return error.message || ERROR_MESSAGES.UNEXPECTED_ERROR;
   }
 
-  return 'An unknown error occurred.';
+  return ERROR_MESSAGES.UNEXPECTED_ERROR;
 };
 
 export default getErrorMessage;
