@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
-import { PROFILE } from '@shared/router';
+import { ROUTES } from '@shared/router';
 import { User } from '@shared/user';
 import { FakeUser, UserCardClickHandler } from './types';
 import { useGetUsersQuery } from '../api/usersApi';
@@ -23,7 +23,7 @@ const useUserList = (): UseUsersResult => {
 
   const handleUserCardClick = useCallback(
     (userId: User['id']) => {
-      navigate(`${PROFILE}/${userId}`);
+      navigate(`${ROUTES.PROFILE}/${userId}`);
     },
     [navigate]
   );

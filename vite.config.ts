@@ -12,10 +12,10 @@ export default defineConfig({
     alias: {
       '@app': path.resolve(__dirname, './src/app'),
       '@assets': path.resolve(__dirname, './src/assets'),
-      '@pages': path.resolve(__dirname, './src/store/pages'),
-      '@widgets': path.resolve(__dirname, './src/store/widgets'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@widgets': path.resolve(__dirname, './src/widgets'),
       '@features': path.resolve(__dirname, './src/features'),
-      '@shared': path.resolve(__dirname, './src/store/shared'),
+      '@shared': path.resolve(__dirname, './src/shared'),
       '@': path.resolve(__dirname, './src'),
     },
   },
