@@ -1,5 +1,5 @@
 import { FieldError } from 'react-hook-form';
-import { ControlledInputProps } from '@/modules/forms/types';
+import { ControlledInputProps } from './types';
 
 interface GetHelperTextParams
   extends Required<
