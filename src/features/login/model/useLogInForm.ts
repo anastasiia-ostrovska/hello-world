@@ -1,5 +1,6 @@
 import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
+import { getErrorMessage } from '@shared/error';
 import { useLogInMutation } from './loginApi';
 import { LogInData, LogInInput } from './types';
 
@@ -9,6 +10,7 @@ interface UseLogInFormResult {
   handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
   isLogInRequestLoading: boolean;
+  errorMessage: string | undefined;
 }
 
 const useLogInForm = (): UseLogInFormResult => {
@@ -27,7 +29,7 @@ const useLogInForm = (): UseLogInFormResult => {
   } = methods;
   const [
     logIn,
-    { isLoading: isLogInRequestLoading, isSuccess: logInRequestSuccess },
+    { isLoading: isLogInRequestLoading, isSuccess: logInRequestSuccess, error },
   ] = useLogInMutation();
 
   useEffect(() => {
@@ -39,6 +41,11 @@ const useLogInForm = (): UseLogInFormResult => {
   const isEmptyField = !dirtyFields.email || !dirtyFields.password;
   const isSubmitButtonDisabled =
     isEmptyField || isSubmitting || isLogInRequestLoading;
+  let errorMessage;
+
+  if (error) {
+    errorMessage = typeof error === 'string' ? error : getErrorMessage(error);
+  }
 
   const handleFillGuestData = () => {
     reset(
@@ -63,6 +70,7 @@ const useLogInForm = (): UseLogInFormResult => {
     handleFillGuestData,
     isSubmitButtonDisabled,
     isLogInRequestLoading,
+    errorMessage,
   };
 };
 
