@@ -1,10 +1,12 @@
 import {
   ApiResponseTemplate,
   baseAPI,
+  checkResponseError,
   ENDPOINTS,
   METHODS,
   TAGS,
 } from '@shared/api';
+import { getErrorMessage } from '@shared/error';
 import { User } from '@shared/user';
 import { LogInData } from './types';
 
@@ -23,6 +25,9 @@ const loginApi = baseAPI.injectEndpoints({
         url: ENDPOINTS.LOGIN,
         body: logInData,
       }),
+      transformResponse: (response: LogInResponse) =>
+        checkResponseError(response),
+      transformErrorResponse: (error) => getErrorMessage(error),
       invalidatesTags: [TAGS.AUTH],
     }),
 
@@ -31,6 +36,9 @@ const loginApi = baseAPI.injectEndpoints({
         method: METHODS.DELETE,
         url: ENDPOINTS.LOGIN,
       }),
+      transformResponse: (response: LogInResponse) =>
+        checkResponseError(response),
+      transformErrorResponse: (error) => getErrorMessage(error),
       invalidatesTags: [TAGS.AUTH],
     }),
   }),

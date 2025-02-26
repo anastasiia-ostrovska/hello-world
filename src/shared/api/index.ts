@@ -6,3 +6,4 @@ export * as TAGS from './config/invalidation-tags';
 
 export { default as baseAPI } from './model/baseApi';
 export { default as useAuth } from './model/useAuth';
+export { default as checkResponseError } from './model/checkResponseError';
