@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { AppLayout } from '@widgets/layout';
 import { useRedirect } from '@shared/redirect';
+import { ROUTES } from '@shared/router';
+import { NotFoundPage } from '@pages/not-found';
 import LogIn from '@pages/LogIn';
 import Home from '@pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
 import ProtectedRoute from '@app/routing/ui/ProtectedRoute';
-import { ROUTES } from '@shared/router';
 import AUTH_PAGES from '../config/auth-pages';
 
 interface RoutingProps {
@@ -41,6 +42,7 @@ const Routing = ({ isAuth }: RoutingProps) => {
       </Route>
       {/* Public Route (temporary) - Components Presentation */}
       <Route path="/components" element={<Components />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
