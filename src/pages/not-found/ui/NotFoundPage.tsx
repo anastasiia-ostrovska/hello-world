@@ -36,7 +36,7 @@ const NotFoundPage = () => {
           variant="text"
           size={buttonSize}
           startIcon={<KeyboardBackspaceIcon />}
-          sx={{ width: 'fit-content', px: '0' }}
+          sx={{ width: 'fit-content' }}
         >
           Back to our site
         </Button>

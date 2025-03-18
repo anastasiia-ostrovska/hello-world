@@ -1,5 +1,5 @@
 export * from './model/types';
-export * from './model/storageHandlers';
+export * from './model/modeStorageHandlers';
 
 export type { AvatarColor } from './config/getPalette';
 

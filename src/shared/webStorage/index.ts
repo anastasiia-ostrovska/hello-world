@@ -1,2 +1,5 @@
-export { default as getFromLocalStorage } from './model/getFromLocalStorage';
-export { default as setToLocalStorage } from './model/setToLocalStorage';
+export {
+  getFromLocalStorage,
+  setToLocalStorage,
+  removeFromLocalStorage,
+} from './model/localStorageHandlers';
