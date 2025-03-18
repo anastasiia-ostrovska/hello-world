@@ -1,6 +1,8 @@
 import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
-import { useLogInMutation } from './loginApi';
+import { useAppDispatch } from '@shared/redux';
+import { storeAccessToken } from '@shared/api';
+import { useLogInMutation } from '../api/loginApi';
 import { LogInData, LogInInput } from './types';
 
 interface UseLogInFormResult {
@@ -27,14 +29,20 @@ const useLogInForm = (): UseLogInFormResult => {
   } = methods;
   const [
     logIn,
-    { isLoading: isLogInRequestLoading, isSuccess: logInRequestSuccess },
+    {
+      isLoading: isLogInRequestLoading,
+      isSuccess: logInRequestSuccess,
+      data: logInResponse,
+    },
   ] = useLogInMutation();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isSubmitSuccessful && logInRequestSuccess) {
       reset();
+      dispatch(storeAccessToken(logInResponse.data.token));
     }
-  }, [isSubmitSuccessful, logInRequestSuccess, reset]);
+  }, [isSubmitSuccessful, logInRequestSuccess, reset, logInResponse, dispatch]);
 
   const isEmptyField = !dirtyFields.email || !dirtyFields.password;
   const isSubmitButtonDisabled =

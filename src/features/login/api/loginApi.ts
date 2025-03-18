@@ -6,7 +6,7 @@ import {
   TAGS,
 } from '@shared/api';
 import { User } from '@shared/user';
-import { LogInData } from './types';
+import { LogInData } from '../model/types';
 
 interface LogInResponseData {
   userId: User['id'];
