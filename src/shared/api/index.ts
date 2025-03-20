@@ -14,6 +14,6 @@ export {
   selectAccessToken,
 } from './model/authSlice';
 
-export { default as baseAPI } from './baseApi';
+export { baseAPI, mockAPI } from './api';
 export { default as authSlice } from './model/authSlice';
 export { default as useAuth } from './model/useAuth';
