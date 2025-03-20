@@ -1,26 +1,26 @@
-import { getErrorMessage } from '@shared/error';
-import { useGetAuthDataQuery } from './authApi';
+import { useAppSelector } from '@shared/redux';
+import { selectAccessToken } from './authSlice';
+import { useGetAuthDataQuery } from '../authApi';
 import { AuthData } from './types';
 
 interface UseAuthResult {
   authData: AuthData | undefined;
-  errorMessage: string | undefined;
   isAuth: boolean;
   isLoading: boolean;
+  isSuccess: boolean;
 }
 
 const useAuth = (): UseAuthResult => {
-  const { data, isLoading, error } = useGetAuthDataQuery();
+  const token = useAppSelector(selectAccessToken);
+  const { data, isLoading, isSuccess } = useGetAuthDataQuery(undefined, {
+    skip: !token,
+  });
 
   const authData = data?.data;
-  const isAuth = !error && !!authData?.id;
-  let errorMessage;
+  const resultCode = data?.resultCode;
+  const isAuth = resultCode === 0;
 
-  if (error) {
-    errorMessage = typeof error === 'string' ? error : getErrorMessage(error);
-  }
-
-  return { authData, isLoading, isAuth, errorMessage };
+  return { authData, isAuth, isLoading, isSuccess };
 };
 
 export default useAuth;
