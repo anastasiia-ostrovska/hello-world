@@ -8,7 +8,7 @@ import {
 } from '@shared/api';
 import { getErrorMessage } from '@shared/error';
 import { User } from '@shared/user';
-import { LogInData } from './types';
+import { LogInData } from '../model/types';
 
 interface LogInResponseData {
   userId: User['id'];

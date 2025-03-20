@@ -1,7 +1,8 @@
 import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
-import { getErrorMessage } from '@shared/error';
-import { useLogInMutation } from './loginApi';
+import { useAppDispatch } from '@shared/redux';
+import { storeAccessToken } from '@shared/api';
+import { useLogInMutation } from '../api/loginApi';
 import { LogInData, LogInInput } from './types';
 
 interface UseLogInFormResult {
@@ -10,7 +11,6 @@ interface UseLogInFormResult {
   handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
   isLogInRequestLoading: boolean;
-  errorMessage: string | undefined;
 }
 
 const useLogInForm = (): UseLogInFormResult => {
@@ -29,23 +29,24 @@ const useLogInForm = (): UseLogInFormResult => {
   } = methods;
   const [
     logIn,
-    { isLoading: isLogInRequestLoading, isSuccess: logInRequestSuccess, error },
+    {
+      isLoading: isLogInRequestLoading,
+      isSuccess: logInRequestSuccess,
+      data: logInResponse,
+    },
   ] = useLogInMutation();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isSubmitSuccessful && logInRequestSuccess) {
       reset();
+      dispatch(storeAccessToken(logInResponse.data.token));
     }
-  }, [isSubmitSuccessful, logInRequestSuccess, reset]);
+  }, [isSubmitSuccessful, logInRequestSuccess, reset, logInResponse, dispatch]);
 
   const isEmptyField = !dirtyFields.email || !dirtyFields.password;
   const isSubmitButtonDisabled =
     isEmptyField || isSubmitting || isLogInRequestLoading;
-  let errorMessage;
-
-  if (error) {
-    errorMessage = typeof error === 'string' ? error : getErrorMessage(error);
-  }
 
   const handleFillGuestData = () => {
     reset(
@@ -70,7 +71,6 @@ const useLogInForm = (): UseLogInFormResult => {
     handleFillGuestData,
     isSubmitButtonDisabled,
     isLogInRequestLoading,
-    errorMessage,
   };
 };
 

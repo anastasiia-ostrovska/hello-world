@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UsersQueryParams } from './types';
 
 const initialState: UsersQueryParams = {
@@ -14,7 +14,7 @@ const usersSlice = createSlice({
     selectCurrentPage: (state) => state.currentPage,
   },
   reducers: {
-    setCurrentPage: (state, action) => {
+    setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
     },
   },

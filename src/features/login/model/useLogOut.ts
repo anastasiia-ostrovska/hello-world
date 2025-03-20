@@ -1,26 +1,22 @@
-import { getErrorMessage } from '@shared/error';
-import { useLogOutMutation } from './loginApi';
+import { removeAccessToken } from '@shared/api';
+import { useAppDispatch } from '@shared/redux';
+import { useLogOutMutation } from '../api/loginApi';
 
 interface UseLogOutResult {
   handleLogOut: () => void;
   isLogOutRequestLoading: boolean;
-  errorMessage: string | undefined;
 }
 
 const useLogOut = (): UseLogOutResult => {
-  const [logOut, { isLoading, error }] = useLogOutMutation();
-
-  let errorMessage;
-
-  if (error) {
-    errorMessage = typeof error === 'string' ? error : getErrorMessage(error);
-  }
+  const [logOut, { isLoading }] = useLogOutMutation();
+  const dispatch = useAppDispatch();
 
   const handleLogOut = () => {
     logOut();
+    dispatch(removeAccessToken());
   };
 
-  return { handleLogOut, isLogOutRequestLoading: isLoading, errorMessage };
+  return { handleLogOut, isLogOutRequestLoading: isLoading };
 };
 
 export default useLogOut;

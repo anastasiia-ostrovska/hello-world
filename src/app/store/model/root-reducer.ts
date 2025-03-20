@@ -1,8 +1,14 @@
 import { combineSlices } from '@reduxjs/toolkit';
 import { themeSlice } from '@features/theme';
 import { usersSlice } from '@features/users';
-import { baseAPI } from '@shared/api';
+import { authSlice, baseAPI, mockAPI } from '@shared/api';
 
-const rootReducer = combineSlices(baseAPI, themeSlice, usersSlice);
+const rootReducer = combineSlices(
+  baseAPI,
+  mockAPI,
+  authSlice,
+  themeSlice,
+  usersSlice
+);
 
 export default rootReducer;
