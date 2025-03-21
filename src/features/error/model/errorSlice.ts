@@ -1,32 +1,45 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ErrorState {
-  error: Error | null;
+interface ErrorItem {
+  id: string;
   message: string;
 }
 
+interface ErrorState {
+  errors: ErrorItem[];
+}
+
 const initialState: ErrorState = {
-  error: null,
-  message: '',
+  errors: [],
 };
 
 const errorSlice = createSlice({
-  name: 'error',
+  name: 'errors',
   initialState,
   selectors: {
-    selectError: (state) => state.error,
-    selectErrorMessage: (state) => state.message,
+    selectAllErrorNotifications: (state) => state.errors,
+    selectFirstErrorNotification: (state) => state.errors[0] || null,
   },
   reducers: {
-    setError: (state, action: PayloadAction<ErrorState['error']>) => {
-      state.error = action.payload;
+    notifyErrorMessage: (state, action: PayloadAction<string>) => {
+      state.errors.push({ id: crypto.randomUUID(), message: action.payload });
     },
-    setErrorMessage: (state, action: PayloadAction<ErrorState['message']>) => {
-      state.message = action.payload;
+    removeErrorNotification: (state, action: PayloadAction<string>) => {
+      state.errors = state.errors.filter(
+        (error) => error.id !== action.payload
+      );
+    },
+    clearAllErrorNotifications: (state) => {
+      state.errors = [];
     },
   },
 });
 
-export const { selectError, selectErrorMessage } = errorSlice.selectors;
-export const { setError, setErrorMessage } = errorSlice.actions;
+export const { selectAllErrorNotifications, selectFirstErrorNotification } =
+  errorSlice.selectors;
+export const {
+  notifyErrorMessage,
+  removeErrorNotification,
+  clearAllErrorNotifications,
+} = errorSlice.actions;
 export default errorSlice;
