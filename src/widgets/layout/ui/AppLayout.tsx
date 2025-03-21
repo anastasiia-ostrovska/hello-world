@@ -1,5 +1,6 @@
-import { useMediaQueryState } from '@shared/mui';
 import LogoFull from '@assets/logo-full.svg';
+import { useMediaQueryState } from '@shared/mui';
+import { ToastNotification } from '@features/notification';
 import { BottomNavbar, SideNavbar, TopNavbar } from '../../navigation';
 import Layout from './Layout';
 
@@ -8,11 +9,14 @@ const AppLayout = () => {
   const Navigation = isUpMD ? SideNavbar : BottomNavbar;
 
   return (
-    <Layout
-      logo={<LogoFull />}
-      topNavigation={<TopNavbar />}
-      sideNavigation={<Navigation />}
-    />
+    <>
+      <Layout
+        logo={<LogoFull />}
+        topNavigation={<TopNavbar />}
+        sideNavigation={<Navigation />}
+      />
+      <ToastNotification />
+    </>
   );
 };
 
