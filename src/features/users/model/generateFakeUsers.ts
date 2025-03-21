@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import { FakeUser } from './types';
 
 /**
@@ -17,7 +16,7 @@ import { FakeUser } from './types';
 
 const generateFakeUsers = (count: number): FakeUser[] =>
   Array.from({ length: count }, () => ({
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     name: '',
     status: '',
     photos: { small: null, large: null },
