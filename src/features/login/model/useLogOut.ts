@@ -1,5 +1,5 @@
-import { removeAccessToken } from '@shared/api';
 import { useAppDispatch } from '@shared/redux';
+import { removeAccessToken } from '@features/auth';
 import { useLogOutMutation } from '../api/loginApi';
 
 interface UseLogOutResult {

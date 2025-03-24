@@ -1,1 +1,1 @@
-export { default as AppInitializer } from './ui/AppInitializer';
+export { default as App } from './ui/App';

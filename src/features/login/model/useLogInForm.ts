@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useAppDispatch } from '@shared/redux';
-import { storeAccessToken } from '@shared/api';
+import { storeAccessToken } from '@features/auth';
 import { useLogInMutation } from '../api/loginApi';
 import { LogInData, LogInInput } from './types';
 

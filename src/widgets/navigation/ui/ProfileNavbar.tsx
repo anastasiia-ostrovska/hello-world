@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { LogOutButton } from '@/features/login';
-import { useAuth } from '@shared/api';
+import { useGetAuthDataQuery } from '@features/auth';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';
@@ -57,7 +57,7 @@ const ProfileNavbarLayout = ({
 };
 
 const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
-  const { authData } = useAuth();
+  const { data: authData } = useGetAuthDataQuery();
   const { anchorEl, isMenuOpen, handleMenuButtonClick, handleMenuClose } =
     useProfileNavbar();
   const getColor = useNavItemColor();
@@ -72,7 +72,7 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
       menuProps={{ anchorEl, isMenuOpen, handleMenuClose }}
       profileButton={
         <ProfileMenuButton
-          userId={authData?.id}
+          userId={authData?.data?.id}
           buttonID={profileButtonID}
           controlsID={menuID}
           size={iconSize}
