@@ -1,7 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { AppInitializer, Providers } from '@app/index';
+import { Providers } from '@app/providers';
+import { App } from '@app/initialization';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -10,7 +11,7 @@ createRoot(document.getElementById('root')!).render(
       future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
       <Providers>
-        <AppInitializer />
+        <App />
       </Providers>
     </BrowserRouter>
   </StrictMode>

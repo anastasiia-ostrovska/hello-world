@@ -1,11 +1,11 @@
 import { Routing } from '@app/routing';
+import useInitializeApp from '../model/useInitializeApp';
+import AppLoader from './AppLoader';
 
-interface AppProps {
-  isAuth: boolean;
-}
+const App = () => {
+  const { isAuth, isInitialized } = useInitializeApp();
 
-const App = ({ isAuth }: AppProps) => {
-  return <Routing isAuth={isAuth} />;
+  return isInitialized ? <Routing isAuth={isAuth} /> : <AppLoader />;
 };
 
 export default App;
