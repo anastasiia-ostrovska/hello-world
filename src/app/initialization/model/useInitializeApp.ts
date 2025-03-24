@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch } from '@shared/redux';
-import { useAuth } from '@shared/api';
-import { getStoredThemeMode } from '@shared/theme';
-import { setMode } from '@features/theme';
+import { useAppDispatch, useAppSelector } from '@shared/redux';
+import { useGetAuthDataQuery } from '@features/auth';
+import { selectAccessToken } from '@features/auth/model/authSlice';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
@@ -10,23 +9,24 @@ interface UseInitializeAppResult {
 }
 
 const useInitializeApp = (): UseInitializeAppResult => {
-  const { isAuth, isLoading: isAuthLoading } = useAuth();
   const [isInitialized, setIsInitialized] = useState(false);
   const dispatch = useAppDispatch();
 
+  const token = useAppSelector(selectAccessToken);
+
+  const { data, isLoading: isAuthLoading } = useGetAuthDataQuery(undefined, {
+    skip: !token,
+  });
+
+  const authData = data?.data;
+
   useEffect(() => {
     if (!isAuthLoading) {
-      const mode = getStoredThemeMode();
-
-      if (mode) {
-        dispatch(setMode(mode));
-      }
-
       setIsInitialized(true);
     }
   }, [dispatch, isAuthLoading]);
 
-  return { isAuth, isInitialized };
+  return { isAuth: !!authData?.id, isInitialized };
 };
 
 export default useInitializeApp;
