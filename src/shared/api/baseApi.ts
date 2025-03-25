@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from '@app/store';
+import unauthorizedHandler from '@shared/api/model/unauthorizedHandler';
 import { logError, logSuccess } from './model/responseLoggers';
 import * as TAGS from './config/invalidation-tags';
 
@@ -8,7 +9,6 @@ const baseQuery = fetchBaseQuery({
   // baseUrl: import.meta.env.VITE_API_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     headers.set('x-api-key', import.meta.env.VITE_MOCK_API_KEY);
-    headers.set('x-mock-response-code', '401');
     // headers.set('API-KEY', import.meta.env.VITE_API_KEY);
     const { token } = (getState() as RootState).auth;
 
@@ -30,8 +30,10 @@ const baseQueryWithInterceptor: typeof baseQuery = async (
   const { data, error } = result;
 
   if (data) logSuccess(data);
-  if (error) logError(error);
-
+  if (error) {
+    logError(error);
+    unauthorizedHandler(error, api.dispatch);
+  }
   return result;
 };
 
