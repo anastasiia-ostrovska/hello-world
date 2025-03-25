@@ -63,5 +63,6 @@ module.exports = {
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-plusplus': 'off',
+    'no-console': 'off',
   },
 };
