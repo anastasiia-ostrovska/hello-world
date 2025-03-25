@@ -1,7 +1,8 @@
 import { combineSlices } from '@reduxjs/toolkit';
-import { authSlice, baseAPI } from '@shared/api';
+import { baseAPI } from '@shared/api';
 import { notificationSlice } from '@features/notification';
 import { themeSlice } from '@features/theme';
+import { authSlice } from '@features/auth';
 import { usersSlice } from '@features/users';
 
 const rootReducer = combineSlices(

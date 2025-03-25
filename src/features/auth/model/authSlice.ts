@@ -6,12 +6,14 @@ import {
   setStoredToken,
 } from './tokenStorageHandlers';
 
+const token = getStoredToken();
+
 const initialState = {
-  token: getStoredToken(),
+  token,
 };
 
 const authSlice = createSlice({
-  name: 'accessToken',
+  name: 'auth',
   initialState,
   selectors: {
     selectAccessToken: (state) => state.token,

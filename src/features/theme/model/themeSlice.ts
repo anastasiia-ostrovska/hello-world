@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ThemeMode } from '@shared/theme';
+import { getStoredThemeMode, ThemeMode } from '@shared/theme';
 
 interface ThemeState {
   mode: ThemeMode;
 }
 
 const initialState: ThemeState = {
-  mode: ThemeMode.Dark,
+  mode: getStoredThemeMode() ?? ThemeMode.Dark,
 };
 
 export const themeSlice = createSlice({

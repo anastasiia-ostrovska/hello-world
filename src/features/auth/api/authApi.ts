@@ -1,7 +1,8 @@
-import { ApiResponseTemplate, AuthData } from './model/types';
-import { AUTH_ME } from './config/endpoints';
-import { baseAPI } from './api';
-import * as TAGS from './config/invalidation-tags';
+import { ApiResponseTemplate } from '@shared/api/model/types';
+import { AUTH_ME } from '@shared/api/config/endpoints';
+import { baseAPI } from '@shared/api/api';
+import * as TAGS from '@shared/api/config/invalidation-tags';
+import type { AuthData } from '../model/types';
 
 type AuthMeResponse = ApiResponseTemplate<AuthData>;
 

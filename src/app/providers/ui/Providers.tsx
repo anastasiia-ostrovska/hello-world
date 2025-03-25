@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Provider } from 'react-redux';
-import { ThemeWrapper } from '@features/theme';
-import { store } from '../store';
+import { ThemeProvider } from '@features/theme';
+import { store } from '../../store';
 
 interface ProvidersProps {
   children: ReactElement;
@@ -10,7 +10,7 @@ interface ProvidersProps {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <Provider store={store}>
-      <ThemeWrapper>{children}</ThemeWrapper>
+      <ThemeProvider>{children}</ThemeProvider>
     </Provider>
   );
 };
