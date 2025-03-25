@@ -8,7 +8,7 @@ const baseQuery = fetchBaseQuery({
   // baseUrl: import.meta.env.VITE_API_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     headers.set('x-api-key', import.meta.env.VITE_MOCK_API_KEY);
-    // headers.set('x-mock-response-code', '500');
+    headers.set('x-mock-response-code', '401');
     // headers.set('API-KEY', import.meta.env.VITE_API_KEY);
     const { token } = (getState() as RootState).auth;
 

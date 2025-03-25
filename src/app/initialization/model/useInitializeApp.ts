@@ -1,6 +1,6 @@
 import { useAppSelector } from '@shared/redux';
+import { selectAccessToken } from '@shared/api';
 import { useGetAuthDataQuery } from '@features/auth';
-import { selectAccessToken } from '@features/auth/model/authSlice';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
@@ -12,6 +12,9 @@ const useInitializeApp = (): UseInitializeAppResult => {
   const { data, isLoading: isAuthLoading } = useGetAuthDataQuery(undefined, {
     skip: !token,
   });
+
+  console.log('token', token);
+  console.log('data', data);
 
   const authData = data?.data;
 
