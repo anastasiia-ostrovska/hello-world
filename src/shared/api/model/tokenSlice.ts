@@ -4,7 +4,7 @@ import {
   getStoredToken,
   removeStoredToken,
   setStoredToken,
-} from './tokenStorageHandlers';
+} from '@shared/api/model/tokenStorageHandlers';
 
 const token = getStoredToken();
 
@@ -12,7 +12,7 @@ const initialState = {
   token,
 };
 
-const authSlice = createSlice({
+const tokenSlice = createSlice({
   name: 'auth',
   initialState,
   selectors: {
@@ -28,7 +28,7 @@ const authSlice = createSlice({
   },
 });
 
-const { addToken, removeToken } = authSlice.actions;
+const { addToken, removeToken } = tokenSlice.actions;
 
 export const storeAccessToken =
   (token: string): AppThunk =>
@@ -42,5 +42,5 @@ export const removeAccessToken = (): AppThunk => (dispatch) => {
   removeStoredToken();
 };
 
-export const { selectAccessToken } = authSlice.selectors;
-export default authSlice;
+export const { selectAccessToken } = tokenSlice.selectors;
+export default tokenSlice;

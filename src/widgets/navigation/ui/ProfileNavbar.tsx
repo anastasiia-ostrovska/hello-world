@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
-import { LogOutButton } from '@/features/login';
-import { useGetAuthDataQuery } from '@features/auth';
+import { LogOutButton, useGetAuthDataQuery } from '@/features/login';
 import { ROUTES } from '@shared/router';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
@@ -85,7 +84,7 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
         const itemColor = getColor(path);
         const itemPath =
           path === ROUTES.PROFILE && authData
-            ? `${ROUTES.PROFILE}/${authData.id}`
+            ? `${ROUTES.PROFILE}/${authData.data?.id}`
             : path;
 
         return (
