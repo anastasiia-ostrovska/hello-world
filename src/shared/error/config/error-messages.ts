@@ -1,5 +1,3 @@
-// src/constants/errorMessages.ts
-
 export const ERROR_MESSAGES = {
   INVALID_REQUEST: 'Invalid request. Please check your input.',
   UNAUTHORIZED: 'You are unauthorized. Please log in.',
