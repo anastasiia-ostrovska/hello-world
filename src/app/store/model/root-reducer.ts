@@ -7,7 +7,6 @@ import { usersSlice } from '@features/users';
 
 const rootReducer = combineSlices(
   baseAPI,
-  // mockAPI,
   notificationSlice,
   authSlice,
   themeSlice,
