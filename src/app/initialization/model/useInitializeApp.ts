@@ -1,6 +1,6 @@
 import { useAppSelector } from '@shared/redux';
 import { selectAccessToken } from '@shared/api';
-import { useGetAuthDataQuery } from '@features/auth';
+import { useGetAuthDataQuery } from '@features/login';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
