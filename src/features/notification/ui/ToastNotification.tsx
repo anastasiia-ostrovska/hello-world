@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppDispatch, useAppSelector } from '@shared/redux';
 import { ReactElement } from 'react';
+import { AlertTitle } from '@mui/material';
 import {
   clearAllNotifications,
   removeNotification,
@@ -46,7 +47,7 @@ const ToastNotification = ({
 
   if (!notification) return null;
 
-  const { id, type, message } = notification;
+  const { id, type, message, title } = notification;
 
   return (
     <Snackbar
@@ -59,12 +60,13 @@ const ToastNotification = ({
         sx={{
           flexDirection: { xs: 'column', sm: 'row' },
           width: '100%',
-          maxWidth: 450,
+          maxWidth: 400,
           alignItems: 'center',
           justifyContent: 'center',
         }}
         action={action ?? <NotificationActions id={id} />}
       >
+        {!!title && <AlertTitle>{title}</AlertTitle>}
         {message}
       </Alert>
     </Snackbar>
