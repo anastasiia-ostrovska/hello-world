@@ -1,5 +1,10 @@
 import { ApiSuccessResponse, baseAPI, ENDPOINTS, TAGS } from '@shared/api';
-import type { AuthData } from '../model/types';
+
+interface AuthData {
+  userId: number;
+  username: string;
+  email: string;
+}
 
 type AuthMeResponse = ApiSuccessResponse<AuthData>;
 

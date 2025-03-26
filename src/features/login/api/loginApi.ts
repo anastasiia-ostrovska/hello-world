@@ -1,19 +1,19 @@
 import {
-  ApiResponseTemplate,
+  ApiSuccessResponse,
   baseAPI,
   ENDPOINTS,
   METHODS,
   TAGS,
 } from '@shared/api';
-import { User } from '@shared/user';
 import { LogInData } from '../model/types';
 
 interface LogInResponseData {
-  userId: User['id'];
+  userId: number;
   token: string;
 }
 
-type LogInResponse = ApiResponseTemplate<LogInResponseData>;
+type LogInResponse = ApiSuccessResponse<LogInResponseData>;
+type LogOutResponse = { message: string };
 
 const loginApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
@@ -22,14 +22,20 @@ const loginApi = baseAPI.injectEndpoints({
         method: METHODS.POST,
         url: ENDPOINTS.LOGIN,
         body: logInData,
+        headers: {
+          // 'x-mock-response-code': '401',
+        },
       }),
       invalidatesTags: [TAGS.AUTH],
     }),
 
-    logOut: builder.mutation<ApiResponseTemplate, void>({
+    logOut: builder.mutation<LogOutResponse, void>({
       query: () => ({
         method: METHODS.DELETE,
         url: ENDPOINTS.LOGIN,
+        headers: {
+          // 'x-mock-response-code': '500',
+        },
       }),
       invalidatesTags: [TAGS.AUTH],
     }),

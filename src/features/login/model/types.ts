@@ -1,9 +1,3 @@
-export interface AuthData {
-  userId: number;
-  username: string;
-  email: string;
-}
-
 export enum LogInInput {
   Email = 'email',
   Password = 'password',
