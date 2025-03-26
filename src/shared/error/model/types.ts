@@ -1,15 +1,11 @@
-enum ErrorType {
-  INVALID_CREDENTIALS,
-  INVALID_REQUEST,
-  UNAUTHORIZED,
-  FORBIDDEN,
-  NOT_FOUND,
-  CONFLICT,
-  SERVER_ERROR,
-  UNEXPECTED_ERROR,
-}
-
-export interface ApiErrorResponse {
-  type: ErrorType;
-  message: string;
+export enum Error {
+  InvalidCredentials = 'INVALID_CREDENTIALS',
+  InvalidRequest = 'INVALID_REQUEST',
+  Unauthorized = 'UNAUTHORIZED',
+  Forbidden = 'FORBIDDEN',
+  NotFound = 'NOT_FOUND',
+  Conflict = 'CONFLICT',
+  ServerError = 'SERVER_ERROR',
+  UnexpectedError = 'UNEXPECTED_ERROR',
+  SerializedError = 'SERIALIZED_ERROR',
 }
