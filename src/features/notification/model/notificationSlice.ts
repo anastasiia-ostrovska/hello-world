@@ -5,6 +5,7 @@ interface NotificationItem {
   id: string;
   type: AlertProps['severity'];
   message: string;
+  title?: string;
 }
 
 interface NotificationState {
@@ -28,14 +29,16 @@ const notificationSlice = createSlice({
       action: PayloadAction<{
         type: AlertProps['severity'];
         message: string;
+        title?: string;
       }>
     ) => {
-      const { type, message } = action.payload;
+      const { type, message, title } = action.payload;
 
       state.notifications.push({
         id: crypto.randomUUID(),
         type,
         message,
+        title: title || '',
       });
     },
     removeNotification: (state, action: PayloadAction<string>) => {
