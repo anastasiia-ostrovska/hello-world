@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useAppDispatch } from '@shared/redux';
-import { storeAccessToken } from '@shared/api';
+import { setIsAuth, storeAccessToken } from '@shared/api';
 import { useLogInMutation } from '../api/loginApi';
 import { LogInData, LogInInput } from './types';
 
@@ -41,6 +41,7 @@ const useLogInForm = (): UseLogInFormResult => {
     if (isSubmitSuccessful && logInRequestSuccess) {
       reset();
       dispatch(storeAccessToken(logInResponse.data.token));
+      dispatch(setIsAuth(true));
     }
   }, [isSubmitSuccessful, logInRequestSuccess, reset, logInResponse, dispatch]);
 
