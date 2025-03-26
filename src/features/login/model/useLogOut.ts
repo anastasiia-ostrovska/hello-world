@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@shared/redux';
-import { removeAccessToken } from '@shared/api';
+import { removeAccessToken, setIsAuth } from '@shared/api';
 import { useLogOutMutation } from '../api/loginApi';
 
 interface UseLogOutResult {
@@ -14,6 +14,7 @@ const useLogOut = (): UseLogOutResult => {
   const handleLogOut = () => {
     logOut();
     dispatch(removeAccessToken());
+    dispatch(setIsAuth(false));
   };
 
   return { handleLogOut, isLogOutRequestLoading: isLoading };
