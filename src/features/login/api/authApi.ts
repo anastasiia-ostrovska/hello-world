@@ -6,7 +6,12 @@ type AuthMeResponse = ApiResponseTemplate<AuthData>;
 const authApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getAuthData: builder.query<AuthMeResponse, void>({
-      query: () => ENDPOINTS.AUTH_ME,
+      query: () => ({
+        url: ENDPOINTS.AUTH_ME,
+        headers: {
+          // 'x-mock-response-code': '401',
+        },
+      }),
       providesTags: [TAGS.AUTH],
     }),
   }),
