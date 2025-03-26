@@ -1,7 +1,7 @@
-import { ApiResponseTemplate, baseAPI, ENDPOINTS, TAGS } from '@shared/api';
+import { ApiSuccessResponse, baseAPI, ENDPOINTS, TAGS } from '@shared/api';
 import type { AuthData } from '../model/types';
 
-type AuthMeResponse = ApiResponseTemplate<AuthData>;
+type AuthMeResponse = ApiSuccessResponse<AuthData>;
 
 const authApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({

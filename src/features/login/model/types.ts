@@ -1,8 +1,6 @@
-import { User } from '@shared/user';
-
 export interface AuthData {
-  id: User['id'];
-  login: string;
+  userId: number;
+  username: string;
   email: string;
 }
 
