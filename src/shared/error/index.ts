@@ -1,3 +1,3 @@
 export * from './model/types';
 
-export { default as getErrorMessage } from './model/getErrorMessage';
+export { getErrorMessage } from './model/getErrorMessage';
