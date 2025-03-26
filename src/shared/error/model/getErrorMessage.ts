@@ -12,11 +12,11 @@ interface ErrorMessage {
 }
 
 export const getErrorMessage =
-  (specificErrorMessages: ErrorMessages) =>
+  (specificErrorMessages?: ErrorMessages) =>
   (error: unknown): ErrorMessage => {
     const generalErrorMessages = {
       ...DEFAULT_ERROR_MESSAGES,
-      ...specificErrorMessages,
+      ...(specificErrorMessages || {}),
     };
 
     if (isFetchBaseQueryError(error)) {
