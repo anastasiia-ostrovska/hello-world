@@ -3,7 +3,7 @@ import { AlertProps } from '@mui/material';
 
 interface NotificationItem {
   id: string;
-  type: AlertProps['severity'];
+  alertType: AlertProps['severity'];
   message: string;
   title?: string;
 }
@@ -21,22 +21,23 @@ const notificationSlice = createSlice({
   initialState,
   selectors: {
     selectAllNotifications: (state) => state.notifications,
-    selectFirstNotification: (state) => state.notifications[0] || null,
+    selectFirstNotification: (state) =>
+      state.notifications[state.notifications.length - 1] || null,
   },
   reducers: {
     addNotification: (
       state,
       action: PayloadAction<{
-        type: AlertProps['severity'];
+        alertType: AlertProps['severity'];
         message: string;
         title?: string;
       }>
     ) => {
-      const { type, message, title } = action.payload;
+      const { alertType, message, title } = action.payload;
 
       state.notifications.push({
         id: crypto.randomUUID(),
-        type,
+        alertType,
         message,
         title: title || '',
       });
