@@ -2,16 +2,21 @@ import { ReactElement, ReactNode } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import SectionWrapper from '@shared/ui/SectionWrapper';
+import { ErrorMessage } from '@shared/error';
+import AlertTitle from '@mui/material/AlertTitle';
+import Alert from '@mui/material/Alert';
 
 interface LogInFormLayoutProps {
   heading: string;
   guestData: ReactElement;
+  error: ErrorMessage | undefined;
   children: ReactNode;
 }
 
 export const LogInFormLayout = ({
   heading,
   guestData,
+  error,
   children,
 }: LogInFormLayoutProps) => {
   return (
@@ -28,6 +33,12 @@ export const LogInFormLayout = ({
       >
         {guestData}
       </SectionWrapper>
+      {!!error && (
+        <Alert severity="error" variant="outlined">
+          {!!error.title && <AlertTitle> {error.title}</AlertTitle>}
+          {error.message}
+        </Alert>
+      )}
       <SectionWrapper>{children}</SectionWrapper>
     </Stack>
   );
