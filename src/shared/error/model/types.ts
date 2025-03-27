@@ -17,3 +17,9 @@ export type ErrorMessages = Record<
     title?: string;
   }
 >;
+
+export interface ErrorMessage {
+  message: string;
+  errorType: Error;
+  title?: string;
+}

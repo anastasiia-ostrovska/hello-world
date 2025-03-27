@@ -1,15 +1,9 @@
 import {
   isFetchBaseQueryError,
   isSerializedError,
-} from '@shared/error/model/errorTypePredicates';
-import { DEFAULT_ERROR_MESSAGES } from '@shared/error/config/default-error-messages';
-import { Error, ErrorMessages } from './types';
-
-interface ErrorMessage {
-  message: string;
-  errorType: Error;
-  title?: string;
-}
+} from './errorTypePredicates';
+import { DEFAULT_ERROR_MESSAGES } from '../config/default-error-messages';
+import { Error, ErrorMessage, ErrorMessages } from './types';
 
 export const getErrorMessage =
   (specificErrorMessages?: ErrorMessages) =>
