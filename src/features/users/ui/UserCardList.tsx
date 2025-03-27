@@ -26,7 +26,7 @@ const CardWrapper = ({ card }: { card: ReactElement }) => {
 };
 
 const UserCardList = () => {
-  const { users, isLoading, handleUserCardClick } = useUserList();
+  const { users, isLoading, isError, handleUserCardClick } = useUserList();
 
   return (
     <UserCardListLayout
@@ -45,7 +45,7 @@ const UserCardList = () => {
             key={id}
             card={
               <UserCard
-                isLoading={isLoading}
+                isLoading={isLoading || isError}
                 userId={id}
                 userName={name}
                 jobTitle={job}
