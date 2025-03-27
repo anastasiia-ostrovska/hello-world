@@ -18,8 +18,9 @@ const generateFakeUsers = (count: number): FakeUser[] =>
   Array.from({ length: count }, () => ({
     id: crypto.randomUUID(),
     name: '',
-    status: '',
-    photos: { small: null, large: null },
+    job: '',
+    country: '',
+    photos: { avatar: null, background: null },
     followed: false,
   }));
 

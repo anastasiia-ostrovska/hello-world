@@ -10,10 +10,9 @@ export interface UsersQueryParams {
   currentPage: number;
 }
 
-export interface UsersResponse {
+export interface UsersData {
   items: User[];
   totalCount: number;
-  error: string | null;
 }
 
 // props interfaces:
