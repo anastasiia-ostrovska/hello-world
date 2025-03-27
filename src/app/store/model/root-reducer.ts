@@ -1,6 +1,6 @@
 import { combineSlices } from '@reduxjs/toolkit';
 import { authSlice, baseAPI } from '@shared/api';
-import { notificationSlice } from '@features/notification';
+import { notificationSlice } from '@entities/notifications';
 import { themeSlice } from '@features/theme';
 import { usersSlice } from '@features/users';
 
