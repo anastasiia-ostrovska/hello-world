@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AlertProps } from '@mui/material';
-
-interface NotificationItem {
-  id: string;
-  alertType: AlertProps['severity'];
-  message: string;
-  title?: string;
-}
+import { NotificationItem } from './types';
 
 interface NotificationState {
   notifications: NotificationItem[];
@@ -16,12 +10,11 @@ const initialState: NotificationState = {
   notifications: [],
 };
 
-const notificationSlice = createSlice({
+export const notificationSlice = createSlice({
   name: 'notifications',
   initialState,
   selectors: {
-    selectAllNotifications: (state) => state.notifications,
-    selectFirstNotification: (state) =>
+    selectLastNotification: (state) =>
       state.notifications[state.notifications.length - 1] || null,
   },
   reducers: {
@@ -53,9 +46,6 @@ const notificationSlice = createSlice({
   },
 });
 
-export const { selectAllNotifications, selectFirstNotification } =
-  notificationSlice.selectors;
+export const { selectLastNotification } = notificationSlice.selectors;
 export const { addNotification, removeNotification, clearAllNotifications } =
   notificationSlice.actions;
-
-export default notificationSlice;
