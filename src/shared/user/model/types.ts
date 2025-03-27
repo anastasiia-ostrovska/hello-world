@@ -1,8 +1,8 @@
 export type Photo = string | null;
 
 interface Photos {
-  small: Photo;
-  large: Photo;
+  avatar: Photo;
+  background: Photo;
 }
 
 export interface User {
