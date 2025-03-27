@@ -1,5 +1,5 @@
-import { useMediaQueryState } from '@shared/mui';
 import LogoFull from '@assets/logo-full.svg';
+import { useMediaQueryState } from '@shared/mui';
 import { BottomNavbar, SideNavbar, TopNavbar } from '../../navigation';
 import Layout from './Layout';
 

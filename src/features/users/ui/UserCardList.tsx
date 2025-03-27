@@ -26,28 +26,33 @@ const CardWrapper = ({ card }: { card: ReactElement }) => {
 };
 
 const UserCardList = () => {
-  const { users, isLoading, handleUserCardClick } = useUserList();
+  const { users, isLoading, isError, handleUserCardClick } = useUserList();
 
   return (
     <UserCardListLayout
       cards={users.map((user) => {
-        const { id, name, followed, photos } = user;
-        const avatarSrc = photos?.small;
-        const backgroundSrc = photos?.large;
+        const {
+          id,
+          name,
+          followed,
+          photos: { avatar, background },
+          job,
+          country,
+        } = user;
 
         return (
           <CardWrapper
             key={id}
             card={
               <UserCard
-                isLoading={isLoading}
+                isLoading={isLoading || isError}
                 userId={id}
                 userName={name}
-                jobTitle="Fake job title"
-                country="Fake country"
+                jobTitle={job}
+                country={country}
                 isFollowed={followed}
-                avatarSrc={avatarSrc}
-                bgImageSrc={backgroundSrc}
+                avatarSrc={avatar}
+                bgImageSrc={background}
                 avatarSize={100}
                 bgImageHeight={80}
                 onUserCardClick={handleUserCardClick}

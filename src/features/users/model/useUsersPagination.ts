@@ -47,14 +47,14 @@ interface UsersPaginationProps {
 const usePagination = (): UsersPaginationProps => {
   const dispatch = useAppDispatch();
   const { usersQueryCount, currentPage } = useUsersQueryParams();
-  const { data, isLoading } = useGetUsersQuery({
+  const { data: users, isLoading } = useGetUsersQuery({
     usersQueryCount,
     currentPage,
   });
 
   const size = usePaginationSize();
 
-  const usersTotalCount = data?.totalCount ?? 0;
+  const usersTotalCount = users?.data?.totalCount ?? 0;
   const pagesCount = getPagesCount({
     isLoading,
     totalCount: usersTotalCount,

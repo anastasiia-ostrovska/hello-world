@@ -1,0 +1,49 @@
+import {
+  isFetchBaseQueryError,
+  isSerializedError,
+} from './errorTypePredicates';
+import { DEFAULT_ERROR_MESSAGES } from '../config/default-error-messages';
+import { Error, ErrorMessage, ErrorMessages } from './types';
+
+export const getErrorMessage =
+  (specificErrorMessages?: ErrorMessages) =>
+  (error: unknown): ErrorMessage => {
+    const generalErrorMessages = {
+      ...DEFAULT_ERROR_MESSAGES,
+      ...(specificErrorMessages || {}),
+    };
+
+    if (isFetchBaseQueryError(error)) {
+      const { data } = error;
+
+      if (
+        data &&
+        typeof data === 'object' &&
+        'errorType' in data &&
+        typeof data.errorType === 'string'
+      ) {
+        const errorType = data.errorType as Error;
+
+        const message =
+          generalErrorMessages[errorType] ||
+          generalErrorMessages[Error.UnexpectedError];
+
+        return {
+          ...message,
+          errorType,
+        };
+      }
+    }
+
+    if (isSerializedError(error)) {
+      return {
+        message: error.message,
+        errorType: Error.SerializedError,
+      };
+    }
+
+    return {
+      ...generalErrorMessages[Error.UnexpectedError],
+      errorType: Error.UnexpectedError,
+    };
+  };

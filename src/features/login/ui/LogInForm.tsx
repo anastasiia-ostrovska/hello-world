@@ -21,12 +21,14 @@ const LogInForm = () => {
     handleFillGuestData,
     isSubmitButtonDisabled,
     isLogInRequestLoading,
+    loginError,
   } = useLogInForm();
 
   return (
     <FormProvider {...methods}>
       <LogInFormLayout
         heading="Log in"
+        error={loginError}
         guestData={
           <GuestDataLayout
             text="* Please, use the Guest credentials to log in."

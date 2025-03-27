@@ -4,3 +4,8 @@ export interface ApiResponseTemplate<D = object> {
   messages: string[];
   data: D;
 }
+
+export interface ApiSuccessResponse<D = object> {
+  data: D;
+  message: string;
+}
