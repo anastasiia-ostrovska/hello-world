@@ -1,13 +1,14 @@
 import type { AppDispatch, RootState } from '@app/store';
 import {
   ApiResponseTemplate,
+  ApiSuccessResponse,
   baseAPI,
   ENDPOINTS,
   METHODS,
   TAGS,
 } from '@shared/api';
 import { User } from '@shared/user';
-import { UsersQueryParams, UsersResponse } from '../model/types';
+import { UsersData, UsersQueryParams } from '../model/types';
 
 interface UpdateFollowStatusCacheParams {
   state: RootState;
@@ -15,6 +16,8 @@ interface UpdateFollowStatusCacheParams {
   usersApi: typeof usersApi;
   userId: User['id'];
 }
+
+type UsersResponse = ApiSuccessResponse<UsersData>;
 
 const updateFollowStatusCache = ({
   state,
@@ -39,7 +42,7 @@ const updateFollowStatusCache = ({
       'getUsers',
       { usersQueryCount, currentPage },
       (draft: UsersResponse) => {
-        const user = draft.items.find((user) => user.id === userId);
+        const user = draft.data.items.find((user) => user.id === userId);
 
         if (user) {
           user.followed = !user.followed;
@@ -52,8 +55,12 @@ const updateFollowStatusCache = ({
 const usersApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query<UsersResponse, UsersQueryParams>({
-      query: ({ usersQueryCount, currentPage }) =>
-        `${ENDPOINTS.USERS}?count=${usersQueryCount}&page=${currentPage}`,
+      query: ({ usersQueryCount, currentPage }) => ({
+        url: `${ENDPOINTS.USERS}?count=${usersQueryCount}&page=${currentPage}`,
+        headers: {
+          // 'x-mock-response-code': '401',
+        },
+      }),
       providesTags: [TAGS.USERS],
     }),
 
@@ -61,6 +68,9 @@ const usersApi = baseAPI.injectEndpoints({
       query: (userId) => ({
         method: METHODS.DELETE,
         url: `${ENDPOINTS.FOLLOW}/${userId}`,
+        headers: {
+          // 'x-mock-response-code': '401',
+        },
       }),
 
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
@@ -83,6 +93,9 @@ const usersApi = baseAPI.injectEndpoints({
       query: (userId) => ({
         method: METHODS.POST,
         url: `${ENDPOINTS.FOLLOW}/${userId}`,
+        headers: {
+          // 'x-mock-response-code': '401',
+        },
       }),
 
       async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {

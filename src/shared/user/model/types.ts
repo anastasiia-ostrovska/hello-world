@@ -8,7 +8,8 @@ interface Photos {
 export interface User {
   id: number;
   name: string;
-  status: string;
+  job: string;
+  country: string;
   photos: Photos;
   followed: boolean;
 }
