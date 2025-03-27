@@ -1,11 +1,12 @@
+import { ReactElement } from 'react';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import Tooltip from '@mui/material/Tooltip';
+import AlertTitle from '@mui/material/AlertTitle';
 import { useAppDispatch, useAppSelector } from '@shared/redux';
-import { ReactElement } from 'react';
-import { AlertTitle } from '@mui/material';
 import {
   clearAllNotifications,
   removeNotification,
@@ -17,16 +18,18 @@ const NotificationActions = ({ id }: { id: string }) => {
 
   return (
     <>
-      <Button
-        color="inherit"
-        variant="text"
-        size="small"
-        sx={{ width: 'max-content' }}
-        aria-label="close all notifications"
-        onClick={() => dispatch(clearAllNotifications())}
-      >
-        Close All
-      </Button>
+      <Tooltip title="Dismiss all notifications">
+        <Button
+          color="inherit"
+          variant="text"
+          size="small"
+          sx={{ width: 'max-content' }}
+          aria-label="close all notifications"
+          onClick={() => dispatch(clearAllNotifications())}
+        >
+          Close All
+        </Button>
+      </Tooltip>
       <IconButton
         size="small"
         aria-label="close notification"
@@ -47,7 +50,7 @@ const ToastNotification = ({
 
   if (!notification) return null;
 
-  const { id, type, message, title } = notification;
+  const { id, alertType, message, title } = notification;
 
   return (
     <Snackbar
@@ -56,7 +59,7 @@ const ToastNotification = ({
       sx={{ mb: { xs: 7, sm: 5, md: 0 } }}
     >
       <Alert
-        severity={type}
+        severity={alertType}
         sx={{
           flexDirection: { xs: 'column', sm: 'row' },
           width: '100%',

@@ -9,3 +9,17 @@ export enum Error {
   UnexpectedError = 'UNEXPECTED_ERROR',
   SerializedError = 'SERIALIZED_ERROR',
 }
+
+export type ErrorMessages = Record<
+  string,
+  {
+    message: string;
+    title?: string;
+  }
+>;
+
+export interface ErrorMessage {
+  message: string;
+  errorType: Error;
+  title?: string;
+}

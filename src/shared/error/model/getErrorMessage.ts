@@ -1,22 +1,16 @@
-import { Error } from '@shared/error';
 import {
   isFetchBaseQueryError,
   isSerializedError,
-} from '@shared/error/model/errorTypePredicates';
-import { DEFAULT_ERROR_MESSAGES } from '@shared/error/config/default-error-messages';
-
-interface ErrorMessage {
-  message: string;
-  type: Error;
-  title?: string;
-}
+} from './errorTypePredicates';
+import { DEFAULT_ERROR_MESSAGES } from '../config/default-error-messages';
+import { Error, ErrorMessage, ErrorMessages } from './types';
 
 export const getErrorMessage =
-  (specificErrorMessages: Record<Error, ErrorMessage>) =>
+  (specificErrorMessages?: ErrorMessages) =>
   (error: unknown): ErrorMessage => {
     const generalErrorMessages = {
       ...DEFAULT_ERROR_MESSAGES,
-      ...specificErrorMessages,
+      ...(specificErrorMessages || {}),
     };
 
     if (isFetchBaseQueryError(error)) {
@@ -25,18 +19,18 @@ export const getErrorMessage =
       if (
         data &&
         typeof data === 'object' &&
-        'type' in data &&
-        typeof data.type === 'string'
+        'errorType' in data &&
+        typeof data.errorType === 'string'
       ) {
-        const type = data.type as Error;
+        const errorType = data.errorType as Error;
 
         const message =
-          generalErrorMessages[type] ||
+          generalErrorMessages[errorType] ||
           generalErrorMessages[Error.UnexpectedError];
 
         return {
           ...message,
-          type,
+          errorType,
         };
       }
     }
@@ -44,12 +38,12 @@ export const getErrorMessage =
     if (isSerializedError(error)) {
       return {
         message: error.message,
-        type: Error.SerializedError,
+        errorType: Error.SerializedError,
       };
     }
 
     return {
       ...generalErrorMessages[Error.UnexpectedError],
-      type: Error.UnexpectedError,
+      errorType: Error.UnexpectedError,
     };
   };

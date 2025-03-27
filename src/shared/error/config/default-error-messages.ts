@@ -1,11 +1,6 @@
-import { Error } from '../model/types';
+import { Error, ErrorMessages } from '../model/types';
 
-interface ErrorMessage {
-  message: string;
-  title?: string;
-}
-
-export const DEFAULT_ERROR_MESSAGES: Record<string, ErrorMessage> = {
+export const DEFAULT_ERROR_MESSAGES: ErrorMessages = {
   [Error.InvalidRequest]: {
     title: 'Invalid Request',
     message: 'Please check your input and try again.',
