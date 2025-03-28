@@ -1,3 +1,5 @@
+export * from './lib/createNotificationElement';
+
 export {
   notificationSlice,
   addNotification,
