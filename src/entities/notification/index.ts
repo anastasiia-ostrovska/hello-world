@@ -7,3 +7,4 @@ export {
 } from './model/notificationSlice';
 
 export { EmbeddedNotification } from './ui/EmbeddedNotification';
+export { PopupNotification } from './ui/PopupNotification';
