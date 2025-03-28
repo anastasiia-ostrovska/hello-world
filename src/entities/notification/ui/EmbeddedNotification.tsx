@@ -2,9 +2,9 @@ import { forwardRef, ReactElement } from 'react';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import { AlertProps } from '@mui/material';
-import { AlertElements } from '../model/types';
+import { NotificationProps } from '../model/types';
 
-interface EmbeddedNotificationProps extends AlertElements, AlertProps {
+interface EmbeddedNotificationProps extends NotificationProps, AlertProps {
   action?: ReactElement | null;
 }
 
