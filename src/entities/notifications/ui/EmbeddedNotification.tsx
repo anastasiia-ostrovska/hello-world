@@ -4,13 +4,13 @@ import AlertTitle from '@mui/material/AlertTitle';
 import { AlertProps } from '@mui/material';
 import { AlertElements } from '../model/types';
 
-interface AlertNotificationProps extends AlertElements, AlertProps {
+interface EmbeddedNotificationProps extends AlertElements, AlertProps {
   action?: ReactElement | null;
 }
 
-export const AlertNotification = forwardRef<
+export const EmbeddedNotification = forwardRef<
   HTMLDivElement,
-  AlertNotificationProps
+  EmbeddedNotificationProps
 >(({ alertType, message, title = '', action = null, ...props }, ref) => {
   return (
     <Alert ref={ref} severity={alertType} action={action} {...props}>
@@ -20,4 +20,4 @@ export const AlertNotification = forwardRef<
   );
 });
 
-AlertNotification.displayName = 'AlertNotification';
+EmbeddedNotification.displayName = 'EmbeddedNotification';

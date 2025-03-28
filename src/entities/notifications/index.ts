@@ -6,4 +6,4 @@ export {
   selectLastNotification,
 } from './model/notificationSlice';
 
-export { AlertNotification } from './ui/AlertNotification';
+export { EmbeddedNotification } from './ui/EmbeddedNotification';
