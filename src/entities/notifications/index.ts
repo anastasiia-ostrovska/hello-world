@@ -5,3 +5,5 @@ export {
   clearAllNotifications,
   selectLastNotification,
 } from './model/notificationSlice';
+
+export { AlertNotification } from './ui/AlertNotification';
