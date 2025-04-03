@@ -1,4 +1,4 @@
 export * from './model/types';
-export * from './model/modeStorageHandlers';
+export * from './lib/modeLocalStorageHandlers';
 
 export { default as createAppTheme } from './model/createAppTheme';
