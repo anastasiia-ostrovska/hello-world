@@ -3,11 +3,11 @@ import { useCallback, useEffect } from 'react';
 import { ROUTES } from '@shared/router';
 import { User } from '@shared/user';
 import { getErrorMessage } from '@shared/error';
+import { useAppDispatch } from '@shared/redux';
 import {
   addNotification,
-  createErrorNotification,
-} from '@features/notification';
-import { useAppDispatch } from '@shared/redux';
+  createErrorNotificationElement,
+} from '@entities/notification';
 import { FakeUser, UserCardClickHandler } from './types';
 import { useGetUsersQuery } from '../api/usersApi';
 import generateFakeUsers from './generateFakeUsers';
@@ -38,7 +38,7 @@ const useUserList = (): UseUsersResult => {
     if (isError) {
       const getUsersErrorMessage = getErrorMessage();
       const { title, message } = getUsersErrorMessage(error);
-      const usersErrorNotification = createErrorNotification({
+      const usersErrorNotification = createErrorNotificationElement({
         message,
         title,
       });

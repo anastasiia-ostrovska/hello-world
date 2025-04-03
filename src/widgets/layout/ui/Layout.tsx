@@ -8,9 +8,15 @@ interface LayoutProps {
   logo: ReactElement;
   topNavigation: ReactElement;
   sideNavigation: ReactElement;
+  modeSwitcher: ReactElement;
 }
 
-const Layout = ({ logo, topNavigation, sideNavigation }: LayoutProps) => {
+const Layout = ({
+  logo,
+  topNavigation,
+  sideNavigation,
+  modeSwitcher,
+}: LayoutProps) => {
   return (
     <Stack
       sx={{
@@ -38,7 +44,10 @@ const Layout = ({ logo, topNavigation, sideNavigation }: LayoutProps) => {
         }}
       >
         <Box sx={{ height: '100%', py: { xs: 2.2, sm: 2 } }}>{logo}</Box>
-        {topNavigation}
+        <Stack direction="row">
+          {modeSwitcher}
+          {topNavigation}
+        </Stack>
       </Paper>
       <Stack
         component="main"
