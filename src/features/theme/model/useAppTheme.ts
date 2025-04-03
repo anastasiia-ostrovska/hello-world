@@ -1,5 +1,5 @@
 import { Theme } from '@mui/material';
-import { createAppTheme } from '@shared/theme';
+import { createAppTheme } from '@entities/theme';
 import { useAppSelector } from '@shared/redux';
 import { selectThemeMode } from './themeSlice';
 

@@ -1,5 +1,5 @@
 import type { AppThunk } from '@app/store';
-import { setStoredThemeMode } from '@shared/theme';
+import { setStoredThemeMode } from '@entities/theme';
 import { themeSlice } from './themeSlice';
 
 const { toggleMode } = themeSlice.actions;

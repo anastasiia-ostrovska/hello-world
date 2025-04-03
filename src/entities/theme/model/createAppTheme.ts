@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material';
-import type { ThemeMode } from '../model/types';
-import getPalette from './getPalette';
-import components from './components';
+import type { ThemeMode } from './types';
+import getPalette from '../config/getPalette';
+import components from '../config/components';
 
 const createAppTheme = (mode: ThemeMode) => {
   return createTheme({
