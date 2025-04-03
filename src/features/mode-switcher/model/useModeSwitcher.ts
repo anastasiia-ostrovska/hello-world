@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@shared/redux';
-import { selectThemeMode } from './themeSlice';
-import { toggleThemeMode } from './toggleThemeMode';
-import { ThemeMode } from './types';
+import { selectThemeMode } from '@entities/theme/model/themeSlice';
+import { toggleThemeMode } from '@entities/theme/model/toggleThemeMode';
+import { ThemeMode } from '@entities/theme/model/types';
 
 interface ThemeModeProps {
   isDarkMode: boolean;
@@ -9,7 +9,7 @@ interface ThemeModeProps {
   handleToggleMode: () => void;
 }
 
-export const useThemeMode = (): ThemeModeProps => {
+export const useModeSwitcher = (): ThemeModeProps => {
   const dispatch = useAppDispatch();
   const currentMode = useAppSelector(selectThemeMode);
 

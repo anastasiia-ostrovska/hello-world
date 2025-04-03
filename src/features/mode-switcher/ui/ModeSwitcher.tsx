@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { useThemeMode } from '@entities/theme';
+import { useModeSwitcher } from '../model/useModeSwitcher';
 
 interface ModeIconProps {
   isDarkMode: boolean;
@@ -12,7 +12,7 @@ const ModeIcon = ({ isDarkMode }: ModeIconProps) => {
 };
 
 const ModeSwitcher = () => {
-  const { isDarkMode, nextMode, handleToggleMode } = useThemeMode();
+  const { isDarkMode, nextMode, handleToggleMode } = useModeSwitcher();
 
   return (
     <IconButton
