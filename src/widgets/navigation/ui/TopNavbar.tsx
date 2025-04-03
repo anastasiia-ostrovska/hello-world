@@ -1,16 +1,22 @@
 import { ReactElement } from 'react';
 import Stack from '@mui/material/Stack';
+import { ModeSwitcher } from '@features/mode-switcher';
+import { NavbarLayoutProps } from '../model/types';
+import { TOP_NAV_ITEMS } from '../config/top-items';
 import useNavItemColor from '../model/useNavItemColor';
 import ProfileNavbar from './ProfileNavbar';
 import TopNavItem from './TopNavItem';
-import { NavbarLayoutProps } from '../model/types';
-import { TOP_NAV_ITEMS } from '../config/top-items';
 
 interface TopNavbarLayoutProps extends NavbarLayoutProps {
   profileNavbar: ReactElement;
+  modeSwitcher: ReactElement;
 }
 
-const TopNavbarLayout = ({ navItems, profileNavbar }: TopNavbarLayoutProps) => {
+const TopNavbarLayout = ({
+  navItems,
+  profileNavbar,
+  modeSwitcher,
+}: TopNavbarLayoutProps) => {
   return (
     <Stack
       component="nav"
@@ -18,6 +24,7 @@ const TopNavbarLayout = ({ navItems, profileNavbar }: TopNavbarLayoutProps) => {
       spacing={{ sm: 1 }}
       sx={{ ml: 'auto', mr: '-8px' }}
     >
+      {modeSwitcher}
       {navItems}
       {profileNavbar}
     </Stack>
@@ -37,6 +44,7 @@ const TopNavbar = () => {
         );
       })}
       profileNavbar={<ProfileNavbar iconSize={24} />}
+      modeSwitcher={<ModeSwitcher />}
     />
   );
 };
