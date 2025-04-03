@@ -1,4 +1,4 @@
-import { AvatarColor } from '@shared/theme';
+import { AvatarColor } from '@entities/theme';
 import { User } from '@shared/user';
 
 /**
