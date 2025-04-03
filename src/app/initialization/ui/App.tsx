@@ -1,5 +1,5 @@
 import { Routing } from '@app/routing';
-import { ToastNotification } from '@features/notification';
+import { PopupNotificationWithControls } from '@widgets/notification';
 import useInitializeApp from '../model/useInitializeApp';
 import AppLoader from './AppLoader';
 
@@ -9,7 +9,7 @@ const App = () => {
   return isInitialized ? (
     <>
       <Routing isAuth={isAuth} />
-      <ToastNotification />
+      <PopupNotificationWithControls />
     </>
   ) : (
     <AppLoader />
