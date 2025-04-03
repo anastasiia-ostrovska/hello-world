@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import SectionWrapper from '@shared/ui/SectionWrapper';
-import { ErrorMessage } from '@shared/error';
+import { ErrorMessage } from '@entities/error-message';
 import AlertTitle from '@mui/material/AlertTitle';
 import Alert from '@mui/material/Alert';
 

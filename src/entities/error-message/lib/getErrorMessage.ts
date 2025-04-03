@@ -3,7 +3,7 @@ import {
   isSerializedError,
 } from './errorTypePredicates';
 import { DEFAULT_ERROR_MESSAGES } from '../config/default-error-messages';
-import { Error, ErrorMessage, ErrorMessages } from './types';
+import { Error, ErrorMessage, ErrorMessages } from '../model/types';
 
 export const getErrorMessage =
   (specificErrorMessages?: ErrorMessages) =>

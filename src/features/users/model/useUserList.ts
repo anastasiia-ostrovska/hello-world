@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCallback, useEffect } from 'react';
 import { ROUTES } from '@shared/router';
 import { User } from '@shared/user';
-import { getErrorMessage } from '@shared/error';
+import { getErrorMessage } from '@entities/error-message';
 import { useAppDispatch } from '@shared/redux';
 import {
   addNotification,
