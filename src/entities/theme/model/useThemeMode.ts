@@ -1,6 +1,7 @@
-import { ThemeMode, toggleThemeMode } from '@entities/theme';
 import { useAppDispatch, useAppSelector } from '@shared/redux';
-import { selectThemeMode } from '@entities/theme/model/themeSlice';
+import { selectThemeMode } from './themeSlice';
+import { toggleThemeMode } from './toggleThemeMode';
+import { ThemeMode } from './types';
 
 interface ThemeModeProps {
   isDarkMode: boolean;

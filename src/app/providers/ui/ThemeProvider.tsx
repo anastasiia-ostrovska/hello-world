@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { CssBaseline, ThemeProvider as MUIThemeProvider } from '@mui/material';
-import useAppTheme from '@entities/theme';
+import { useAppTheme } from '@entities/theme';
 
 interface ThemeWrapperProps {
   children: ReactNode;
