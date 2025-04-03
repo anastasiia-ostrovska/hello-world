@@ -1,7 +1,7 @@
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 /**
- * Type predicate to narrow an unknown error to `FetchBaseQueryError`
+ * Type predicate to narrow an unknown error-message to `FetchBaseQueryError`
  */
 export const isFetchBaseQueryError = (
   error: unknown
@@ -10,7 +10,7 @@ export const isFetchBaseQueryError = (
 };
 
 /**
- * Type predicate to narrow an unknown error to an object with a string 'message' property
+ * Type predicate to narrow an unknown error-message to an object with a string 'message' property
  */
 export const isSerializedError = (
   error: unknown

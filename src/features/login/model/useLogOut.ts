@@ -4,7 +4,7 @@ import {
   addNotification,
   createErrorNotificationElement,
 } from '@entities/notification';
-import { getErrorMessage } from '@shared/error';
+import { getErrorMessage } from '@entities/error-message';
 import { useLogOutMutation } from '../api/loginApi';
 
 interface UseLogOutResult {

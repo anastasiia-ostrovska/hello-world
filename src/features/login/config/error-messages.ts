@@ -1,4 +1,4 @@
-import { Error, ErrorMessages } from '@shared/error';
+import { Error, ErrorMessages } from '@entities/error-message';
 
 export const LOGIN_ERROR_MESSAGES: ErrorMessages = {
   [Error.InvalidCredentials]: {

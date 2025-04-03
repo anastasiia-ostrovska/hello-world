@@ -2,7 +2,7 @@ import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useAppDispatch } from '@shared/redux';
 import { setIsAuth, storeAccessToken } from '@shared/api';
-import { ErrorMessage, getErrorMessage } from '@shared/error';
+import { ErrorMessage, getErrorMessage } from '@entities/error-message';
 import { LOGIN_ERROR_MESSAGES } from '@features/login/config/error-messages';
 import { useLogInMutation } from '../api/loginApi';
 import { LogInData, LogInInput } from './types';

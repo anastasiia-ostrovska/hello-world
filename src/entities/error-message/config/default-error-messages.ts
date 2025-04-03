@@ -23,6 +23,6 @@ export const DEFAULT_ERROR_MESSAGES: ErrorMessages = {
       'We are experiencing technical difficulties. Please try again later.',
   },
   [Error.UnexpectedError]: {
-    message: 'An unexpected error occurred. Please try again.',
+    message: 'An unexpected error-message occurred. Please try again.',
   },
 };
