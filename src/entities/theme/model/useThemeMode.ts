@@ -8,9 +8,9 @@ interface ThemeModeProps {
   handleToggleMode: () => void;
 }
 
-const useThemeMode = (): ThemeModeProps => {
-  const currentMode = useAppSelector(selectThemeMode);
+export const useThemeMode = (): ThemeModeProps => {
   const dispatch = useAppDispatch();
+  const currentMode = useAppSelector(selectThemeMode);
 
   const isDarkMode = currentMode === ThemeMode.Dark;
   const nextMode =
@@ -22,5 +22,3 @@ const useThemeMode = (): ThemeModeProps => {
 
   return { isDarkMode, nextMode, handleToggleMode };
 };
-
-export default useThemeMode;

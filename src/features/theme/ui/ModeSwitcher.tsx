@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import useThemeMode from '../model/useThemeMode';
+import { useThemeMode } from '@entities/theme';
 
 interface ModeIconProps {
   isDarkMode: boolean;
