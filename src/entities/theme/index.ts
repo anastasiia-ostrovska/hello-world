@@ -1,4 +1,5 @@
 export * from './model/types';
-export * from './lib/modeLocalStorageHandlers';
+export * from './model/themeSlice';
 
-export { default as createAppTheme } from './model/createAppTheme';
+export { toggleThemeMode } from './model/toggleThemeMode';
+export { useAppTheme } from './model/useAppTheme';

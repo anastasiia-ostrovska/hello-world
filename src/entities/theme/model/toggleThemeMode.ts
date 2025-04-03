@@ -1,5 +1,5 @@
 import type { AppThunk } from '@app/store';
-import { setModeToLocalStorage } from '@entities/theme';
+import { setModeToLocalStorage } from '../lib/modeLocalStorageHandlers';
 import { themeSlice } from './themeSlice';
 
 const { toggleMode } = themeSlice.actions;
