@@ -8,4 +8,4 @@ export const DIALOGS = '/dialogs';
 export const NOTIFICATIONS = '/notifications';
 export const PROFILE = '/profile';
 export const LIBRARY = '/library';
-export const SETTINGS = '/theme';
+export const SETTINGS = '/mode-switcher';

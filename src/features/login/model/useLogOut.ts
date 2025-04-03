@@ -2,8 +2,8 @@ import { useAppDispatch } from '@shared/redux';
 import { removeAccessToken, setIsAuth } from '@shared/api';
 import {
   addNotification,
-  createErrorNotification,
-} from '@features/notification';
+  createErrorNotificationElement,
+} from '@entities/notification';
 import { getErrorMessage } from '@shared/error';
 import { useLogOutMutation } from '../api/loginApi';
 
@@ -24,7 +24,10 @@ const useLogOut = (): UseLogOutResult => {
     } catch (error: unknown) {
       const getLogoutErrorMessage = getErrorMessage();
       const { title, message } = getLogoutErrorMessage(error);
-      const errorNotification = createErrorNotification({ message, title });
+      const errorNotification = createErrorNotificationElement({
+        message,
+        title,
+      });
 
       dispatch(addNotification(errorNotification));
     }
