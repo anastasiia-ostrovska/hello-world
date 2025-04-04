@@ -20,7 +20,7 @@ const loginApi = baseAPI.injectEndpoints({
         method: METHODS.DELETE,
         url: ENDPOINTS.LOGIN,
         headers: {
-          'x-mock-response-code': '401',
+          // 'x-mock-response-code': '500',
         },
       }),
       invalidatesTags: [TAGS.AUTH],

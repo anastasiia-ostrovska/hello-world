@@ -1,7 +1,7 @@
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
-import useLogOut from '../model/useLogOut';
+import { useLogout } from '../model/useLogout';
 
 const LogoutIcon = ({ iconSize }: { iconSize: number }) => {
   return (
@@ -19,8 +19,8 @@ const LogoutIcon = ({ iconSize }: { iconSize: number }) => {
   );
 };
 
-const LogOutButton = ({ iconSize }: { iconSize: number }) => {
-  const { handleLogOut, isLogOutRequestLoading } = useLogOut();
+const LogoutButton = ({ iconSize }: { iconSize: number }) => {
+  const { handleLogout, isLogOutRequestLoading } = useLogout();
 
   return (
     <Chip
@@ -32,10 +32,10 @@ const LogOutButton = ({ iconSize }: { iconSize: number }) => {
       aria-label="Log out"
       color="error"
       avatar={<LogoutIcon iconSize={iconSize} />}
-      onClick={handleLogOut}
+      onClick={handleLogout}
       sx={{ display: 'flex', justifySelf: 'center', pl: '3px' }}
     />
   );
 };
 
-export default LogOutButton;
+export default LogoutButton;
