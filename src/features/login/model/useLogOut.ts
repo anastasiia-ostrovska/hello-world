@@ -1,11 +1,11 @@
 import { useAppDispatch } from '@shared/redux';
-import { removeAccessToken, setIsAuth } from '@shared/api';
+import { removeAccessToken } from '@shared/api';
 import {
   addNotification,
   createErrorNotificationElement,
 } from '@entities/notification';
 import { getErrorMessage } from '@entities/error-message';
-import { useLogOutMutation } from '../api/loginApi';
+import { useLogoutMutation } from '@entities/session/api/loginApi';
 
 interface UseLogOutResult {
   handleLogOut: () => void;
@@ -13,14 +13,13 @@ interface UseLogOutResult {
 }
 
 const useLogOut = (): UseLogOutResult => {
-  const [logOut, { isLoading }] = useLogOutMutation();
+  const [logOut, { isLoading }] = useLogoutMutation();
   const dispatch = useAppDispatch();
 
   const handleLogOut = async () => {
     try {
       await logOut().unwrap();
       dispatch(removeAccessToken());
-      dispatch(setIsAuth(false));
     } catch (error: unknown) {
       const getLogoutErrorMessage = getErrorMessage();
       const { title, message } = getLogoutErrorMessage(error);

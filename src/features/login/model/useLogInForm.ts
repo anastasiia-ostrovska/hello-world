@@ -1,14 +1,14 @@
 import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useAppDispatch } from '@shared/redux';
-import { setIsAuth, storeAccessToken } from '@shared/api';
+import { storeAccessToken } from '@shared/api';
 import { ErrorMessage, getErrorMessage } from '@entities/error-message';
 import { LOGIN_ERROR_MESSAGES } from '@features/login/config/error-messages';
-import { useLogInMutation } from '../api/loginApi';
-import { LogInData, LogInInput } from './types';
+import { useLoginMutation } from '@entities/session/api/loginApi';
+import { LoginData, LoginField } from '@entities/session/model/types';
 
 interface UseLogInFormResult {
-  methods: UseFormReturn<LogInData>;
+  methods: UseFormReturn<LoginData>;
   handleFormSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
   handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
@@ -17,11 +17,11 @@ interface UseLogInFormResult {
 }
 
 const useLogInForm = (): UseLogInFormResult => {
-  const methods = useForm<LogInData>({
+  const methods = useForm<LoginData>({
     defaultValues: {
-      [LogInInput.Email]: '',
-      [LogInInput.Password]: '',
-      [LogInInput.RememberMe]: true,
+      [LoginField.Email]: '',
+      [LoginField.Password]: '',
+      [LoginField.RememberMe]: true,
     },
     mode: 'onTouched',
   });
@@ -39,7 +39,7 @@ const useLogInForm = (): UseLogInFormResult => {
       isError,
       error,
     },
-  ] = useLogInMutation();
+  ] = useLoginMutation();
   const [loginError, setLoginError] = useState<ErrorMessage | undefined>(
     undefined
   );
@@ -56,9 +56,9 @@ const useLogInForm = (): UseLogInFormResult => {
 
   useEffect(() => {
     if (isSubmitSuccessful && logInRequestSuccess) {
+      setLoginError(undefined);
       reset();
       dispatch(storeAccessToken(logInResponse.data.token));
-      dispatch(setIsAuth(true));
     }
   }, [isSubmitSuccessful, logInRequestSuccess, reset, logInResponse, dispatch]);
 
@@ -69,8 +69,8 @@ const useLogInForm = (): UseLogInFormResult => {
   const handleFillGuestData = () => {
     reset(
       {
-        [LogInInput.Email]: import.meta.env.VITE_GUEST_EMAIL,
-        [LogInInput.Password]: import.meta.env.VITE_GUEST_PASSWORD,
+        [LoginField.Email]: import.meta.env.VITE_GUEST_EMAIL,
+        [LoginField.Password]: import.meta.env.VITE_GUEST_PASSWORD,
       },
       {
         keepDefaultValues: true,
@@ -79,7 +79,7 @@ const useLogInForm = (): UseLogInFormResult => {
     );
   };
 
-  const handleFormSubmit: SubmitHandler<LogInData> = (data) => {
+  const handleFormSubmit: SubmitHandler<LoginData> = (data) => {
     logIn(data);
   };
 

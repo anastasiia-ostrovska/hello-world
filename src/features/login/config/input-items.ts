@@ -1,4 +1,4 @@
-import { LogInInput } from '../model/types';
+import { LoginField } from '@entities/session/model/types';
 import {
   emailValidationRules,
   passwordValidationRules,
@@ -6,7 +6,7 @@ import {
 
 const input = {
   email: {
-    name: LogInInput.Email,
+    name: LoginField.Email,
     type: 'email',
     label: 'Email',
     autoComplete: 'email',
@@ -17,7 +17,7 @@ const input = {
     },
   },
   password: {
-    name: LogInInput.Password,
+    name: LoginField.Password,
     type: 'password',
     label: 'Password',
     autoComplete: 'current-password',
@@ -28,7 +28,7 @@ const input = {
     },
   },
   rememberMe: {
-    name: LogInInput.RememberMe,
+    name: LoginField.RememberMe,
     label: 'Remember me',
     helperText: 'Stay logged in on this device',
   },
