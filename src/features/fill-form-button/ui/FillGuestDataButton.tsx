@@ -1,17 +1,16 @@
 import Chip from '@mui/material/Chip';
+import useFillFormWithGuestData from '@features/fill-form-button/model/useFillFormWithGuestData';
 
-interface FillGuestDataButtonProps {
-  onClick: () => void;
-}
+const FillGuestDataButton = () => {
+  const handleFillGuestData = useFillFormWithGuestData();
 
-const FillGuestDataButton = ({ onClick }: FillGuestDataButtonProps) => {
   return (
     <Chip
       component="button"
       label="Fill with Guest Data"
       color="success"
       variant="outlined"
-      onClick={onClick}
+      onClick={handleFillGuestData}
       sx={{ cursor: 'pointer' }}
     />
   );

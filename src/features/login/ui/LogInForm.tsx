@@ -5,7 +5,7 @@ import {
   Form,
   SubmitButton,
 } from '@/shared/forms';
-import FillGuestDataButton from './FillGuestDataButton';
+import { FillGuestDataButton } from '@features/fill-form-button';
 import {
   GuestDataLayout,
   InputsLayout,
@@ -18,7 +18,6 @@ const LogInForm = () => {
   const {
     methods,
     handleFormSubmit,
-    handleFillGuestData,
     isSubmitButtonDisabled,
     isLogInRequestLoading,
     loginError,
@@ -32,7 +31,7 @@ const LogInForm = () => {
         guestData={
           <GuestDataLayout
             text="* Please, use the Guest credentials to log in."
-            button={<FillGuestDataButton onClick={handleFillGuestData} />}
+            button={<FillGuestDataButton />}
           />
         }
       >
