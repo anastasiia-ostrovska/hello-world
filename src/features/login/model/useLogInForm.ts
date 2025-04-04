@@ -10,7 +10,6 @@ import { LoginData, LoginField } from '@entities/session/model/types';
 interface UseLogInFormResult {
   methods: UseFormReturn<LoginData>;
   handleFormSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
-  handleFillGuestData: () => void;
   isSubmitButtonDisabled: boolean;
   isLogInRequestLoading: boolean;
   loginError: ErrorMessage | undefined;
@@ -66,19 +65,6 @@ const useLogInForm = (): UseLogInFormResult => {
   const isSubmitButtonDisabled =
     isEmptyField || isSubmitting || isLogInRequestLoading;
 
-  const handleFillGuestData = () => {
-    reset(
-      {
-        [LoginField.Email]: import.meta.env.VITE_GUEST_EMAIL,
-        [LoginField.Password]: import.meta.env.VITE_GUEST_PASSWORD,
-      },
-      {
-        keepDefaultValues: true,
-        keepTouched: true,
-      }
-    );
-  };
-
   const handleFormSubmit: SubmitHandler<LoginData> = (data) => {
     logIn(data);
   };
@@ -86,7 +72,6 @@ const useLogInForm = (): UseLogInFormResult => {
   return {
     methods,
     handleFormSubmit: handleSubmit(handleFormSubmit),
-    handleFillGuestData,
     isSubmitButtonDisabled,
     isLogInRequestLoading,
     loginError,
