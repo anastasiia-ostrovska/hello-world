@@ -29,6 +29,7 @@ export const LogInFormLayout = ({
           flexDirection: 'column',
           alignItems: 'center',
           gap: 1,
+          p: 1,
         }}
       >
         {guestData}
@@ -39,7 +40,7 @@ export const LogInFormLayout = ({
           {error.message}
         </Alert>
       )}
-      <SectionWrapper>{children}</SectionWrapper>
+      <SectionWrapper sx={{ p: 1 }}>{children}</SectionWrapper>
     </Stack>
   );
 };
