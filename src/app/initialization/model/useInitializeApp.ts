@@ -1,6 +1,6 @@
 import { useGetAuthDataQuery } from '@features/login';
 import { useAppSelector } from '@shared/redux';
-import { selectAccessToken } from '@shared/api';
+import { selectToken } from '@shared/api';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
@@ -8,7 +8,7 @@ interface UseInitializeAppResult {
 }
 
 const useInitializeApp = (): UseInitializeAppResult => {
-  const token = useAppSelector(selectAccessToken);
+  const token = useAppSelector(selectToken);
   // const token = getStoredToken();
   // const isAuth = useAppSelector(selectIsAuth);
   // const dispatch = useAppDispatch();

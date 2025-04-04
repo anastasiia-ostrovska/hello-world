@@ -10,7 +10,7 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     headers.set('x-api-key', import.meta.env.VITE_MOCK_API_KEY);
     // headers.set('API-KEY', import.meta.env.VITE_API_KEY);
-    const { token } = (getState() as RootState).auth;
+    const { token } = (getState() as RootState).session;
 
     if (token) {
       headers.set('authorization', `Bearer ${token}`);

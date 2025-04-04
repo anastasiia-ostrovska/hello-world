@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { useAppDispatch } from '@shared/redux';
-import { setIsAuth, storeAccessToken } from '@shared/api';
+import { storeAccessToken } from '@shared/api';
 import { ErrorMessage, getErrorMessage } from '@entities/error-message';
 import { LOGIN_ERROR_MESSAGES } from '@features/login/config/error-messages';
 import { useLoginMutation } from '@entities/session/api/loginApi';
@@ -59,7 +59,6 @@ const useLogInForm = (): UseLogInFormResult => {
       setLoginError(undefined);
       reset();
       dispatch(storeAccessToken(logInResponse.data.token));
-      dispatch(setIsAuth(true));
     }
   }, [isSubmitSuccessful, logInRequestSuccess, reset, logInResponse, dispatch]);
 

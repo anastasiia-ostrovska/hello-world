@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@shared/redux';
-import { removeAccessToken, setIsAuth } from '@shared/api';
+import { removeAccessToken } from '@shared/api';
 import {
   addNotification,
   createErrorNotificationElement,
@@ -20,7 +20,6 @@ const useLogOut = (): UseLogOutResult => {
     try {
       await logOut().unwrap();
       dispatch(removeAccessToken());
-      dispatch(setIsAuth(false));
     } catch (error: unknown) {
       const getLogoutErrorMessage = getErrorMessage();
       const { title, message } = getLogoutErrorMessage(error);
