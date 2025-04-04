@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@shared/redux';
-import { selectAccessToken, selectIsAuth, setIsAuth } from '@shared/api';
 import { useGetAuthDataQuery } from '@features/login';
+import { useAppSelector } from '@shared/redux';
+import { selectAccessToken } from '@shared/api';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
@@ -10,8 +9,9 @@ interface UseInitializeAppResult {
 
 const useInitializeApp = (): UseInitializeAppResult => {
   const token = useAppSelector(selectAccessToken);
-  const isAuth = useAppSelector(selectIsAuth);
-  const dispatch = useAppDispatch();
+  // const token = getStoredToken();
+  // const isAuth = useAppSelector(selectIsAuth);
+  // const dispatch = useAppDispatch();
   const { isSuccess, isLoading: isAuthLoading } = useGetAuthDataQuery(
     undefined,
     {
@@ -19,13 +19,13 @@ const useInitializeApp = (): UseInitializeAppResult => {
     }
   );
 
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(setIsAuth(true));
-    }
-  }, [dispatch, isSuccess]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     dispatch(setIsAuth(true));
+  //   }
+  // }, [dispatch, isSuccess]);
 
-  return { isAuth, isInitialized: !isAuthLoading };
+  return { isAuth: isSuccess, isInitialized: !isAuthLoading };
 };
 
 export default useInitializeApp;

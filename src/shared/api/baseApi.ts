@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from '@app/store';
-import unauthorizedHandler from '@shared/api/model/unauthorizedHandler';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { logError, logSuccess } from './model/responseLoggers';
+import unauthorizedHandler from './model/unauthorizedHandler';
 import * as TAGS from './config/invalidation-tags';
 
 const baseQuery = fetchBaseQuery({
@@ -32,7 +32,7 @@ const baseQueryWithInterceptor: typeof baseQuery = async (
   if (data) logSuccess(data);
   if (error) {
     logError(error);
-    unauthorizedHandler(error, api.dispatch);
+    unauthorizedHandler(error);
   }
   return result;
 };

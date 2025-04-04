@@ -5,7 +5,7 @@ import {
   createErrorNotificationElement,
 } from '@entities/notification';
 import { getErrorMessage } from '@entities/error-message';
-import { useLogOutMutation } from '../api/loginApi';
+import { useLogoutMutation } from '@entities/session/api/loginApi';
 
 interface UseLogOutResult {
   handleLogOut: () => void;
@@ -13,7 +13,7 @@ interface UseLogOutResult {
 }
 
 const useLogOut = (): UseLogOutResult => {
-  const [logOut, { isLoading }] = useLogOutMutation();
+  const [logOut, { isLoading }] = useLogoutMutation();
   const dispatch = useAppDispatch();
 
   const handleLogOut = async () => {
