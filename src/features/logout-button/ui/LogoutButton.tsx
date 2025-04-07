@@ -20,12 +20,11 @@ const LogoutIcon = ({ iconSize }: { iconSize: number }) => {
 };
 
 const LogoutButton = ({ iconSize }: { iconSize: number }) => {
-  const { handleLogout, isLogOutRequestLoading } = useLogout();
+  const { handleLogout } = useLogout();
 
   return (
     <Chip
       component="button"
-      disabled={isLogOutRequestLoading}
       clickable
       variant="outlined"
       label="Log out"
