@@ -4,7 +4,7 @@ import {
   getTokenFromLocalStorage,
   removeTokenFromLocalStorage,
   setTokenToLocalStorage,
-} from '@shared/api/model/tokenLocalStorageHandlers';
+} from '@entities/session/lib/tokenLocalStorageHandlers';
 
 const initialState = {
   token: getTokenFromLocalStorage(),
