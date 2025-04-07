@@ -27,11 +27,6 @@ const input = {
       validate: passwordValidationRules,
     },
   },
-  rememberMe: {
-    name: LoginField.RememberMe,
-    label: 'Remember me',
-    helperText: 'Stay logged in on this device',
-  },
 };
 
 export default input;

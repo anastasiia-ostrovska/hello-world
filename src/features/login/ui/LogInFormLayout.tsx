@@ -29,7 +29,6 @@ export const LogInFormLayout = ({
           flexDirection: 'column',
           alignItems: 'center',
           gap: 1,
-          p: 1,
         }}
       >
         {guestData}
@@ -40,7 +39,7 @@ export const LogInFormLayout = ({
           {error.message}
         </Alert>
       )}
-      <SectionWrapper sx={{ p: 1 }}>{children}</SectionWrapper>
+      <SectionWrapper>{children}</SectionWrapper>
     </Stack>
   );
 };
@@ -68,19 +67,13 @@ export const GuestDataLayout = ({ text, button }: GuestDataLayoutProps) => {
 interface InputsLayoutProps {
   email: ReactElement;
   password: ReactElement;
-  rememberMe: ReactElement;
 }
 
-export const InputsLayout = ({
-  email,
-  password,
-  rememberMe,
-}: InputsLayoutProps) => {
+export const InputsLayout = ({ email, password }: InputsLayoutProps) => {
   return (
     <Stack spacing={2}>
       {email}
       {password}
-      {rememberMe}
     </Stack>
   );
 };

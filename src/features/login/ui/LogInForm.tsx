@@ -1,17 +1,12 @@
 import { FormProvider } from 'react-hook-form';
-import {
-  ControlledCheckbox,
-  ControlledTextField,
-  Form,
-  SubmitButton,
-} from '@/shared/forms';
+import { ControlledTextField, Form, SubmitButton } from '@/shared/forms';
 import { FillGuestDataButton } from '@features/fill-form-button';
 import {
   GuestDataLayout,
   InputsLayout,
   LogInFormLayout,
 } from './LogInFormLayout';
-import useLogInForm from '../model/useLogInForm';
+import { useLoginForm } from '../model/useLoginForm';
 import input from '../config/input-items';
 
 const LogInForm = () => {
@@ -21,7 +16,7 @@ const LogInForm = () => {
     isSubmitButtonDisabled,
     isLogInRequestLoading,
     loginError,
-  } = useLogInForm();
+  } = useLoginForm();
 
   return (
     <FormProvider {...methods}>
@@ -46,12 +41,6 @@ const LogInForm = () => {
             password={
               <ControlledTextField
                 {...input.password}
-                disabled={isLogInRequestLoading}
-              />
-            }
-            rememberMe={
-              <ControlledCheckbox
-                {...input.rememberMe}
                 disabled={isLogInRequestLoading}
               />
             }
