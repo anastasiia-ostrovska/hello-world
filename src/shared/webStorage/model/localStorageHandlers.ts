@@ -1,5 +1,8 @@
-export const getFromLocalStorage = (key: string) => (): string | null => {
-  return localStorage.getItem(key);
+export const getFromLocalStorage = (key: string): unknown => {
+  const item = localStorage.getItem(key);
+
+  if (!item) return null;
+  return JSON.parse(item);
 };
 
 export const setToLocalStorage =
