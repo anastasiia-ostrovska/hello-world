@@ -1,10 +1,10 @@
-import { LoginField } from '@entities/session/model/types';
+import { LoginField } from '@entities/session';
 import {
   emailValidationRules,
   passwordValidationRules,
 } from './validation-rules';
 
-const input = {
+export const inputs = {
   email: {
     name: LoginField.Email,
     type: 'email',
@@ -28,5 +28,3 @@ const input = {
     },
   },
 };
-
-export default input;

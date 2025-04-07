@@ -1,11 +1,11 @@
-export const emailValidationMessage = {
+export const EMAIL_VALIDATION_MESSAGES = {
   required: 'Please, enter your email',
   whitespacesForbidden: 'Please, remove empty spaces in email',
   invalidEmailFormat:
     'Please, enter a valid email address in the format: example@domain.com.',
 };
 
-export const passwordValidationMessage = {
+export const PASSWORD_VALIDATION_MASSAGES = {
   required: 'Please, enter your password',
   whitespacesForbidden: 'Please, remove empty spaces in password',
   uppercaseRequired:
