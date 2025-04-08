@@ -1,6 +1,5 @@
 import { useAppSelector } from '@shared/redux';
-import { selectToken } from '@entities/session';
-import { useGetAuthDataQuery } from '@features/login';
+import { selectToken, useAuthMeQuery } from '@entities/session';
 
 interface UseInitializeAppResult {
   isAuth: boolean;
@@ -13,7 +12,7 @@ const useInitializeApp = (): UseInitializeAppResult => {
     data: authData,
     isSuccess,
     isLoading: isAuthLoading,
-  } = useGetAuthDataQuery(undefined, {
+  } = useAuthMeQuery(undefined, {
     skip: !token,
   });
 

@@ -1,3 +1,3 @@
-export * from './api/loginApi';
+export * from './api/authApi';
 export * from './model/types';
 export * from './model/sessionSlice';
