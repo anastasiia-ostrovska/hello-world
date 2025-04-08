@@ -1,7 +1,10 @@
 import { FormProvider } from 'react-hook-form';
 import { Form, SubmitButton } from '@/shared/forms';
-import { FillGuestDataButton } from '@features/fill-form-button';
-import { EmailInput, PasswordInput } from '@features/login-inputs';
+import {
+  EmailInput,
+  FillGuestDataButton,
+  PasswordInput,
+} from '@features/login';
 import LoginErrorNotification from './LoginErrorNotification';
 import {
   FormGuestDataLayout,
