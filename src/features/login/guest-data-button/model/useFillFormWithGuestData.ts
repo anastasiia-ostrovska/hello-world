@@ -1,5 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { LoginField } from '@entities/session';
+import { GUEST_CREDENTIALS } from '@features/login/guest-data-button/consts/guest-credentials';
 
 const useFillFormWithGuestData = () => {
   const { reset } = useFormContext();
@@ -7,8 +8,8 @@ const useFillFormWithGuestData = () => {
   const handleFillGuestData = () => {
     reset(
       {
-        [LoginField.Email]: import.meta.env.VITE_GUEST_EMAIL,
-        [LoginField.Password]: import.meta.env.VITE_GUEST_PASSWORD,
+        [LoginField.Email]: GUEST_CREDENTIALS.email,
+        [LoginField.Password]: GUEST_CREDENTIALS.password,
       },
       {
         keepDefaultValues: true,
