@@ -1,29 +1,24 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import SectionWrapper from '@shared/ui/SectionWrapper';
-import { ErrorMessage } from '@shared/error-message';
-import AlertTitle from '@mui/material/AlertTitle';
-import Alert from '@mui/material/Alert';
 
 interface LogInFormLayoutProps {
-  heading: string;
-  guestData: ReactElement;
-  error: ErrorMessage | undefined;
-  children: ReactNode;
+  header: ReactElement;
+  form: ReactElement;
+  guestDataHelper: ReactElement;
+  errorNotification: ReactElement;
 }
 
-export const LogInFormLayout = ({
-  heading,
-  guestData,
-  error,
-  children,
+export const LoginFormBlockLayout = ({
+  header,
+  guestDataHelper,
+  errorNotification,
+  form,
 }: LogInFormLayoutProps) => {
   return (
     <Stack spacing={1} sx={{ maxWidth: 300, width: '100%' }}>
-      <Typography variant="h5" component="h1" sx={{ alignSelf: 'center' }}>
-        {heading}
-      </Typography>
+      {header}
       <SectionWrapper
         sx={{
           flexDirection: 'column',
@@ -31,16 +26,19 @@ export const LogInFormLayout = ({
           gap: 1,
         }}
       >
-        {guestData}
+        {guestDataHelper}
       </SectionWrapper>
-      {!!error && (
-        <Alert severity="error" variant="outlined">
-          {!!error.title && <AlertTitle> {error.title}</AlertTitle>}
-          {error.message}
-        </Alert>
-      )}
-      <SectionWrapper>{children}</SectionWrapper>
+      {errorNotification}
+      <SectionWrapper>{form}</SectionWrapper>
     </Stack>
+  );
+};
+
+export const FormHeaderLayout = ({ heading }: { heading: string }) => {
+  return (
+    <Typography variant="h5" component="h1" sx={{ alignSelf: 'center' }}>
+      {heading}
+    </Typography>
   );
 };
 
@@ -49,7 +47,7 @@ interface GuestDataLayoutProps {
   button: ReactElement;
 }
 
-export const GuestDataLayout = ({ text, button }: GuestDataLayoutProps) => {
+export const FormGuestDataLayout = ({ text, button }: GuestDataLayoutProps) => {
   return (
     <>
       <Typography
@@ -69,7 +67,7 @@ interface InputsLayoutProps {
   password: ReactElement;
 }
 
-export const InputsLayout = ({ email, password }: InputsLayoutProps) => {
+export const FormInputsLayout = ({ email, password }: InputsLayoutProps) => {
   return (
     <Stack spacing={2}>
       {email}

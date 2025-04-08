@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { AppLayout } from '@widgets/layout';
-import { useRedirect } from '@shared/redirect';
 import { ROUTES } from '@shared/router';
+import { useRedirect } from '@shared/redirect';
+import { AppLayout } from '@widgets/layout';
 import { NotFoundPage } from '@pages/not-found';
-import LogIn from '@pages/LogIn';
+import { LoginPage } from '@pages/login-page';
 import Home from '@pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
 import ProtectedRoute from '@app/routing/ui/ProtectedRoute';
@@ -23,7 +23,7 @@ const Routing = ({ isAuth }: RoutingProps) => {
         path={ROUTES.LOGIN}
         element={
           <ProtectedRoute isAllowed={!isAuth} redirectPath={redirectedFrom}>
-            <LogIn />
+            <LoginPage />
           </ProtectedRoute>
         }
       />

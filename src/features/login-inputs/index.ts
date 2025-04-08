@@ -1,1 +1,2 @@
-export { EmailInput, PasswordInput } from './ui/Inputs';
+export { EmailInput } from './ui/EmailInput';
+export { PasswordInput } from './ui/PasswordInput';
