@@ -1,14 +1,13 @@
 import { useTheme } from '@mui/material/styles';
-import { User } from '@shared/user';
-import getAvatarColor from './getAvatarColor';
-import getInitials from './getInitials';
+import { getAvatarColor } from '../lib/getAvatarColor';
+import { getInitials } from '../lib/getInitials';
 
 interface AvatarData {
   bgColor: string;
   initials: string;
 }
 
-const useAvatar = (name: User['name']): AvatarData => {
+export const useAvatar = (name: string): AvatarData => {
   const { palette } = useTheme();
 
   const colors = Object.values(palette.customBackground.avatar);
@@ -17,5 +16,3 @@ const useAvatar = (name: User['name']): AvatarData => {
 
   return { bgColor, initials };
 };
-
-export default useAvatar;

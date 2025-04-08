@@ -1,7 +1,9 @@
 // User
+export type Photo = string | null;
+
 export interface UserPhotos {
-  avatar: string;
-  background: string;
+  avatar: Photo;
+  background: Photo;
 }
 
 export interface UserContacts {
@@ -52,4 +54,10 @@ export interface UsersQueryParams {
   currentPage: number;
   searchedUser: string;
   isFollowedByMe: boolean;
+}
+
+// Props
+export enum AvatarPosition {
+  Center = 'center',
+  Left = 'left',
 }

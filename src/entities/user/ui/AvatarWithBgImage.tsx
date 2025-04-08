@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
-import { ReactElement } from 'react';
 import { Styles } from '@shared/mui';
-import { AvatarWithBgImageProps } from '../model/types';
-import UserAvatar from './UserAvatar';
+import Avatar, { UserAvatarProps } from '@entities/user/ui/Avatar';
+import { ReactElement } from 'react';
+import { AvatarPosition, Photo } from '../model/types';
 
 interface AvatarWithBgImageLayoutProps {
   bgImageBlock: ReactElement;
@@ -30,10 +30,15 @@ const AvatarWithBgImageLayout = ({
   );
 };
 
-const UserBackgroundImage = ({
-  bgImageHeight,
+interface BackgroundImageProps {
+  bgImageSrc: Photo;
+  bgImageHeight: number | `${number}px` | `${number}rem`;
+}
+
+const BackgroundImage = ({
   bgImageSrc,
-}: Pick<AvatarWithBgImageProps, 'bgImageHeight' | 'bgImageSrc'>) => {
+  bgImageHeight,
+}: BackgroundImageProps) => {
   return (
     <Box
       bgcolor="grey.300"
@@ -51,35 +56,41 @@ const UserBackgroundImage = ({
   );
 };
 
+interface AvatarWithBgImageProps extends UserAvatarProps, BackgroundImageProps {
+  avatarBorderColor?: string;
+  avatarBorderWidth?: `${number}px`;
+  avatarPosition?: AvatarPosition;
+}
+
 const AvatarWithBgImage = ({
-  userName,
+  name,
   avatarSrc,
   bgImageSrc,
   avatarSize,
   bgImageHeight,
   avatarBorderColor = '',
   avatarBorderWidth = '5px',
-  avatarPosition = 'center',
+  avatarPosition = AvatarPosition.Center,
   sx = {},
 }: AvatarWithBgImageProps) => {
   return (
     <AvatarWithBgImageLayout
       bgImageBlock={
-        <UserBackgroundImage
+        <BackgroundImage
           bgImageHeight={bgImageHeight}
           bgImageSrc={bgImageSrc}
         />
       }
       avatar={
-        <UserAvatar
-          userName={userName}
-          src={avatarSrc}
-          size={avatarSize}
+        <Avatar
+          name={name}
+          avatarSrc={avatarSrc}
+          avatarSize={avatarSize}
           sx={{
             position: 'absolute',
             transform: 'translateY(-50%)',
             left:
-              avatarPosition === 'center'
+              avatarPosition === AvatarPosition.Center
                 ? `calc(50% - ${avatarSize / 2}px)`
                 : '2rem',
             border: avatarBorderColor
