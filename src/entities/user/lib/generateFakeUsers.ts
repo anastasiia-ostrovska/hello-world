@@ -1,4 +1,4 @@
-import { FakeUser } from './types';
+import { UserWithInfo } from '../model/types';
 
 /**
  * Generates an array of fake users.
@@ -14,14 +14,23 @@ import { FakeUser } from './types';
  *   - followed: default value is false
  */
 
-const generateFakeUsers = (count: number): FakeUser[] =>
+export const generateFakeUsers = (count: number): UserWithInfo[] =>
   Array.from({ length: count }, () => ({
     id: crypto.randomUUID(),
     name: '',
-    job: '',
-    country: '',
     photos: { avatar: null, background: null },
-    followed: false,
+    email: '',
+    phone: '',
+    country: '',
+    job: '',
+    aboutMe: '',
+    contacts: {
+      linkedIn: '',
+      github: '',
+      facebook: '',
+      instagram: '',
+    },
+    isFollowedByMe: false,
+    followedBy: [],
+    following: [],
   }));
-
-export default generateFakeUsers;
