@@ -1,4 +1,8 @@
-import { ApiSuccessResponse } from '@shared/api';
+export interface AuthData {
+  userId: number;
+  name: string;
+  email: string;
+}
 
 export enum LoginField {
   Email = 'email',
@@ -10,9 +14,7 @@ export interface LoginData {
   [LoginField.Password]: string;
 }
 
-interface LoginResponseData {
+export interface LoginResponseData {
   userId: number;
   token: string;
 }
-
-export type LoginResponse = ApiSuccessResponse<LoginResponseData>;
