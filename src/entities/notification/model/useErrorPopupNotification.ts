@@ -19,5 +19,5 @@ export const useErrorPopupNotification = (errorMessages?: ErrorMessages) => {
     dispatch(addNotification(errorNotification));
   };
 
-  return showErrorPopupNotification;
+  return { showErrorPopupNotification };
 };

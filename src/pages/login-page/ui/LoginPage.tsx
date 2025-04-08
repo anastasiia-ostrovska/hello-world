@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
-import { LogInForm } from '@features/login';
+import { LoginForm } from '@widgets/login-form';
 
-const LogIn = () => {
+const LoginPage = () => {
   return (
     <Stack
       sx={{
@@ -10,9 +10,9 @@ const LogIn = () => {
         alignItems: 'center',
       }}
     >
-      <LogInForm />
+      <LoginForm />
     </Stack>
   );
 };
 
-export default LogIn;
+export default LoginPage;

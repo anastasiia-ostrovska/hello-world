@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { AvatarWithBgImage, UserAvatar } from '@/features/users';
 import { ModeSwitcher } from '@features/mode-switcher';
-import { LogInForm } from '@/features/login';
+import { LoginForm } from '@widgets/login-form';
 
 const Components = () => {
   return (
@@ -72,7 +72,7 @@ const Components = () => {
           bgImageSrc={null}
         />
       </Box>
-      <LogInForm />
+      <LoginForm />
     </Stack>
   );
 };

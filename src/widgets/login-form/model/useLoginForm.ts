@@ -3,24 +3,23 @@ import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { ErrorMessage, getErrorMessage } from '@shared/error-message';
 import { useAppDispatch } from '@shared/redux';
 import { storeAccessToken } from '@entities/session';
-import { LOGIN_ERROR_MESSAGES } from '@features/login/config/error-messages';
 import { useLoginMutation } from '@entities/session/api/loginApi';
 import { LoginData, LoginField } from '@entities/session/model/types';
+import { LOGIN_ERROR_MESSAGES } from '../consts/error-messages';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LoginData>;
   handleFormSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
   isSubmitButtonDisabled: boolean;
   isLogInRequestLoading: boolean;
-  loginError: ErrorMessage | undefined;
+  loginError: ErrorMessage | null;
 }
 
-const useLogInForm = (): UseLogInFormResult => {
+export const useLoginForm = (): UseLogInFormResult => {
   const methods = useForm<LoginData>({
     defaultValues: {
       [LoginField.Email]: '',
       [LoginField.Password]: '',
-      [LoginField.RememberMe]: true,
     },
     mode: 'onTouched',
   });
@@ -30,18 +29,17 @@ const useLogInForm = (): UseLogInFormResult => {
     formState: { dirtyFields, isSubmitting, isSubmitSuccessful },
   } = methods;
   const [
-    logIn,
+    login,
     {
-      isLoading: isLogInRequestLoading,
-      isSuccess: logInRequestSuccess,
-      data: logInResponse,
+      isLoading: isLoginRequestLoading,
+      isSuccess: loginRequestSuccess,
+      data: loginResponse,
       isError,
       error,
     },
   ] = useLoginMutation();
-  const [loginError, setLoginError] = useState<ErrorMessage | undefined>(
-    undefined
-  );
+
+  const [loginError, setLoginError] = useState<ErrorMessage | null>(null);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -51,31 +49,30 @@ const useLogInForm = (): UseLogInFormResult => {
 
       setLoginError(loginError);
     }
+
+    return () => setLoginError(null);
   }, [error, isError]);
 
   useEffect(() => {
-    if (isSubmitSuccessful && logInRequestSuccess) {
-      setLoginError(undefined);
+    if (isSubmitSuccessful && loginRequestSuccess) {
       reset();
-      dispatch(storeAccessToken(logInResponse.data.token));
+      dispatch(storeAccessToken(loginResponse.data.token));
     }
-  }, [isSubmitSuccessful, logInRequestSuccess, reset, logInResponse, dispatch]);
+  }, [isSubmitSuccessful, loginRequestSuccess, reset, loginResponse, dispatch]);
 
   const isEmptyField = !dirtyFields.email || !dirtyFields.password;
   const isSubmitButtonDisabled =
-    isEmptyField || isSubmitting || isLogInRequestLoading;
+    isEmptyField || isSubmitting || isLoginRequestLoading;
 
   const handleFormSubmit: SubmitHandler<LoginData> = (data) => {
-    logIn(data);
+    login(data);
   };
 
   return {
     methods,
     handleFormSubmit: handleSubmit(handleFormSubmit),
     isSubmitButtonDisabled,
-    isLogInRequestLoading,
+    isLogInRequestLoading: isLoginRequestLoading,
     loginError,
   };
 };
-
-export default useLogInForm;
