@@ -3,7 +3,7 @@ import { baseAPI } from '@shared/api';
 import { sessionSlice } from '@entities/session';
 import { themeSlice } from '@entities/theme';
 import { notificationSlice } from '@entities/notification';
-import { usersSlice } from '@features/users';
+import { usersSlice } from '@entities/user';
 
 const rootReducer = combineSlices(
   baseAPI,

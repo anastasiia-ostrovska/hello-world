@@ -10,11 +10,6 @@ export interface UsersQueryParams {
   currentPage: number;
 }
 
-export interface UsersData {
-  items: User[];
-  totalCount: number;
-}
-
 // props interfaces:
 
 export interface AvatarWithBgImageProps {
