@@ -1,4 +1,3 @@
-export { useGetAuthDataQuery } from './api/authApi';
-
-export { default as LogOutButton } from './ui/LogOutButton';
-export { default as LogInForm } from './ui/LogInForm';
+export * from './inputs';
+export * from './guest-data-button';
+export * from './logout-button';
