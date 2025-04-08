@@ -25,3 +25,5 @@ export const CloseAllNotificationsButton = forwardRef<
     </Button>
   );
 });
+
+CloseAllNotificationsButton.displayName = 'CloseAllNotificationsButton';
