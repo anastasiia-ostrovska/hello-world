@@ -35,7 +35,7 @@ const baseQueryWithInterceptor: typeof baseQuery = async (
 
 const baseAPI = createApi({
   baseQuery: baseQueryWithInterceptor,
-  tagTypes: [TAGS.USERS, TAGS.AUTH],
+  tagTypes: [TAGS.AUTH, TAGS.USERS, TAGS.USER],
   endpoints: () => ({}),
 });
 
