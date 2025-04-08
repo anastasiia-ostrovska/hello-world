@@ -11,7 +11,7 @@ import { User } from '@shared/user';
 
 type Initials = string;
 
-const getInitials = (fullName: User['name']): Initials => {
+export const getInitials = (fullName: User['name']): Initials => {
   if (!fullName || fullName.trim() === '') return '';
 
   return fullName

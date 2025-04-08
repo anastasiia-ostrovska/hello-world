@@ -29,7 +29,7 @@ const getNameHash = (name: User['name']): number => {
  * @returns {string} - The color assigned to the avatar.
  */
 
-const getAvatarColor = (
+export const getAvatarColor = (
   name: User['name'],
   colors: AvatarColor[]
 ): AvatarColor => {
@@ -38,5 +38,3 @@ const getAvatarColor = (
 
   return colors[colorIndex];
 };
-
-export default getAvatarColor;
