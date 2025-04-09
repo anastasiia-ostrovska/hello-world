@@ -52,8 +52,8 @@ export interface UsersData {
 export interface UsersQueryParams {
   usersPerPage: number;
   currentPage: number;
-  searchedUser: string;
-  isFollowedByMe: boolean;
+  searchedUser: string | undefined;
+  isFollowedByMe: boolean | undefined;
 }
 
 // Props

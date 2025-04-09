@@ -4,8 +4,8 @@ import { UsersQueryParams } from './types';
 const initialState: UsersQueryParams = {
   usersPerPage: 12,
   currentPage: 1,
-  searchedUser: '',
-  isFollowedByMe: false,
+  searchedUser: undefined,
+  isFollowedByMe: undefined,
 };
 
 export const usersSlice = createSlice({
@@ -32,7 +32,8 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { selectUsersPerPage, selectCurrentPage } = usersSlice.selectors;
+export const { selectUsersQueryParams, selectUsersPerPage, selectCurrentPage } =
+  usersSlice.selectors;
 export const {
   setUsersPerPage,
   setCurrentPage,
