@@ -1,4 +1,5 @@
 // User
+export type UserId = string;
 export type Photo = string | null;
 
 export interface UserPhotos {
@@ -13,12 +14,6 @@ export interface UserContacts {
   instagram: string;
 }
 
-export interface User {
-  id: string;
-  name: string;
-  photos: UserPhotos;
-}
-
 interface UserInfo {
   email: string;
   phone: string;
@@ -27,11 +22,13 @@ interface UserInfo {
   aboutMe: string;
 }
 
-export interface UserWithInfo extends User, UserInfo {
+export interface UserWithInfo extends UserInfo {
+  id: UserId;
+  name: string;
+  photos: UserPhotos;
   contacts: UserContacts;
-  isFollowedByMe: boolean;
-  followedBy: User[];
-  following: User[];
+  followedBy: UserId[];
+  following: UserId[];
 }
 
 interface EditableUserData extends UserContacts, UserPhotos, UserInfo {
@@ -41,7 +38,7 @@ interface EditableUserData extends UserContacts, UserPhotos, UserInfo {
 export type EditedUserData = Partial<EditableUserData>;
 
 // Users
-export interface UsersData {
+export interface UsersListData {
   users: UserWithInfo[];
   usersTotal: number;
   totalPages: number;
