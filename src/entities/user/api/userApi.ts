@@ -1,89 +1,53 @@
-import type { AppDispatch, RootState } from '@app/store';
 import {
   ApiSuccessResponse,
   baseAPI,
+  buildOptionalQueryParams,
   ENDPOINTS,
   METHODS,
   TAGS,
 } from '@shared/api';
 import {
   EditedUserData,
-  User,
-  UsersData,
+  UserId,
+  UsersListData,
   UsersQueryParams,
   UserWithInfo,
 } from '../model/types';
 
-type UsersResponse = ApiSuccessResponse<UsersData>;
 type UserResponse = ApiSuccessResponse<UserWithInfo>;
+type UsersResponse = ApiSuccessResponse<UsersListData>;
 type FollowUserResponse = ApiSuccessResponse<UserWithInfo['following']>;
-
-interface UpdateFollowStatusCacheParams {
-  state: RootState;
-  dispatch: AppDispatch;
-  userApi: typeof userApi;
-  userId: User['id'];
-}
-
-const updateFollowStatusCache = ({
-  state,
-  dispatch,
-  userApi,
-  userId,
-}: UpdateFollowStatusCacheParams) => {
-  const { queries } = state.api;
-  const getUsersQuery = Object.values(queries).find((query) => {
-    return query?.endpointName === 'getUsers';
-  });
-
-  if (!getUsersQuery?.originalArgs) {
-    throw new Error('Failed to find the query arguments for getUsers');
-  }
-
-  const { usersPerPage, currentPage, searchedUser, isFollowedByMe } =
-    getUsersQuery.originalArgs as UsersQueryParams;
-
-  return dispatch(
-    userApi.util.updateQueryData(
-      'users',
-      { usersPerPage, currentPage, searchedUser, isFollowedByMe },
-      (draft: UsersResponse) => {
-        const user = draft.data.users.find((user) => user.id === userId);
-
-        if (user) {
-          user.isFollowedByMe = !user.isFollowedByMe;
-        }
-      }
-    )
-  );
-};
 
 const userApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
-    users: builder.query<UsersResponse, UsersQueryParams>({
-      query: ({
-        usersPerPage,
-        currentPage,
-        searchedUser = '',
-        isFollowedByMe = false,
-      }) => ({
-        url: `${ENDPOINTS.USERS}?count=${usersPerPage}&page=${currentPage}&search=${searchedUser}&isFollowedByMe=${isFollowedByMe}`,
-      }),
-      providesTags: [TAGS.USERS],
-    }),
-
     userMe: builder.query<UserResponse, void>({
       query: () => ({
         url: ENDPOINTS.USER_ME,
       }),
-      providesTags: [TAGS.USER],
+      providesTags: [TAGS.USER_ME],
     }),
 
-    userById: builder.query<UserResponse, User['id']>({
+    userById: builder.query<UserResponse, UserId>({
       query: (userId) => ({
         url: `${ENDPOINTS.USER}/${userId}`,
       }),
       providesTags: [TAGS.USER],
+    }),
+
+    usersList: builder.query<UsersResponse, Partial<UsersQueryParams>>({
+      query: ({ usersPerPage, currentPage, searchedUser, isFollowedByMe }) => {
+        const queryString = buildOptionalQueryParams({
+          count: usersPerPage,
+          page: currentPage,
+          search: searchedUser,
+          following: isFollowedByMe,
+        });
+
+        return {
+          url: `${ENDPOINTS.USERS}?${queryString}`,
+        };
+      },
+      providesTags: [TAGS.USERS_LIST],
     }),
 
     updateUser: builder.mutation<UserResponse, EditedUserData>({
@@ -92,26 +56,36 @@ const userApi = baseAPI.injectEndpoints({
         url: ENDPOINTS.USER,
         body: editedUserData,
       }),
+      invalidatesTags: [TAGS.USER_ME],
     }),
 
-    followUser: builder.mutation<FollowUserResponse, User['id']>({
+    toggleFollowUser: builder.mutation<FollowUserResponse, UserId>({
       query: (userId) => ({
         method: METHODS.PUT,
-        url: `${ENDPOINTS.USER_FOLLOW}/${userId}`,
+        url: `${ENDPOINTS.USER_FOLLOW}/${userId}роваовао`,
       }),
 
-      async onQueryStarted(userId, { dispatch, getState, queryFulfilled }) {
-        const patchResult = updateFollowStatusCache({
-          state: getState() as RootState,
-          dispatch,
-          userApi,
-          userId,
-        });
+      async onQueryStarted(userId, { dispatch, queryFulfilled }) {
+        const patchUserMe = dispatch(
+          userApi.util.updateQueryData('userMe', undefined, (draft) => {
+            const usersFollowedByMe = draft.data.following;
+            const isFollowed = usersFollowedByMe.includes(userId);
+
+            if (isFollowed) {
+              // eslint-disable-next-line no-param-reassign
+              draft.data.following = usersFollowedByMe.filter(
+                (id) => id !== userId
+              );
+            } else {
+              draft.data.following.push(userId);
+            }
+          })
+        );
 
         try {
           await queryFulfilled;
-        } catch (error) {
-          patchResult.undo();
+        } catch {
+          patchUserMe.undo();
         }
       },
     }),
@@ -119,8 +93,8 @@ const userApi = baseAPI.injectEndpoints({
 });
 
 export const {
-  useUsersQuery,
+  useUsersListQuery,
   useUserMeQuery,
   useUserByIdQuery,
-  useFollowUserMutation,
+  useToggleFollowUserMutation,
 } = userApi;
