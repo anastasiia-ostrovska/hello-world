@@ -1,6 +1,6 @@
 import MUIAvatar from '@mui/material/Avatar';
 import { UserAvatarProps } from '../model/types';
-import { useAvatar } from '../model/useAvatar';
+import { useAvatar } from '../lib/useAvatar';
 
 const Avatar = ({ name, avatarSrc, avatarSize, sx = {} }: UserAvatarProps) => {
   const { bgColor, initials } = useAvatar(name);

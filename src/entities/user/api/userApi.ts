@@ -1,7 +1,6 @@
 import {
   ApiSuccessResponse,
   baseAPI,
-  buildOptionalQueryParams,
   ENDPOINTS,
   METHODS,
   TAGS,
@@ -10,12 +9,12 @@ import {
   EditedUserData,
   UserId,
   UsersListData,
-  UsersQueryParams,
+  UsersListFilters,
   UserWithInfo,
 } from '../model/types';
 
 type UserResponse = ApiSuccessResponse<UserWithInfo>;
-type UsersResponse = ApiSuccessResponse<UsersListData>;
+type UsersListResponse = ApiSuccessResponse<UsersListData>;
 type FollowUserResponse = ApiSuccessResponse<UserWithInfo['following']>;
 
 const userApi = baseAPI.injectEndpoints({
@@ -34,17 +33,12 @@ const userApi = baseAPI.injectEndpoints({
       providesTags: [TAGS.USER],
     }),
 
-    usersList: builder.query<UsersResponse, Partial<UsersQueryParams>>({
-      query: ({ usersPerPage, currentPage, searchedUser, isFollowedByMe }) => {
-        const queryString = buildOptionalQueryParams({
-          count: usersPerPage,
-          page: currentPage,
-          search: searchedUser,
-          following: isFollowedByMe,
-        });
-
+    usersList: builder.query<UsersListResponse, Partial<UsersListFilters>>({
+      query: (filters) => {
         return {
-          url: `${ENDPOINTS.USERS}?${queryString}`,
+          url: ENDPOINTS.USERS,
+          method: METHODS.POST,
+          body: filters,
         };
       },
       providesTags: [TAGS.USERS_LIST],
@@ -62,7 +56,7 @@ const userApi = baseAPI.injectEndpoints({
     toggleFollowUser: builder.mutation<FollowUserResponse, UserId>({
       query: (userId) => ({
         method: METHODS.PUT,
-        url: `${ENDPOINTS.USER_FOLLOW}/${userId}роваовао`,
+        url: `${ENDPOINTS.USER_FOLLOW}/${userId}`,
       }),
 
       async onQueryStarted(userId, { dispatch, queryFulfilled }) {

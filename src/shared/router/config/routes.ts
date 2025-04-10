@@ -1,7 +1,7 @@
 export const ROOT = '/';
 export const LOGIN = '/login';
 export const HOME = '/home';
-export const NETWORK = '/users';
+export const NETWORK = '/network';
 export const NEW_POST = '/new-post';
 export const FAVOURITES = '/favorites';
 export const DIALOGS = '/dialogs';
