@@ -12,7 +12,7 @@ export const usersSlice = createSlice({
   name: 'usersListFilters',
   initialState: initialUsersListFilters,
   selectors: {
-    selectUsersQueryParams: (state) => state,
+    selectUsersListFilters: (state) => state,
     selectUsersPerPage: (state) => state.count,
     selectCurrentPage: (state) => state.page,
   },
@@ -32,7 +32,7 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { selectUsersQueryParams, selectUsersPerPage, selectCurrentPage } =
+export const { selectUsersListFilters, selectUsersPerPage, selectCurrentPage } =
   usersSlice.selectors;
 export const {
   setUsersPerPage,

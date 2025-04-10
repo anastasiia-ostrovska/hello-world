@@ -49,11 +49,11 @@ export interface UsersListData {
   currentPage: number;
 }
 
-export interface UsersQueryParams {
-  usersPerPage: number;
-  currentPage: number;
-  searchedUser: string | undefined;
-  isFollowedByMe: boolean | undefined;
+export interface UsersListFilters {
+  count: number;
+  page: number;
+  search: string;
+  following: boolean;
 }
 
 // Props
