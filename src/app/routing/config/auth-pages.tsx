@@ -8,7 +8,7 @@ const Profile = lazy(
 const Dialogs = lazy(() => import('@/_old-version/components/Dialogs/Dialogs'));
 const Notifications = lazy(() => import('@/pages/Notifications'));
 const Home = lazy(() => import('@/pages/Home'));
-const Network = lazy(() => import('@/pages/Network'));
+const Network = lazy(() => import('@pages/network-page'));
 const NewPost = lazy(() => import('@/pages/NewPost'));
 const Favourites = lazy(() => import('@/pages/Favourites'));
 const Library = lazy(() => import('@/pages/Library'));

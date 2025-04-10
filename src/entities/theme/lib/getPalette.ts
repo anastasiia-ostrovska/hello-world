@@ -1,6 +1,6 @@
 import { PaletteOptions } from '@mui/material/styles';
 import { ThemeMode } from '../model/types';
-import { AVATAR_COLORS, AvatarColors } from '../config/avatar-colors';
+import { AVATAR_COLORS, AvatarColors } from '../consts/avatar-colors';
 
 type CustomBackground = {
   avatar: AvatarColors;

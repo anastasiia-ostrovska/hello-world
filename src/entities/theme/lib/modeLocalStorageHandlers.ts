@@ -4,17 +4,11 @@ import { MODE_STORAGE_KEY } from '../consts/mode-storage-key';
 
 export const setModeToLocalStorage = setToLocalStorage(MODE_STORAGE_KEY);
 
-const getModeFromLocalStorage = getFromLocalStorage(MODE_STORAGE_KEY);
+export const getStoredThemeMode = (): null | ThemeMode => {
+  const mode = getFromLocalStorage(MODE_STORAGE_KEY);
 
-export const getStoredThemeMode = (): ThemeMode | null => {
-  const modeInLocalStorage = getModeFromLocalStorage();
-
-  if (modeInLocalStorage) {
-    const parsedMode = JSON.parse(modeInLocalStorage);
-
-    if (Object.values(ThemeMode).includes(parsedMode)) {
-      return parsedMode;
-    }
+  if (mode && Object.values(ThemeMode).includes(mode as ThemeMode)) {
+    return mode as ThemeMode;
   }
 
   return null;

@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import { AvatarWithBgImage, UserAvatar } from '@/features/users';
+import { AvatarWithBgImage, UserAvatar } from '@entities/user';
 import { ModeSwitcher } from '@features/mode-switcher';
 import { LoginForm } from '@widgets/login-form';
 
@@ -16,10 +16,10 @@ const Components = () => {
         <ModeSwitcher />
       </Box>
       <Stack spacing={1} direction="row" useFlexGap>
-        <UserAvatar src={null} userName="Some Name" size={200} />
-        <UserAvatar src={null} userName="john doe" size={100} />
-        <UserAvatar src={null} userName="Nana" size={30} />
-        <UserAvatar src={null} userName="" size={30} />
+        <UserAvatar avatarSrc={null} name="Some Name" avatarSize={200} />
+        <UserAvatar avatarSrc={null} name="john doe" avatarSize={100} />
+        <UserAvatar avatarSrc={null} name="Nana" avatarSize={30} />
+        <UserAvatar avatarSrc={null} name="" avatarSize={30} />
       </Stack>
       <Box
         sx={{
@@ -30,7 +30,7 @@ const Components = () => {
         }}
       >
         <AvatarWithBgImage
-          userName="Anna"
+          name="Anna"
           avatarSize={150}
           avatarSrc={null}
           bgImageHeight={200}
@@ -48,7 +48,7 @@ const Components = () => {
         }}
       >
         <AvatarWithBgImage
-          userName="Janine Goo"
+          name="Janine Goo"
           bgImageSrc={null}
           avatarSize={120}
           bgImageHeight={100}
@@ -65,7 +65,7 @@ const Components = () => {
         }}
       >
         <AvatarWithBgImage
-          userName="Valery T"
+          name="Valery T"
           avatarSize={60}
           bgImageHeight={60}
           avatarSrc={null}

@@ -1,0 +1,83 @@
+// User
+
+import { Styles } from '@shared/mui';
+
+export type UserId = string;
+export type Photo = string | null;
+
+export interface UserPhotos {
+  avatar: Photo;
+  background: Photo;
+}
+
+export interface UserContacts {
+  linkedIn: string;
+  github: string;
+  facebook: string;
+  instagram: string;
+}
+
+interface UserInfo {
+  email: string;
+  phone: string;
+  country: string;
+  job: string;
+  aboutMe: string;
+}
+
+export interface UserWithInfo extends UserInfo {
+  id: UserId;
+  name: string;
+  photos: UserPhotos;
+  contacts: UserContacts;
+  followedBy: UserId[];
+  following: UserId[];
+}
+
+interface EditableUserData extends UserContacts, UserPhotos, UserInfo {
+  name: string;
+}
+
+export type EditedUserData = Partial<EditableUserData>;
+
+// Users
+export interface UsersListData {
+  users: UserWithInfo[];
+  usersTotal: number;
+  totalPages: number;
+  perPage: number;
+  currentPage: number;
+}
+
+export interface UsersListFilters {
+  count: number;
+  page: number;
+  search: string;
+  following: boolean;
+}
+
+// Props
+export enum AvatarPosition {
+  Center = 'center',
+  Left = 'left',
+}
+
+export interface UserAvatarProps {
+  name: string;
+  avatarSrc: Photo;
+  avatarSize: number;
+  sx?: Styles;
+}
+
+export interface BackgroundImageProps {
+  bgImageSrc: Photo;
+  bgImageHeight: number | `${number}px` | `${number}rem`;
+}
+
+export interface AvatarWithBgImageProps
+  extends UserAvatarProps,
+    BackgroundImageProps {
+  avatarBorderColor?: string;
+  avatarBorderWidth?: `${number}px`;
+  avatarPosition?: AvatarPosition;
+}
