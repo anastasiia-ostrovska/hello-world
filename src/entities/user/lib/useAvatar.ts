@@ -1,6 +1,6 @@
 import { useTheme } from '@mui/material/styles';
-import { getAvatarColor } from '../lib/getAvatarColor';
-import { getInitials } from '../lib/getInitials';
+import { getAvatarColor } from './getAvatarColor';
+import { getInitials } from './getInitials';
 
 interface AvatarData {
   bgColor: string;

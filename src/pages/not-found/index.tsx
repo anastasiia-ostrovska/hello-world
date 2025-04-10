@@ -6,7 +6,7 @@ import NotFoundIcon from '@assets/not-found-icon.svg';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import NotFoundPageLayout from './NotFoundPageLayout';
+import NotFoundPageLayout from './ui/NotFoundPageLayout';
 
 const useButtonSize = (): ButtonProps['size'] => {
   const { isUpSM, isUpMD } = useMediaQueryState();
