@@ -1,4 +1,7 @@
 // User
+
+import { Styles } from '@shared/mui';
+
 export type UserId = string;
 export type Photo = string | null;
 
@@ -57,4 +60,24 @@ export interface UsersQueryParams {
 export enum AvatarPosition {
   Center = 'center',
   Left = 'left',
+}
+
+export interface UserAvatarProps {
+  name: string;
+  avatarSrc: Photo;
+  avatarSize: number;
+  sx?: Styles;
+}
+
+export interface BackgroundImageProps {
+  bgImageSrc: Photo;
+  bgImageHeight: number | `${number}px` | `${number}rem`;
+}
+
+export interface AvatarWithBgImageProps
+  extends UserAvatarProps,
+    BackgroundImageProps {
+  avatarBorderColor?: string;
+  avatarBorderWidth?: `${number}px`;
+  avatarPosition?: AvatarPosition;
 }

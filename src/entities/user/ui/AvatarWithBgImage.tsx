@@ -1,8 +1,12 @@
-import Box from '@mui/material/Box';
-import { Styles } from '@shared/mui';
-import Avatar, { UserAvatarProps } from '@entities/user/ui/Avatar';
 import { ReactElement } from 'react';
-import { AvatarPosition, Photo } from '../model/types';
+import { Styles } from '@shared/mui';
+import Box from '@mui/material/Box';
+import Avatar from '@entities/user/ui/Avatar';
+import {
+  AvatarPosition,
+  AvatarWithBgImageProps,
+  BackgroundImageProps,
+} from '../model/types';
 
 interface AvatarWithBgImageLayoutProps {
   bgImageBlock: ReactElement;
@@ -30,11 +34,6 @@ const AvatarWithBgImageLayout = ({
   );
 };
 
-interface BackgroundImageProps {
-  bgImageSrc: Photo;
-  bgImageHeight: number | `${number}px` | `${number}rem`;
-}
-
 const BackgroundImage = ({
   bgImageSrc,
   bgImageHeight,
@@ -55,12 +54,6 @@ const BackgroundImage = ({
     />
   );
 };
-
-interface AvatarWithBgImageProps extends UserAvatarProps, BackgroundImageProps {
-  avatarBorderColor?: string;
-  avatarBorderWidth?: `${number}px`;
-  avatarPosition?: AvatarPosition;
-}
 
 const AvatarWithBgImage = ({
   name,

@@ -3,4 +3,4 @@ export enum ThemeMode {
   Light = 'light',
 }
 
-export type { AvatarColor } from '../config/avatar-colors';
+export type { AvatarColor } from '../consts/avatar-colors';

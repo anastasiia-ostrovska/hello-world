@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { SkeletonText, SkeletonWrapper } from '@shared/ui/SkeletonLoaders';
+import { SkeletonText } from '@shared/ui/SkeletonLoaders';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -28,11 +28,7 @@ export const UserCardLayout = ({
     >
       {content}
       <CardActions sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
-        <SkeletonWrapper
-          isLoading={isLoading}
-          element={button}
-          sx={{ borderRadius: '2rem', width: '100%', maxWidth: 180 }}
-        />
+        {button}
       </CardActions>
     </Card>
   );
@@ -40,14 +36,14 @@ export const UserCardLayout = ({
 
 export const CardContentLayout = ({
   isLoading,
-  userName,
+  name,
   jobTitle,
   country,
 }: CardContentLayoutProps) => {
   return (
     <CardContent sx={{ justifyContent: 'center' }}>
       <Typography gutterBottom noWrap variant="h6" component="h5">
-        <SkeletonText isLoading={isLoading} element={userName} />
+        <SkeletonText isLoading={isLoading} element={name} />
       </Typography>
       <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
         <SkeletonText isLoading={isLoading} element={jobTitle} />
