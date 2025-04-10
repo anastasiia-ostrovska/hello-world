@@ -1,7 +1,4 @@
-import {
-  isFetchBaseQueryError,
-  isSerializedError,
-} from './errorTypePredicates';
+import { isFetchBaseQueryError } from './errorTypePredicates';
 import { DEFAULT_ERROR_MESSAGES } from '../config/default-error-messages';
 import { Error, ErrorMessage, ErrorMessages } from '../model/types';
 
@@ -33,13 +30,6 @@ export const getErrorMessage =
           errorType,
         };
       }
-    }
-
-    if (isSerializedError(error)) {
-      return {
-        message: error.message,
-        errorType: Error.SerializedError,
-      };
     }
 
     return {
