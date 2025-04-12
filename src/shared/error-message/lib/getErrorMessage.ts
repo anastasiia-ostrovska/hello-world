@@ -1,5 +1,5 @@
+import { DEFAULT_ERROR_MESSAGES } from '@shared/error-message/consts/default-error-messages';
 import { isFetchBaseQueryError } from './errorTypePredicates';
-import { DEFAULT_ERROR_MESSAGES } from '../config/default-error-messages';
 import { Error, ErrorMessage, ErrorMessages } from '../model/types';
 
 export const getErrorMessage =
