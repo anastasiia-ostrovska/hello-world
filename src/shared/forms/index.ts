@@ -1,4 +1,4 @@
-export * from './model/validators';
+export * from './lib/validators';
 
 export { default as Form } from './ui/Form';
 export { default as ControlledCheckbox } from './ui/ControlledCheckbox';

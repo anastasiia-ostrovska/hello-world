@@ -1,7 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom';
-import { useMediaQueryState } from '@shared/mui';
+import { useMediaQueryState } from '@shared/lib';
 import { ButtonProps } from '@mui/material';
-import { ROUTES } from '@shared/router';
+import { ROUTES } from '@shared/consts';
 import NotFoundIcon from '@assets/not-found-icon.svg';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';

@@ -1,4 +1,4 @@
-import * as REGEXP from '../config/regExp';
+import * as REGEXP from '@shared/consts';
 import createValidator from './validator-factory';
 
 // --- REGEXP validators ---

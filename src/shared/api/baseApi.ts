@@ -1,8 +1,8 @@
 import type { RootState } from '@app/store';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { unauthorizedHandler } from '@entities/session/lib/unauthorizedHandler';
-import { logError, logSuccess } from './model/responseLoggers';
-import * as TAGS from './config/invalidation-tags';
+import { logError, logSuccess } from './responseLoggers';
+import * as TAGS from './invalidation-tags';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_BASE_URL,
@@ -35,10 +35,8 @@ const baseQueryWithInterceptor: typeof baseQuery = async (
 
 const tagTypes = Object.values(TAGS).map((tag) => tag);
 
-const baseAPI = createApi({
+export const baseAPI = createApi({
   baseQuery: baseQueryWithInterceptor,
   tagTypes,
   endpoints: () => ({}),
 });
-
-export default baseAPI;

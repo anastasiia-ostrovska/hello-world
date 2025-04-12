@@ -1,4 +1,4 @@
-import { useAppSelector } from '@shared/redux';
+import { useAppSelector } from '@shared/model';
 import { selectToken, useAuthMeQuery } from '@entities/session';
 
 interface UseInitializeAppResult {

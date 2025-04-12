@@ -1,7 +1,7 @@
 import { TextFieldProps } from '@mui/material';
 import { Controller, useFormContext } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
-import getHelperTextWithID from '../model/getHelperTextWithID';
+import getHelperTextWithID from '../lib/getHelperTextWithID';
 import { ControlledInputProps } from '../model/types';
 
 interface ControlledTextFieldProps

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '@shared/redux';
+import { useAppDispatch } from '@shared/model';
 import {
   ErrorMessages,
   getErrorMessage,

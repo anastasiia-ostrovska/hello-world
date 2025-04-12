@@ -1,5 +1,4 @@
 import { AvatarColor } from '@entities/theme';
-import { User } from '@shared/user';
 
 /**
  * Hash function to compute a hash value for a string.
@@ -8,7 +7,7 @@ import { User } from '@shared/user';
  * Returns 0 if the input is invalid
  */
 
-const getNameHash = (name: User['name']): number => {
+const getNameHash = (name: string): number => {
   if (!name) return 0;
 
   let hash = 0;
@@ -30,7 +29,7 @@ const getNameHash = (name: User['name']): number => {
  */
 
 export const getAvatarColor = (
-  name: User['name'],
+  name: string,
   colors: AvatarColor[]
 ): AvatarColor => {
   const hash = getNameHash(name);

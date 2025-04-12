@@ -1,4 +1,4 @@
-import { getFromLocalStorage, setToLocalStorage } from '@shared/webStorage';
+import { getFromLocalStorage, setToLocalStorage } from '@shared/lib';
 import { ThemeMode } from '../model/types';
 import { MODE_STORAGE_KEY } from '../consts/mode-storage-key';
 

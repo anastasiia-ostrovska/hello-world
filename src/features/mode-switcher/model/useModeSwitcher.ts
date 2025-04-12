@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@shared/redux';
+import { useAppDispatch, useAppSelector } from '@shared/model';
 import { selectThemeMode } from '@entities/theme/model/themeSlice';
 import { toggleThemeMode } from '@entities/theme/model/toggleThemeMode';
 import { ThemeMode } from '@entities/theme/model/types';

@@ -1,5 +1,5 @@
 import LogoFull from '@assets/logo-full.svg';
-import { useMediaQueryState } from '@shared/mui';
+import { useMediaQueryState } from '@shared/lib';
 import { ModeSwitcher } from '@features/mode-switcher';
 import { BottomNavbar, SideNavbar, TopNavbar } from '../../navigation';
 import Layout from './Layout';

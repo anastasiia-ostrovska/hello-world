@@ -1,14 +1,14 @@
 import { ReactElement } from 'react';
 import Snackbar from '@mui/material/Snackbar';
-import { useAppSelector } from '@shared/redux';
-import { useMediaQueryState } from '@shared/mui';
+import { useAppSelector } from '@shared/model';
+import { useMediaQueryState } from '@shared/lib';
 import { NotificationActions } from '@features/notification';
 import {
   EmbeddedNotification,
   selectLastNotification,
 } from '@entities/notification';
 
-const PopupNitificationLayout = ({
+const PopupNotificationLayout = ({
   popupContent,
 }: {
   popupContent: ReactElement;
@@ -39,7 +39,7 @@ export const PopupNotificationWithControls = () => {
   const { id, alertType, message, title } = notification;
 
   return (
-    <PopupNitificationLayout
+    <PopupNotificationLayout
       popupContent={
         <EmbeddedNotification
           alertType={alertType}
