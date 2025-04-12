@@ -1,8 +1,7 @@
-export * from './model/types';
-export * as ENDPOINTS from './config/endpoints';
-export * as METHODS from './config/methods';
-export * as TAGS from './config/invalidation-tags';
+export * from './types';
+export * as ENDPOINTS from './endpoints';
+export * as METHODS from './methods';
+export * as TAGS from './invalidation-tags';
 
-export { buildOptionalQueryParams } from './lib/buildOptionalQueryParams';
-
-export { default as baseAPI } from './baseApi';
+export { buildOptionalQueryParams } from './buildOptionalQueryParams';
+export { baseAPI } from './baseApi';
