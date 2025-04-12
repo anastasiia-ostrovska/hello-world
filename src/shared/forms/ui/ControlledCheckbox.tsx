@@ -3,9 +3,9 @@ import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
-import { Styles } from '@shared/mui';
+import { Styles } from '@shared/model';
 import { ControlledInputProps } from '../model/types';
-import getHelperTextWithID from '../model/getHelperTextWithID';
+import getHelperTextWithID from '../lib/getHelperTextWithID';
 
 interface ControlledCheckboxProps
   extends Omit<CheckboxProps, 'name'>,
