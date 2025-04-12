@@ -1,9 +1,6 @@
 import { ReactElement } from 'react';
-import { User } from '@shared/user';
 import { SkeletonWrapper } from '@shared/ui/SkeletonLoaders';
-import { UserAvatar } from '@features/users';
-import { useGetUserProfileQuery } from '@features/profile/api/profileApi';
-import { skipToken } from '@reduxjs/toolkit/query';
+import { UserAvatar, useUserMeQuery } from '@entities/user';
 
 interface ProfileAvatarLayoutProps {
   avatar: ReactElement;
@@ -24,20 +21,20 @@ const ProfileAvatarLayout = ({
 };
 
 interface ProfileAvatarProps {
-  userId: User['id'] | undefined;
+  userId: string | undefined;
   size: number;
 }
 
 const ProfileAvatar = ({ userId, size }: ProfileAvatarProps) => {
-  const { data, isLoading } = useGetUserProfileQuery(userId ?? skipToken);
+  const { data: userResponse, isLoading } = useUserMeQuery();
 
   return (
     <ProfileAvatarLayout
       avatar={
         <UserAvatar
-          userName={data?.fullName || ''}
-          src={data?.photos?.small || null}
-          size={size}
+          name={userResponse?.data?.name || ''}
+          avatarSrc={userResponse?.data.photos?.avatar || null}
+          avatarSize={size}
         />
       }
       isLoading={isLoading || !userId}

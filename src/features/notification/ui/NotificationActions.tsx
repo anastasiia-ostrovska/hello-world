@@ -1,6 +1,6 @@
 import Tooltip from '@mui/material/Tooltip';
 import Stack from '@mui/material/Stack';
-import { useAppDispatch } from '@shared/redux';
+import { useAppDispatch } from '@shared/model';
 import {
   clearAllNotifications,
   CloseAllNotificationsButton,

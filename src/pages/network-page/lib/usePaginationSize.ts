@@ -1,5 +1,5 @@
 import { PaginationProps } from '@mui/material';
-import { useMediaQueryState } from '@shared/mui';
+import { useMediaQueryState } from '@shared/lib';
 
 enum PaginationSize {
   Large = 'large',

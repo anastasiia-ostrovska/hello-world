@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@shared/redux';
+import { useAppDispatch, useAppSelector } from '@shared/model';
 import {
   generateFakeUsers,
   selectUsersListFilters,

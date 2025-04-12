@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import { CardActionArea } from '@mui/material';
-import { ROUTES } from '@shared/router';
+import { ROUTES } from '@shared/consts';
 import { AvatarWithBgImage, AvatarWithBgImageProps } from '@entities/user';
 import { FollowButton } from '@features/user';
 import { CardContentLayout, UserCardLayout } from './UserCardLayout';

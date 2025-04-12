@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Styles } from '@shared/mui';
+import { Styles } from '@shared/model';
 import Box from '@mui/material/Box';
 import Avatar from '@entities/user/ui/Avatar';
 import {

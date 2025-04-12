@@ -1,4 +1,4 @@
-import { useMediaQueryState } from '@/shared/mui';
+import { useMediaQueryState } from '@shared/lib';
 import Delayed from '@shared/ui/Delayed';
 import PageLoader from './PageLoader';
 

@@ -1,4 +1,4 @@
-import { Styles } from '@shared/mui';
+import { Styles } from '@shared/model';
 import Button from '@mui/material/Button';
 import { SkeletonWrapper } from '@shared/ui/SkeletonLoaders';
 import { useFollowButton } from '../model/useFollowButton';

@@ -1,11 +1,10 @@
 import { MouseEvent } from 'react';
-import { User } from '@shared/user';
 import { ProfileAvatar } from '@features/profile';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
 interface ProfileMenuButtonProps {
-  userId: User['id'] | undefined;
+  userId: string | undefined;
   buttonID: string;
   controlsID: string;
   size: number;

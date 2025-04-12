@@ -1,4 +1,4 @@
-import { useAppDispatch } from '@shared/redux';
+import { useAppDispatch } from '@shared/model';
 import { removeAccessToken } from '@entities/session';
 
 export const useLogout = () => {

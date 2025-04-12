@@ -1,10 +1,10 @@
 import { ReactElement } from 'react';
-import { useGetAuthDataQuery } from '@/features/login';
-import { LogOutButton } from '@features/logout-button';
-import { ROUTES } from '@shared/router';
+import { LogoutButton } from '@features/login';
+import { ROUTES } from '@shared/consts';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';
+import { useAuthMeQuery } from '@entities/session';
 import ProfileMenuButton from './ProfileMenuButton';
 import ProfileNavItem from './ProfileNavItem';
 import useProfileNavbar from '../model/useProfileNavbar';
@@ -58,7 +58,7 @@ const ProfileNavbarLayout = ({
 };
 
 const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
-  const { data: authData } = useGetAuthDataQuery();
+  const { data: authData } = useAuthMeQuery();
   const { anchorEl, isMenuOpen, handleMenuButtonClick, handleMenuClose } =
     useProfileNavbar();
   const getColor = useNavItemColor();

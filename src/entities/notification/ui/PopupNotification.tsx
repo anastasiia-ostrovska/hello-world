@@ -1,6 +1,6 @@
 import Snackbar from '@mui/material/Snackbar';
 import { ReactElement } from 'react';
-import { useMediaQueryState } from '@shared/mui';
+import { useMediaQueryState } from '@shared/lib';
 import { NotificationProps } from '../model/types';
 import { EmbeddedNotification } from './EmbeddedNotification';
 

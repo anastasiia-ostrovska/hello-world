@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { ErrorMessage, getErrorMessage } from '@shared/error-message';
-import { useAppDispatch } from '@shared/redux';
+import { useAppDispatch } from '@shared/model';
 import {
   LoginData,
   LoginField,

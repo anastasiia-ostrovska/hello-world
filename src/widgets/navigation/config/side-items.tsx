@@ -2,7 +2,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { ROUTES } from '@shared/router';
+import { ROUTES } from '@shared/consts';
 import { NavigationItem } from '../model/types';
 
 export const SIDE_NAV_ITEMS: NavigationItem[] = [

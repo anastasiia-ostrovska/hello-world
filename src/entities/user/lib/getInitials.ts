@@ -1,5 +1,3 @@
-import { User } from '@shared/user';
-
 /**
  * Function to extract the first two initials from a full name.
  * If the name has only one word, it returns the initial of that word.
@@ -11,7 +9,7 @@ import { User } from '@shared/user';
 
 type Initials = string;
 
-export const getInitials = (fullName: User['name']): Initials => {
+export const getInitials = (fullName: string): Initials => {
   if (!fullName || fullName.trim() === '') return '';
 
   return fullName
