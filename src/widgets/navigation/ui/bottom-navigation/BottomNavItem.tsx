@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { BottomNavigationAction } from '@mui/material';
-import { NavigationItemProps } from '../model/types';
+import { NavigationItemProps } from '../../model/types';
 
 const BottomNavItem = ({ label, icon, path, color }: NavigationItemProps) => {
   return (

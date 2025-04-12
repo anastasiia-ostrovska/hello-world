@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import Stack from '@mui/material/Stack';
 import { Outlet } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 

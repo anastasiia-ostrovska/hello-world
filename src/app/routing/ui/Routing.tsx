@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from '@shared/consts';
 import { useRedirect } from '@shared/lib';
-import { AppLayout } from '@widgets/layout';
+import { AppLayout } from '@app/layout';
 import NotFoundPage from '@pages/not-found';
 import LoginPage from '@pages/login-page';
 import Home from '@pages/Home';
