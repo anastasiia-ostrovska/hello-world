@@ -5,8 +5,8 @@ import Tooltip from '@mui/material/Tooltip';
 
 interface ProfileMenuButtonProps {
   userId: string | undefined;
-  buttonID: string;
-  controlsID: string;
+  buttonId: string;
+  controlsId: string;
   size: number;
   isMenuOpen: boolean;
   onClick: (event: MouseEvent<HTMLElement>) => void;
@@ -14,8 +14,8 @@ interface ProfileMenuButtonProps {
 
 const ProfileMenuButton = ({
   userId,
-  buttonID,
-  controlsID,
+  buttonId,
+  controlsId,
   size,
   isMenuOpen,
   onClick,
@@ -23,10 +23,10 @@ const ProfileMenuButton = ({
   return (
     <Tooltip title="Profile menu">
       <IconButton
-        id={buttonID}
+        id={buttonId}
         aria-label="Profile menu"
         aria-haspopup="true"
-        aria-controls={isMenuOpen ? controlsID : undefined}
+        aria-controls={isMenuOpen ? controlsId : undefined}
         aria-expanded={isMenuOpen ? 'true' : undefined}
         onClick={(event) => onClick(event)}
       >

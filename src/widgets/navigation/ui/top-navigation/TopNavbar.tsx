@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 import Stack from '@mui/material/Stack';
-import { NavbarLayoutProps } from '../model/types';
-import { TOP_NAV_ITEMS } from '../config/top-items';
-import useNavItemColor from '../model/useNavItemColor';
-import ProfileNavbar from './ProfileNavbar';
+import { NavbarLayoutProps } from '../../model/types';
+import { TOP_NAV_ITEMS } from '../../config/top-items';
+import useNavItemColor from '../../model/useNavItemColor';
+import ProfileNavbar from '../profile-navigation/ProfileNavbar';
 import TopNavItem from './TopNavItem';
 
 interface TopNavbarLayoutProps extends NavbarLayoutProps {

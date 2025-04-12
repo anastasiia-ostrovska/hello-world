@@ -7,10 +7,10 @@ import Divider from '@mui/material/Divider';
 import { useAuthMeQuery } from '@entities/session';
 import ProfileMenuButton from './ProfileMenuButton';
 import ProfileNavItem from './ProfileNavItem';
-import useProfileNavbar from '../model/useProfileNavbar';
-import useNavItemColor from '../model/useNavItemColor';
-import { NavbarLayoutProps } from '../model/types';
-import { PROFILE_NAV_ITEMS } from '../config/profile-items';
+import useProfileNavbar from '../../model/useProfileNavbar';
+import useNavItemColor from '../../model/useNavItemColor';
+import { NavbarLayoutProps } from '../../model/types';
+import { PROFILE_NAV_ITEMS } from '../../config/profile-items';
 
 type MenuProps = Omit<
   ReturnType<typeof useProfileNavbar>,
@@ -74,8 +74,8 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
       profileButton={
         <ProfileMenuButton
           userId={authData?.data?.userId}
-          buttonID={profileButtonID}
-          controlsID={menuID}
+          buttonId={profileButtonID}
+          controlsId={menuID}
           size={iconSize}
           isMenuOpen={isMenuOpen}
           onClick={handleMenuButtonClick}
