@@ -4,16 +4,15 @@ import { useRedirect } from '@shared/lib';
 import { AppLayout } from '@app/layout';
 import NotFoundPage from '@pages/not-found';
 import LoginPage from '@pages/login-page';
-import Home from '@pages/Home';
 import Components from '@/_old-version/components-presentation/Components';
-import ProtectedRoute from '@app/routing/ui/ProtectedRoute';
-import AUTH_PAGES from '../config/auth-pages';
+import ProtectedRoute from './ProtectedRoute';
+import AuthorizedRoutes from './AuthorizedRoutes';
 
 interface RoutingProps {
-  isAuth: boolean;
+  userId: string | undefined;
 }
 
-const Routing = ({ isAuth }: RoutingProps) => {
+const Routing = ({ userId }: RoutingProps) => {
   const { redirectedFrom } = useRedirect({ altRoute: ROUTES.HOME });
 
   return (
@@ -22,7 +21,7 @@ const Routing = ({ isAuth }: RoutingProps) => {
       <Route
         path={ROUTES.LOGIN}
         element={
-          <ProtectedRoute isAllowed={!isAuth} redirectPath={redirectedFrom}>
+          <ProtectedRoute isAllowed={!userId} redirectPath={redirectedFrom}>
             <LoginPage />
           </ProtectedRoute>
         }
@@ -30,18 +29,19 @@ const Routing = ({ isAuth }: RoutingProps) => {
       {/* Private Routes - Requires Authentication */}
       <Route
         element={
-          <ProtectedRoute isAllowed={isAuth} redirectPath={ROUTES.LOGIN} />
+          <ProtectedRoute isAllowed={!!userId} redirectPath={ROUTES.LOGIN} />
         }
       >
         <Route path={ROUTES.ROOT} element={<AppLayout />}>
-          <Route index element={<Home />} />
-          {AUTH_PAGES.map(({ path, element }) => (
-            <Route key={path} path={path} element={element} />
-          ))}
+          <Route
+            path={`${ROUTES.ROOT}*`}
+            element={<AuthorizedRoutes userId={userId} />}
+          />
         </Route>
       </Route>
       {/* Public Route (temporary) - Components Presentation */}
       <Route path="/components" element={<Components />} />
+      {/* Public Route - 404 */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
