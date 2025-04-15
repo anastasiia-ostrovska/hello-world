@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
+import { SectionWrapper } from '@shared/ui';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import SectionWrapper from '@shared/ui/SectionWrapper';
 
 interface LogInFormLayoutProps {
   header: ReactElement;

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import SectionWrapper from '@shared/ui/SectionWrapper';
+import { SectionWrapper } from '@shared/ui';
 import Grid2 from '@mui/material/Grid2';
 
 interface NetworkPageLayoutProps {
