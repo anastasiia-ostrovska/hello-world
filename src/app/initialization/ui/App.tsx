@@ -4,11 +4,11 @@ import useInitializeApp from '../model/useInitializeApp';
 import AppLoader from './AppLoader';
 
 const App = () => {
-  const { isAuth, isInitialized } = useInitializeApp();
+  const { userId, isInitialized } = useInitializeApp();
 
   return isInitialized ? (
     <>
-      <Routing isAuth={isAuth} />
+      <Routing userId={userId} />
       <PopupNotificationWithControls />
     </>
   ) : (

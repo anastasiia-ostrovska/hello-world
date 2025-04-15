@@ -2,23 +2,22 @@ import { useAppSelector } from '@shared/model';
 import { selectToken, useAuthMeQuery } from '@entities/session';
 
 interface UseInitializeAppResult {
-  isAuth: boolean;
+  userId: string | undefined;
   isInitialized: boolean;
 }
 
 const useInitializeApp = (): UseInitializeAppResult => {
   const token = useAppSelector(selectToken);
-  const {
-    data: authData,
-    isSuccess,
-    isLoading: isAuthLoading,
-  } = useAuthMeQuery(undefined, {
-    skip: !token,
-  });
+  const { data: authData, isLoading: isAuthLoading } = useAuthMeQuery(
+    undefined,
+    {
+      skip: !token,
+    }
+  );
 
-  const isAuth = isSuccess && !!authData?.data?.userId;
+  const userId = authData?.data?.userId;
 
-  return { isAuth, isInitialized: !isAuthLoading };
+  return { userId, isInitialized: !isAuthLoading };
 };
 
 export default useInitializeApp;
