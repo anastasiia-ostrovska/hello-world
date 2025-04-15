@@ -8,7 +8,6 @@ import { useAuthMeQuery } from '@entities/session';
 import ProfileMenuButton from './ProfileMenuButton';
 import ProfileNavItem from './ProfileNavItem';
 import useProfileNavbar from '../../model/useProfileNavbar';
-import useNavItemColor from '../../model/useNavItemColor';
 import { NavbarLayoutProps } from '../../model/types';
 import { PROFILE_NAV_ITEMS } from '../../config/profile-items';
 
@@ -61,7 +60,6 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
   const { data: authData } = useAuthMeQuery();
   const { anchorEl, isMenuOpen, handleMenuButtonClick, handleMenuClose } =
     useProfileNavbar();
-  const getColor = useNavItemColor();
 
   const menuID = 'profile-menu';
   const profileButtonID = 'profile-menu-button';
@@ -82,20 +80,12 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
         />
       }
       navItems={PROFILE_NAV_ITEMS.map(({ id, path, ...itemProps }) => {
-        const itemColor = getColor(path);
         const itemPath =
           path === ROUTES.PROFILE && authData
             ? `${ROUTES.PROFILE}/${authData.data?.userId}`
             : path;
 
-        return (
-          <ProfileNavItem
-            key={id}
-            path={itemPath}
-            color={itemColor}
-            {...itemProps}
-          />
-        );
+        return <ProfileNavItem key={id} path={itemPath} {...itemProps} />;
       })}
       logoutButton={<LogOutButton iconSize={iconSize} />}
     />
