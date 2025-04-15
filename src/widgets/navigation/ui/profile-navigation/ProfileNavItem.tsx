@@ -1,13 +1,15 @@
+import { NavigationLink } from '@shared/ui';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { Link as RouterLink } from 'react-router-dom';
 import { NavigationItemProps } from '../../model/types';
 
-const ProfileNavItem = ({ label, icon, path, color }: NavigationItemProps) => {
+const ProfileNavItem = ({ label, icon, path }: NavigationItemProps) => {
   return (
-    <MenuItem component={RouterLink} to={path} sx={{ color }}>
-      <ListItemIcon sx={{ color }}>{icon}</ListItemIcon>
-      {label}
+    <MenuItem>
+      <NavigationLink path={path} label={label}>
+        <ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
+        {label}
+      </NavigationLink>
     </MenuItem>
   );
 };

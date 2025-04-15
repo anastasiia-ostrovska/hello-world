@@ -1,5 +1,5 @@
 import MUIPagination from '@mui/material/Pagination';
-import { SkeletonWrapper } from '@shared/ui/SkeletonLoaders';
+import { SkeletonWrapper } from '@shared/ui';
 import { PaginationProps } from '../model/types';
 
 const Pagination = ({

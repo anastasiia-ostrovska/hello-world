@@ -1,7 +1,6 @@
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavItem from './BottomNavItem';
-import useNavItemColor from '../../model/useNavItemColor';
 import { NavbarLayoutProps } from '../../model/types';
 import { SIDE_NAV_ITEMS } from '../../config/side-items';
 
@@ -17,7 +16,10 @@ const BottomNavbarLayout = ({ navItems }: NavbarLayoutProps) => {
         right: 0,
       }}
     >
-      <BottomNavigation sx={{ backgroundColor: 'transparent' }}>
+      <BottomNavigation
+        component="ul"
+        sx={{ m: 0, p: 0, backgroundColor: 'transparent' }}
+      >
         {navItems}
       </BottomNavigation>
     </Paper>
@@ -25,21 +27,10 @@ const BottomNavbarLayout = ({ navItems }: NavbarLayoutProps) => {
 };
 
 const BottomNavbar = () => {
-  const getColor = useNavItemColor();
-
   return (
     <BottomNavbarLayout
-      navItems={SIDE_NAV_ITEMS.map(({ id, path, ...itemProps }) => {
-        const itemColor = getColor(path);
-
-        return (
-          <BottomNavItem
-            key={id}
-            path={path}
-            color={itemColor}
-            {...itemProps}
-          />
-        );
+      navItems={SIDE_NAV_ITEMS.map(({ id, ...itemProps }) => {
+        return <BottomNavItem key={id} {...itemProps} />;
       })}
     />
   );

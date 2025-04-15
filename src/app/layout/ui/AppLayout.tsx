@@ -13,7 +13,7 @@ const AppLayout = () => {
       logo={<LogoFull />}
       topNavigation={<TopNavbar />}
       sideNavigation={<Navigation />}
-      modeSwitcher={<ModeSwitcher />}
+      modeSwitcher={<ModeSwitcher sx={{ mr: { sm: 1 } }} />}
     />
   );
 };

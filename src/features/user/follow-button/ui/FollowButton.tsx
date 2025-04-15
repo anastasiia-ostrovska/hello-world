@@ -1,6 +1,6 @@
 import { Styles } from '@shared/model';
 import Button from '@mui/material/Button';
-import { SkeletonWrapper } from '@shared/ui/SkeletonLoaders';
+import { SkeletonWrapper } from '@shared/ui';
 import { useFollowButton } from '../model/useFollowButton';
 
 export interface FollowButtonProps {

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { SkeletonWrapper } from '@shared/ui/SkeletonLoaders';
+import { SkeletonWrapper } from '@shared/ui';
 import { UserAvatar, useUserMeQuery } from '@entities/user';
 
 interface ProfileAvatarLayoutProps {
