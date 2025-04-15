@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import { LogoutButton } from '@features/login';
-import { ROUTES } from '@shared/consts';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';
@@ -79,13 +78,8 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
           onClick={handleMenuButtonClick}
         />
       }
-      navItems={PROFILE_NAV_ITEMS.map(({ id, path, ...itemProps }) => {
-        const itemPath =
-          path === ROUTES.PROFILE && authData
-            ? `${ROUTES.PROFILE}/${authData.data?.userId}`
-            : path;
-
-        return <ProfileNavItem key={id} path={itemPath} {...itemProps} />;
+      navItems={PROFILE_NAV_ITEMS.map(({ id, ...itemProps }) => {
+        return <ProfileNavItem key={id} {...itemProps} />;
       })}
       logoutButton={<LogOutButton iconSize={iconSize} />}
     />
