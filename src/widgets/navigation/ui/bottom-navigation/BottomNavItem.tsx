@@ -1,13 +1,22 @@
 import { memo } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { BottomNavigationAction } from '@mui/material';
+import ListItem from '@mui/material/ListItem';
+import { NavigationLink } from '@shared/ui';
 import { NavigationItemProps } from '../../model/types';
 
-const BottomNavItem = ({ label, icon, path, color }: NavigationItemProps) => {
+const BottomNavItem = ({ label, icon, path }: NavigationItemProps) => {
   return (
-    <RouterLink to={path} style={{ display: 'flex', width: '100%' }}>
-      <BottomNavigationAction aria-label={label} icon={icon} sx={{ color }} />
-    </RouterLink>
+    <ListItem disablePadding>
+      <NavigationLink
+        path={path}
+        label={label}
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {icon}
+      </NavigationLink>
+    </ListItem>
   );
 };
 

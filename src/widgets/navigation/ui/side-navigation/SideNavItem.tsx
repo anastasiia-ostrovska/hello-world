@@ -1,18 +1,20 @@
 import { memo } from 'react';
+import { NavigationLink } from '@shared/ui';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Link as RouterLink } from 'react-router-dom';
 import { NavigationItemProps } from '../../model/types';
 
-const SideNavItem = ({ label, icon, path, color }: NavigationItemProps) => {
+const SideNavItem = ({ label, icon, path }: NavigationItemProps) => {
   return (
-    <ListItem disablePadding aria-label={label} sx={{ color }}>
-      <ListItemButton component={RouterLink} to={path}>
-        <ListItemIcon sx={{ color }}>{icon}</ListItemIcon>
-        <ListItemText primary={label} />
-      </ListItemButton>
+    <ListItem disablePadding>
+      <NavigationLink path={path} label={label}>
+        <ListItemButton>
+          <ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
+          <ListItemText primary={label} />
+        </ListItemButton>
+      </NavigationLink>
     </ListItem>
   );
 };
