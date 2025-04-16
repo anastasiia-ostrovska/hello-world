@@ -1,10 +1,8 @@
 import { ReactElement } from 'react';
 import { AvatarPosition, AvatarWithBgImage } from '@entities/user';
 import { useTheme } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
 import Box from '@mui/material/Box';
-import Tooltip from '@mui/material/Tooltip';
+import { EditButton } from '@shared/ui';
 import { useImagesSize } from '../lib/useImagesSize';
 
 interface ProfileAvatarSectionLayoutProps {
@@ -61,21 +59,16 @@ const ProfileAvatarSection = ({
         />
       }
       editButton={
-        <Tooltip title="Edit profile photos">
-          <IconButton
-            aria-label="delete"
-            disabled={isLoading}
-            size="small"
-            sx={{
-              position: 'absolute',
-              right: { xs: 4, sm: 8, md: 12 },
-              top: imageSize + 10,
-              color: 'text.secondary',
-            }}
-          >
-            <EditIcon />
-          </IconButton>
-        </Tooltip>
+        <EditButton
+          tooltipTitle="Edit profile images"
+          isDisabled={isLoading}
+          onClick={() => {}}
+          sx={{
+            position: 'absolute',
+            right: { xs: 4, sm: 8, md: 12 },
+            top: imageSize + 10,
+          }}
+        />
       }
     />
   );
