@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { AvatarPosition, AvatarWithBgImage } from '@entities/user';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { EditButton } from '@shared/ui';
+import { Dialog, EditButton } from '@shared/ui';
 import { useImagesSize } from '../lib/useImagesSize';
 
 interface ProfileAvatarSectionLayoutProps {
@@ -42,35 +42,48 @@ const ProfileAvatarSection = ({
   const { imageSize } = useImagesSize();
   const { palette } = useTheme();
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleDialogOpen = () => setIsOpen(true);
+  const handleDialogClose = () => setIsOpen(false);
+
   return (
-    <ProfileAvatarSectionLayout
-      showEditButton={isMyProfile}
-      photosBlock={
-        <AvatarWithBgImage
-          name={name}
-          avatarSrc={avatarSrc}
-          bgImageSrc={bgImageSrc}
-          avatarSize={imageSize}
-          bgImageHeight={imageSize}
-          avatarPosition={AvatarPosition.Left}
-          avatarBorderColor={palette.customBackground.sectionWrapper}
-          avatarBorderWidth="4px"
-          sx={{ mb: `${imageSize / 2}px` }}
-        />
-      }
-      editButton={
-        <EditButton
-          tooltipTitle="Edit profile images"
-          isDisabled={isLoading}
-          onClick={() => {}}
-          sx={{
-            position: 'absolute',
-            right: { xs: 4, sm: 8, md: 12 },
-            top: imageSize + 10,
-          }}
-        />
-      }
-    />
+    <>
+      <ProfileAvatarSectionLayout
+        showEditButton={isMyProfile}
+        photosBlock={
+          <AvatarWithBgImage
+            name={name}
+            avatarSrc={avatarSrc}
+            bgImageSrc={bgImageSrc}
+            avatarSize={imageSize}
+            bgImageHeight={imageSize}
+            avatarPosition={AvatarPosition.Left}
+            avatarBorderColor={palette.customBackground.sectionWrapper}
+            avatarBorderWidth="4px"
+            sx={{ mb: `${imageSize / 2}px` }}
+          />
+        }
+        editButton={
+          <EditButton
+            tooltipTitle="Edit profile images"
+            isDisabled={isLoading}
+            onClick={handleDialogOpen}
+            sx={{
+              position: 'absolute',
+              right: { xs: 4, sm: 8, md: 12 },
+              top: imageSize + 10,
+            }}
+          />
+        }
+      />
+      <Dialog
+        isOpen={isOpen}
+        title="Editing"
+        content="Edit profile images Content"
+        onDialogClose={handleDialogClose}
+      />
+    </>
   );
 };
 
