@@ -16,7 +16,13 @@ const SectionWrapper = ({
   return (
     <Paper
       component="section"
-      sx={{ display: 'flex', p: { xs: 1, sm: 2, md: 3 }, ...sx }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        p: { xs: 1, sm: 2, md: 3 },
+        ...sx,
+      }}
       {...props}
     >
       {children}

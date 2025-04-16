@@ -13,11 +13,10 @@ const NetworkPageLayout = ({
   userCards,
   showPagination,
 }: NetworkPageLayoutProps) => {
-  // const isShowPagination = !isLoading ||
   return (
     <>
       {showPagination && (
-        <SectionWrapper sx={{ justifyContent: 'center' }}>
+        <SectionWrapper sx={{ alignItems: 'center' }}>
           {pagination}
         </SectionWrapper>
       )}
