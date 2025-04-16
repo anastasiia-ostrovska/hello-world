@@ -5,6 +5,7 @@ import { AVATAR_COLORS, AvatarColors } from '../consts/avatar-colors';
 type CustomBackground = {
   avatar: AvatarColors;
   userCard: string;
+  sectionWrapper: string;
 };
 
 declare module '@mui/material/styles' {
@@ -23,6 +24,7 @@ const getPalette = (mode: ThemeMode): PaletteOptions => {
     customBackground: {
       avatar: AVATAR_COLORS,
       userCard: mode === ThemeMode.Dark ? '#1d1d1d' : '#fff',
+      sectionWrapper: mode === ThemeMode.Dark ? '#222222' : '#fff',
     },
   };
 };
