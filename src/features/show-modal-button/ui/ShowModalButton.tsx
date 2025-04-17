@@ -32,7 +32,7 @@ const ShowModalButton = ({
 
   return (
     <>
-      <Box {...boxProps} onClick={handleDialogOpen}>
+      <Box width="fit-content" onClick={handleDialogOpen} {...boxProps}>
         {showModalButton}
       </Box>
       <Modal
