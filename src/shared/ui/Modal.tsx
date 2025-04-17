@@ -40,6 +40,7 @@ const Modal = ({
     >
       <Stack
         direction="row"
+        gap={2}
         sx={{ justifyContent: 'space-between', alignItems: 'center', px: 2 }}
       >
         <DialogTitle id="dialog-title" sx={{ px: 0 }}>
