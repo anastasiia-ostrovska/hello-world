@@ -4,11 +4,10 @@ import { Link as RouterLink } from 'react-router-dom';
 import { CardActionArea } from '@mui/material';
 import { ROUTES } from '@shared/consts';
 import { AvatarWithBgImage, AvatarWithBgImageProps } from '@entities/user';
-import { FollowButton } from '@features/user';
-import { CardContentLayout, UserCardLayout } from './UserCardLayout';
-import { CardContentLayoutProps } from '../model/types';
+import { FollowButton, UserInfoProps } from '@features/user';
+import { CardInfoLayout, UserCardLayout } from './UserCardLayout';
 
-interface UserCardProps extends AvatarWithBgImageProps, CardContentLayoutProps {
+interface UserCardProps extends AvatarWithBgImageProps, UserInfoProps {
   userId: string;
 }
 
@@ -46,7 +45,7 @@ const UserCardVertical = ({
               avatarBorderWidth="3px"
               sx={{ mb: avatarSize / 16 }}
             />
-            <CardContentLayout
+            <CardInfoLayout
               isLoading={isLoading}
               name={name}
               jobTitle={jobTitle}

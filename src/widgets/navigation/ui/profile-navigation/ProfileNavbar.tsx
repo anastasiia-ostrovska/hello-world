@@ -40,6 +40,7 @@ const ProfileNavbarLayout = ({
         anchorEl={anchorEl}
         open={isMenuOpen}
         onClick={handleMenuClose}
+        onClose={handleMenuClose}
         MenuListProps={{
           'aria-labelledby': menuLabeledBy,
         }}
