@@ -6,15 +6,15 @@ import Box from '@mui/material/Box';
 
 interface EditButtonProps extends IconButtonProps {
   tooltipTitle: string;
-  onClick: () => void;
   isDisabled?: boolean;
+  onClick?: () => void;
   sx?: Styles;
 }
 
 const EditButton = ({
   tooltipTitle,
-  onClick,
   isDisabled = false,
+  onClick,
   sx = {},
 }: EditButtonProps) => {
   return (

@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import Box, { BoxProps } from '@mui/material/Box';
-import Modal from '@shared/ui/Modal';
+import { Modal } from '@shared/ui';
 
 interface ShowModalButtonProps extends BoxProps {
   showModalButton: ReactNode;
