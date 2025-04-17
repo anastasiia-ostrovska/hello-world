@@ -1,1 +1,1 @@
-export { UserCardVertical } from './vertical-card';
+export * from './vertical-card';

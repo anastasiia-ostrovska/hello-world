@@ -1,10 +1,9 @@
 import { ReactElement } from 'react';
-import { SkeletonText } from '@shared/ui';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { CardContentLayoutProps } from '../model/types';
+import { UserInfoProps } from '@features/user/user-info/model/types';
+import { UserInfo } from '@features/user';
 
 interface UserCardLayoutProps {
   isLoading: boolean;
@@ -34,23 +33,20 @@ export const UserCardLayout = ({
   );
 };
 
-export const CardContentLayout = ({
+export const CardInfoLayout = ({
   isLoading,
   name,
   jobTitle,
   country,
-}: CardContentLayoutProps) => {
+}: UserInfoProps) => {
   return (
     <CardContent sx={{ justifyContent: 'center' }}>
-      <Typography gutterBottom noWrap variant="h6" component="h5">
-        <SkeletonText isLoading={isLoading} element={name} />
-      </Typography>
-      <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-        <SkeletonText isLoading={isLoading} element={jobTitle} />
-      </Typography>
-      <Typography noWrap variant="body1" sx={{ color: 'text.secondary' }}>
-        <SkeletonText isLoading={isLoading} element={country} />
-      </Typography>
+      <UserInfo
+        isLoading={isLoading}
+        name={name}
+        jobTitle={jobTitle}
+        country={country}
+      />
     </CardContent>
   );
 };
