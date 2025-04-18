@@ -1,4 +1,4 @@
-import MUIDialog from '@mui/material/Dialog';
+import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
@@ -9,47 +9,44 @@ import Stack from '@mui/material/Stack';
 import { useMediaQueryState } from '@shared/lib';
 import { ReactNode } from 'react';
 
-interface ScrollDialogProps {
+interface DialogProps {
   isOpen: boolean;
   title: ReactNode;
   content: ReactNode;
   actions?: ReactNode;
-  onDialogClose: () => void;
+  onClose: () => void;
   withTitleDivider?: boolean;
   withActionsDivider?: boolean;
 }
 
-const Dialog = ({
+const Modal = ({
   isOpen,
   title,
   content,
-  onDialogClose,
+  onClose,
   actions = null,
   withTitleDivider = false,
   withActionsDivider = false,
-}: ScrollDialogProps) => {
+}: DialogProps) => {
   const { isUpSM } = useMediaQueryState();
 
   return (
-    <MUIDialog
+    <Dialog
       fullScreen={!isUpSM}
       open={isOpen}
-      onClose={onDialogClose}
+      onClose={onClose}
       aria-labelledby="dialog-title"
       aria-describedby="dialog-description"
     >
       <Stack
         direction="row"
+        gap={2}
         sx={{ justifyContent: 'space-between', alignItems: 'center', px: 2 }}
       >
         <DialogTitle id="dialog-title" sx={{ px: 0 }}>
           {title}
         </DialogTitle>
-        <IconButton
-          aria-label="Close"
-          onClick={onDialogClose}
-          sx={{ mr: '-8px' }}
-        >
+        <IconButton aria-label="Close" onClick={onClose} sx={{ mr: '-8px' }}>
           <CloseIcon />
         </IconButton>
       </Stack>
@@ -57,8 +54,8 @@ const Dialog = ({
       <DialogContent sx={{ px: 2 }}>{content}</DialogContent>
       {withActionsDivider && <Divider />}
       {!!actions && <DialogActions sx={{ px: 2 }}>{actions}</DialogActions>}
-    </MUIDialog>
+    </Dialog>
   );
 };
 
-export default Dialog;
+export default Modal;
