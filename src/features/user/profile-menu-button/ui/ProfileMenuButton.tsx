@@ -1,10 +1,9 @@
 import { MouseEvent } from 'react';
-import { ProfileAvatar } from '@features/profile';
+import { UserAvatar, useUserMeQuery } from '@entities/user';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
 interface ProfileMenuButtonProps {
-  userId: string | undefined;
   buttonId: string;
   controlsId: string;
   size: number;
@@ -13,13 +12,15 @@ interface ProfileMenuButtonProps {
 }
 
 const ProfileMenuButton = ({
-  userId,
   buttonId,
   controlsId,
   size,
   isMenuOpen,
   onClick,
 }: ProfileMenuButtonProps) => {
+  const { data: userMeResponse } = useUserMeQuery();
+  const { data } = userMeResponse || {};
+
   return (
     <Tooltip title="Profile menu">
       <IconButton
@@ -30,7 +31,11 @@ const ProfileMenuButton = ({
         aria-expanded={isMenuOpen ? 'true' : undefined}
         onClick={(event) => onClick(event)}
       >
-        <ProfileAvatar userId={userId} size={size} />
+        <UserAvatar
+          name={data?.name || ''}
+          avatarSrc={data?.photos?.avatar || null}
+          avatarSize={size}
+        />
       </IconButton>
     </Tooltip>
   );
