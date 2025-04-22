@@ -7,5 +7,6 @@ export const FAVOURITES = '/favorites';
 export const DIALOGS = '/dialogs';
 export const NOTIFICATIONS = '/notifications';
 export const PROFILE = '/profile';
+export const PROFILE_NETWORK = `${PROFILE}/network`;
 export const LIBRARY = '/library';
 export const SETTINGS = '/mode-switcher';
