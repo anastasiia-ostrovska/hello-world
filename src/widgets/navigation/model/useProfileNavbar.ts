@@ -11,7 +11,7 @@ type UseProfileNavbarResult = {
   handleMenuClose: MenuCloseHandler;
 };
 
-const useProfileNavbar = (): UseProfileNavbarResult => {
+export const useProfileNavbar = (): UseProfileNavbarResult => {
   const [anchorEl, setAnchorEl] = useState<AnchorEl>(null);
   const isMenuOpen = Boolean(anchorEl);
 
@@ -30,5 +30,3 @@ const useProfileNavbar = (): UseProfileNavbarResult => {
     handleMenuClose,
   };
 };
-
-export default useProfileNavbar;
