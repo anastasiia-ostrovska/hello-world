@@ -1,1 +1,1 @@
-export { default as NetworkInfo } from './ui/NetworkInfo';
+export { default as NetworkInfoNavigation } from './ui/NetworkInfoNavigation';

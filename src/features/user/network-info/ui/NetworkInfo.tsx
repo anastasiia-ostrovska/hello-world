@@ -3,14 +3,14 @@ import Typography, { TypographyProps } from '@mui/material/Typography';
 import { SkeletonWrapper } from '@shared/ui';
 
 interface NetworkInfoProps extends StackProps {
-  followCount: number;
+  count: number;
   title: string;
   isLoading: boolean;
   textVariant?: TypographyProps['variant'];
 }
 
 const NetworkInfo = ({
-  followCount,
+  count,
   title,
   isLoading,
   textVariant = 'body1',
@@ -22,7 +22,7 @@ const NetworkInfo = ({
       element={
         <Stack {...wrapperProps}>
           <Typography variant={textVariant} align="left" fontWeight="bold">
-            {followCount}
+            {count}
           </Typography>
           <Typography variant={textVariant} align="left">
             {title}
