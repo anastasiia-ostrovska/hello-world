@@ -3,12 +3,11 @@ import { LogoutButton } from '@features/login';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';
-import { useAuthMeQuery } from '@entities/session';
-import ProfileMenuButton from './ProfileMenuButton';
-import ProfileNavItem from './ProfileNavItem';
-import useProfileNavbar from '../../model/useProfileNavbar';
+import { ProfileMenuButton } from '@features/user';
 import { NavbarLayoutProps } from '../../model/types';
 import { PROFILE_NAV_ITEMS } from '../../config/profile-items';
+import { useProfileNavbar } from '../../model/useProfileNavbar';
+import ProfileNavItem from './ProfileNavItem';
 
 type MenuProps = Omit<
   ReturnType<typeof useProfileNavbar>,
@@ -57,7 +56,6 @@ const ProfileNavbarLayout = ({
 };
 
 const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
-  const { data: authData } = useAuthMeQuery();
   const { anchorEl, isMenuOpen, handleMenuButtonClick, handleMenuClose } =
     useProfileNavbar();
 
@@ -71,7 +69,6 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
       menuProps={{ anchorEl, isMenuOpen, handleMenuClose }}
       profileButton={
         <ProfileMenuButton
-          userId={authData?.data?.userId}
           buttonId={profileButtonID}
           controlsId={menuID}
           size={iconSize}
