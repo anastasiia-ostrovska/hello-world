@@ -4,9 +4,7 @@ import { ROUTES } from '@shared/consts';
 import RouteSuspense from '@app/routing/ui/RouteSuspense';
 
 const HomePage = lazy(() => import('@/pages/Home'));
-const ProfilePage = lazy(
-  () => import('@/_old-version/components/Profile/ProfileContainer')
-);
+const ProfilePage = lazy(() => import('@pages/profile-page'));
 const NetworkPage = lazy(() => import('@pages/network-page'));
 const DialogsPage = lazy(
   () => import('@/_old-version/components/Dialogs/Dialogs')
@@ -28,12 +26,16 @@ const AuthorizedRoutes = ({ userId }: { userId: string | undefined }) => {
         element={<RouteSuspense element={<HomePage />} />}
       />
       <Route
-        path={ROUTES.PROFILE}
-        element={<Navigate to={`${ROUTES.PROFILE}/${userId}`} />}
+        path={`${ROUTES.PROFILE_NETWORK}/:userId`}
+        element={<RouteSuspense element={<HomePage />} />}
       />
       <Route
         path={`${ROUTES.PROFILE}/:userId`}
         element={<RouteSuspense element={<ProfilePage />} />}
+      />
+      <Route
+        path={ROUTES.PROFILE}
+        element={<Navigate to={`${ROUTES.PROFILE}/${userId}`} />}
       />
       <Route
         path={ROUTES.NETWORK}
