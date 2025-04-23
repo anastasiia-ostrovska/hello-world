@@ -60,8 +60,11 @@ const userApi = baseAPI.injectEndpoints({
       }),
 
       async onQueryStarted(userId, { dispatch, queryFulfilled }) {
+        let myId: string;
+
         const patchUserMe = dispatch(
           userApi.util.updateQueryData('userMe', undefined, (draft) => {
+            myId = draft.data.id;
             const usersFollowedByMe = draft.data.following;
             const isFollowed = usersFollowedByMe.includes(userId);
 
@@ -76,10 +79,25 @@ const userApi = baseAPI.injectEndpoints({
           })
         );
 
+        const patchUserById = dispatch(
+          userApi.util.updateQueryData('userById', userId, (draft) => {
+            const { followedBy } = draft.data;
+            const isFollowedByMe = followedBy.includes(myId);
+
+            if (isFollowedByMe) {
+              // eslint-disable-next-line no-param-reassign
+              draft.data.followedBy = followedBy.filter((id) => id !== myId);
+            } else {
+              draft.data.followedBy.push(myId);
+            }
+          })
+        );
+
         try {
           await queryFulfilled;
         } catch {
           patchUserMe.undo();
+          patchUserById.undo();
         }
       },
     }),
