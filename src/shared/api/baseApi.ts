@@ -33,7 +33,7 @@ const baseQueryWithInterceptor: typeof baseQuery = async (
   return result;
 };
 
-const tagTypes = Object.values(TAGS).map((tag) => tag);
+const tagTypes = Object.values(TAGS);
 
 export const baseAPI = createApi({
   baseQuery: baseQueryWithInterceptor,

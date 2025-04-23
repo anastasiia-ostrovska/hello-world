@@ -6,6 +6,7 @@ type CustomBackground = {
   avatar: AvatarColors;
   userCard: string;
   sectionWrapper: string;
+  sectionWrapperTransparent: string;
 };
 
 declare module '@mui/material/styles' {
@@ -25,6 +26,8 @@ const getPalette = (mode: ThemeMode): PaletteOptions => {
       avatar: AVATAR_COLORS,
       userCard: mode === ThemeMode.Dark ? '#1d1d1d' : '#fff',
       sectionWrapper: mode === ThemeMode.Dark ? '#222222' : '#fff',
+      sectionWrapperTransparent:
+        mode === ThemeMode.Dark ? '#22222278' : '#ffffff80',
     },
   };
 };
