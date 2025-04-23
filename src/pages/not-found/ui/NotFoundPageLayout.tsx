@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 interface NotFoundPageLayoutProps {
+  helperText: string;
   icon: ReactElement;
-  helperText: ReactElement;
   goHomeButton: ReactElement;
 }
 
@@ -29,7 +30,9 @@ const NotFoundPageLayout = ({
         }}
       >
         {icon}
-        {helperText}
+        <Typography component="p" variant="inherit">
+          {helperText}
+        </Typography>
         {goHomeButton}
       </Stack>
     </Stack>

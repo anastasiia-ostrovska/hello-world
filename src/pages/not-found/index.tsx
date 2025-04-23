@@ -1,21 +1,11 @@
 import { Link as RouterLink } from 'react-router-dom';
-import { useMediaQueryState } from '@shared/lib';
-import { ButtonProps } from '@mui/material';
 import { ROUTES } from '@shared/consts';
 import NotFoundIcon from '@assets/not-found-icon.svg';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import NotFoundPageLayout from './ui/NotFoundPageLayout';
-
-const useButtonSize = (): ButtonProps['size'] => {
-  const { isUpSM, isUpMD } = useMediaQueryState();
-
-  if (isUpMD) return 'large';
-  if (isUpSM) return 'medium';
-
-  return 'small';
-};
+import { useButtonSize } from './lib/useButtonSize';
+import { NOT_FOUND_PAGE_HELPER_TEXT } from './consts/not-found-helper-text';
 
 const NotFoundPage = () => {
   const buttonSize = useButtonSize();
@@ -23,12 +13,7 @@ const NotFoundPage = () => {
   return (
     <NotFoundPageLayout
       icon={<NotFoundIcon />}
-      helperText={
-        <Typography component="p" variant="inherit">
-          Looks like you’ve followed a broken link or entered a URL that doesn’t
-          exist on this site.
-        </Typography>
-      }
+      helperText={NOT_FOUND_PAGE_HELPER_TEXT}
       goHomeButton={
         <Button
           component={RouterLink}
