@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { ROUTES } from '@shared/consts';
 import { useRedirect } from '@shared/lib';
 import { AppLayout } from '@app/layout';
@@ -39,7 +39,8 @@ const Routing = ({ userId }: RoutingProps) => {
       {/* Public Route (temporary) - Components Presentation */}
       <Route path="/components" element={<Components />} />
       {/* Public Route - 404 */}
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
+      <Route path="*" element={<Navigate to={ROUTES.NOT_FOUND} />} />
     </Routes>
   );
 };
