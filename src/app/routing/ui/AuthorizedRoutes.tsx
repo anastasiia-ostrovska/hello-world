@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route } from 'react-router-dom';
 import { lazy } from 'react';
 import { ROUTES } from '@shared/consts';
 import RouteSuspense from '@app/routing/ui/RouteSuspense';
@@ -19,7 +19,7 @@ const AuthorizedRoutes = ({ userId }: { userId: string | undefined }) => {
   if (!userId) return null;
 
   return (
-    <Routes>
+    <>
       <Route index element={<RouteSuspense element={<HomePage />} />} />
       <Route
         path={ROUTES.HOME}
@@ -65,7 +65,7 @@ const AuthorizedRoutes = ({ userId }: { userId: string | undefined }) => {
         path={ROUTES.SETTINGS}
         element={<RouteSuspense element={<SettingsPage />} />}
       />
-    </Routes>
+    </>
   );
 };
 
