@@ -41,7 +41,7 @@ const NetworkInfoNavigation = ({
   ...wrapperProps
 }: NetworkInfoNavigationProps) => {
   return (
-    <Stack direction="row" spacing={3} {...wrapperProps}>
+    <Stack direction="row" spacing={1} {...wrapperProps}>
       <NetworkNavButton userId={userId}>
         <NetworkInfo
           count={followingCount}

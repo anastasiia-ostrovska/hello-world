@@ -85,6 +85,7 @@ const ProfileInfoSection = ({
           name={user.name}
           jobTitle={user.job}
           country={user.country}
+          noWrap={false}
         />
       }
       showContactsButton={
