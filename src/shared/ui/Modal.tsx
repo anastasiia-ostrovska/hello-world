@@ -35,6 +35,7 @@ const Modal = ({
       fullScreen={!isUpSM}
       open={isOpen}
       onClose={onClose}
+      closeAfterTransition={false}
       aria-labelledby="dialog-title"
       aria-describedby="dialog-description"
     >

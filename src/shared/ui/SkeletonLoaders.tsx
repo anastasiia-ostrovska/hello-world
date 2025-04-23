@@ -19,7 +19,7 @@ interface SkeletonWrapperProps extends LoaderProps, SkeletonProps {
 export const SkeletonWrapper = ({
   isLoading,
   element,
-  variant = 'rectangular',
+  variant = 'rounded',
   sx = {},
   ...props
 }: SkeletonWrapperProps) => {

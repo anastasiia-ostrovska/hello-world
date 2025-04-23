@@ -39,7 +39,6 @@ const ProfileNavbarLayout = ({
         anchorEl={anchorEl}
         open={isMenuOpen}
         onClick={handleMenuClose}
-        onClose={handleMenuClose}
         MenuListProps={{
           'aria-labelledby': menuLabeledBy,
         }}
@@ -79,7 +78,7 @@ const ProfileNavbar = ({ iconSize }: { iconSize: number }) => {
       navItems={PROFILE_NAV_ITEMS.map(({ id, ...itemProps }) => {
         return <ProfileNavItem key={id} {...itemProps} />;
       })}
-      logoutButton={<LogOutButton iconSize={iconSize} />}
+      logoutButton={<LogoutButton iconSize={iconSize} />}
     />
   );
 };
