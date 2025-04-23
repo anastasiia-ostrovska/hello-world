@@ -38,5 +38,6 @@ const tagTypes = Object.values(TAGS).map((tag) => tag);
 export const baseAPI = createApi({
   baseQuery: baseQueryWithInterceptor,
   tagTypes,
+  keepUnusedDataFor: 5,
   endpoints: () => ({}),
 });
