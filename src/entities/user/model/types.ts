@@ -1,6 +1,4 @@
-// User
-
-import { Styles } from '@shared/mui';
+import { Styles } from '@shared/model';
 
 export type UserId = string;
 export type Photo = string | null;
@@ -10,12 +8,16 @@ export interface UserPhotos {
   background: Photo;
 }
 
-export interface UserContacts {
-  linkedIn: string;
-  github: string;
-  facebook: string;
-  instagram: string;
+export enum ContactLabel {
+  LinkedIn = 'linkedIn',
+  Github = 'github',
+  Facebook = 'facebook',
+  Instagram = 'instagram',
 }
+
+export type ContactUrl = string;
+
+export type UserContacts = Record<ContactLabel, ContactUrl>;
 
 interface UserInfo {
   email: string;
