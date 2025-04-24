@@ -1,22 +1,38 @@
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '@shared/consts';
 import Stack, { StackProps } from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
+import { Styles } from '@shared/model';
+import { ROUTES } from '@shared/consts';
+import { Link } from 'react-router-dom';
 import NetworkInfo from './NetworkInfo';
 
 interface NetworkNavButtonProps {
   userId: string;
+  isDisabled: boolean;
   children: ReactNode;
+  sx?: Styles;
 }
 
-const NetworkNavButton = ({ userId, children }: NetworkNavButtonProps) => {
-  return (
+const NetworkNavButton = ({
+  userId,
+  isDisabled,
+  children,
+  sx = {},
+}: NetworkNavButtonProps) => {
+  const button = (
+    <IconButton disabled={isDisabled} sx={{ borderRadius: 1, ...sx }}>
+      {children}
+    </IconButton>
+  );
+
+  return isDisabled ? (
+    button
+  ) : (
     <Link
       to={`${ROUTES.PROFILE_NETWORK}/:${userId}`}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
-      <IconButton sx={{ borderRadius: 1 }}>{children}</IconButton>
+      {button}
     </Link>
   );
 };
@@ -42,7 +58,7 @@ const NetworkInfoNavigation = ({
 }: NetworkInfoNavigationProps) => {
   return (
     <Stack direction="row" spacing={1} {...wrapperProps}>
-      <NetworkNavButton userId={userId}>
+      <NetworkNavButton userId={userId} isDisabled={isLoading}>
         <NetworkInfo
           count={followingCount}
           title="following"
@@ -50,7 +66,7 @@ const NetworkInfoNavigation = ({
           {...networkInfoStyles}
         />
       </NetworkNavButton>
-      <NetworkNavButton userId={userId}>
+      <NetworkNavButton userId={userId} isDisabled={isLoading}>
         <NetworkInfo
           count={followersCount}
           title="followers"
