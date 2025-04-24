@@ -3,6 +3,7 @@ import Box, { BoxProps } from '@mui/material/Box';
 import { Modal } from '@shared/ui';
 
 interface ShowModalButtonProps extends BoxProps {
+  isDisabled: boolean;
   showModalButton: ReactNode;
   modalTitle: ReactNode;
   modalContent: ReactNode;
@@ -13,6 +14,7 @@ interface ShowModalButtonProps extends BoxProps {
 }
 
 const ShowModalButton = ({
+  isDisabled,
   showModalButton,
   modalTitle,
   modalContent,
@@ -25,6 +27,7 @@ const ShowModalButton = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleDialogOpen = () => {
+    if (isDisabled) return;
     setIsOpen(true);
     onButtonClick?.();
   };
