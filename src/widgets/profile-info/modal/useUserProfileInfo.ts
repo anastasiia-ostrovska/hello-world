@@ -6,10 +6,12 @@ import {
   useUserMeQuery,
 } from '@entities/user';
 import { useImagesSize } from '../lib/useImagesSize';
+import { useProfileInfoErrorHandling } from './useProfileInfoErrorHandling';
 
 interface UseUserProfileInfoResult {
   user: UserWithInfo;
   isLoading: boolean;
+  isError: boolean;
   isMyProfile: boolean;
   networkCount: {
     following: number;
@@ -25,24 +27,20 @@ export const useUserProfileInfo = ({
 }): UseUserProfileInfoResult => {
   const { data: myData } = useUserMeQuery();
   const { id: myId } = myData?.data || {};
-  const { data: userData, isLoading: isUserLoading } = useUserByIdQuery(
+  const { data, isLoading, isError, error } = useUserByIdQuery(
     userId ?? skipToken
   );
+
   const isMyProfile = userId === myId;
   const fakeUser = generateFakeUsers(1)[0];
-  const user = userData?.data || fakeUser;
+  const user = data?.data || fakeUser;
   const networkCount = {
     following: user.following.length,
     followedBy: user.followedBy.length,
   };
 
+  useProfileInfoErrorHandling({ error });
   const { imageSize } = useImagesSize();
 
-  return {
-    user,
-    isLoading: isUserLoading,
-    isMyProfile,
-    networkCount,
-    imageSize,
-  };
+  return { user, isLoading, isError, isMyProfile, networkCount, imageSize };
 };
