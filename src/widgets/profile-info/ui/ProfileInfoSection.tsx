@@ -91,6 +91,7 @@ const ProfileInfoSection = ({
       }
       showContactsButton={
         <ShowModalButton
+          withTitleDivider
           showModalButton={
             <SkeletonWrapper
               isLoading={disabledUI}

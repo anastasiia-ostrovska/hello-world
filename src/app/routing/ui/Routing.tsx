@@ -17,7 +17,7 @@ const Routing = ({ userId }: RoutingProps) => {
 
   return (
     <Routes>
-      {/* Private Route Login - Accessible only if user is not authorised */}
+      {/* Private Route Login - Accessible only if the user is not authorized */}
       <Route
         path={ROUTES.LOGIN}
         element={
