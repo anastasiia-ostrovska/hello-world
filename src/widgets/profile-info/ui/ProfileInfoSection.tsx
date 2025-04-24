@@ -1,9 +1,13 @@
 import { ReactNode } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { Button } from '@mui/material';
-import { EditButton, SkeletonWrapper } from '@shared/ui';
+import { EditButton } from '@shared/ui';
 import { AvatarPosition, AvatarWithBgImage } from '@entities/user';
-import { FollowButton, NetworkInfoNavigation, UserInfo } from '@features/user';
+import {
+  FollowButton,
+  NetworkInfoNavigation,
+  UserInfo,
+  ShowContactInfoButton,
+} from '@features/user';
 import { ShowModalButton } from '@features/show-modal-button';
 import { MessageNavButton } from '@features/message-nav-button';
 import { useUserProfileInfo } from '../modal/useUserProfileInfo';
@@ -46,6 +50,7 @@ const ProfileInfoSection = ({
       }
       editImagesButton={
         <ShowModalButton
+          isDisabled={disabledUI}
           showModalButton={
             <EditButton
               tooltipTitle="Change profile images"
@@ -65,6 +70,7 @@ const ProfileInfoSection = ({
       }
       editProfileInfoButton={
         <ShowModalButton
+          isDisabled={disabledUI}
           showModalButton={
             <EditButton
               tooltipTitle="Edit profile details"
@@ -91,22 +97,9 @@ const ProfileInfoSection = ({
       }
       showContactsButton={
         <ShowModalButton
+          isDisabled={disabledUI}
           withTitleDivider
-          showModalButton={
-            <SkeletonWrapper
-              isLoading={disabledUI}
-              element={
-                <Button
-                  variant="text"
-                  size="small"
-                  sx={{ ml: '-5px' }}
-                  disabled={disabledUI}
-                >
-                  Contact info
-                </Button>
-              }
-            />
-          }
+          showModalButton={<ShowContactInfoButton isLoading={disabledUI} />}
           modalTitle={`${user.name}. Contacts`}
           modalContent={contactsModalContent}
         />
