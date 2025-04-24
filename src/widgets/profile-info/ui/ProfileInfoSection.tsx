@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Button } from '@mui/material';
-import { EditButton } from '@shared/ui';
+import { EditButton, SkeletonWrapper } from '@shared/ui';
 import { AvatarPosition, AvatarWithBgImage } from '@entities/user';
 import { FollowButton, NetworkInfoNavigation, UserInfo } from '@features/user';
 import { ShowModalButton } from '@features/show-modal-button';
@@ -23,12 +23,13 @@ const ProfileInfoSection = ({
   contactsModalContent,
 }: ProfileAvatarSectionProps) => {
   const { palette } = useTheme();
-  const { user, isLoading, isMyProfile, networkCount, imageSize } =
+  const { user, isLoading, isError, isMyProfile, networkCount, imageSize } =
     useUserProfileInfo({ userId });
+  const disabledUI = isLoading || isError;
 
   return (
     <ProfileAvatarSectionLayout
-      isLoading={isLoading}
+      isLoading={disabledUI}
       isMyProfile={isMyProfile}
       photosBlock={
         <AvatarWithBgImage
@@ -48,7 +49,7 @@ const ProfileInfoSection = ({
           showModalButton={
             <EditButton
               tooltipTitle="Change profile images"
-              isDisabled={isLoading}
+              isDisabled={disabledUI}
               sx={{
                 position: 'absolute',
                 right: { xs: 4, sm: 8, md: 12 },
@@ -67,7 +68,7 @@ const ProfileInfoSection = ({
           showModalButton={
             <EditButton
               tooltipTitle="Edit profile details"
-              isDisabled={isLoading}
+              isDisabled={disabledUI}
               sx={{
                 position: 'absolute',
                 right: { xs: 4, sm: 8, md: 12 },
@@ -81,7 +82,7 @@ const ProfileInfoSection = ({
       }
       userDescription={
         <UserInfo
-          isLoading={isLoading}
+          isLoading={disabledUI}
           name={user.name}
           jobTitle={user.job}
           country={user.country}
@@ -91,9 +92,19 @@ const ProfileInfoSection = ({
       showContactsButton={
         <ShowModalButton
           showModalButton={
-            <Button variant="text" size="small" sx={{ ml: '-5px' }}>
-              Contact info
-            </Button>
+            <SkeletonWrapper
+              isLoading={disabledUI}
+              element={
+                <Button
+                  variant="text"
+                  size="small"
+                  sx={{ ml: '-5px' }}
+                  disabled={disabledUI}
+                >
+                  Contact info
+                </Button>
+              }
+            />
           }
           modalTitle={`${user.name}. Contacts`}
           modalContent={contactsModalContent}
@@ -104,14 +115,14 @@ const ProfileInfoSection = ({
           userId={userId}
           followingCount={networkCount.following}
           followersCount={networkCount.followedBy}
-          isLoading={isLoading}
+          isLoading={disabledUI}
           sx={{ ml: '-8px', mt: '-8px' }}
         />
       }
       followButton={
         <FollowButton
           userId={userId}
-          isLoading={isLoading}
+          isLoading={disabledUI}
           sx={{ width: '100%' }}
         />
       }
