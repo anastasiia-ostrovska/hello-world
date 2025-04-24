@@ -1,18 +1,10 @@
-import { ReactNode } from 'react';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import LinkIcon from '@mui/icons-material/Link';
 import { getContactUrlWithPrefix } from '../lib/getContactUrlWithPrefix';
-import { ContactLink } from '../model/types';
-
-interface ContactLinkProps {
-  url: string;
-  label: string;
-  icon?: ReactNode;
-  type?: ContactLink;
-}
+import { ContactLink, ContactLinkProps } from '../model/types';
 
 const UserContactLink = ({
   url,
