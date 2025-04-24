@@ -7,6 +7,7 @@ import * as TAGS from './invalidation-tags';
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
+    headers.set('mode', 'no-cors');
     const { token } = (getState() as RootState).session;
 
     if (token) {
