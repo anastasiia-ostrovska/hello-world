@@ -1,41 +1,34 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useAppDispatch } from '@shared/model';
 import {
-  Error,
-  ErrorMessages,
-  getErrorMessage,
-  isErrorTypeInError,
-  isFetchBaseQueryError,
+  DEFAULT_ERROR_MESSAGES,
+  DEFAULT_EXCEPTIONS,
+  ErrorNotificationParams,
+  getErrorMessageWithExceptions,
 } from '@shared/error-message';
 import { createErrorNotificationElement } from '../lib/createNotificationElement';
 import { addNotification } from './notificationSlice';
 
-interface UseErrorPopupNotificationParams {
-  error: unknown;
-  errorMessages?: ErrorMessages;
-  exceptions?: Error[];
-}
-
 export const useErrorPopupNotification = ({
   error,
-  errorMessages = {},
-  exceptions = [],
-}: UseErrorPopupNotificationParams) => {
+  errorMessages = DEFAULT_ERROR_MESSAGES,
+  exceptions = DEFAULT_EXCEPTIONS,
+}: ErrorNotificationParams) => {
   const dispatch = useAppDispatch();
+  const processedError = useMemo(
+    () =>
+      getErrorMessageWithExceptions({
+        error,
+        errorMessages,
+        exceptions,
+      }),
+    [error, errorMessages, exceptions]
+  );
 
   useEffect(() => {
-    if (error) {
-      const isExceptedErrorType = exceptions.some((errorType) =>
-        isErrorTypeInError({ error, errorType })
-      );
-      if (isExceptedErrorType) return;
-      if (isFetchBaseQueryError(error) && error?.status === 401) return;
-
-      const getCurrentErrorMessage = getErrorMessage(errorMessages);
-      const errorMessage = getCurrentErrorMessage(error);
-      const errorNotification = createErrorNotificationElement(errorMessage);
-
+    if (processedError) {
+      const errorNotification = createErrorNotificationElement(processedError);
       dispatch(addNotification(errorNotification));
     }
-  }, [dispatch, error, errorMessages, exceptions]);
+  }, [dispatch, processedError]);
 };

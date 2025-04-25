@@ -23,3 +23,9 @@ export interface ErrorMessage {
   errorType: Error;
   title?: string;
 }
+
+export interface ErrorNotificationParams {
+  error: unknown;
+  errorMessages?: ErrorMessages;
+  exceptions?: Error[];
+}

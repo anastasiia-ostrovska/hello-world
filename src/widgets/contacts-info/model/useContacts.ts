@@ -6,6 +6,7 @@ interface UseContactsResult {
   contacts: ContactsArray;
   isLoading: boolean;
   isError: boolean;
+  error: unknown;
 }
 
 export const useContacts = ({
@@ -17,6 +18,7 @@ export const useContacts = ({
     data: userData,
     isLoading,
     isError,
+    error,
   } = useUserByIdQuery(userId ?? skipToken);
   const fakeUser = generateFakeUsers(1)[0];
   const { contacts, email, phone } = userData?.data || fakeUser;
@@ -24,5 +26,5 @@ export const useContacts = ({
   const contactsArray = Object.entries(contactsList) as ContactsArray;
   const filteredContacts = contactsArray.filter(([, contact]) => !!contact);
 
-  return { contacts: filteredContacts, isLoading, isError };
+  return { contacts: filteredContacts, isLoading, isError, error };
 };

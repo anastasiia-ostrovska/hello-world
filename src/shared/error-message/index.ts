@@ -1,4 +1,5 @@
 export * from './model/types';
 export * from './lib/errorTypePredicates';
+export * from './consts/default-parameters';
 
-export { getErrorMessage } from './lib/getErrorMessage';
+export { getErrorMessageWithExceptions } from './lib/getErrorMessageWithExceptions';

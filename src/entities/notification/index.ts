@@ -1,7 +1,9 @@
 export * from './lib/createNotificationElement';
 export * from './model/notificationSlice';
+export * from './model/types';
 
 export { useErrorPopupNotification } from './model/useErrorPopupNotification';
+export { useErrorEmbeddedNotification } from './model/useErrorEmbeddedNotification';
 
 export { EmbeddedNotification } from './ui/EmbeddedNotification';
 export { PopupNotification } from './ui/PopupNotification';
