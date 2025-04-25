@@ -45,8 +45,8 @@ const ProfileImagesEditorLayout = ({
 }: ProfileImagesEditorLayoutProps) => {
   return (
     <Stack
-      spacing={4}
-      sx={{ width: { xs: '100%', sm: '80vw' }, maxWidth: 500 }}
+      spacing={5}
+      sx={{ width: { xs: '100%', sm: '80vw' }, maxWidth: { sm: 500 } }}
     >
       <SectionWrapper>{imagesBlock}</SectionWrapper>
       <Stack
