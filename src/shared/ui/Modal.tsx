@@ -32,9 +32,10 @@ const Modal = ({
 
   return (
     <Dialog
-      fullScreen={!isUpSM}
       open={isOpen}
       onClose={onClose}
+      maxWidth="lg"
+      fullScreen={!isUpSM}
       closeAfterTransition={false}
       aria-labelledby="dialog-title"
       aria-describedby="dialog-description"

@@ -5,8 +5,8 @@ import { AvatarPosition, AvatarWithBgImage } from '@entities/user';
 import {
   FollowButton,
   NetworkInfoNavigation,
-  UserInfo,
   ShowContactInfoButton,
+  UserInfo,
 } from '@features/user';
 import { ShowModalButton } from '@features/show-modal-button';
 import { MessageNavButton } from '@features/message-nav-button';
@@ -50,6 +50,7 @@ const ProfileInfoSection = ({
       }
       editImagesButton={
         <ShowModalButton
+          withTitleDivider
           isDisabled={disabledUI}
           showModalButton={
             <EditButton
@@ -64,7 +65,7 @@ const ProfileInfoSection = ({
               }}
             />
           }
-          modalTitle="Change profile images"
+          modalTitle="Profile images editor"
           modalContent={editImagesModalContent}
         />
       }
