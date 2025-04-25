@@ -5,9 +5,10 @@ const LoginPage = () => {
   return (
     <Stack
       sx={{
-        height: '100vh',
+        minHeight: 'inherit',
         justifyContent: 'center',
         alignItems: 'center',
+        py: 4,
       }}
     >
       <LoginForm />
