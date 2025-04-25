@@ -33,7 +33,7 @@ const Routing = ({ userId }: RoutingProps) => {
         }
       >
         <Route path={ROUTES.ROOT} element={<AppLayout />}>
-          {AuthorizedRoutes({ userId })}
+          {AuthorizedRoutes({ userId } as { userId: string })}
         </Route>
       </Route>
       {/* Public Route (temporary) - Components Presentation */}
