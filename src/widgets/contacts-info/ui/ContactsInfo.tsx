@@ -1,10 +1,15 @@
-import { useContacts } from '@widgets/contacts-info/model/useContacts';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { ErrorEmbeddedNotification } from '@features/notification';
+import { useContacts } from '../model/useContacts';
 import ContactsList from './ContactsList';
 
 const ContactsInfo = ({ userId }: { userId: string }) => {
-  const { contacts, isLoading, isError } = useContacts({ userId });
+  const { contacts, isLoading, isError, error } = useContacts({ userId });
+
+  if (error) {
+    return <ErrorEmbeddedNotification error={error} />;
+  }
 
   return contacts.length ? (
     <Stack spacing={2} sx={{ minWidth: 300 }}>
