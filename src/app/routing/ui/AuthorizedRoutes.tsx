@@ -15,9 +15,7 @@ const FavouritesPage = lazy(() => import('@/pages/Favourites'));
 const LibraryPage = lazy(() => import('@/pages/Library'));
 const SettingsPage = lazy(() => import('@/pages/Settings'));
 
-const AuthorizedRoutes = ({ userId }: { userId: string | undefined }) => {
-  if (!userId) return null;
-
+const AuthorizedRoutes = ({ userId }: { userId: string }) => {
   return (
     <>
       <Route index element={<RouteSuspense element={<HomePage />} />} />
