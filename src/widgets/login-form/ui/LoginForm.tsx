@@ -15,7 +15,7 @@ import {
   LoginFormBlockLayout,
 } from './LoginFormLayouts';
 
-const LogInForm = () => {
+const LoginForm = () => {
   const {
     methods,
     handleFormSubmit,
@@ -57,4 +57,4 @@ const LogInForm = () => {
   );
 };
 
-export default LogInForm;
+export default LoginForm;
