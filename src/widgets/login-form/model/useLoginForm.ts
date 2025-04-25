@@ -1,6 +1,5 @@
-import { BaseSyntheticEvent, useEffect, useState } from 'react';
+import { BaseSyntheticEvent, useEffect } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
-import { ErrorMessage, getErrorMessage } from '@shared/error-message';
 import { useAppDispatch } from '@shared/model';
 import {
   LoginData,
@@ -8,14 +7,13 @@ import {
   storeAccessToken,
   useLoginMutation,
 } from '@entities/session';
-import { LOGIN_ERROR_MESSAGES } from '../consts/error-messages';
 
 interface UseLogInFormResult {
   methods: UseFormReturn<LoginData>;
   handleFormSubmit: (e?: BaseSyntheticEvent) => Promise<void>;
   isSubmitButtonDisabled: boolean;
   isLogInRequestLoading: boolean;
-  loginError: ErrorMessage | null;
+  error: unknown;
 }
 
 export const useLoginForm = (): UseLogInFormResult => {
@@ -37,24 +35,10 @@ export const useLoginForm = (): UseLogInFormResult => {
       isLoading: isLoginRequestLoading,
       isSuccess: loginRequestSuccess,
       data: loginResponse,
-      isError,
       error,
     },
   ] = useLoginMutation();
-
-  const [loginError, setLoginError] = useState<ErrorMessage | null>(null);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (isError) {
-      const getLoginErrorMessage = getErrorMessage(LOGIN_ERROR_MESSAGES);
-      const loginError = getLoginErrorMessage(error);
-
-      setLoginError(loginError);
-    }
-
-    return () => setLoginError(null);
-  }, [error, isError]);
 
   useEffect(() => {
     if (isSubmitSuccessful && loginRequestSuccess) {
@@ -76,6 +60,6 @@ export const useLoginForm = (): UseLogInFormResult => {
     handleFormSubmit: handleSubmit(handleFormSubmit),
     isSubmitButtonDisabled,
     isLogInRequestLoading: isLoginRequestLoading,
-    loginError,
+    error,
   };
 };

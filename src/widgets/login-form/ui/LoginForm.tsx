@@ -5,14 +5,15 @@ import {
   FillGuestDataButton,
   PasswordInput,
 } from '@features/login';
-import LoginErrorNotification from './LoginErrorNotification';
+import { ErrorEmbeddedNotification } from '@/features/notification';
+import { useLoginForm } from '../model/useLoginForm';
+import { LOGIN_ERROR_MESSAGES } from '../consts/error-messages';
 import {
   FormGuestDataLayout,
   FormHeaderLayout,
   FormInputsLayout,
   LoginFormBlockLayout,
 } from './LoginFormLayouts';
-import { useLoginForm } from '../model/useLoginForm';
 
 const LogInForm = () => {
   const {
@@ -20,7 +21,7 @@ const LogInForm = () => {
     handleFormSubmit,
     isSubmitButtonDisabled,
     isLogInRequestLoading,
-    loginError,
+    error,
   } = useLoginForm();
 
   return (
@@ -30,10 +31,16 @@ const LogInForm = () => {
         guestDataHelper={
           <FormGuestDataLayout
             text="* Please, use the Guest credentials to log in."
-            button={<FillGuestDataButton />}
+            button={<FillGuestDataButton isDisabled={isLogInRequestLoading} />}
           />
         }
-        errorNotification={<LoginErrorNotification error={loginError} />}
+        errorNotification={
+          <ErrorEmbeddedNotification
+            error={error}
+            errorMessages={LOGIN_ERROR_MESSAGES}
+            withCloseButton
+          />
+        }
         form={
           <Form onSubmit={handleFormSubmit} spacing={3}>
             <FormInputsLayout
