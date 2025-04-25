@@ -8,7 +8,7 @@ import {
   RemoveNotificationIconButton,
 } from '@entities/notification';
 
-export const NotificationActions = ({ id }: { id: string }) => {
+const NotificationActions = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch();
 
   const handleRemoveNotification = () => {
@@ -28,3 +28,5 @@ export const NotificationActions = ({ id }: { id: string }) => {
     </Stack>
   );
 };
+
+export default NotificationActions;
