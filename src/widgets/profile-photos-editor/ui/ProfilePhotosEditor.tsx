@@ -2,9 +2,7 @@ import { skipToken } from '@reduxjs/toolkit/query';
 import { useTheme } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Divider from '@mui/material/Divider';
-import TextField from '@mui/material/TextField';
 import { SectionWrapper } from '@shared/ui';
 import {
   AvatarPosition,
@@ -13,22 +11,8 @@ import {
   useUserByIdQuery,
 } from '@entities/user';
 import { ReactElement } from 'react';
-
-const InputFileUpload = ({ title }: { title: string }) => {
-  return (
-    <Button
-      component="label"
-      role={undefined}
-      variant="outlined"
-      size="small"
-      tabIndex={-1}
-      startIcon={<CloudUploadIcon />}
-    >
-      {title}
-      <TextField type="file" sx={{ display: 'none' }} />
-    </Button>
-  );
-};
+import { UploadFileButton } from '@shared/forms';
+import { FormProvider, useForm } from 'react-hook-form';
 
 interface ProfileImagesEditorLayoutProps {
   imagesBlock: ReactElement;
@@ -64,32 +48,54 @@ const ProfileImagesEditorLayout = ({
   );
 };
 
-const ProfileImagesEditor = ({ userId }: { userId: string }) => {
+enum ProfilePhotos {
+  Avatar = 'avatar',
+  Background = 'background',
+}
+
+interface ProfilePhotosData {
+  [ProfilePhotos.Avatar]: string;
+  [ProfilePhotos.Background]: string;
+}
+
+const ProfilePhotosEditor = ({ userId }: { userId: string }) => {
   const { data } = useUserByIdQuery(userId ?? skipToken);
   const fakeUser = generateFakeUsers(1)[0];
   const user = data?.data || fakeUser;
   const { palette } = useTheme();
 
+  const methods = useForm<ProfilePhotosData>({
+    defaultValues: {
+      [ProfilePhotos.Avatar]: '',
+      [ProfilePhotos.Background]: '',
+    },
+    mode: 'onTouched',
+  });
+
   return (
-    <ProfileImagesEditorLayout
-      imagesBlock={
-        <AvatarWithBgImage
-          name={user.name}
-          avatarSrc={user.photos.avatar}
-          bgImageSrc={user.photos.background}
-          avatarSize={100}
-          bgImageHeight={100}
-          avatarPosition={AvatarPosition.Left}
-          avatarBorderColor={palette.customBackground.sectionWrapper}
-          avatarBorderWidth="4px"
-          sx={{ mb: `${100 / 2}px` }}
-        />
-      }
-      uploadAvatarImgButton={<InputFileUpload title="Avatar" />}
-      uploadBgImgButton={<InputFileUpload title="Cover" />}
-      applyButton={<Button size="small">Apply</Button>}
-    />
+    <FormProvider {...methods}>
+      <ProfileImagesEditorLayout
+        imagesBlock={
+          <AvatarWithBgImage
+            name={user.name}
+            avatarSrc={user.photos.avatar}
+            bgImageSrc={user.photos.background}
+            avatarSize={100}
+            bgImageHeight={100}
+            avatarPosition={AvatarPosition.Left}
+            avatarBorderColor={palette.customBackground.sectionWrapper}
+            avatarBorderWidth="4px"
+            sx={{ mb: `${100 / 2}px` }}
+          />
+        }
+        uploadAvatarImgButton={
+          <UploadFileButton name="avatar" label="Avatar" />
+        }
+        uploadBgImgButton={<UploadFileButton name="background" label="Cover" />}
+        applyButton={<Button size="small">Apply</Button>}
+      />
+    </FormProvider>
   );
 };
 
-export default ProfileImagesEditor;
+export default ProfilePhotosEditor;

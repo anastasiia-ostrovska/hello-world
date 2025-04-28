@@ -1,7 +1,7 @@
 import { ProfileInfoSection } from '@widgets/profile-info';
 import { useParams } from 'react-router-dom';
 import { ContactsInfo } from '@widgets/contacts-info';
-import { ProfileImagesEditor } from '@widgets/profile-images-editor';
+import { ProfilePhotosEditor } from '@widgets/profile-photos-editor';
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -9,7 +9,7 @@ const ProfilePage = () => {
   return (
     <ProfileInfoSection
       userId={userId || ''}
-      editImagesModalContent={<ProfileImagesEditor userId={userId || ''} />}
+      editImagesModalContent={<ProfilePhotosEditor userId={userId || ''} />}
       editDetailsModalContent="Edit profile information content"
       contactsModalContent={<ContactsInfo userId={userId || ''} />}
     />
