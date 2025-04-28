@@ -15,7 +15,7 @@ interface ControlledCheckboxProps
 
 const ControlledCheckbox = ({
   name,
-  label,
+  label = '',
   helperText = '',
   required = true,
   showError = true,

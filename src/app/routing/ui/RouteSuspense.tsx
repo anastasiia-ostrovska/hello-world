@@ -6,9 +6,11 @@ interface RouteSuspenseProps {
   fallback?: ReactElement;
 }
 
+const defaultFallback = <PageLoaderWithDelay />;
+
 const RouteSuspense = ({
   element,
-  fallback = <PageLoaderWithDelay />,
+  fallback = defaultFallback,
 }: RouteSuspenseProps) => {
   return <Suspense fallback={fallback}>{element}</Suspense>;
 };
