@@ -1,36 +1,32 @@
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import ControlledTextField from './ControlledTextField';
+import { useFormContext } from 'react-hook-form';
 import { UploadFileButtonProps } from '../model/types';
-
-const defaultIcon = <CloudUploadIcon />;
 
 const UploadFileButton = ({
   name,
+  label = 'Upload',
   accept = 'image/*',
-  label = 'Upload file',
-  buttonSize = 'small',
-  buttonSX = {},
-  startIcon = defaultIcon,
-  ...textFieldMuiProps
+  ...buttonMuiProps
 }: UploadFileButtonProps) => {
+  const { register } = useFormContext();
+
   return (
     <Button
       component="label"
-      variant="outlined"
       role={undefined}
-      size={buttonSize}
       tabIndex={-1}
-      startIcon={startIcon}
-      sx={{ ...buttonSX }}
+      size="small"
+      variant="contained"
+      startIcon={<CloudUploadIcon />}
+      {...buttonMuiProps}
     >
       {label}
-      <ControlledTextField
-        name={name}
+      <input
+        {...register(name)}
         type="file"
-        slotProps={{ htmlInput: { accept } }}
-        sx={{ display: 'none' }}
-        {...textFieldMuiProps}
+        accept={accept}
+        style={{ display: 'none' }}
       />
     </Button>
   );
