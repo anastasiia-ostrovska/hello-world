@@ -1,7 +1,6 @@
 import { UseControllerProps } from 'react-hook-form';
 import { ButtonProps, TextFieldProps } from '@mui/material';
-import { HTMLInputTypeAttribute, ReactNode } from 'react';
-import { Styles } from '@shared/model';
+import { HTMLInputTypeAttribute } from 'react';
 
 export interface ControlledInputProps {
   name: string;
@@ -21,9 +20,8 @@ export interface ControlledTextFieldWithTypeAttribute
   type: HTMLInputTypeAttribute;
 }
 
-export interface UploadFileButtonProps extends ControlledTextFieldProps {
-  buttonSize?: ButtonProps['size'];
-  buttonSX?: Styles;
-  startIcon?: ReactNode;
+export interface UploadFileButtonProps extends ButtonProps {
+  name: string;
+  label?: string;
   accept?: string;
 }
