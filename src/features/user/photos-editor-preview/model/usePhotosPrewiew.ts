@@ -1,21 +1,15 @@
-import {
-  generateFakeUsers,
-  PhotoLabel,
-  UploadedPhotos,
-  useUserByIdQuery,
-} from '@entities/user';
-import { skipToken } from '@reduxjs/toolkit/query';
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { updateImgSrc } from '@features/user/photos-editor-preview/lib/updateImgSrc';
+import { PhotoLabel, UploadedPhotos, UserPhotos } from '@entities/user';
+import { updateImgSrc } from '../lib/updateImgSrc';
 
-export const usePhotosPreview = ({ userId }: { userId: string }) => {
-  const { data } = useUserByIdQuery(userId ?? skipToken);
-  const fakeUser = generateFakeUsers(1)[0];
-  const user = data?.data || fakeUser;
-
-  const [avatarSrc, setAvatarSrc] = useState(user.photos.avatar);
-  const [backgroundSrc, setBackgroundSrc] = useState(user.photos.background);
+export const usePhotosPreview = ({
+  photos,
+}: {
+  photos: UserPhotos;
+}): UserPhotos => {
+  const [avatarSrc, setAvatarSrc] = useState(photos.avatar);
+  const [backgroundSrc, setBackgroundSrc] = useState(photos.background);
 
   const { watch } = useFormContext<UploadedPhotos>();
 
@@ -34,5 +28,5 @@ export const usePhotosPreview = ({ userId }: { userId: string }) => {
     return () => unsubscribe();
   }, [watch]);
 
-  return { name: user.name, avatarSrc, backgroundSrc };
+  return { avatar: avatarSrc, background: backgroundSrc };
 };

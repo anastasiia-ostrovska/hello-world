@@ -1,24 +1,26 @@
 import { useTheme } from '@mui/material/styles';
-import { AvatarPosition, AvatarWithBgImage } from '@entities/user';
+import { AvatarPosition, AvatarWithBgImage, UserPhotos } from '@entities/user';
 import { usePhotosPreview } from '../model/usePhotosPrewiew';
 
 interface PhotosEditorPreviewProps {
-  userId: string;
+  name: string;
+  photos: UserPhotos;
   imagesSize: number;
 }
 
 const PhotosEditorPreview = ({
-  userId,
+  name,
+  photos,
   imagesSize,
 }: PhotosEditorPreviewProps) => {
   const { palette } = useTheme();
-  const { name, avatarSrc, backgroundSrc } = usePhotosPreview({ userId });
+  const { avatar, background } = usePhotosPreview({ photos });
 
   return (
     <AvatarWithBgImage
       name={name}
-      avatarSrc={avatarSrc}
-      bgImageSrc={backgroundSrc}
+      avatarSrc={avatar}
+      bgImageSrc={background}
       avatarSize={imagesSize}
       bgImageHeight={imagesSize}
       avatarPosition={AvatarPosition.Left}
