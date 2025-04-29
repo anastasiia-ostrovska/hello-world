@@ -21,7 +21,7 @@ export interface ControlledTextFieldWithTypeAttribute
 }
 
 export interface UploadFileButtonProps extends ButtonProps {
-  name: string;
+  inputName: string;
   label?: string;
   accept?: string;
 }

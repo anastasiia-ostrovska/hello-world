@@ -16,6 +16,7 @@ const SetInputValueButton = ({
   ...buttonProps
 }: SetInputValueButtonProps) => {
   const { setValue } = useFormContext();
+
   const handleSetValue = () => {
     setValue(inputName, newValue);
   };
