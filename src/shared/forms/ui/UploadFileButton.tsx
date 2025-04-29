@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { UploadFileButtonProps } from '../model/types';
 
 const UploadFileButton = ({
-  name,
+  inputName,
   label = 'Upload',
   accept = 'image/*',
   ...buttonMuiProps
@@ -23,7 +23,7 @@ const UploadFileButton = ({
     >
       {label}
       <input
-        {...register(name)}
+        {...register(inputName)}
         type="file"
         accept={accept}
         style={{ display: 'none' }}
