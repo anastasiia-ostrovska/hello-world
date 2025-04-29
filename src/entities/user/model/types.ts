@@ -1,13 +1,21 @@
 import { Styles } from '@shared/model';
 
 export type UserId = string;
-export type Photo = string | null;
 
-export interface UserPhotos {
-  avatar: Photo;
-  background: Photo;
+// Photo types
+export enum PhotoLabel {
+  Avatar = 'avatar',
+  Background = 'background',
 }
 
+export type PhotoSrc = string | null;
+export type UserPhotos = Record<PhotoLabel, PhotoSrc>;
+
+export type UploadedPhoto = FileList | null;
+export type UploadedPhotos = Record<PhotoLabel, UploadedPhoto | undefined>;
+export type UpdatedUserPhotos = Record<PhotoLabel, File | null | undefined>;
+
+// Contact types
 export enum ContactLabel {
   LinkedIn = 'linkedIn',
   Github = 'github',
@@ -16,9 +24,9 @@ export enum ContactLabel {
 }
 
 export type ContactUrl = string;
-
 export type UserContacts = Record<ContactLabel, ContactUrl>;
 
+// User types
 interface UserInfo {
   email: string;
   phone: string;
@@ -36,13 +44,13 @@ export interface UserWithInfo extends UserInfo {
   following: UserId[];
 }
 
-interface EditableUserData extends UserContacts, UserPhotos, UserInfo {
+interface EditableUserData extends UserContacts, UpdatedUserPhotos, UserInfo {
   name: string;
 }
 
-export type EditedUserData = Partial<EditableUserData>;
+export type UpdatedUserData = Partial<EditableUserData> | FormData;
 
-// Users
+// Users types
 export interface UsersListData {
   users: UserWithInfo[];
   usersTotal: number;
@@ -58,7 +66,7 @@ export interface UsersListFilters {
   following: boolean;
 }
 
-// Props
+// Props types
 export enum AvatarPosition {
   Center = 'center',
   Left = 'left',
@@ -66,13 +74,13 @@ export enum AvatarPosition {
 
 export interface UserAvatarProps {
   name: string;
-  avatarSrc: Photo;
+  avatarSrc: PhotoSrc;
   avatarSize: number;
   sx?: Styles;
 }
 
 export interface BackgroundImageProps {
-  bgImageSrc: Photo;
+  bgImageSrc: PhotoSrc;
   bgImageHeight: number | `${number}px` | `${number}rem`;
 }
 
