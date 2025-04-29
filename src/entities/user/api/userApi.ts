@@ -6,7 +6,7 @@ import {
   TAGS,
 } from '@shared/api';
 import {
-  EditedUserData,
+  UpdatedUserData,
   UserId,
   UsersListData,
   UsersListFilters,
@@ -44,13 +44,13 @@ const userApi = baseAPI.injectEndpoints({
       providesTags: [TAGS.USERS_LIST],
     }),
 
-    updateUser: builder.mutation<UserResponse, EditedUserData>({
+    updateUser: builder.mutation<UserResponse, UpdatedUserData>({
       query: (editedUserData) => ({
         method: METHODS.PUT,
         url: ENDPOINTS.USER,
         body: editedUserData,
       }),
-      invalidatesTags: [TAGS.USER_ME],
+      invalidatesTags: [TAGS.USER_ME, TAGS.USER],
     }),
 
     toggleFollowUser: builder.mutation<FollowUserResponse, UserId>({
@@ -109,4 +109,5 @@ export const {
   useUserMeQuery,
   useUserByIdQuery,
   useToggleFollowUserMutation,
+  useUpdateUserMutation,
 } = userApi;
