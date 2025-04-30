@@ -1,9 +1,7 @@
-import { skipToken } from '@reduxjs/toolkit/query';
 import {
-  generateFakeUsers,
   UserWithInfo,
-  useUserByIdQuery,
   useUserMeQuery,
+  useUserWithFallback,
 } from '@entities/user';
 import { useImagesSize } from '../lib/useImagesSize';
 import { useProfileInfoErrorHandling } from './useProfileInfoErrorHandling';
@@ -25,15 +23,11 @@ export const useUserProfileInfo = ({
 }: {
   userId: string;
 }): UseUserProfileInfoResult => {
+  const { user, error, isError, isLoading } = useUserWithFallback({ userId });
   const { data: myData } = useUserMeQuery();
   const { id: myId } = myData?.data || {};
-  const { data, isLoading, isError, error } = useUserByIdQuery(
-    userId ?? skipToken
-  );
 
   const isMyProfile = userId === myId;
-  const fakeUser = generateFakeUsers(1)[0];
-  const user = data?.data || fakeUser;
   const networkCount = {
     following: user.following.length,
     followedBy: user.followedBy.length,
