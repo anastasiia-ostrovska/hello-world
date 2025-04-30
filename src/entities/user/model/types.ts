@@ -11,7 +11,11 @@ export enum PhotoLabel {
 export type PhotoSrc = string | null;
 export type UserPhotos = Record<PhotoLabel, PhotoSrc>;
 
-export type UploadedPhoto = FileList | null;
+export enum PhotoAction {
+  Delete = 'delete',
+}
+
+export type UploadedPhoto = FileList | PhotoAction.Delete;
 export type UploadedPhotos = Record<PhotoLabel, UploadedPhoto | undefined>;
 export type UpdatedUserPhotos = Record<PhotoLabel, File | null | undefined>;
 
