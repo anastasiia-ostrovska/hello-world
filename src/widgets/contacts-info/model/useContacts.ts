@@ -1,5 +1,4 @@
-import { skipToken } from '@reduxjs/toolkit/query';
-import { generateFakeUsers, useUserByIdQuery } from '@entities/user';
+import { useUserWithFallback } from '@entities/user';
 import { ContactsArray } from './types';
 
 interface UseContactsResult {
@@ -14,14 +13,9 @@ export const useContacts = ({
 }: {
   userId: string;
 }): UseContactsResult => {
-  const {
-    data: userData,
-    isLoading,
-    isError,
-    error,
-  } = useUserByIdQuery(userId ?? skipToken);
-  const fakeUser = generateFakeUsers(1)[0];
-  const { contacts, email, phone } = userData?.data || fakeUser;
+  const { user, error, isError, isLoading } = useUserWithFallback({ userId });
+  const { contacts, email, phone } = user;
+
   const contactsList = { ...contacts, email, phone };
   const contactsArray = Object.entries(contactsList) as ContactsArray;
   const filteredContacts = contactsArray.filter(([, contact]) => !!contact);
