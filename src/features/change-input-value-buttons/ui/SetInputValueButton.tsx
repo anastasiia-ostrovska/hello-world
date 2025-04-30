@@ -18,7 +18,7 @@ const SetInputValueButton = ({
   const { setValue } = useFormContext();
 
   const handleSetValue = () => {
-    setValue(inputName, newValue);
+    setValue(inputName, newValue, { shouldDirty: true });
   };
 
   return (

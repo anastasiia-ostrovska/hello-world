@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Stack } from '@mui/material';
 import { UploadFileButton } from '@shared/forms';
+import { PhotoAction } from '@entities/user';
 import {
   ResetInputButton,
   SetInputValueButton,
@@ -13,7 +14,7 @@ const EditPhotoControlsLayout = ({ children }: { children: ReactNode }) => {
       spacing={1}
       sx={{
         width: '100%',
-        maxWidth: 300,
+        maxWidth: { sm: 400 },
         justifyContent: 'space-between',
         justifySelf: 'end',
       }}
@@ -26,24 +27,34 @@ const EditPhotoControlsLayout = ({ children }: { children: ReactNode }) => {
 interface EditPhotoControlsProps {
   inputName: string;
   uploadLabel: string;
+  isDisabled?: boolean;
 }
 
 const EditPhotoControls = ({
   inputName,
   uploadLabel,
+  isDisabled = false,
 }: EditPhotoControlsProps) => {
   return (
     <EditPhotoControlsLayout>
       <UploadFileButton
         inputName={inputName}
         label={uploadLabel}
-        sx={{ minWidth: 95 }}
+        disabled={isDisabled}
+        sx={{ minWidth: 95, width: '100%' }}
       />
-      <ResetInputButton inputName={inputName} label="Reset" />
+      <ResetInputButton
+        inputName={inputName}
+        label="Reset"
+        disabled={isDisabled}
+        sx={{ width: '100%' }}
+      />
       <SetInputValueButton
         label="Delete"
         inputName={inputName}
-        newValue={null}
+        newValue={PhotoAction.Delete}
+        disabled={isDisabled}
+        sx={{ width: '100%' }}
       />
     </EditPhotoControlsLayout>
   );
