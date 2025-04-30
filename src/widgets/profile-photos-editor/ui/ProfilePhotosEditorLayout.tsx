@@ -27,7 +27,7 @@ const TabLayout = ({ children }: { children: ReactNode }) => (
   </Stack>
 );
 
-const ProfileImagesEditorLayout = ({
+const ProfilePhotosEditorLayout = ({
   imagesBlock,
   avatarInputActions,
   bgInputActions,
@@ -74,4 +74,4 @@ const ProfileImagesEditorLayout = ({
   );
 };
 
-export default ProfileImagesEditorLayout;
+export default ProfilePhotosEditorLayout;
