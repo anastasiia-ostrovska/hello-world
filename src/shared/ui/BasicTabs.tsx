@@ -2,6 +2,7 @@ import { ReactElement, ReactNode, SyntheticEvent, useState } from 'react';
 import Tabs, { TabsProps } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import { Styles } from '@shared/model';
 
 const BASIC_TAB = 'basic-tab';
@@ -43,15 +44,15 @@ const BasicTabsLayout = ({
   wrapperSx = {},
 }: BasicTabsLayoutProps) => {
   return (
-    <Box sx={{ width: '100%', ...wrapperSx }}>
+    <Stack sx={{ width: '100%', ...wrapperSx }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>{tabs}</Box>
       {panels}
-    </Box>
+    </Stack>
   );
 };
 
 // Tabs
-export interface TabData {
+export interface TabItem {
   id: number;
   label: string;
   content: ReactNode;
@@ -59,7 +60,7 @@ export interface TabData {
 }
 
 export interface TabsConfig {
-  tabs: TabData[];
+  tabs: TabItem[];
 }
 
 export interface BasicTabsProps extends TabsConfig, TabsProps {
