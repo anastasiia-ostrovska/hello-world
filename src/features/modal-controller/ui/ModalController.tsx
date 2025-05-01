@@ -8,7 +8,7 @@ const ModalController = () => {
 
   if (!isOpen || !modalProps) return null;
 
-  return <Modal onClose={hideModal} {...modalProps} />;
+  return <Modal isOpen={isOpen} onClose={hideModal} {...modalProps} />;
 };
 
 export default ModalController;
