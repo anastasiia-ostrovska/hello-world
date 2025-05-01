@@ -4,12 +4,14 @@ import { sessionSlice } from '@entities/session';
 import { themeSlice } from '@entities/theme';
 import { notificationSlice } from '@entities/notification';
 import { usersSlice } from '@entities/user';
+import { modalSlice } from '@entities/modal';
 
 const rootReducer = combineSlices(
   baseAPI,
   sessionSlice,
-  notificationSlice,
   themeSlice,
+  notificationSlice,
+  modalSlice,
   usersSlice
 );
 
