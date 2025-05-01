@@ -10,11 +10,9 @@ import Stack from '@mui/material/Stack';
 import { useMediaQueryState } from '@shared/lib';
 
 export interface ModalProps {
-  isOpen: boolean;
   title: ReactNode;
   content: ReactElement;
   actions?: ReactNode;
-  onClose: () => void;
   withTitleDivider?: boolean;
   withActionsDivider?: boolean;
 }
@@ -27,8 +25,9 @@ const Modal = ({
   actions = null,
   withTitleDivider = false,
   withActionsDivider = false,
-  ...dialogMUIProps
-}: ModalProps) => {
+}: ModalProps & { onClose: () => void } & {
+  isOpen: boolean;
+}) => {
   const { isUpSM } = useMediaQueryState();
 
   return (
@@ -40,7 +39,6 @@ const Modal = ({
       closeAfterTransition={false}
       aria-labelledby="dialog-title"
       aria-describedby="dialog-description"
-      {...dialogMUIProps}
     >
       <Stack
         direction="row"
