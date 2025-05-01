@@ -14,7 +14,6 @@ export interface ModalProps {
   title: ReactNode;
   content: ReactElement;
   actions?: ReactNode;
-  onClose: () => void;
   withTitleDivider?: boolean;
   withActionsDivider?: boolean;
 }
@@ -28,7 +27,7 @@ const Modal = ({
   withTitleDivider = false,
   withActionsDivider = false,
   ...dialogMUIProps
-}: ModalProps) => {
+}: ModalProps & { onClose: () => void }) => {
   const { isUpSM } = useMediaQueryState();
 
   return (

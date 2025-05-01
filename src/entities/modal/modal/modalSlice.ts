@@ -3,12 +3,12 @@ import { ModalProps } from '@shared/ui';
 
 interface ModalState {
   isOpen: boolean;
-  modalProps: ModalProps | object;
+  modalProps: ModalProps | null;
 }
 
 const initialState: ModalState = {
   isOpen: false,
-  modalProps: {},
+  modalProps: null,
 };
 
 /**
@@ -35,6 +35,7 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState,
   selectors: {
+    selectModalState: (state) => state,
     selectIsModalOpen: (state) => state.isOpen,
     selectModalProps: (state) => state.modalProps,
   },
@@ -45,11 +46,12 @@ const modalSlice = createSlice({
     },
     closeModal(state) {
       state.isOpen = false;
-      state.modalProps = {};
+      state.modalProps = null;
     },
   },
 });
 
-export const { selectIsModalOpen, selectModalProps } = modalSlice.selectors;
+export const { selectIsModalOpen, selectModalProps, selectModalState } =
+  modalSlice.selectors;
 export const { openModal, closeModal } = modalSlice.actions;
 export default modalSlice;
