@@ -1,5 +1,6 @@
 export * from './SkeletonLoaders';
 export * from './BasicTabs';
+export * from './Modal';
 
 export { default as Delayed } from './Delayed';
 export { default as SectionWrapper } from './SectionWrapper';

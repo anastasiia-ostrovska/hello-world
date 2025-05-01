@@ -1,3 +1,4 @@
+import { ReactElement, ReactNode } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -7,12 +8,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import { useMediaQueryState } from '@shared/lib';
-import { ReactNode } from 'react';
 
-interface DialogProps {
+export interface ModalProps {
   isOpen: boolean;
   title: ReactNode;
-  content: ReactNode;
+  content: ReactElement;
   actions?: ReactNode;
   onClose: () => void;
   withTitleDivider?: boolean;
@@ -27,7 +27,8 @@ const Modal = ({
   actions = null,
   withTitleDivider = false,
   withActionsDivider = false,
-}: DialogProps) => {
+  ...dialogMUIProps
+}: ModalProps) => {
   const { isUpSM } = useMediaQueryState();
 
   return (
@@ -39,6 +40,7 @@ const Modal = ({
       closeAfterTransition={false}
       aria-labelledby="dialog-title"
       aria-describedby="dialog-description"
+      {...dialogMUIProps}
     >
       <Stack
         direction="row"
