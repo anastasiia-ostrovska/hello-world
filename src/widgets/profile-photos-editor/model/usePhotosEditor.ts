@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from '@shared/model';
 import { getIsFileList } from '@shared/lib';
+import { useModalController } from '@entities/modal';
 import {
   PhotoAction,
   PhotoLabel,
