@@ -61,15 +61,18 @@ export const usePhotosEditor = ({
   useErrorPopupNotification({ error: userError || updateError });
 
   const dispatch = useAppDispatch();
+  const { hideModal } = useModalController();
+
   useEffect(() => {
     if (isSubmitSuccessful && isUpdateSuccessful) {
       const successNotification = createSuccessNotificationElement({
         message: 'Images updated successfully',
       });
+      hideModal();
       dispatch(addNotification(successNotification));
       reset();
     }
-  }, [dispatch, isSubmitSuccessful, isUpdateSuccessful, reset]);
+  }, [dispatch, hideModal, isSubmitSuccessful, isUpdateSuccessful, reset]);
 
   const isFormEmpty =
     !dirtyFields[PhotoLabel.Avatar] && !dirtyFields[PhotoLabel.Background];
