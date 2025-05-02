@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { EditButton } from '@shared/ui';
 import { AvatarPosition, AvatarWithBgImage } from '@entities/user';
@@ -8,32 +7,31 @@ import {
   ShowContactInfoButton,
   UserInfo,
 } from '@features/user';
-import { ShowModalButton } from '@features/show-modal-button';
 import { MessageNavButton } from '@features/message-nav-button';
 import { useUserProfileInfo } from '../modal/useUserProfileInfo';
 import ProfileAvatarSectionLayout from './ProfileInfoSectionLayout';
 
 interface ProfileAvatarSectionProps {
   userId: string;
-  editImagesModalContent: ReactNode;
-  editDetailsModalContent: ReactNode;
-  contactsModalContent: ReactNode;
+  onEditPhotosClick: () => void;
+  onShowContactsClick: () => void;
+  onEditDetailsClick: () => void;
 }
 
 const ProfileInfoSection = ({
   userId,
-  editImagesModalContent,
-  editDetailsModalContent,
-  contactsModalContent,
+  onEditPhotosClick,
+  onShowContactsClick,
+  onEditDetailsClick,
 }: ProfileAvatarSectionProps) => {
   const { palette } = useTheme();
   const { user, isLoading, isError, isMyProfile, networkCount, imageSize } =
     useUserProfileInfo({ userId });
-  const disabledUI = isLoading || isError;
+  const isDisabled = isLoading || isError;
 
   return (
     <ProfileAvatarSectionLayout
-      isLoading={disabledUI}
+      isLoading={isDisabled}
       isMyProfile={isMyProfile}
       photosBlock={
         <AvatarWithBgImage
@@ -49,47 +47,34 @@ const ProfileInfoSection = ({
         />
       }
       editImagesButton={
-        <ShowModalButton
-          withTitleDivider
-          isDisabled={disabledUI}
-          showModalButton={
-            <EditButton
-              tooltipTitle="Change profile images"
-              isDisabled={disabledUI}
-              sx={{
-                position: 'absolute',
-                right: { xs: 4, sm: 8, md: 12 },
-                top: { xs: 4, sm: 8, md: 12 },
-                backgroundColor: 'customBackground.sectionWrapperTransparent',
-                borderRadius: '50%',
-              }}
-            />
-          }
-          modalTitle="Profile images editor"
-          modalContent={editImagesModalContent}
+        <EditButton
+          tooltipTitle="Change profile images"
+          isDisabled={isDisabled}
+          onClick={onEditPhotosClick}
+          sx={{
+            position: 'absolute',
+            right: { xs: 4, sm: 8, md: 12 },
+            top: { xs: 4, sm: 8, md: 12 },
+            backgroundColor: 'customBackground.sectionWrapperTransparent',
+            borderRadius: '50%',
+          }}
         />
       }
       editProfileInfoButton={
-        <ShowModalButton
-          isDisabled={disabledUI}
-          showModalButton={
-            <EditButton
-              tooltipTitle="Edit profile details"
-              isDisabled={disabledUI}
-              sx={{
-                position: 'absolute',
-                right: { xs: 4, sm: 8, md: 12 },
-                top: imageSize + 10,
-              }}
-            />
-          }
-          modalTitle="Edit profile information"
-          modalContent={editDetailsModalContent}
+        <EditButton
+          tooltipTitle="Edit profile details"
+          isDisabled={isDisabled}
+          onClick={onEditDetailsClick}
+          sx={{
+            position: 'absolute',
+            right: { xs: 4, sm: 8, md: 12 },
+            top: imageSize + 10,
+          }}
         />
       }
       userDescription={
         <UserInfo
-          isLoading={disabledUI}
+          isLoading={isDisabled}
           name={user.name}
           jobTitle={user.job}
           country={user.country}
@@ -97,12 +82,10 @@ const ProfileInfoSection = ({
         />
       }
       showContactsButton={
-        <ShowModalButton
-          isDisabled={disabledUI}
-          withTitleDivider
-          showModalButton={<ShowContactInfoButton isLoading={disabledUI} />}
-          modalTitle={`${user.name}. Contacts`}
-          modalContent={contactsModalContent}
+        <ShowContactInfoButton
+          isLoading={isDisabled}
+          onClick={onShowContactsClick}
+          sx={{ width: 'fit-content' }}
         />
       }
       networkInfoNavigation={
@@ -110,14 +93,14 @@ const ProfileInfoSection = ({
           userId={userId}
           followingCount={networkCount.following}
           followersCount={networkCount.followedBy}
-          isLoading={disabledUI}
+          isLoading={isDisabled}
           sx={{ ml: '-8px', mt: '-8px' }}
         />
       }
       followButton={
         <FollowButton
           userId={userId}
-          isLoading={disabledUI}
+          isLoading={isDisabled}
           sx={{ width: '100%' }}
         />
       }
