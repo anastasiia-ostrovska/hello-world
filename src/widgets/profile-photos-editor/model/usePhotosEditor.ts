@@ -15,7 +15,7 @@ import {
   createSuccessNotificationElement,
   useErrorPopupNotification,
 } from '@entities/notification';
-import { DEFAULT_IMAGE_INPUT_VALUES } from '../consts/default-image-input-values';
+import { DEFAULT_IMAGE_INPUT_VALUES } from '../config/default-image-input-values';
 import { UsePhotosEditorResult } from './types';
 
 /**
