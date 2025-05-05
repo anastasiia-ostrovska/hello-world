@@ -1,38 +1,44 @@
 import { useFormContext } from 'react-hook-form';
 import { ButtonProps } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Button from '@mui/material/Button';
+import { AppButton } from '@shared/ui';
+import { forwardRef } from 'react';
 
 interface SetInputValueButtonProps extends ButtonProps {
   label: string;
   inputName: string;
   newValue: unknown;
+  isIconButton?: boolean;
 }
 
-const SetInputValueButton = ({
-  label,
-  inputName,
-  newValue,
-  ...buttonProps
-}: SetInputValueButtonProps) => {
-  const { setValue } = useFormContext();
+const SetInputValueButton = forwardRef<
+  HTMLButtonElement,
+  SetInputValueButtonProps
+>(
+  (
+    { label, inputName, newValue, isIconButton = false, ...buttonProps },
+    ref
+  ) => {
+    const { setValue } = useFormContext();
 
-  const handleSetValue = () => {
-    setValue(inputName, newValue, { shouldDirty: true });
-  };
+    const handleSetValue = () => {
+      setValue(inputName, newValue, { shouldDirty: true });
+    };
 
-  return (
-    <Button
-      size="small"
-      variant="outlined"
-      aria-label={label}
-      startIcon={<DeleteIcon />}
-      onClick={handleSetValue}
-      {...buttonProps}
-    >
-      {label}
-    </Button>
-  );
-};
+    return (
+      <AppButton
+        ref={ref}
+        label={label}
+        size="small"
+        variant="outlined"
+        isIconButton={isIconButton}
+        icon={<DeleteIcon />}
+        onClick={handleSetValue}
+        {...buttonProps}
+      />
+    );
+  }
+);
 
+SetInputValueButton.displayName = 'SetInputValueButton';
 export default SetInputValueButton;
