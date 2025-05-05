@@ -17,7 +17,7 @@ export interface ControlledTextFieldProps
 
 export interface ControlledTextFieldWithTypeAttribute
   extends ControlledTextFieldProps {
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
 }
 
 export interface UploadFileButtonProps extends ButtonProps {
