@@ -5,7 +5,7 @@ import getHelperTextWithID from '../lib/getHelperTextWithID';
 
 const ControlledTextField = ({
   name,
-  type,
+  type = 'text',
   label = '',
   helperText = '',
   required = true,
