@@ -1,3 +1,5 @@
+import { BaseSyntheticEvent } from 'react';
+import { UseFormReturn } from 'react-hook-form';
 import { ControlledTextFieldWithTypeAttribute } from '@shared/forms';
 import { ContactLabel } from '@entities/user';
 
@@ -30,3 +32,12 @@ export type UserInfoArray = [
 ][];
 export type ProfileInfoEditorItemKey = UserInfoItemLabel | ContactItemKey;
 export type ProfileInfoEditorInputs = Record<ProfileInfoEditorItemKey, string>;
+
+export interface UsePhotosEditorResult {
+  methods: UseFormReturn<ProfileInfoEditorInputs>;
+  contactItems: ContactsArray;
+  userInfoItems: UserInfoArray;
+  defaultValues: ProfileInfoEditorInputs;
+  isDisabledForm: boolean;
+  handleApplyChanges: (e?: BaseSyntheticEvent) => Promise<void>;
+}
