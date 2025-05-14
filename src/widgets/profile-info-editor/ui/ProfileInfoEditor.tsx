@@ -30,7 +30,7 @@ const ProfileInfoEditor = ({ userId }: { userId: string }) => {
                 key={name}
                 {...item}
                 disabled={isDisabledForm}
-                defaultValue={defaultValues?.[name] || ''}
+                defaultValue={defaultValues[name]}
               />
             );
           })}
@@ -40,7 +40,7 @@ const ProfileInfoEditor = ({ userId }: { userId: string }) => {
                 key={name}
                 {...item}
                 disabled={isDisabledForm}
-                defaultValue={defaultValues?.[name] || ''}
+                defaultValue={defaultValues[name]}
               />
             );
           })}
