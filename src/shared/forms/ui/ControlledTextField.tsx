@@ -8,7 +8,7 @@ const ControlledTextField = ({
   type = 'text',
   label = '',
   helperText = '',
-  required = true,
+  required = false,
   showError = true,
   rules = {},
   ...textFieldMuiProps
