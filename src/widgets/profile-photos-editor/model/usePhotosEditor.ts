@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch } from '@shared/model';
 import { getIsFileList } from '@shared/lib';
 import { useModalController } from '@entities/modal';
 import {
@@ -11,9 +10,8 @@ import {
   useUserWithFallback,
 } from '@entities/user';
 import {
-  addNotification,
-  createSuccessNotificationElement,
   useErrorPopupNotification,
+  useSuccessPopupNotification,
 } from '@entities/notification';
 import { DEFAULT_IMAGE_INPUT_VALUES } from '../config/default-image-input-values';
 import { UsePhotosEditorResult } from './types';
@@ -59,20 +57,25 @@ export const usePhotosEditor = ({
     },
   ] = useUpdateUserMutation();
   useErrorPopupNotification({ error: userError || updateError });
+  const { showSuccessNotification } = useSuccessPopupNotification({
+    message: 'Images are successfully updated',
+  });
 
-  const dispatch = useAppDispatch();
   const { hideModal } = useModalController();
 
   useEffect(() => {
     if (isSubmitSuccessful && isUpdateSuccessful) {
-      const successNotification = createSuccessNotificationElement({
-        message: 'Images updated successfully',
-      });
+      showSuccessNotification();
       hideModal();
-      dispatch(addNotification(successNotification));
       reset();
     }
-  }, [dispatch, hideModal, isSubmitSuccessful, isUpdateSuccessful, reset]);
+  }, [
+    hideModal,
+    isSubmitSuccessful,
+    isUpdateSuccessful,
+    reset,
+    showSuccessNotification,
+  ]);
 
   const isFormEmpty =
     !dirtyFields[PhotoLabel.Avatar] && !dirtyFields[PhotoLabel.Background];
