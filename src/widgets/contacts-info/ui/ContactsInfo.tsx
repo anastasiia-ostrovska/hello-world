@@ -4,8 +4,8 @@ import { ErrorEmbeddedNotification } from '@features/notification';
 import { useContacts } from '../model/useContacts';
 import ContactsList from './ContactsList';
 
-const ContactsInfo = ({ userId }: { userId: string }) => {
-  const { contacts, isLoading, isError, error } = useContacts({ userId });
+const ContactsInfo = () => {
+  const { contacts, isLoading, isError, error } = useContacts();
 
   if (error) {
     return <ErrorEmbeddedNotification error={error} />;

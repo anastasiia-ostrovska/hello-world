@@ -1,4 +1,5 @@
 export * from './modal/modalSlice';
+export * from './modal/types';
 
 export { useModalController } from './modal/useModalController';
 

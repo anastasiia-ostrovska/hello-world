@@ -1,3 +1,4 @@
+import { useParamsId } from '@shared/lib';
 import { useUserWithFallback } from '@entities/user';
 import { ContactsArray } from './types';
 
@@ -8,11 +9,8 @@ interface UseContactsResult {
   error: unknown;
 }
 
-export const useContacts = ({
-  userId,
-}: {
-  userId: string;
-}): UseContactsResult => {
+export const useContacts = (): UseContactsResult => {
+  const userId = useParamsId();
   const { user, error, isError, isLoading } = useUserWithFallback({ userId });
   const { contacts, email, phone } = user;
 
