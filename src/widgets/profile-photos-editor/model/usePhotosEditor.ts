@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { getIsFileList } from '@shared/lib';
+import { getIsFileList, useParamsId } from '@shared/lib';
 import { useModalController } from '@entities/modal';
 import {
   PhotoAction,
@@ -23,17 +23,12 @@ import { UsePhotosEditorResult } from './types';
  * on a user profile, including form state handling, submission logic, and error handling.
  * It integrates with user data fetching, photo update mutations, and notification dispatching.
  *
- * @param {Object} params - Parameters required by the hook.
- * @param {string} params.userId - The ID of the user whose photos are being edited.
  * @returns {UsePhotosEditorResult} An object containing user data, form methods, action statuses,
  * and a handler for applying changes to the photos.
  */
 
-export const usePhotosEditor = ({
-  userId,
-}: {
-  userId: string;
-}): UsePhotosEditorResult => {
+export const usePhotosEditor = (): UsePhotosEditorResult => {
+  const userId = useParamsId();
   const {
     user,
     error: userError,
