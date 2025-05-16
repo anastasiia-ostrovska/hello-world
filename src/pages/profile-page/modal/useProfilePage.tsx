@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import { useProfileModals } from '../lib/useProfileModals';
+import { useParamsId } from '@shared/lib';
+import { Modal, useModalController } from '@entities/modal';
 import { UseProfileModalsResult } from './types';
 
 interface UseProfilePageResult extends UseProfileModalsResult {
@@ -7,26 +7,34 @@ interface UseProfilePageResult extends UseProfileModalsResult {
 }
 
 /**
- * A custom React hook that provides utility functions and the user ID for the profile page.
+ * A custom hook that provides functionalities for managing and interacting with the profile page.
  *
- * This hook extracts the `userId` from the current route parameters and prepares it for use.
- * It also provides functions to handle specific modals for editing photos, details,
- * and contacts on the profile page.
+ * @returns {UseProfilePageResult} An object containing the current user's ID and functions to manage profile page modals.
  *
- * @returns {UseProfilePageResult} An object containing the `userId` and modal handling functions.
+ * @property {string} userId - The ID of the current user.
+ * @property {Function} handleShowPhotosEditorModal - Opens the modal for editing profile photos.
+ * @property {Function} handleShowDetailsEditorModal - Opens the modal for editing profile details.
+ * @property {Function} handleShowContactsModal - Opens the modal for displaying contact information.
  */
 
 export const useProfilePage = (): UseProfilePageResult => {
-  const { userId } = useParams();
-  const currentId = userId || '';
-  const {
-    handleShowPhotosEditorModal,
-    handleShowDetailsEditorModal,
-    handleShowContactsModal,
-  } = useProfileModals({ userId: currentId });
+  const { showModal } = useModalController();
+  const userId = useParamsId();
+
+  const handleShowPhotosEditorModal = (): void => {
+    showModal(Modal.ProfilePhotosEditor);
+  };
+
+  const handleShowDetailsEditorModal = (): void => {
+    showModal(Modal.ProfileInfoEditor);
+  };
+
+  const handleShowContactsModal = (): void => {
+    showModal(Modal.Contacts);
+  };
 
   return {
-    userId: currentId,
+    userId,
     handleShowPhotosEditorModal,
     handleShowContactsModal,
     handleShowDetailsEditorModal,
