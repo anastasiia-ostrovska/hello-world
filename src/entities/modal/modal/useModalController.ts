@@ -1,9 +1,11 @@
 import { useAppDispatch } from '@shared/model';
-import { ModalProps } from '@shared/ui';
 import { closeModal, openModal } from './modalSlice';
+import { Modal } from './types';
+
+type ShowModalHandler = (modalType: Modal) => void;
 
 interface ModalControllerResult {
-  showModal: (modalProps: ModalProps) => void;
+  showModal: ShowModalHandler;
   hideModal: () => void;
 }
 
@@ -22,8 +24,8 @@ interface ModalControllerResult {
 export const useModalController = (): ModalControllerResult => {
   const dispatch = useAppDispatch();
 
-  const showModal = (modalProps: ModalProps) => {
-    dispatch(openModal(modalProps));
+  const showModal: ShowModalHandler = (modalType) => {
+    dispatch(openModal(modalType));
   };
 
   const hideModal = () => dispatch(closeModal());
