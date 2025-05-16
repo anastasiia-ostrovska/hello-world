@@ -5,7 +5,7 @@ import { PROFILE_INFO_EDITOR_ID } from '../consts/profile-info-editor-ID';
 import { useProfileInfoEditor } from '../model/useProfileInfoEditor';
 import ProfileInfoEditorLayout from './ProfileInfoEditorLayout';
 
-const ProfileInfoEditor = ({ userId }: { userId: string }) => {
+const ProfileInfoEditor = () => {
   const {
     methods,
     handleApplyChanges,
@@ -13,7 +13,7 @@ const ProfileInfoEditor = ({ userId }: { userId: string }) => {
     userInfoItems,
     defaultValues,
     isDisabledForm,
-  } = useProfileInfoEditor({ userId });
+  } = useProfileInfoEditor();
 
   return (
     <FormProvider {...methods}>

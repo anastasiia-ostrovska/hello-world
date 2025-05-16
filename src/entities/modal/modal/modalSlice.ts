@@ -1,34 +1,37 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ModalProps } from '@shared/ui';
+import { Modal } from './types';
 
 interface ModalState {
   isOpen: boolean;
-  modalProps: ModalProps | null;
+  isActionDisabled: boolean;
+  modalType: Modal | null;
 }
 
 const initialState: ModalState = {
   isOpen: false,
-  modalProps: null,
+  isActionDisabled: true,
+  modalType: null,
 };
 
 /**
- * A slice of the Redux store for managing modal state.
+ * A slice of the Redux state responsible for managing modal-related state.
+ * It contains the state, selectors, and reducers required to manipulate and retrieve modal information.
  *
- * The `modalSlice` object contains reducers, action creators, and selectors
- * related to handling modal functionality, such as opening and closing modals
- * and accessing modal properties.
+ * **State Properties:**
+ * - `isOpen`: A boolean value indicating whether the modal is open or closed.
+ * - `isActionDisabled`: A boolean value indicating whether actions within the modal are disabled.
+ * - `modalType`: Represents the type of the modal currently being displayed.
  *
- * @constant
- * @property {string} name The name of the slice, used as a namespace in the Redux store.
- * @property {Object} initialState The initial state structure for the modal management.
- * @property selectors Provides reusable functions to access specific parts
- * of the modal state.
- * - `selectIsModalOpen`: Determines if the modal is currently open.
- * - `selectModalProps`: Retrieves the properties or data associated with the modal.
- * @property reducers An object containing Redux reducers for managing
- * modal-related state updates.
- * - `openModal`: Sets the modal as open and assigns relevant modal properties using the payload.
- * - `closeModal`: Sets the modal as closed and clears modal properties.
+ * **Selectors:**
+ * - `selectModalState`: Retrieves the entire modal state.
+ * - `selectIsModalOpen`: Retrieves the value of the `isOpen` property to determine if the modal is open.
+ * - `selectIsActionDisabled`: Retrieves the value of the `isActionDisabled` property to check if actions are disabled.
+ * - `selectModalType`: Retrieves the type of the modal (`modalType`).
+ *
+ * **Reducers:**
+ * - `setIsActionDisabled`: Updates the `isActionDisabled` property based on a boolean payload.
+ * - `openModal`: Sets the `isOpen` property to true and assigns the provided modal type to `modalType`.
+ * - `closeModal`: Sets the `isOpen` property to false and assigns the provided modal type to `null`.
  */
 
 const modalSlice = createSlice({
@@ -37,21 +40,26 @@ const modalSlice = createSlice({
   selectors: {
     selectModalState: (state) => state,
     selectIsModalOpen: (state) => state.isOpen,
-    selectModalProps: (state) => state.modalProps,
+    selectIsActionDisabled: (state) => state.isActionDisabled,
+    selectModalType: (state) => state.modalType,
   },
   reducers: {
-    openModal(state, action: PayloadAction<ModalProps>) {
+    setIsActionDisabled(state, action: PayloadAction<boolean>) {
+      state.isActionDisabled = action.payload;
+    },
+    openModal(state, action: PayloadAction<Modal>) {
       state.isOpen = true;
-      state.modalProps = action.payload;
+      state.modalType = action.payload;
     },
     closeModal(state) {
       state.isOpen = false;
-      state.modalProps = null;
+      state.modalType = null;
     },
   },
 });
 
-export const { selectIsModalOpen, selectModalProps, selectModalState } =
+export const { selectIsModalOpen, selectIsActionDisabled, selectModalState } =
   modalSlice.selectors;
-export const { openModal, closeModal } = modalSlice.actions;
+export const { openModal, closeModal, setIsActionDisabled } =
+  modalSlice.actions;
 export default modalSlice;

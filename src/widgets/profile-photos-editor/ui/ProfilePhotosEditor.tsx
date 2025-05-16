@@ -6,14 +6,14 @@ import { usePhotosEditor } from '../model/usePhotosEditor';
 import EditPhotoControls from './EditPhotoControls';
 import ProfilePhotosEditorLayout from './ProfilePhotosEditorLayout';
 
-const ProfilePhotosEditor = ({ userId }: { userId: string }) => {
+const ProfilePhotosEditor = () => {
   const {
     user,
     methods,
     isActionDisabled,
     isApplyDisabled,
     handleApplyChanges,
-  } = usePhotosEditor({ userId });
+  } = usePhotosEditor();
 
   return (
     <FormProvider {...methods}>
