@@ -15,7 +15,7 @@ const ResetInputButton = forwardRef<HTMLButtonElement, ResetInputButtonProps>(
     const { resetField } = useFormContext();
 
     const handleResetInput = () => {
-      resetField(inputName);
+      resetField(inputName, { keepDirty: true });
     };
 
     return (

@@ -45,11 +45,12 @@ export const useProfileInfoEditor = (): UsePhotosEditorResult => {
   const defaultFormValues = useMemo(() => getDefaultInputsValues(user), [user]);
   const methods = useForm<ProfileInfoEditorInputs>({
     defaultValues: defaultFormValues,
+    mode: 'onTouched',
   });
   const {
     handleSubmit,
     reset,
-    formState: { isSubmitSuccessful, isDirty },
+    formState: { isSubmitSuccessful, isDirty, isValid },
   } = methods;
 
   useEffect(() => {
@@ -98,9 +99,9 @@ export const useProfileInfoEditor = (): UsePhotosEditorResult => {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const isSubmitButtonDisabled = isDisabledForm || !isDirty;
+    const isSubmitButtonDisabled = isDisabledForm || !isDirty || !isValid;
     dispatch(setIsActionDisabled(isSubmitButtonDisabled));
-  }, [dispatch, isDirty, isDisabledForm]);
+  }, [dispatch, isDirty, isDisabledForm, isValid]);
 
   // Submit handler
   const onSubmit = (data: ProfileInfoEditorInputs): void => {
