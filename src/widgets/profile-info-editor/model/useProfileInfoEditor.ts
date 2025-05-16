@@ -5,7 +5,9 @@ import {
   useErrorPopupNotification,
   useSuccessPopupNotification,
 } from '@entities/notification';
-import { useModalController } from '@entities/modal';
+import { setIsActionDisabled, useModalController } from '@entities/modal';
+import { useAppDispatch } from '@shared/model';
+import { useParamsId } from '@shared/lib';
 import { getDefaultInputsValues } from '../lib/getDefaultInputsValues';
 import { CONTACT_ITEMS, USER_INFO_ITEMS } from '../config/profile-info-items';
 import {
@@ -18,9 +20,6 @@ import {
 /**
  * A custom hook that manages the state and logic for editing user profile information.
  *
- * @param {Object} params - An object containing the parameters for using the editor.
- * @param {string} params.userId - The ID of the user whose profile information is being edited.
- *
  * @returns {Object} An object containing various properties and methods for managing the profile editor:
  * - methods: The form methods provided by react-hook-form.
  * - contactItems: Configuration for contact-related items in the profile editor.
@@ -30,11 +29,10 @@ import {
  * - handleApplyChanges: A function to handle applying changes to the profile information when the form is submitted.
  */
 
-export const useProfileInfoEditor = ({
-  userId,
-}: {
-  userId: string;
-}): UsePhotosEditorResult => {
+export const useProfileInfoEditor = (): UsePhotosEditorResult => {
+  // Retrieve user id
+  const userId = useParamsId();
+
   // Fetch user data
   const {
     user,
@@ -51,7 +49,7 @@ export const useProfileInfoEditor = ({
   const {
     handleSubmit,
     reset,
-    formState: { isSubmitSuccessful },
+    formState: { isSubmitSuccessful, isDirty },
   } = methods;
 
   useEffect(() => {
@@ -92,6 +90,18 @@ export const useProfileInfoEditor = ({
     showSuccessNotification,
   ]);
 
+  // Derived state
+  const isDisabledForm = useMemo(
+    () => isUserError || isUserLoading || isUpdating,
+    [isUpdating, isUserError, isUserLoading]
+  );
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const isSubmitButtonDisabled = isDisabledForm || !isDirty;
+    dispatch(setIsActionDisabled(isSubmitButtonDisabled));
+  }, [dispatch, isDirty, isDisabledForm]);
+
   // Submit handler
   const onSubmit = (data: ProfileInfoEditorInputs): void => {
     updateInfo(data);
@@ -100,9 +110,6 @@ export const useProfileInfoEditor = ({
   // Items config
   const contactItems = Object.entries(CONTACT_ITEMS) as ContactsArray;
   const userInfoItems = Object.entries(USER_INFO_ITEMS) as UserInfoArray;
-
-  // Derived state
-  const isDisabledForm = isUserError || isUserLoading || isUpdating;
 
   return {
     methods,
