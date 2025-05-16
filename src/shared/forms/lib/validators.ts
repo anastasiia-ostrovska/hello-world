@@ -2,21 +2,25 @@ import * as REGEXP from '@shared/consts';
 import createValidator from './validator-factory';
 
 // --- REGEXP validators ---
-const validateWIthRegExp = (regExp: RegExp) => (value: string) => {
+const validateWithRegExp = (regExp: RegExp) => (value: string) => {
+  if (!value) return true;
   return regExp.test(value);
 };
 
 export const validEmailFormat = createValidator(
-  validateWIthRegExp(REGEXP.VALID_EMAIL)
+  validateWithRegExp(REGEXP.VALID_EMAIL)
+);
+export const validLinkFormat = createValidator(
+  validateWithRegExp(REGEXP.VALID_LINK)
 );
 export const containsUppercase = createValidator(
-  validateWIthRegExp(REGEXP.MATCH_UPPERCASE)
+  validateWithRegExp(REGEXP.MATCH_UPPERCASE)
 );
 export const containsDigit = createValidator(
-  validateWIthRegExp(REGEXP.MATCH_DIGIT)
+  validateWithRegExp(REGEXP.MATCH_DIGIT)
 );
 export const containsSpecialCharacter = createValidator(
-  validateWIthRegExp(REGEXP.MATCH_SPECIAL_CHARACTER)
+  validateWithRegExp(REGEXP.MATCH_SPECIAL_CHARACTER)
 );
 
 // --- LENGTH validators ----
