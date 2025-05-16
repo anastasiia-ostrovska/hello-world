@@ -6,21 +6,31 @@ import {
   UserInfoItemLabel,
   UserInfoItems,
 } from '../model/types';
+import {
+  contactsValidationRules,
+  nameValidationRules,
+} from './validation-rules';
 
 const createItemNameAndLabel = (name: string) => ({
   name,
   label: withCapitalLetter(name),
 });
 
-const multilineProps = {
+const contactsProps = {
   multiline: true,
   maxRows: 2,
+  rules: {
+    validate: contactsValidationRules,
+  },
 };
 
 export const USER_INFO_ITEMS: UserInfoItems = {
   [UserInfoItemLabel.Name]: {
     ...createItemNameAndLabel(UserInfoItemLabel.Name),
     required: true,
+    rules: {
+      validate: nameValidationRules,
+    },
   },
   [UserInfoItemLabel.Country]: {
     ...createItemNameAndLabel(UserInfoItemLabel.Country),
@@ -33,19 +43,19 @@ export const USER_INFO_ITEMS: UserInfoItems = {
 export const CONTACT_ITEMS: ContactItems = {
   [ContactLabel.LinkedIn]: {
     ...createItemNameAndLabel(ContactLabel.LinkedIn),
-    ...multilineProps,
+    ...contactsProps,
   },
   [ContactLabel.Github]: {
     ...createItemNameAndLabel(ContactLabel.Github),
-    ...multilineProps,
+    ...contactsProps,
   },
   [ContactLabel.Facebook]: {
     ...createItemNameAndLabel(ContactLabel.Facebook),
-    ...multilineProps,
+    ...contactsProps,
   },
   [ContactLabel.Instagram]: {
     ...createItemNameAndLabel(ContactLabel.Instagram),
-    ...multilineProps,
+    ...contactsProps,
   },
   phone: {
     ...createItemNameAndLabel(PhoneLabel.Phone),

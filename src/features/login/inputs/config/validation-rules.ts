@@ -10,7 +10,7 @@ import {
 import {
   EMAIL_VALIDATION_MESSAGES,
   PASSWORD_VALIDATION_MASSAGES,
-} from '../consts/validation-messages';
+} from './validation-messages';
 
 export const emailValidationRules = {
   emailIsRequired: fieldIsRequired(EMAIL_VALIDATION_MESSAGES.required),
