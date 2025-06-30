@@ -4,6 +4,7 @@ import { sessionSlice } from '@entities/session';
 import { themeSlice } from '@entities/theme';
 import { notificationSlice } from '@entities/notification';
 import { usersSlice } from '@entities/user';
+import { postsFilters } from '@entities/post';
 import { modalSlice } from '@entities/modal';
 
 const rootReducer = combineSlices(
@@ -12,7 +13,8 @@ const rootReducer = combineSlices(
   themeSlice,
   notificationSlice,
   modalSlice,
-  usersSlice
+  usersSlice,
+  postsFilters
 );
 
 export default rootReducer;
