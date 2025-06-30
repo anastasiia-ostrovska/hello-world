@@ -5,7 +5,7 @@ import {
   METHODS,
   TAGS,
 } from '@shared/api';
-import { Post, PostListData, PostsQueryParams, UserId } from '../model/types';
+import { Post, PostListData, PostsFilters, UserId } from '../model/types';
 
 type PostResponse = ApiSuccessResponse<Post>;
 type PostListResponse = ApiSuccessResponse<PostListData>;
@@ -23,7 +23,7 @@ const postApi = baseAPI.injectEndpoints({
       providesTags: [TAGS.POST_ID],
     }),
 
-    postList: builder.query<PostListResponse, PostsQueryParams>({
+    postList: builder.query<PostListResponse, PostsFilters>({
       query: (filters) => {
         return {
           url: ENDPOINTS.POSTS,

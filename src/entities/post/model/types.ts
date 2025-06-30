@@ -47,13 +47,13 @@ export interface Post {
 }
 
 // Posts query params:
-export type PostsFilters = 'liked' | 'followed' | 'mine';
+export type Filters = 'liked' | 'followed' | 'mine';
 
-export interface PostsQueryParams {
+export interface PostsFilters {
   page: number;
   count: number;
   search: string;
-  filters: PostsFilters;
+  filters: Filters[];
 }
 
 // Post List
